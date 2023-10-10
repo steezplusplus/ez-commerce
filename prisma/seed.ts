@@ -3,7 +3,10 @@ const prisma = new PrismaClient();
 
 async function main() {
   console.info('Starting seed');
-  const store = prisma.store.create({
+
+  await prisma.store.deleteMany();
+
+  prisma.store.create({
     data: {
       name: "Jesse's Store",
     }
