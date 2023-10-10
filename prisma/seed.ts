@@ -6,7 +6,7 @@ async function main() {
 
   await prisma.store.deleteMany();
 
-  prisma.store.create({
+  await prisma.store.create({
     data: {
       name: "Jesse's Store",
     }
