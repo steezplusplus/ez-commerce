@@ -2,24 +2,32 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 async function main() {
-  console.info('Starting seed');
+  console.info('🌱 Starting seed');
 
   await prisma.store.deleteMany();
 
-  await prisma.store.create({
+  const store = await prisma.store.create({
     data: {
       name: "Jesse's Store",
     }
   });
-  console.info('Finished seed');
+
+  await prisma.category.create({
+    data: {
+      name: 'Shirts',
+      storeId: store.id,
+    }
+  });
+
+  console.info('🌲 Finished seed');
 }
 
 main()
   .then(async () => {
-    await prisma.$disconnect()
+    await prisma.$disconnect();
   })
   .catch(async (e) => {
-    console.error(e)
-    await prisma.$disconnect()
-    process.exit(1)
+    console.error(e);
+    await prisma.$disconnect();
+    process.exit(1);
   });
