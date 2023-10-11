@@ -4,6 +4,8 @@ const prisma = new PrismaClient();
 async function main() {
   console.info('🌱 Starting seed');
 
+  await prisma.product.deleteMany();
+  await prisma.category.deleteMany();
   await prisma.store.deleteMany();
 
   const store = await prisma.store.create({
@@ -12,11 +14,18 @@ async function main() {
     }
   });
 
-  await prisma.category.create({
+  const category = await prisma.category.create({
     data: {
       name: 'Shirts',
       storeId: store.id,
     }
+  });
+
+  await prisma.product.create({
+    data: {
+      name: 'White Tee',
+      categoryId: category.id,
+    },
   });
 
   console.info('🌲 Finished seed');
