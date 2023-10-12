@@ -2,9 +2,10 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 async function main() {
-  console.info('🌱 Starting seed');
+  console.info('🌱 Starting seed...');
 
   await prisma.product.deleteMany();
+  await prisma.variation.deleteMany();
   await prisma.category.deleteMany();
   await prisma.store.deleteMany();
 
@@ -14,21 +15,79 @@ async function main() {
     }
   });
 
-  const category = await prisma.category.create({
+  const shirtsCategory = await prisma.category.create({
     data: {
       name: 'Shirts',
       storeId: store.id,
     }
   });
 
+  const shoesCategory = await prisma.category.create({
+    data: {
+      name: 'Shoes',
+      storeId: store.id,
+    }
+  });
+
+  await prisma.variation.create({
+    data: {
+      name: 'White',
+      categoryId: shirtsCategory.id,
+    }
+  });
+
+  await prisma.variation.create({
+    data: {
+      name: 'Blue',
+      categoryId: shirtsCategory.id,
+    }
+  });
+
+  await prisma.variation.create({
+    data: {
+      name: 'Red',
+      categoryId: shirtsCategory.id,
+    }
+  });
+
+  await prisma.variation.create({
+    data: {
+      name: '8',
+      categoryId: shoesCategory.id,
+    }
+  });
+
+  await prisma.variation.create({
+    data: {
+      name: '9',
+      categoryId: shoesCategory.id,
+    }
+  });
+
+  await prisma.variation.create({
+    data: {
+      name: '10',
+      categoryId: shoesCategory.id,
+    }
+  });
+
   await prisma.product.create({
     data: {
-      name: 'White Tee',
-      categoryId: category.id,
+      name: 'Tee Shirt',
+      description: 'A description of a tee shirt',
+      categoryId: shirtsCategory.id,
     },
   });
 
-  console.info('🌲 Finished seed');
+  await prisma.product.create({
+    data: {
+      name: 'Sneakers',
+      description: 'A description of sneakers',
+      categoryId: shoesCategory.id,
+    },
+  });
+
+  console.info('🌲 Finished seed!');
 }
 
 main()
