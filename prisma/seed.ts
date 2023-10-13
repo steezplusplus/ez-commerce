@@ -13,6 +13,49 @@ async function main() {
       name: 'My store',
       categories: {
          create: [
+          {
+            name: 'Bags',
+            slug: 'bags',
+          },
+
+          { 
+            name: 'Drinkware',
+            slug: 'drinkware',
+            products: {
+              create: [
+                { 
+                  name: 'Cup',
+                  slug: 'cup',
+                  description: '12oz double wall ceramic body with a padded bottom.',
+                  price: 15.00,
+                  image: 'https://placehold.co/600x400/png'
+                },
+                { 
+                  name: 'Mug',
+                  slug: 'mug',
+                  description: '12 oz Beck Cork-Bottom Mug.',
+                  price: 15.00,
+                  image: 'https://placehold.co/600x400/png'
+                }
+              ]
+            }
+          },
+          {
+            name: 'Electronics',
+            slug: 'electronics',
+          },
+          {
+            name: 'Footware',
+            slug: 'footware',
+          },
+          {
+            name: 'Headwear',
+            slug: 'headwear',
+          },
+          {
+            name: 'Hoodies',
+            slug: 'hoodies',
+          },
           { 
             name: 'Jackets',
             slug: 'jackets',
@@ -27,6 +70,14 @@ async function main() {
                 }
               ]
             }
+          },
+          {
+            name: 'Kids',
+            slug: 'kids',
+          },
+          {
+            name: 'Pets',
+            slug: 'pets',
           },
           { 
             name: 'Shirts',
@@ -57,34 +108,14 @@ async function main() {
               ]
             }
           },
-          { 
-            name: 'Drinkware',
-            slug: 'drinkware',
-            products: {
-              create: [
-                { 
-                  name: 'Cup',
-                  slug: 'cup',
-                  description: '12oz double wall ceramic body with a padded bottom.',
-                  price: 15.00,
-                  image: 'https://placehold.co/600x400/png'
-                },
-                { 
-                  name: 'Mug',
-                  slug: 'mug',
-                  description: '12 oz Beck Cork-Bottom Mug.',
-                  price: 15.00,
-                  image: 'https://placehold.co/600x400/png'
-                }
-              ]
-            }
+          {
+            name: 'Stickers',
+            slug: 'stickers',
           },
         ],
       },
     },
   });
-
-  console.info('🌲 Finished seed!');
 }
 
 main()
