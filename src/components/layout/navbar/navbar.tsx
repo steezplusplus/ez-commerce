@@ -13,15 +13,15 @@ export async function Navbar() {
   });
 
   return (
-    <nav className="flex w-full items-center justify-between p-4">
+    <nav className="flex w-full items-center justify-between p-4 lg:p-6">
       <div className="flex w-full md:w-1/3">
         <Link href="/" className='hover:underline mr-6'>
-          <h1 className="text-lg font-medium">
+          <h1 className="text-md font-medium md:hidden lg:block">
             Jb.
           </h1>
         </Link>
         <div>
-          <ul className="flex w-full gap-x-6 text-md font-light mr-6">  
+          <ul className="flex w-full gap-x-6 text-sm font-light mr-6">  
             <li>
               <Link
                 href="/search"
