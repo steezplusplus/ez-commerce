@@ -51,9 +51,9 @@ export async function Navbar() {
       </div>
 
       <div className="flex justify-end md:w-1/3">
-        <button className="ml-auto p-2 border rounded-md">
+        <Link href="/checkout" className="ml-auto p-2 border rounded-md">
           <ShoppingCart size="16" />
-        </button>
+        </Link>
       </div>
     </nav>
   );
