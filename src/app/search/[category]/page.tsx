@@ -29,7 +29,7 @@ export default async function CategoryPage(props: CategoryPageProps) {
           {category.products.map((product) => {
             return (
               <li className='border rounded-sm px-2 py-1 text-sm font-extralight' key={product.id}>
-                <Link href={`/product/${product.name}`.toLocaleLowerCase()} className="hover:underline">
+                <Link href={`/product/${product.slug}`} className="hover:underline">
                   <div className="flex justify-between">
                     <h3 className="mr-4">{product.name}</h3>
                     <Price amount={product.price.toString()} />

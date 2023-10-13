@@ -33,7 +33,7 @@ export async function Navbar() {
             {categories.map((category) => (
               <li key={category.id}>
                 <Link
-                  href={`/search/${category.name.toLocaleLowerCase()}`}
+                  href={`/search/${category.slug}`}
                   className="hover:underline"
                 >
                   {category.name}

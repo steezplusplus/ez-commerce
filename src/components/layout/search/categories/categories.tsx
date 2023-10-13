@@ -19,7 +19,7 @@ export async function Categories() {
             return (
               <li key={category.id}className="hover:underline mt-2 flex text-black dark:text-white">
                 <Link
-                  href={`/search/${category.name.toLocaleLowerCase()}`}
+                  href={`/search/${category.slug}`}
                   className='text-sm font-light'
                   key={category.id}>{category.name}
                 </Link>

@@ -1,4 +1,14 @@
+import { prisma } from "lib/db";
+
 export default async function ProductPage({ params }: { params: { handle: string } }) {
+  const product = await prisma.product.findFirstOrThrow({
+    where: {
+      name: {
+        equals: params.handle,
+        mode: "insensitive",
+      }
+    }
+  });
   return (
     <div className="mx-auto max-w-screen-2xl px-4">
       <div className="flex flex-col rounded-lg border border-neutral-200 bg-white p-8 dark:border-neutral-800 dark:bg-black md:p-12 lg:flex-row lg:gap-8">
