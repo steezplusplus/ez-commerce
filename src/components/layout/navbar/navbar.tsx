@@ -8,46 +8,50 @@ export async function Navbar() {
   const categories = await prisma.category.findMany({
     where: {
       storeId: store.id
-    }
+    },
+    take: 2,
   });
 
   return (
-    <nav className="flex w-full items-center px-2 py-1">
+    <nav className="flex w-full items-center justify-between p-4">
       <div className="flex w-full md:w-1/3">
-        <Link href="/" className="mr-2 flex w-full items-center justify-center md:w-auto lg:mr-6">
-          <h1 className="ml-2 flex-none text-sm font-medium">
+        <Link href="/" className='hover:underline mr-6'>
+          <h1 className="text-lg font-medium">
             Jb.
           </h1>
         </Link>
-        <ul className="hidden gap-6 text-sm md:flex md:items-center">     
-          <li>
-            <Link
-              href="/search"
-              className="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
-            >
-              All
-            </Link>
-          </li>       
-          {categories.map((category) => (
-            <li key={category.id}>
+        <div>
+          <ul className="flex w-full gap-x-6 text-md font-light mr-6">  
+            <li>
               <Link
-                href={`/search/${category.name.toLocaleLowerCase()}`}
-                className="text-neutral-500 underline-offset-4 hover:text-black hover:underline dark:text-neutral-400 dark:hover:text-neutral-300"
+                href="/search"
+                className="hover:underline"
               >
-                {category.name}
+                All
               </Link>
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div className="hidden justify-center md:flex md:w-1/3">
-        <div className="flex items-center">
-          <input type="search" />
-          <Search size="16" />
+            </li>       
+            {categories.map((category) => (
+              <li key={category.id}>
+                <Link
+                  href={`/search/${category.name.toLocaleLowerCase()}`}
+                  className="hover:underline"
+                >
+                  {category.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
+
+
+      <div className="hidden justify-center items-center md:flex md:w-1/3">
+        <input type="search" />
+        <Search size="16" />
+      </div>
+
       <div className="flex justify-end md:w-1/3">
-        <button className="p-2 border rounded-md">
+        <button className="ml-auto p-2 border rounded-md">
           <ShoppingCart size="16" />
         </button>
       </div>
