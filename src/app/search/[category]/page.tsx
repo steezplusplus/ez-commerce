@@ -4,7 +4,7 @@ import { prisma } from "lib/db";
 type CategoryPageProps = {
   params: {
     category: string;
-  };
+  },
 };
 
 export default async function CategoryPage(props: CategoryPageProps) {
@@ -12,12 +12,12 @@ export default async function CategoryPage(props: CategoryPageProps) {
     where: {
       name: {
         equals: props.params.category,
-        mode: 'insensitive',
+        mode: "insensitive",
       },
     },
     include: {
       products: true,
-    },
+    }
   });
   return (
     <div>
