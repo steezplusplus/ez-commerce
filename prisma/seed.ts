@@ -4,6 +4,8 @@ const prisma = new PrismaClient();
 async function main() {
   console.info('🌱 Starting seed...');
 
+  await prisma.variationOptions.deleteMany();
+  await prisma.variation.deleteMany();
   await prisma.product.deleteMany();
   await prisma.category.deleteMany();
   await prisma.store.deleteMany();
@@ -89,7 +91,17 @@ async function main() {
                   slug: 't-shirt',
                   description: '60% combed ringspun cotton/40% polyester jersey tee.',
                   price: 25.00,
-                  image: 'https://placehold.co/600x400/png'
+                  image: 'https://placehold.co/600x400/png',
+                  variations: {
+                    create: [
+                      { 
+                        name: 'size',
+                      },
+                      {
+                        name: 'color',
+                      },
+                    ],
+                  },
                 },
                 { 
                   name: 'Prism T-Shirt',
