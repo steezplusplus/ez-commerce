@@ -21,18 +21,23 @@ export default async function CategoryPage(props: CategoryPageProps) {
   });
   return (
     <main className="flex min-h-screen flex-col items-center px-4 py-2">
-      <h2 className="text-sm font-light uppercase">{props.params.category}</h2>
+      <h2 className="text-sm font-light uppercase mb-2">{props.params.category}</h2>
       <section>
-        {category.products.map((product) => {
-          return (
-            <div className='border rounded-sm relative h-[600px] w-[400px]' key={product.id}>
-              <div className="absolute bottom-0 left-0 flex w-full px-4 pb-4">
-                <p className="mr-4">{product.name}</p>
-                <Price amount={product.price.toString()} />
-              </div>
-            </div>
-          );
-        })}
+        <ul className="grid grid-flow-row gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+          {category.products.map((product) => {
+            return (
+              <li className='border rounded-sm px-2 py-1 text-sm font-extralight' key={product.id}>
+                <div className="flex mb-1">
+                  <h3 className="mr-4">{product.name}</h3>
+                  <span className='ml-auto'>
+                    <Price amount={product.price.toString()} />
+                  </span>
+                </div>                
+                <p>{product.description}</p>
+              </li>
+            );
+          })}
+        </ul>
       </section>
     </main>
   );

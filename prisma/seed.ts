@@ -31,11 +31,23 @@ async function main() {
             products: {
               create: [
                 { 
-                  name: 'T-Shirt' ,
+                  name: 'T-Shirt',
                   description: '60% combed ringspun cotton/40% polyester jersey tee.',
-                  price: 50.00,
+                  price: 25.00,
                   image: 'https://placehold.co/600x400/png'
-                }
+                },
+                { 
+                  name: 'Prism T-Shirt',
+                  description: '60% combed ringspun cotton/40% polyester jersey tee.',
+                  price: 25.00,
+                  image: 'https://placehold.co/600x400/png'
+                },
+                { 
+                  name: 'Circles T-Jacket',
+                  description: '60% combed ringspun cotton/40% polyester jersey tee.',
+                  price: 25.00,
+                  image: 'https://placehold.co/600x400/png'
+                },
               ]
             }
           },
