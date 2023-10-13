@@ -1,5 +1,5 @@
-import { Price } from "@/components/price";
-import { prisma } from "../../../lib/db";
+import { Price } from "components/price/price";
+import { prisma } from "lib/db";
 
 type CategoryPageProps = {
   params: {
@@ -20,7 +20,7 @@ export default async function CategoryPage(props: CategoryPageProps) {
     },
   });
   return (
-    <main className="flex min-h-screen flex-col items-center px-4 py-2">
+    <div>
       <h2 className="text-sm font-light uppercase mb-2">{props.params.category}</h2>
       <section>
         <ul className="grid grid-flow-row gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
@@ -36,6 +36,6 @@ export default async function CategoryPage(props: CategoryPageProps) {
           })}
         </ul>
       </section>
-    </main>
+    </div>
   );
 }

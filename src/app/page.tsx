@@ -1,10 +1,11 @@
 import Link from 'next/link';
-import { prisma } from '../../lib/db';
+
+import { prisma } from 'lib/db';
 
 export default async function Home() {
   const categories = await prisma.category.findMany();
   return (
-    <main className="flex min-h-screen flex-col items-center px-4 py-2">
+    <div className="flex min-h-screen flex-col items-center px-4 py-2">
       <div className='flex gap-x-4'>
         {categories.map((category) => {
           return (
@@ -16,6 +17,6 @@ export default async function Home() {
           );
         })}
       </div>
-    </main>
+    </div>
   );
 }

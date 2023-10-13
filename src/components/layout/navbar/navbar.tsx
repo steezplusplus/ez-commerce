@@ -1,5 +1,5 @@
+import { prisma } from 'lib/db';
 import Link from 'next/link';
-import { prisma } from '../../../../lib/db';
 
 export async function Navbar() {
   const store = await prisma.store.findFirstOrThrow({});
