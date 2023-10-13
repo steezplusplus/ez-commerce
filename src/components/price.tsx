@@ -1,4 +1,5 @@
 'use client';
+import { useEffect, useState } from 'react';
 
 type PriceProps = {
   amount: string;
@@ -7,6 +8,15 @@ type PriceProps = {
 
 export function Price(props: PriceProps) {
   const { amount, currencyCode = 'USD' } = props;
+  const [isMounted, setMounted] = useState<boolean>(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!isMounted) {
+    return <p>Loading...</p>;
+  }
   
   return (
     <p>
