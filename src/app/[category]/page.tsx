@@ -27,13 +27,10 @@ export default async function CategoryPage(props: CategoryPageProps) {
           {category.products.map((product) => {
             return (
               <li className='border rounded-sm px-2 py-1 text-sm font-extralight' key={product.id}>
-                <div className="flex mb-1">
+                <div className="flex justify-between">
                   <h3 className="mr-4">{product.name}</h3>
-                  <span className='ml-auto'>
-                    <Price amount={product.price.toString()} />
-                  </span>
+                  <Price amount={product.price.toString()} />
                 </div>                
-                <p>{product.description}</p>
               </li>
             );
           })}
