@@ -22,7 +22,7 @@ export default async function CategoryPage(props: CategoryPageProps) {
     }
   });
   return (
-    <div>
+    <div className="min-h-screen">
       <h2 className="text-sm font-light uppercase mb-2">{props.params.category}</h2>
       <section>
         <ul className="grid grid-flow-row gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
