@@ -8,7 +8,11 @@ export default async function Home() {
       <div className='flex gap-x-4'>
         {categories.map((category) => {
           return (
-            <Link href={`/${category.id}`} className='text-sm font-light' key={category.id}>{category.name}</Link>
+            <Link
+              href={`/${category.name.toLocaleLowerCase()}`}
+              className='text-sm font-light'
+              key={category.id}>{category.name}
+            </Link>
           );
         })}
       </div>
