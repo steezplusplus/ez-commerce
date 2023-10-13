@@ -51,7 +51,26 @@ async function main() {
               ]
             }
           },
-         ],
+          { 
+            name: 'Drinkware',
+            products: {
+              create: [
+                { 
+                  name: 'Cup',
+                  description: '12oz double wall ceramic body with a padded bottom.',
+                  price: 15.00,
+                  image: 'https://placehold.co/600x400/png'
+                },
+                { 
+                  name: 'Mug',
+                  description: '12 oz Beck Cork-Bottom Mug.',
+                  price: 15.00,
+                  image: 'https://placehold.co/600x400/png'
+                }
+              ]
+            }
+          },
+        ],
       },
     },
   });
