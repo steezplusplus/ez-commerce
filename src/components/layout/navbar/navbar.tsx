@@ -1,7 +1,8 @@
+import { ShoppingCart } from 'lucide-react';
 import Link from 'next/link';
 
 import { prisma } from 'lib/db';
-import { Search, ShoppingCart } from 'lucide-react';
+import { Search } from './search';
 
 export async function Navbar() {
   const store = await prisma.store.findFirstOrThrow({});
@@ -14,7 +15,7 @@ export async function Navbar() {
 
   return (
     <nav className="flex w-full items-center justify-between p-4 lg:p-6">
-      <div className="flex w-full md:w-1/3">
+      <div className="flex items-center w-full md:w-1/3">
         <Link href="/" className='hover:underline mr-6'>
           <h1 className="text-md font-medium md:hidden lg:block">
             Jb.
@@ -44,10 +45,8 @@ export async function Navbar() {
         </div>
       </div>
 
-
       <div className="hidden justify-center items-center md:flex md:w-1/3">
-        <input type="search" />
-        <Search size="16" />
+        <Search />
       </div>
 
       <div className="flex justify-end md:w-1/3">
