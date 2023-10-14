@@ -29,7 +29,7 @@ export default async function SearchPage({ searchParams }: {
   if (products.length === 0) {
     return (
       <div className="mx-auto min-h-screen max-w-screen-2xl px-4">
-        <NoData />
+        <NoData searchValue={searchValue}/>
       </div>
     );
   }
@@ -52,9 +52,24 @@ export default async function SearchPage({ searchParams }: {
   );
 }
 
-function NoData() {
+function NoData(props: { searchValue?: string}) {
   return (
-    <h3>There are no listings for your search.</h3>
+    <h3>
+      There are no listings for your search 
+      {props.searchValue && <b>&quot;{props.searchValue}&quot;</b>}
+      .
+    </h3>
+  );
+}
+
+function ResultsText(props: { searchValue: string; numProducts: number; }) {
+  const resultsText = props.numProducts > 1 ? 'results' : 'result';
+  return (
+    <p className="mb-3">
+      Showing {props.numProducts} {resultsText} for 
+      <b>&quot;{props.searchValue}&quot;</b>
+      .
+    </p>
   );
 }
 
@@ -66,20 +81,5 @@ function ProductLink(props: Product) {
         <Price amount={props.price.toString()} />
       </div>                
     </Link>
-  );
-}
-
-function ResultsText(props: { 
-  searchValue: string;
-  numProducts: number;
-}) {
-  const { searchValue, numProducts } = props;
-  const resultsText = numProducts > 1 ? 'results' : 'result';
-
-  return (
-    <p className="mb-3">
-      Showing {numProducts} {resultsText} for 
-      <b>&quot;{searchValue}&quot;</b>
-    </p>
   );
 }
