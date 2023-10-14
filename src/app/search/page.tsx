@@ -1,29 +1,85 @@
+import { Product } from "@prisma/client";
 import Link from "next/link";
 
 import { Price } from "components/price/price";
 import { prisma } from "lib/db";
 
+export const metadata = {
+  title: 'Search',
+  description: 'Search for products in the store.'
+};
 
-export default async function SearchPage() {
-  const allProducts = await prisma.product.findMany();
+export default async function SearchPage({ searchParams }: {
+  searchParams?: { 
+    [key: string]: string | string[] | undefined 
+  };
+}) {
+  const { q: searchValue } = searchParams as { [key: string]: string };
+
+  const products = await prisma.product.findMany({
+    where: {
+      name: {
+        contains: searchValue || '',
+        mode: 'insensitive',
+      },
+    },
+    take: 9,
+  });
+
+  if (products.length === 0) {
+    return (
+      <div className="mx-auto min-h-screen max-w-screen-2xl px-4">
+        <NoData />
+      </div>
+    );
+  }
+
   return (
     <div className="mx-auto min-h-screen max-w-screen-2xl px-4">
       <section>
+        {searchValue && <ResultsText numProducts={products.length} searchValue={searchValue} /> }
         <ul className="grid grid-flow-row gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-          {allProducts.map((product) => {
+          {products.map((product) => {
             return (
               <li className='border rounded-sm px-2 py-1 text-sm font-extralight' key={product.id}>
-                <Link href={`/product/${product.slug}`} className="hover:underline">
-                  <div className="flex justify-between">
-                    <h3 className="mr-4">{product.name}</h3>
-                    <Price amount={product.price.toString()} />
-                  </div>                
-                </Link>
+                <ProductLink {...product} />
               </li>
             );
           })}
         </ul>
       </section>
     </div>
+  );
+}
+
+function NoData() {
+  return (
+    <h3>There are no listings for your search.</h3>
+  );
+}
+
+function ProductLink(props: Product) {
+  return (
+    <Link href={`/product/${props.slug}`} className="hover:underline">
+      <div className="flex justify-between">
+        <h3 className="mr-4">{props.name}</h3>
+        <Price amount={props.price.toString()} />
+      </div>                
+    </Link>
+  );
+}
+
+function ResultsText(props: { 
+  searchValue: string;
+  numProducts: number;
+}) {
+  const { searchValue, numProducts } = props;
+  const resultsText = numProducts > 1 ? 'results' : 'result';
+
+  return (
+    <p className="mb-3">
+      Showing {numProducts} {resultsText} for 
+      <b>&quot;{searchValue}&quot;</b>
+    </p>
   );
 }
