@@ -1,6 +1,8 @@
 // This is your Prisma schema file,
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
+// TODO unique slug, add alt text
+
 generator client {
   provider = "prisma-client-js"
 }
@@ -21,8 +23,8 @@ model Store {
 
 model Category {
   id        String    @id @default(uuid())
-  name      String
-  slug      String
+  name      String    @unique
+  slug      String    @unique
   storeId   String
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
@@ -32,8 +34,8 @@ model Category {
 
 model Product {
   id          String      @id @default(uuid())
-  name        String
-  slug        String
+  name        String      @unique
+  slug        String      @unique
   price       Float
   description String
   image       String
@@ -45,20 +47,19 @@ model Product {
 }
 
 model Variation {
-  id               String             @id @default(uuid())
-  name             String
-  productId        String
-  createdAt        DateTime           @default(now())
-  updatedAt        DateTime           @updatedAt
-  product          Product            @relation(fields: [productId], references: [id])
-  VariationOptions VariationOptions[]
+  id        String    @id @default(uuid())
+  name      String    @unique
+  productId String
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  product   Product   @relation(fields: [productId], references: [id])
+  options   Options[]
 }
 
-model VariationOptions {
+model Options {
   id          String    @id @default(uuid())
-  name        String
+  name        String    @unique
   inventory   Decimal
-  image       String
   variationId String
   variation   Variation @relation(fields: [variationId], references: [id])
 }

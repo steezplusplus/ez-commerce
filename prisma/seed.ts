@@ -1,10 +1,12 @@
 import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
+const shirtSizes = []
+
 async function main() {
   console.info('🌱 Starting seed...');
 
-  await prisma.variationOptions.deleteMany();
+  await prisma.options.deleteMany();
   await prisma.variation.deleteMany();
   await prisma.product.deleteMany();
   await prisma.category.deleteMany();
@@ -30,14 +32,14 @@ async function main() {
                   slug: 'cup',
                   description: '12oz double wall ceramic body with a padded bottom.',
                   price: 15.00,
-                  image: 'https://placehold.co/600x400/png'
+                  image: '/cup-black.png'
                 },
                 { 
                   name: 'Mug',
                   slug: 'mug',
                   description: '12 oz Beck Cork-Bottom Mug.',
                   price: 15.00,
-                  image: 'https://placehold.co/600x400/png'
+                  image: '/mug-1.png'
                 }
               ]
             }
@@ -68,7 +70,7 @@ async function main() {
                   slug: 'bomber-jacket',
                   description: 'The multi-season must-have jacket: light and classic for daily wear, with a soft fleece lining for extra warmth.',
                   price: 50.00,
-                  image: 'https://placehold.co/600x400/png'
+                  image: '/bomber-jacket-army.png'
                 }
               ]
             }
@@ -91,11 +93,24 @@ async function main() {
                   slug: 't-shirt',
                   description: '60% combed ringspun cotton/40% polyester jersey tee.',
                   price: 25.00,
-                  image: 'https://placehold.co/600x400/png',
+                  image: '/t-shirt-color-pink.png',
                   variations: {
                     create: [
                       { 
                         name: 'size',
+                        options: {
+                          createMany: {
+                            data: [
+                              { name: 'XS', inventory: 100 },
+                              { name: 'S', inventory: 100 },
+                              { name: 'M', inventory: 100 },
+                              { name: 'L', inventory: 100 },
+                              { name: 'XL', inventory: 100 },
+                              { name: 'XXL', inventory: 100 },
+                              { name: 'XXXL', inventory: 100 },
+                            ]
+                          }
+                        },
                       },
                       {
                         name: 'color',
@@ -108,14 +123,14 @@ async function main() {
                   slug: 'prism-t-shirt',
                   description: '60% combed ringspun cotton/40% polyester jersey tee.',
                   price: 25.00,
-                  image: 'https://placehold.co/600x400/png'
+                  image: '/t-shirt-spiral-1.png'
                 },
                 { 
                   name: 'Circles T-Jacket',
                   slug: 'circles-t-shirt',
                   description: '60% combed ringspun cotton/40% polyester jersey tee.',
                   price: 25.00,
-                  image: 'https://placehold.co/600x400/png'
+                  image: '/t-shirt-circles-white.png'
                 },
               ]
             }
