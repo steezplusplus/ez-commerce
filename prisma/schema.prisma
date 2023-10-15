@@ -31,33 +31,16 @@ model Category {
 }
 
 model Product {
-  id          String      @id @default(uuid())
-  name        String      @unique
-  slug        String      @unique
+  id          String   @id @default(uuid())
+  name        String   @unique
+  slug        String   @unique
   price       Float
   description String
   images      String[]
+  sizes       String[]
+  colors      String[]
   categoryId  String
-  createdAt   DateTime    @default(now())
-  updatedAt   DateTime    @updatedAt
-  variations  Variation[]
-  category    Category    @relation(fields: [categoryId], references: [id])
-}
-
-model Variation {
-  id        String    @id @default(uuid())
-  name      String // TODO Unique per product
-  productId String
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-  product   Product   @relation(fields: [productId], references: [id])
-  options   Options[]
-}
-
-model Options {
-  id          String    @id @default(uuid())
-  name        String // TODO unique per variationId
-  inventory   Decimal
-  variationId String
-  variation   Variation @relation(fields: [variationId], references: [id])
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  category    Category @relation(fields: [categoryId], references: [id])
 }

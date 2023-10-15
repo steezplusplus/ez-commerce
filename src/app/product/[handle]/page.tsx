@@ -8,16 +8,9 @@ export default async function ProductPage({ params }: { params: { handle: string
     where: {
       slug: params.handle,
     },
-    include: {
-      variations: {
-        include: {
-          options: true,
-        },
-      },
-    },
   });
 
-  const { name, price, description, images, variations } = product;
+  const { name, price, description, images, colors, sizes } = product;
 
   return (
     <div className="mx-auto min-h-screen max-w-screen-2xl px-4">
@@ -46,26 +39,28 @@ export default async function ProductPage({ params }: { params: { handle: string
           <h2 className="mb-2 text-5xl font-medium">{name}</h2>
           <p className="font-semibold text-neutral-400">{description}</p>
           <Price amount={price.toString()} />
-          {variations.map((variant) => {
-            return (
-              <div key={variant.id}>
-                <h3 className="text-md">{variant.name}</h3>
-                <form className="flex flex-wrap gap-1">
-                  {variant.options.map((option) => {
-                    return (
-                      <label
-                        key={option.id}
-                        className="mr-1 flex justify-center rounded border px-2 py-1"
-                      >
-                        {option.name}
-                        <input className="ml-1" type="radio" name={variant.name} />
-                      </label>
-                    );
-                  })}
-                </form>
-              </div>
-            );
-          })}
+          <h3 className="text-md">Colors</h3>
+          <form className="flex flex-wrap gap-1">
+            {colors.map((color) => {
+              return (
+                <label key={color} className="mr-1 flex justify-center rounded border px-2 py-1">
+                  {color}
+                  <input className="ml-1" type="radio" name="colors" />
+                </label>
+              );
+            })}
+          </form>
+          <h3 className="text-md">Sizes</h3>
+          <form className="flex flex-wrap gap-1">
+            {sizes.map((sizes) => {
+              return (
+                <label key={sizes} className="mr-1 flex justify-center rounded border px-2 py-1">
+                  {sizes}
+                  <input className="ml-1" type="radio" name="sizes" />
+                </label>
+              );
+            })}
+          </form>
           <button className="rounded border px-2 py-1">Add to cart</button>
         </div>
       </div>
