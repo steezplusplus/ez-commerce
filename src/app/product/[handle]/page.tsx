@@ -47,11 +47,18 @@ export default async function ProductPage({ params }: { params: { handle: string
             return (
               <div key={variant.id}>
                 <h3 className="text-md">{variant.name}</h3>
-                {
-                  variant.options.map((option) => {
-                    return <p key={option.id}>{option.name}</p>
-                  }
-                )}
+                <form className="flex flex-wrap gap-1">
+                  {
+                    variant.options.map((option) => {
+                      return (
+                        <label key={option.id} className="border rounded px-2 py-1 mr-1">
+                          {option.name}
+                          <input type='radio' name={variant.name} />
+                        </label>
+                      );
+                    }
+                  )}
+                </form>
               </div>
             );
           })}
