@@ -144,6 +144,54 @@ async function main() {
       name: 'Headwear',
       slug: 'headwear',
       storeId: store.id,
+      products: {
+        create: [
+          {
+            name: 'Beanie',
+            slug: 'beanie',
+            description: '100% combed ringspun cotton.',
+            price: 10,
+            images: ['/baby-cap-black.png', '/baby-cap-gray.png', '/baby-cap-white.png'],
+            colors: ['Black', 'Gray', 'White'],
+            sizes: [],
+          },
+          {
+            name: 'Cowboy Hat',
+            slug: 'cowboy-hat',
+            description: `
+              Part of our Buffalo collection, this cowboy hat is made in the USA of high-quality, weather-resistant 4X buffalo felt.
+              Its classic Western profile features a classic cattleman crease, a 4" brim and a 4 1/2" regular oval crown.
+              Additional details include a leather sweatband, satin lining, and a self-matching hat band with a three-piece silver-toned buckle set, as well as a hat box.
+            `,
+            price: 1000,
+            images: [
+              '/cowboy-hat-black-1.png',
+              '/cowboy-hat-black-2.png',
+              '/cowboy-hat-black-3.png',
+              '/cowboy-hat-black-4.png',
+              '/cowboy-hat-black-5.png',
+              '/cowboy-hat-black-6.png',
+              '/cowboy-hat-tan-1.png',
+              '/cowboy-hat-tan-2.png',
+              '/cowboy-hat-tan-3.png',
+              '/cowboy-hat-tan-4.png',
+              '/cowboy-hat-tan-5.png',
+              '/cowboy-hat-tan-6.png',
+            ],
+            colors: ['Black', 'Tan'],
+            sizes: ['6 3/4', '6 7/8', '7', '7 1/8', '7 1/4', '7 3/8', '7 1/2', '7 5/8', '7 3/4'],
+          },
+          {
+            name: 'Dad Hat',
+            slug: 'dad-hat',
+            description: '100% peach-washed cotton.',
+            price: 20,
+            images: ['/hat-1.png', '/hat-2.png', '/hat-3.png'],
+            colors: [],
+            sizes: [],
+          },
+        ],
+      },
     },
   });
 
