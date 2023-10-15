@@ -1,7 +1,7 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
-const shirtSizes = []
+const shirtSizes = [];
 
 async function main() {
   console.info('🌱 Starting seed...');
@@ -16,33 +16,33 @@ async function main() {
     data: {
       name: 'My store',
       categories: {
-         create: [
+        create: [
           {
             name: 'Bags',
             slug: 'bags',
           },
 
-          { 
+          {
             name: 'Drinkware',
             slug: 'drinkware',
             products: {
               create: [
-                { 
+                {
                   name: 'Cup',
                   slug: 'cup',
                   description: '12oz double wall ceramic body with a padded bottom.',
-                  price: 15.00,
-                  image: '/cup-black.png'
+                  price: 15.0,
+                  image: '/cup-black.png',
                 },
-                { 
+                {
                   name: 'Mug',
                   slug: 'mug',
                   description: '12 oz Beck Cork-Bottom Mug.',
-                  price: 15.00,
-                  image: '/mug-1.png'
-                }
-              ]
-            }
+                  price: 15.0,
+                  image: '/mug-1.png',
+                },
+              ],
+            },
           },
           {
             name: 'Electronics',
@@ -60,20 +60,21 @@ async function main() {
             name: 'Hoodies',
             slug: 'hoodies',
           },
-          { 
+          {
             name: 'Jackets',
             slug: 'jackets',
             products: {
               create: [
-                { 
-                  name: 'Bomber Jacket' ,
+                {
+                  name: 'Bomber Jacket',
                   slug: 'bomber-jacket',
-                  description: 'The multi-season must-have jacket: light and classic for daily wear, with a soft fleece lining for extra warmth.',
-                  price: 50.00,
-                  image: '/bomber-jacket-army.png'
-                }
-              ]
-            }
+                  description:
+                    'The multi-season must-have jacket: light and classic for daily wear, with a soft fleece lining for extra warmth.',
+                  price: 50.0,
+                  image: '/bomber-jacket-army.png',
+                },
+              ],
+            },
           },
           {
             name: 'Kids',
@@ -83,20 +84,20 @@ async function main() {
             name: 'Pets',
             slug: 'pets',
           },
-          { 
+          {
             name: 'Shirts',
             slug: 'shirts',
             products: {
               create: [
-                { 
+                {
                   name: 'T-Shirt',
                   slug: 't-shirt',
                   description: '60% combed ringspun cotton/40% polyester jersey tee.',
-                  price: 25.00,
+                  price: 25.0,
                   image: '/t-shirt-color-pink.png',
                   variations: {
                     create: [
-                      { 
+                      {
                         name: 'size',
                         options: {
                           createMany: {
@@ -108,8 +109,8 @@ async function main() {
                               { name: 'XL', inventory: 100 },
                               { name: 'XXL', inventory: 100 },
                               { name: 'XXXL', inventory: 100 },
-                            ]
-                          }
+                            ],
+                          },
                         },
                       },
                       {
@@ -118,22 +119,22 @@ async function main() {
                     ],
                   },
                 },
-                { 
+                {
                   name: 'Prism T-Shirt',
                   slug: 'prism-t-shirt',
                   description: '60% combed ringspun cotton/40% polyester jersey tee.',
-                  price: 25.00,
-                  image: '/t-shirt-spiral-1.png'
+                  price: 25.0,
+                  image: '/t-shirt-spiral-1.png',
                 },
-                { 
+                {
                   name: 'Circles T-Jacket',
                   slug: 'circles-t-shirt',
                   description: '60% combed ringspun cotton/40% polyester jersey tee.',
-                  price: 25.00,
-                  image: '/t-shirt-circles-white.png'
+                  price: 25.0,
+                  image: '/t-shirt-circles-white.png',
                 },
-              ]
-            }
+              ],
+            },
           },
           {
             name: 'Stickers',

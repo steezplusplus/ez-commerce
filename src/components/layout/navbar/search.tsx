@@ -1,9 +1,9 @@
 'use client';
 
-import { SearchIcon } from "lucide-react";
+import { SearchIcon } from 'lucide-react';
 import { useRouter, useSearchParams } from 'next/navigation';
 
-import { createUrl } from "lib/utils";
+import { createUrl } from 'lib/utils';
 
 const searchId = 'search-id';
 const pathName = '/search';
@@ -26,11 +26,13 @@ export function Search() {
     }
 
     router.push(createUrl(pathName, newParams));
-  }
+  };
 
   return (
     <form onSubmit={onSubmit} className="relative">
-      <label className="sr-only" htmlFor={searchId}>Search products</label>
+      <label className="sr-only" htmlFor={searchId}>
+        Search products
+      </label>
       <input
         key={readOnlySearchParams?.get('q')}
         type="text"
@@ -38,9 +40,9 @@ export function Search() {
         id={searchId}
         autoComplete="off"
         defaultValue={readOnlySearchParams?.get('q') || ''}
-        className="w-full rounded-lg border bg-white pr-4 pl-8 py-2 text-sm text-black dark:border-neutral-800 dark:bg-transparent dark:text-white"
+        className="w-full rounded-lg border bg-white py-2 pl-8 pr-4 text-sm text-black dark:border-neutral-800 dark:bg-transparent dark:text-white"
       />
-      <SearchIcon size="16" color="gray" className="absolute top-3 left-2"/>
+      <SearchIcon size="16" color="gray" className="absolute left-2 top-3" />
     </form>
   );
 }

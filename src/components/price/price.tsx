@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 type PriceProps = {
   amount: string;
   currencyCode?: string;
-}
+};
 
 export function Price(props: PriceProps) {
   const { amount, currencyCode = 'USD' } = props;
@@ -17,13 +17,13 @@ export function Price(props: PriceProps) {
   if (!isMounted) {
     return <p>Loading...</p>;
   }
-  
+
   return (
     <p>
       {`${new Intl.NumberFormat(undefined, {
         style: 'currency',
         currency: currencyCode,
-        currencyDisplay: 'narrowSymbol'
+        currencyDisplay: 'narrowSymbol',
       }).format(parseFloat(amount))}`}
       <span>{`${currencyCode}`}</span>
     </p>

@@ -1,7 +1,7 @@
-import { Suspense } from "react";
+import { Suspense } from 'react';
 
-import { Categories } from "components/layout/search/categories/categories";
-import { Filter } from "components/layout/search/filter/filter";
+import { Categories } from 'components/layout/search/categories/categories';
+import { Filter } from 'components/layout/search/filter/filter';
 
 type SearchLayoutProps = {
   children: React.ReactNode;
@@ -16,9 +16,7 @@ export default async function SearchLayout(props: SearchLayoutProps) {
         <div className="order-first w-full flex-none md:max-w-[125px]">
           <Categories />
         </div>
-        <div className="order-last min-h-screen w-full md:order-none">
-          {children}
-        </div>
+        <div className="order-last min-h-screen w-full md:order-none">{children}</div>
         <div className="order-none flex-none md:order-last md:w-[125px]">
           <Filter />
         </div>

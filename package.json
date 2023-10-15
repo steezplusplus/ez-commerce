@@ -8,8 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "lint:fix": "next lint --fix",
-    "prettier": "prettier --check --ignore-path .gitignore .",
-    "prettier:fix": "prettier --write --ignore-path .gitignore .",
+    "prettier": "prettier --check --ignore-unknown .gitignore .",
+    "prettier:fix": "prettier --write --ignore-unknown .gitignore .",
     "postinstall": "prisma generate"
   },
   "dependencies": {
