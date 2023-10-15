@@ -17,22 +17,29 @@ export default async function ProductPage({ params }: { params: { handle: string
     },
   });
 
-  const { name, price, description, image, variations } = product;
+  const { name, price, description, images, variations } = product;
 
   return (
     <div className="mx-auto min-h-screen max-w-screen-2xl px-4">
       <div className="flex flex-col rounded-lg border border-neutral-200 bg-white p-8 dark:border-neutral-800 dark:bg-black md:p-12 lg:flex-row lg:gap-8">
         <div className="h-full w-full basis-full lg:basis-4/6">
-          <div className="relative aspect-square h-full max-h-[550px] w-full overflow-hidden rounded border">
-            <Image
-              className="h-full w-full object-contain"
-              fill
-              sizes="(min-width: 1024px) 66vw, 100vw"
-              alt="TODO"
-              src={image}
-              priority={true}
-            />
-          </div>
+          {images.map((image, i) => {
+            return (
+              <div
+                className="relative aspect-square h-full max-h-[550px] w-full overflow-hidden rounded border"
+                key={`${image}-${i}`}
+              >
+                <Image
+                  className="h-full w-full object-contain"
+                  fill
+                  sizes="(min-width: 1024px) 66vw, 100vw"
+                  alt="TODO"
+                  src={image}
+                  priority={true}
+                />
+              </div>
+            );
+          })}
         </div>
 
         <div className="basis-full lg:basis-2/6">
@@ -46,9 +53,12 @@ export default async function ProductPage({ params }: { params: { handle: string
                 <form className="flex flex-wrap gap-1">
                   {variant.options.map((option) => {
                     return (
-                      <label key={option.id} className="mr-1 rounded border px-2 py-1">
+                      <label
+                        key={option.id}
+                        className="mr-1 flex justify-center rounded border px-2 py-1"
+                      >
                         {option.name}
-                        <input type="radio" name={variant.name} />
+                        <input className="ml-1" type="radio" name={variant.name} />
                       </label>
                     );
                   })}
