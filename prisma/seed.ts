@@ -41,15 +41,37 @@ async function main() {
     },
   });
 
-  prisma.category.create({
+  await prisma.category.create({
     data: {
       name: 'Drinkware',
       slug: 'drinkware',
       storeId: store.id,
+      products: {
+        create: [
+          {
+            name: 'Cup',
+            slug: 'cup',
+            description: '12oz double wall ceramic body with a padded bottom.',
+            price: 15,
+            images: ['/cup-black.png', '/cup-white.png'],
+            colors: ['Black', 'White'],
+            sizes: [],
+          },
+          {
+            name: 'Mug',
+            slug: 'mug',
+            description: '',
+            price: 15,
+            images: ['/mug-1.png', '/mug-2.png'],
+            colors: [],
+            sizes: [],
+          },
+        ],
+      },
     },
   });
 
-  prisma.category.create({
+  await prisma.category.create({
     data: {
       name: 'Electronics',
       slug: 'electronics',
