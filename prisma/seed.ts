@@ -151,7 +151,7 @@ async function main() {
             slug: 'beanie',
             description: '100% combed ringspun cotton.',
             price: 10,
-            images: ['/baby-cap-black.png', '/baby-cap-gray.png', '/baby-cap-white.png'],
+            images: ['/beanie-black.png', '/beanie-gray.png', '/beanie-white.png'],
             colors: ['Black', 'Gray', 'White'],
             sizes: [],
           },
@@ -211,46 +211,6 @@ async function main() {
           sizes: [],
         },
       },
-    },
-  });
-
-  await prisma.category.create({
-    data: {
-      name: 'Jackets',
-      slug: 'jackets',
-      storeId: store.id,
-    },
-  });
-
-  await prisma.category.create({
-    data: {
-      name: 'Kids',
-      slug: 'kids',
-      storeId: store.id,
-    },
-  });
-
-  await prisma.category.create({
-    data: {
-      name: 'Pets',
-      slug: 'pets',
-      storeId: store.id,
-    },
-  });
-
-  await prisma.category.create({
-    data: {
-      name: 'Shirts',
-      slug: 'shirts',
-      storeId: store.id,
-    },
-  });
-
-  await prisma.category.create({
-    data: {
-      name: 'Stickers',
-      slug: 'stickers',
-      storeId: store.id,
     },
   });
 }
