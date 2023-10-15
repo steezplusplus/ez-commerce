@@ -76,6 +76,17 @@ async function main() {
       name: 'Electronics',
       slug: 'electronics',
       storeId: store.id,
+      products: {
+        create: {
+          name: 'Keyboard',
+          slug: 'keyboard',
+          description: '',
+          price: 150,
+          images: ['/keyboard.png'],
+          colors: ['Black', 'White'],
+          sizes: [],
+        },
+      },
     },
   });
 
