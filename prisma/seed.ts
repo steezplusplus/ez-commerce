@@ -200,6 +200,17 @@ async function main() {
       name: 'Hoodies',
       slug: 'hoodies',
       storeId: store.id,
+      products: {
+        create: {
+          name: 'Hoodie',
+          slug: 'hoodie',
+          description: 'Fabric blend of Supima Cotton and Micromodal.',
+          price: 50,
+          images: ['/hoodie-1.png', '/hoodie-2.png'],
+          colors: [],
+          sizes: [],
+        },
+      },
     },
   });
 
