@@ -95,6 +95,47 @@ async function main() {
       name: 'Footware',
       slug: 'footware',
       storeId: store.id,
+      products: {
+        create: {
+          name: 'Shoes',
+          slug: 'shoes',
+          description: `
+            Sleek, easy, and effortlessly stylish. Acme Slip-On Shoes are the ultimate get-up-and-go footwear. 
+            The low-profile slip-on canvas upper offers unbeatable convenience, while the clean design makes this all-white slip-on the perfect choice for anyone with places to go and things to do.
+            One of the most popular designs, these shoes are the perfect middle ground between style and convenience.
+          `,
+          price: 45,
+          images: ['/shoes-1.png', '/shoes-2.png', '/shoes-3.png', '/shoes-4.png'],
+          colors: ['Black', 'White'],
+          sizes: [
+            '1',
+            '1.5',
+            '2',
+            '2.5',
+            '3',
+            '3.5',
+            '4',
+            '4.5',
+            '5',
+            '5.5',
+            '6',
+            '6.5',
+            '7',
+            '7.5',
+            '8',
+            '8.5',
+            '9',
+            '9.5',
+            '10',
+            '10.5',
+            '11',
+            '11.5',
+            '12',
+            '12.5',
+            '13',
+          ],
+        },
+      },
     },
   });
 
