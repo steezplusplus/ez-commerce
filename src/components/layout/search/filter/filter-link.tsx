@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useSearchParams } from 'next/navigation';
 
 export type FilterLinkProps = {
   name: string;
@@ -11,13 +11,23 @@ export type FilterLinkProps = {
 export function FilterLink(props: FilterLinkProps) {
   const { name, handle } = props;
   const path = usePathname();
-  const href = `${path}${handle}`;
+  const params = useSearchParams();
+  const active = params.get('sort') === handle ? 'underline' : '';
 
   return (
-    <li className="mt-2 flex text-black hover:underline dark:text-white">
-      <Link href={href} className={`text-sm font-light`}>
-        {name}
-      </Link>
-    </li>
+    <Link href={`${path}?sort=${handle}`} className={active}>
+      {name}
+    </Link>
+  );
+}
+
+export function DefaultFilterLink() {
+  const path = usePathname();
+  const params = useSearchParams();
+  const active = params.size === 0 ? 'underline' : '';
+  return (
+    <Link href={path} className={active}>
+      Relevance
+    </Link>
   );
 }

@@ -8,12 +8,15 @@ export async function Categories() {
     <nav>
       <h3 className="mb-1 text-sm text-neutral-500 dark:text-neutral-400">Categories</h3>
       <ul className="space-y-2">
-        <li className="text-xs font-light text-black dark:text-white">
+        <li className="text-xs font-light text-black hover:underline dark:text-white">
           <DefaultCategoryLink />
         </li>
         {categories.map((category) => {
           return (
-            <li className="text-xs font-light text-black dark:text-white" key={category.id}>
+            <li
+              className="text-xs font-light text-black hover:underline dark:text-white"
+              key={category.id}
+            >
               <CategoryLink key={category.id} {...category} />
             </li>
           );
