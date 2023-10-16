@@ -58,7 +58,7 @@ export default async function SearchPage({
 function NoData(props: { searchValue?: string }) {
   return (
     <h3>
-      There are no listings for your search
+      There are no listings for your search{' '}
       {props.searchValue && <b>&quot;{props.searchValue}&quot;</b>}.
     </h3>
   );
@@ -68,8 +68,7 @@ function ResultsText(props: { searchValue: string; numProducts: number }) {
   const resultsText = props.numProducts > 1 ? 'results' : 'result';
   return (
     <p className="mb-3">
-      Showing {props.numProducts} {resultsText} for
-      <b>&quot;{props.searchValue}&quot;</b>.
+      Showing {props.numProducts} {resultsText} for <b>&quot;{props.searchValue}&quot;</b>.
     </p>
   );
 }
