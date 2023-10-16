@@ -1,20 +1,22 @@
 import { prisma } from 'lib/db';
-import Link from 'next/link';
-import { CategoryLink } from './category-link';
+import { CategoryLink, DefaultCategoryLink } from './category-links';
 
 export async function Categories() {
   const categories = await prisma.category.findMany();
+
   return (
     <nav>
-      <h3 className="text-xs text-neutral-500 dark:text-neutral-400">Categories</h3>
-      <ul>
-        <li className="flex text-black hover:underline dark:text-white">
-          <Link href="/search" className="text-sm font-light">
-            All
-          </Link>
+      <h3 className="mb-1 text-sm text-neutral-500 dark:text-neutral-400">Categories</h3>
+      <ul className="space-y-2">
+        <li className="text-xs font-light text-black dark:text-white">
+          <DefaultCategoryLink />
         </li>
         {categories.map((category) => {
-          return <CategoryLink key={category.id} {...category} />;
+          return (
+            <li className="text-xs font-light text-black dark:text-white" key={category.id}>
+              <CategoryLink key={category.id} {...category} />
+            </li>
+          );
         })}
       </ul>
     </nav>
