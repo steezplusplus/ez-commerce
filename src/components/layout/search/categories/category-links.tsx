@@ -26,7 +26,7 @@ export function DefaultCategoryLink() {
   newParams.delete('q');
 
   const href = `/search${newParams.size ? `?${newParams.toString()}` : ''}`;
-  const displayName = path === href ? '> All' : 'All';
+  const displayName = path === '/search' ? '> All' : 'All';
 
   return <Link href={href}>{displayName}</Link>;
 }
