@@ -3,7 +3,6 @@ import Link from 'next/link';
 
 import { Price } from 'components/price/price';
 import { prisma } from 'lib/db';
-import Image from 'next/image';
 
 export const metadata = {
   title: 'Search',
@@ -44,7 +43,10 @@ export default async function SearchPage({
         <ul className="grid grid-flow-row grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {products.map((product) => {
             return (
-              <li className="animate-fadeIn aspect-square transition-opacity" key={product.id}>
+              <li
+                className="rounded-sm border px-2 py-1 text-sm font-extralight hover:border-blue-500"
+                key={product.id}
+              >
                 <ProductLink {...product} />
               </li>
             );
@@ -75,25 +77,9 @@ function ResultsText(props: { searchValue: string; numProducts: number }) {
 
 function ProductLink(props: Product) {
   return (
-    <Link href={`/product/${props.slug}`} className="relative inline-block h-full w-full">
-      <div className="group relative flex h-full w-full items-center justify-center overflow-hidden rounded-lg border border-neutral-200 bg-white hover:border-blue-600 dark:border-neutral-800 dark:bg-black">
-        <Image
-          className="relative h-full w-full object-contain transition duration-300 ease-in-out group-hover:scale-105"
-          alt="TODO"
-          fill
-          sizes="(min-width: 768px) 33vw, (min-width: 640px) 50vw, 100vw"
-          src={props.images[0] || ''}
-          priority={true}
-        />
-        <div className="absolute bottom-0 left-0 flex w-full px-4 pb-4">
-          <div className="flex items-center rounded-full border bg-white/70 p-1 text-xs font-semibold text-black backdrop-blur-md dark:border-neutral-800 dark:bg-black/70 dark:text-white">
-            <h3 className="mr-4 line-clamp-2 flex-grow pl-2 leading-none tracking-tight">
-              {props.name}
-            </h3>
-            <Price amount={props.price.toString()} />
-          </div>
-        </div>
-      </div>
+    <Link href={`/product/${props.slug}`}>
+      <h3>{props.name}</h3>
+      <Price amount={props.price.toString()} />
     </Link>
   );
 }
