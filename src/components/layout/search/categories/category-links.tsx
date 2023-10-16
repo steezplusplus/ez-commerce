@@ -4,28 +4,29 @@ import { Category } from '@prisma/client';
 import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
 
+// TODO remove q from
 export function CategoryLink(category: Category) {
+  const { name, slug } = category;
   const path = usePathname();
   const params = useSearchParams();
-  const href = `/search/${category.slug}`;
-  const active = path.endsWith(category.slug);
 
-  return (
-    <Link className={active ? 'underline' : ''} href={`${href}?${params.toString()}`}>
-      {category.name}
-    </Link>
-  );
+  const newParams = new URLSearchParams(params.toString());
+  newParams.delete('q');
+
+  const href = `/search/${slug}${newParams.size ? `?${newParams.toString()}` : ''}`;
+  const displayName = path.endsWith(slug) ? `> ${name}` : name;
+
+  return <Link href={href}>{displayName}</Link>;
 }
 
 export function DefaultCategoryLink() {
   const path = usePathname();
   const params = useSearchParams();
-  const href = `/search`;
-  const active = path === href;
+  const newParams = new URLSearchParams(params.toString());
+  newParams.delete('q');
 
-  return (
-    <Link href={`${href}?${params.toString()}`} className={active ? 'underline' : ''}>
-      All
-    </Link>
-  );
+  const href = `/search${newParams.size ? `?${newParams.toString()}` : ''}`;
+  const displayName = path === href ? '> All' : 'All';
+
+  return <Link href={href}>{displayName}</Link>;
 }

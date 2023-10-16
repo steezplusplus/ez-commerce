@@ -12,22 +12,24 @@ export function FilterLink(props: FilterLinkProps) {
   const { name, handle } = props;
   const path = usePathname();
   const params = useSearchParams();
-  const active = params.get('sort') === handle ? 'underline' : '';
 
-  return (
-    <Link href={`${path}?sort=${handle}`} className={active}>
-      {name}
-    </Link>
-  );
+  const newParams = new URLSearchParams(params.toString());
+  newParams.set('sort', handle);
+
+  const displayName = params.get('sort') === handle ? `${name} <` : name;
+  const href = `${path}?${newParams.toString()}`;
+
+  return <Link href={href}>{displayName}</Link>;
 }
 
 export function DefaultFilterLink() {
   const path = usePathname();
   const params = useSearchParams();
-  const active = params.size === 0 ? 'underline' : '';
-  return (
-    <Link href={path} className={active}>
-      Relevance
-    </Link>
-  );
+  const newParams = new URLSearchParams(params.toString());
+  newParams.delete('sort');
+
+  const href = `${path}?${newParams.toString()}`;
+  const displayName = params.size === 0 ? 'Relevance <' : 'Relevance';
+
+  return <Link href={href}>{displayName}</Link>;
 }

@@ -1,23 +1,25 @@
 'use client';
 
 import { SearchIcon } from 'lucide-react';
-import { useRouter, useSearchParams } from 'next/navigation';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 import { createUrl } from 'lib/utils';
 
 const searchId = 'search-id';
-const pathName = '/search';
 
 export function Search() {
   const router = useRouter();
-  const readOnlySearchParams = useSearchParams();
+  const path = usePathname();
+  const params = useSearchParams();
+
+  const newPath = path === '/' ? '/search' : path;
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const formElement = e.target as HTMLFormElement;
     const inputElement = formElement.search as HTMLInputElement;
-    const newParams = new URLSearchParams(readOnlySearchParams.toString());
+    const newParams = new URLSearchParams(params.toString());
 
     if (inputElement.value) {
       newParams.set('q', inputElement.value);
@@ -25,7 +27,7 @@ export function Search() {
       newParams.delete('q');
     }
 
-    router.push(createUrl(pathName, newParams));
+    router.push(createUrl(newPath, newParams));
   };
 
   return (
@@ -35,12 +37,12 @@ export function Search() {
       </label>
       <input
         placeholder="Search products..."
-        key={readOnlySearchParams?.get('q')}
+        key={params?.get('q')}
         type="text"
         name="search"
         id={searchId}
         autoComplete="off"
-        defaultValue={readOnlySearchParams?.get('q') || ''}
+        defaultValue={params?.get('q') || ''}
         className="w-full rounded-lg border bg-white py-2 pl-8 pr-4 text-sm text-black dark:border-neutral-800 dark:bg-transparent dark:text-white"
       />
       <SearchIcon size="16" color="gray" className="absolute left-2 top-3" />
