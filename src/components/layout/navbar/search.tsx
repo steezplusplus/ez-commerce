@@ -34,6 +34,7 @@ export function Search() {
         Search products
       </label>
       <input
+        placeholder="Search products..."
         key={readOnlySearchParams?.get('q')}
         type="text"
         name="search"
