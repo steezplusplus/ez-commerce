@@ -1,8 +1,6 @@
 import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
-// TODO REMEMBER IMAGES AND SIZES AND COLORS HAVE NO CORRELATION!!!
-
 async function main() {
   await prisma.product.deleteMany();
   await prisma.category.deleteMany();
@@ -14,7 +12,6 @@ async function main() {
     },
   });
 
-  // bags
   await prisma.category.create({
     data: {
       name: 'Bags',
@@ -26,7 +23,7 @@ async function main() {
           slug: 'drawstring-bag',
           description: 'Strong nylon drawstring bag. Sturdy, reusable, and resilient',
           price: 12,
-          images: ['/bag-black.png', '/bag-white.png'],
+          images: [],
           colors: ['Black', 'White'],
           sizes: [
             '6 x 8 inch',
@@ -53,7 +50,7 @@ async function main() {
             slug: 'cup',
             description: '12oz double wall ceramic body with a padded bottom.',
             price: 15,
-            images: ['/cup-black.png', '/cup-white.png'],
+            images: [],
             colors: ['Black', 'White'],
             sizes: [],
           },
@@ -62,7 +59,7 @@ async function main() {
             slug: 'mug',
             description: '',
             price: 15,
-            images: ['/mug-1.png', '/mug-2.png'],
+            images: [],
             colors: [],
             sizes: [],
           },
@@ -82,7 +79,7 @@ async function main() {
           slug: 'keyboard',
           description: '',
           price: 150,
-          images: ['/keyboard.png'],
+          images: [],
           colors: ['Black', 'White'],
           sizes: [],
         },
@@ -105,7 +102,7 @@ async function main() {
             One of the most popular designs, these shoes are the perfect middle ground between style and convenience.
           `,
           price: 45,
-          images: ['/shoes-1.png', '/shoes-2.png', '/shoes-3.png', '/shoes-4.png'],
+          images: [],
           colors: ['Black', 'White'],
           sizes: [
             '1',
@@ -151,7 +148,7 @@ async function main() {
             slug: 'beanie',
             description: '100% combed ringspun cotton.',
             price: 10,
-            images: ['/beanie-black.png', '/beanie-gray.png', '/beanie-white.png'],
+            images: [],
             colors: ['Black', 'Gray', 'White'],
             sizes: [],
           },
@@ -164,20 +161,7 @@ async function main() {
               Additional details include a leather sweatband, satin lining, and a self-matching hat band with a three-piece silver-toned buckle set, as well as a hat box.
             `,
             price: 1000,
-            images: [
-              '/cowboy-hat-black-1.png',
-              '/cowboy-hat-black-2.png',
-              '/cowboy-hat-black-3.png',
-              '/cowboy-hat-black-4.png',
-              '/cowboy-hat-black-5.png',
-              '/cowboy-hat-black-6.png',
-              '/cowboy-hat-tan-1.png',
-              '/cowboy-hat-tan-2.png',
-              '/cowboy-hat-tan-3.png',
-              '/cowboy-hat-tan-4.png',
-              '/cowboy-hat-tan-5.png',
-              '/cowboy-hat-tan-6.png',
-            ],
+            images: [],
             colors: ['Black', 'Tan'],
             sizes: ['6 3/4', '6 7/8', '7', '7 1/8', '7 1/4', '7 3/8', '7 1/2', '7 5/8', '7 3/4'],
           },
@@ -186,7 +170,7 @@ async function main() {
             slug: 'dad-hat',
             description: '100% peach-washed cotton.',
             price: 20,
-            images: ['/hat-1.png', '/hat-2.png', '/hat-3.png'],
+            images: [],
             colors: [],
             sizes: [],
           },
@@ -206,7 +190,7 @@ async function main() {
           slug: 'hoodie',
           description: 'Fabric blend of Supima Cotton and Micromodal.',
           price: 50,
-          images: ['/hoodie-1.png', '/hoodie-2.png'],
+          images: [],
           colors: [],
           sizes: [],
         },
