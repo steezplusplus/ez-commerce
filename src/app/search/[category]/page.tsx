@@ -1,5 +1,6 @@
 import Link from 'next/link';
 
+import { Grid, GridItem } from 'components/grid/grid';
 import { Price } from 'components/price/price';
 import { prisma } from 'lib/db';
 
@@ -21,26 +22,22 @@ export default async function CategoryPage(props: CategoryPageProps) {
       products: true,
     },
   });
+
   return (
-    <div className="min-h-screen">
+    <>
       <h2 className="mb-2 text-sm font-light uppercase">{props.params.category}</h2>
-      <section>
-        <ul className="grid grid-flow-row grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {category.products.map((product) => {
-            return (
-              <li
-                className="rounded-sm border px-2 py-1 text-sm font-extralight hover:border-blue-500"
-                key={product.id}
-              >
-                <Link href={`/product/${product.slug}`}>
-                  <h3>{product.name}</h3>
-                  <Price amount={product.price.toString()} />
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
-      </section>
-    </div>
+      <Grid>
+        {category.products.map((product) => {
+          return (
+            <GridItem key={product.id}>
+              <Link href={`/product/${product.slug}`}>
+                <h3>{product.name}</h3>
+                <Price amount={product.price.toString()} />
+              </Link>
+            </GridItem>
+          );
+        })}
+      </Grid>
+    </>
   );
 }
