@@ -25,7 +25,7 @@ export function Price(props: PriceProps) {
         currency: currencyCode,
         currencyDisplay: 'narrowSymbol',
       }).format(parseFloat(amount))}`}
-      <span>{`${currencyCode}`}</span>
+      <span>{` ${currencyCode}`}</span>
     </p>
   );
 }
