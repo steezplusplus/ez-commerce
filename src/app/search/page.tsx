@@ -1,6 +1,7 @@
 import { Product } from '@prisma/client';
 import Link from 'next/link';
 
+import { Grid, GridItem } from 'components/grid/grid';
 import { Price } from 'components/price/price';
 import { prisma } from 'lib/db';
 
@@ -36,11 +37,15 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
   return (
     <>
       <ResultsText numProducts={products.length} searchValue={searchValue} />
-      <ul className="grid grid-flow-row grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <Grid>
         {products.map((product) => {
-          return <ProductLink {...product} key={product.id} />;
+          return (
+            <GridItem key={product.id}>
+              <ProductLink {...product} />
+            </GridItem>
+          );
         })}
-      </ul>
+      </Grid>
     </>
   );
 }
@@ -69,11 +74,9 @@ function ResultsText(props: { searchValue?: string; numProducts: number }) {
 
 function ProductLink(props: Product) {
   return (
-    <li className="rounded-sm border px-2 py-1 text-sm font-extralight hover:border-blue-500">
-      <Link href={`/product/${props.slug}`}>
-        <h3>{props.name}</h3>
-        <Price amount={props.price.toString()} />
-      </Link>
-    </li>
+    <Link href={`/product/${props.slug}`}>
+      <h3>{props.name}</h3>
+      <Price amount={props.price.toString()} />
+    </Link>
   );
 }
