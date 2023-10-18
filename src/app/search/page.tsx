@@ -9,15 +9,16 @@ export const metadata = {
   description: 'Search for products in the store.',
 };
 
-export default async function SearchPage({
-  searchParams,
-}: {
+type SearchPageProps = {
   searchParams?: {
     [key: string]: string | string[] | undefined;
   };
-}) {
+};
+
+export default async function SearchPage({ searchParams }: SearchPageProps) {
   const { q: searchValue } = searchParams as { [key: string]: string };
 
+  // TODO Doesnt belong here
   const products = await prisma.product.findMany({
     where: {
       name: {
@@ -29,45 +30,36 @@ export default async function SearchPage({
   });
 
   if (products.length === 0) {
-    return (
-      <div className="mx-auto min-h-screen max-w-screen-2xl px-4">
-        <NoData searchValue={searchValue} />
-      </div>
-    );
+    return <NoData searchValue={searchValue} />;
   }
 
   return (
-    <div className="mx-auto min-h-screen max-w-screen-2xl px-4">
-      <section>
-        {searchValue && <ResultsText numProducts={products.length} searchValue={searchValue} />}
-        <ul className="grid grid-flow-row grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {products.map((product) => {
-            return (
-              <li
-                className="rounded-sm border px-2 py-1 text-sm font-extralight hover:border-blue-500"
-                key={product.id}
-              >
-                <ProductLink {...product} />
-              </li>
-            );
-          })}
-        </ul>
-      </section>
-    </div>
+    <>
+      <ResultsText numProducts={products.length} searchValue={searchValue} />
+      <ul className="grid grid-flow-row grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {products.map((product) => {
+          return <ProductLink {...product} key={product.id} />;
+        })}
+      </ul>
+    </>
   );
 }
 
 function NoData(props: { searchValue?: string }) {
   return (
-    <h3>
+    <p>
       There are no listings for your search{' '}
       {props.searchValue && <b>&quot;{props.searchValue}&quot;</b>}.
-    </h3>
+    </p>
   );
 }
 
-function ResultsText(props: { searchValue: string; numProducts: number }) {
+function ResultsText(props: { searchValue?: string; numProducts: number }) {
   const resultsText = props.numProducts > 1 ? 'results' : 'result';
+  if (!props.searchValue) {
+    return <></>;
+  }
+
   return (
     <p className="mb-3">
       Showing {props.numProducts} {resultsText} for <b>&quot;{props.searchValue}&quot;</b>.
@@ -77,9 +69,11 @@ function ResultsText(props: { searchValue: string; numProducts: number }) {
 
 function ProductLink(props: Product) {
   return (
-    <Link href={`/product/${props.slug}`}>
-      <h3>{props.name}</h3>
-      <Price amount={props.price.toString()} />
-    </Link>
+    <li className="rounded-sm border px-2 py-1 text-sm font-extralight hover:border-blue-500">
+      <Link href={`/product/${props.slug}`}>
+        <h3>{props.name}</h3>
+        <Price amount={props.price.toString()} />
+      </Link>
+    </li>
   );
 }
