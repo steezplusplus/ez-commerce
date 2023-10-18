@@ -12,7 +12,7 @@ export function Search() {
   const path = usePathname();
   const params = useSearchParams();
 
-  const newPath = path === '/' ? '/search' : path;
+  const newPath = path === '/' || path.startsWith('/product') ? '/search' : path;
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
