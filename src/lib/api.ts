@@ -52,3 +52,7 @@ export async function getProduct() {
 export async function getCategory() {
   return await prisma.category.findFirst();
 }
+
+export async function getStore() {
+  return await prisma.store.findFirstOrThrow();
+}

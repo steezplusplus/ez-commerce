@@ -1,11 +1,11 @@
 import { AlignJustify, ShoppingCart } from 'lucide-react';
 import Link from 'next/link';
 
-import { prisma } from 'lib/db';
+import { getStore } from 'lib/api';
 import { Search } from './search';
 
 export async function Navbar() {
-  const store = await prisma.store.findFirstOrThrow({});
+  const store = await getStore();
 
   return (
     <nav className="flex w-full items-center justify-between p-4 lg:p-6">
