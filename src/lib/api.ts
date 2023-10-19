@@ -50,7 +50,11 @@ export async function getProduct() {
 }
 
 export async function getCategory() {
-  return await prisma.category.findFirst();
+  return await prisma.category.findFirst({
+    include: {
+      products: true,
+    },
+  });
 }
 
 export async function getStore() {
