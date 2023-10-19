@@ -1,8 +1,8 @@
-import { prisma } from 'lib/db';
+import { getCategories } from 'lib/api';
 import { CategoryLink, DefaultCategoryLink } from './category-links';
 
 export async function Categories() {
-  const categories = await prisma.category.findMany();
+  const categories = await getCategories({});
 
   return (
     <nav>
