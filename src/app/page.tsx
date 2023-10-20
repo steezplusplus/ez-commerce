@@ -1,7 +1,15 @@
+import { Footer } from 'components/layout/footer/footer';
+import { Suspense } from 'react';
+
 export default async function Home() {
   return (
-    <div className="flex min-h-screen flex-col items-center px-4 py-2">
-      <p>Homepage</p>
-    </div>
+    <>
+      <div className="flex min-h-screen w-full items-center justify-center">
+        <p>Homepage</p>
+      </div>
+      <Suspense>
+        <Footer />
+      </Suspense>
+    </>
   );
 }
