@@ -1,5 +1,6 @@
 import { Suspense } from 'react';
 
+import { Footer } from 'components/layout/footer/footer';
 import { Categories } from 'components/layout/search/categories/categories';
 import { Filter } from 'components/layout/search/filter/filter';
 
@@ -21,6 +22,7 @@ export default async function SearchLayout(props: SearchLayoutProps) {
           <Filter />
         </div>
       </div>
+      <Footer />
     </Suspense>
   );
 }
