@@ -1,9 +1,10 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { getCategories } from 'lib/api';
+import { getCategories, getStore } from 'lib/api';
 
 export async function Footer() {
+  const store = await getStore();
   const categories = await getCategories({});
 
   return (
@@ -18,7 +19,7 @@ export async function Footer() {
               width="48"
               height="48"
             />
-            My store
+            {store.name}
           </Link>
           <Link
             className="text-blue-500 hover:text-blue-700 hover:underline"
