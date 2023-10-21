@@ -29,8 +29,11 @@ export async function Footer() {
           <p className="font-semibold">Made by Jesse Breuer-Penello</p>
         </div>
         <nav>
-          <p className="mb-1">Shop</p>
+          <p className="mb-1">Categories</p>
           <ul className="flex flex-col gap-y-2">
+            <li className="font-light text-blue-500 hover:text-blue-700 hover:underline">
+              <Link href={`/search`}>All</Link>
+            </li>
             {categories.map((category) => {
               return (
                 <li
