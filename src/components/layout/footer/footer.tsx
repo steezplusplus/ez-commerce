@@ -13,7 +13,7 @@ export async function Footer() {
           <Link className="flex items-center gap-2 text-black dark:text-white md:pt-1" href="/">
             <Image
               alt="logo image"
-              src="/primary.jpg"
+              src="/logo.jpg"
               className="mb-2 h-12 w-12 rounded-full"
               width="48"
               height="48"
