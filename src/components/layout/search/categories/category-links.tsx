@@ -4,7 +4,6 @@ import { Category } from '@prisma/client';
 import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
 
-// TODO remove q from
 export function CategoryLink(category: Category) {
   const { name, slug } = category;
   const path = usePathname();
