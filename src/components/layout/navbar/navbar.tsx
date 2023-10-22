@@ -2,7 +2,7 @@ import { ShoppingCart } from 'lucide-react';
 import Link from 'next/link';
 
 import { getStore } from 'lib/api';
-import { MobileNavbar } from './mobile-navbar';
+import { MobileSearch } from './mobile-search';
 import { Search } from './search';
 
 export async function Navbar() {
@@ -11,7 +11,7 @@ export async function Navbar() {
   return (
     <nav className="flex w-full items-center justify-between p-4 lg:p-6">
       <div className="flex flex-none md:hidden">
-        <MobileNavbar />
+        <MobileSearch />
       </div>
 
       <div className="flex w-full items-center">

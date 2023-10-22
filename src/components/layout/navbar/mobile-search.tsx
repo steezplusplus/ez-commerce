@@ -6,7 +6,7 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { AlignCenter } from 'lucide-react';
 import { Search } from './search';
 
-export function MobileNavbar() {
+export function MobileSearch() {
   const router = useRouter();
   const path = usePathname();
   const params = useSearchParams();
