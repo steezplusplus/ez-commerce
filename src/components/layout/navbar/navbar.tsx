@@ -10,7 +10,7 @@ export async function Navbar() {
 
   return (
     <nav className="flex w-full items-center justify-between p-4 lg:p-6">
-      <div className="block flex-none md:hidden">
+      <div className="flex flex-none md:hidden">
         <MobileNavbar />
       </div>
 
