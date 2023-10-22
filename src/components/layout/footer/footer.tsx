@@ -15,13 +15,6 @@ export async function Footer() {
             <CircleLogo />
             {store.name}
           </Link>
-          <Link
-            className="text-blue-500 hover:text-blue-700 hover:underline"
-            href="https://github.com/steezplusplus/ez-commerce"
-          >
-            View source code
-          </Link>
-          <p className="mt-1 font-thin">Made by Jesse Breuer-Penello</p>
         </div>
         <nav>
           <p className="mb-1">Categories</p>
@@ -41,6 +34,15 @@ export async function Footer() {
             })}
           </ul>
         </nav>
+        <div>
+          <Link
+            className="text-blue-500 hover:text-blue-700 hover:underline"
+            href="https://github.com/steezplusplus/ez-commerce"
+          >
+            View source code
+          </Link>
+          <p className="mt-1 font-thin">Made by Jesse Breuer-Penello</p>
+        </div>
       </div>
     </footer>
   );
