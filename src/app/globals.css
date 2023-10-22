@@ -6,6 +6,7 @@
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  @apply bg-neutral-50 text-black selection:bg-teal-300;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -13,13 +14,11 @@
     --foreground-rgb: 255, 255, 255;
     --background-start-rgb: 0, 0, 0;
     --background-end-rgb: 0, 0, 0;
+    @apply bg-neutral-900 text-white selection:bg-pink-500 selection:text-white;
   }
 }
 
 body {
-  @apply bg-neutral-50 dark:bg-neutral-900;
-  @apply text-black dark:text-white;
-  @apply selection:bg-teal-300 dark:selection:bg-pink-500  dark:selection:text-white;
   color: rgb(var(--foreground-rgb));
   background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb)))
     rgb(var(--background-start-rgb));
