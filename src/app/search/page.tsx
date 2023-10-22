@@ -19,7 +19,6 @@ type SearchPageProps = {
 export default async function SearchPage({ searchParams }: SearchPageProps) {
   const { q: searchValue } = searchParams as { [key: string]: string };
 
-  // TODO Doesnt belong here
   const products = await prisma.product.findMany({
     where: {
       name: {

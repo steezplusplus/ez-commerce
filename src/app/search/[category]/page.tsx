@@ -11,6 +11,7 @@ type CategoryPageProps = {
 };
 
 export default async function CategoryPage(props: CategoryPageProps) {
+  // Todo check query params for sort and search
   const category = await prisma.category.findFirstOrThrow({
     where: {
       name: {
