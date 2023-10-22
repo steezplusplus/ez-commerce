@@ -8,7 +8,7 @@ export async function Footer() {
   const categories = await getCategories({});
 
   return (
-    <footer className="text-sm text-neutral-500 dark:text-neutral-400">
+    <footer className="text-sm">
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-6 border-t border-neutral-200 p-6 dark:border-neutral-700 md:flex-row md:gap-12 md:px-4 min-[1320px]:px-0">
         <div>
           <Link className="flex items-center gap-2 md:pt-1" href="/">
@@ -21,7 +21,7 @@ export async function Footer() {
           >
             View source code
           </Link>
-          <p className="font-semibold">Made by Jesse Breuer-Penello</p>
+          <p className="mt-1 font-thin">Made by Jesse Breuer-Penello</p>
         </div>
         <nav>
           <p className="mb-1">Categories</p>
