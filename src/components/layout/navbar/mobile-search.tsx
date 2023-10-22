@@ -16,7 +16,6 @@ export function MobileSearch() {
   newParams.append('mobile-navbar', 'true');
 
   const onOpen = `${path}?${newParams.toString()}`;
-  console.log(params.get('mobile-navbar'));
   const isOpen = params.get('mobile-navbar') === 'true';
 
   const onClose = () => {
