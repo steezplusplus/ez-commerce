@@ -6,17 +6,14 @@ export async function Categories() {
 
   return (
     <nav>
-      <h3 className="mb-1 text-sm text-neutral-500 dark:text-neutral-400">Categories</h3>
+      <h3 className="mb-1 text-sm">Categories</h3>
       <ul className="space-y-2">
-        <li className="text-xs font-light text-black hover:underline dark:text-white">
+        <li className="text-xs font-light hover:underline">
           <DefaultCategoryLink />
         </li>
         {categories.map((category) => {
           return (
-            <li
-              className="text-xs font-light text-black hover:underline dark:text-white"
-              key={category.id}
-            >
+            <li className="text-xs font-light hover:underline" key={category.id}>
               <CategoryLink key={category.id} {...category} />
             </li>
           );

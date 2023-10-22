@@ -23,9 +23,12 @@ export default async function CategoryPage(props: CategoryPageProps) {
     },
   });
 
+  if (category.products.length === 0) {
+    return <p className="py-3 text-lg">{`No products found in this collection`}</p>;
+  }
+
   return (
     <>
-      <h2 className="mb-2 text-sm font-light uppercase">{props.params.category}</h2>
       <Grid>
         {category.products.map((product) => {
           return (

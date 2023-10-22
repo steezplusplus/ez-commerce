@@ -1,5 +1,7 @@
 import { prisma } from './db';
 
+// TODO category should be a search param not its own page!
+
 export async function getProducts({ q = '', take = 9, skip = 0 }) {
   return await prisma.product.findMany({
     where: {

@@ -1,5 +1,6 @@
 import { Suspense } from 'react';
 
+import { Footer } from 'components/layout/footer/footer';
 import { Categories } from 'components/layout/search/categories/categories';
 import { Filter } from 'components/layout/search/filter/filter';
 
@@ -12,7 +13,7 @@ export default async function SearchLayout(props: SearchLayoutProps) {
 
   return (
     <Suspense>
-      <div className="mx-auto flex max-w-screen-2xl flex-col gap-8 px-4 pb-4 text-black dark:text-white md:flex-row">
+      <div className="mx-auto flex max-w-screen-2xl flex-col gap-8 px-4 pb-4 md:flex-row">
         <div className="order-first w-full flex-none md:max-w-[9rem]">
           <Categories />
         </div>
@@ -21,6 +22,7 @@ export default async function SearchLayout(props: SearchLayoutProps) {
           <Filter />
         </div>
       </div>
+      <Footer />
     </Suspense>
   );
 }

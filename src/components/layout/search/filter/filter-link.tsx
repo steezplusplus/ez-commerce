@@ -29,7 +29,7 @@ export function DefaultFilterLink() {
   newParams.delete('sort');
 
   const href = `${path}?${newParams.toString()}`;
-  const displayName = params.size === 0 ? 'Relevance <' : 'Relevance';
+  const displayName = params.get('sort') ? 'Relevance' : 'Relevance <';
 
   return <Link href={href}>{displayName}</Link>;
 }
