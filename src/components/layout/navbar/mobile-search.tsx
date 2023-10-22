@@ -1,34 +1,19 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { useState } from 'react';
 
 import { AlignCenter } from 'lucide-react';
 import { Search } from './search';
 
-// TODO open close state belongs in react state
 export function MobileSearch() {
-  const router = useRouter();
-  const path = usePathname();
-  const params = useSearchParams();
-
-  const newParams = new URLSearchParams(params.toString());
-  newParams.delete('mobile-navbar'); // ensure user doesnt change params
-  newParams.append('mobile-navbar', 'true');
-
-  const onOpen = `${path}?${newParams.toString()}`;
-  const isOpen = params.get('mobile-navbar') === 'true';
-
-  const onClose = () => {
-    newParams.delete('mobile-navbar');
-    router.push(`${path}?${newParams}`);
-  };
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   return (
     <>
-      <Link href={onOpen} className="mr-2 inline-block rounded-md border p-2">
+      <button onClick={() => setIsOpen(true)} className="mr-2 rounded-md border p-2">
         <AlignCenter size="18" />
-      </Link>
+      </button>
       <dialog open={isOpen} className="rounded-lg border p-2">
         <div className="mb-4">
           <h3 className="mb-2">Search products</h3>
@@ -48,7 +33,10 @@ export function MobileSearch() {
             </li>
           </ul>
         </div>
-        <button onClick={onClose} className="rounded-md border border-neutral-800 px-2 py-1">
+        <button
+          onClick={() => setIsOpen(false)}
+          className="rounded-md border border-neutral-800 px-2 py-1"
+        >
           Close
         </button>
       </dialog>
