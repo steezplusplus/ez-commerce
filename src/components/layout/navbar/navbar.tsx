@@ -1,7 +1,7 @@
-import { ShoppingCart } from 'lucide-react';
 import Link from 'next/link';
 
 import { getStore } from 'lib/api';
+import { Cart } from './cart';
 import { MobileSearch } from './mobile-search';
 import { Search } from './search';
 
@@ -26,12 +26,7 @@ export async function Navbar() {
         </div>
 
         <div className="flex justify-end md:w-1/3">
-          <Link
-            href="/checkout"
-            className="ml-auto rounded-lg border border-black p-2 dark:border-white"
-          >
-            <ShoppingCart size="18" />
-          </Link>
+          <Cart />
         </div>
       </div>
     </nav>
