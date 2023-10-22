@@ -1,7 +1,8 @@
-import { AlignJustify, ShoppingCart } from 'lucide-react';
+import { ShoppingCart } from 'lucide-react';
 import Link from 'next/link';
 
 import { getStore } from 'lib/api';
+import { MobileNavbar } from './mobile-navbar';
 import { Search } from './search';
 
 export async function Navbar() {
@@ -10,10 +11,7 @@ export async function Navbar() {
   return (
     <nav className="flex w-full items-center justify-between p-4 lg:p-6">
       <div className="block flex-none md:hidden">
-        <button className="mr-2 rounded-md border p-2">
-          <AlignJustify size="16" />
-          {/* TODO  mobile menu */}
-        </button>
+        <MobileNavbar />
       </div>
 
       <div className="flex w-full items-center">
