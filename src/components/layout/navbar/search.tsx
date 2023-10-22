@@ -1,7 +1,7 @@
 'use client';
 
 import { SearchIcon } from 'lucide-react';
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 import { createUrl } from 'lib/utils';
 
@@ -9,10 +9,7 @@ const searchId = 'search-id';
 
 export function Search() {
   const router = useRouter();
-  const path = usePathname();
   const params = useSearchParams();
-
-  const newPath = path === '/' || path.startsWith('/product') ? '/search' : path;
 
   const onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -27,7 +24,7 @@ export function Search() {
       newParams.delete('q');
     }
 
-    router.push(createUrl(newPath, newParams));
+    router.push(createUrl('/search', newParams));
   };
 
   return (
@@ -36,7 +33,7 @@ export function Search() {
         Search products
       </label>
       <input
-        placeholder="Search products..."
+        placeholder="Search all products"
         key={params?.get('q')}
         type="text"
         name="search"
