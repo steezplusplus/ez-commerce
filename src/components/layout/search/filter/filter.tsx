@@ -8,17 +8,14 @@ const sortBy = [
 export async function Filter() {
   return (
     <nav>
-      <h3 className="mb-1 text-sm text-neutral-500 dark:text-neutral-400">Sort by</h3>
+      <h3 className="mb-1 text-sm">Sort by</h3>
       <ul className="space-y-2">
-        <li className="text-xs font-light text-black hover:underline dark:text-white">
+        <li className="text-xs font-light hover:underline">
           <DefaultFilterLink />
         </li>
         {sortBy.map((sort) => {
           return (
-            <li
-              className="text-xs font-light text-black hover:underline dark:text-white"
-              key={sort.handle}
-            >
+            <li className="text-xs font-light hover:underline" key={sort.handle}>
               <FilterLink key={sort.handle} {...sort} />
             </li>
           );
