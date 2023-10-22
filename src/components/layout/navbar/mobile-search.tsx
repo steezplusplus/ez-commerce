@@ -6,6 +6,7 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 import { AlignCenter } from 'lucide-react';
 import { Search } from './search';
 
+// TODO open close state belongs in react state
 export function MobileSearch() {
   const router = useRouter();
   const path = usePathname();

@@ -5,6 +5,7 @@ import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
 import { ShoppingCart } from 'lucide-react';
 
+// TODO open close state belongs in react state
 export function Cart() {
   const router = useRouter();
   const path = usePathname();
@@ -45,6 +46,9 @@ export function Cart() {
         <button onClick={onClose} className="rounded-md border border-neutral-800 px-2 py-1">
           Close
         </button>
+        <Link href="/checkout" className="text-blue-500 hover:text-blue-700 hover:underline">
+          Check out
+        </Link>
       </dialog>
     </>
   );
