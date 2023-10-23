@@ -28,6 +28,7 @@ export function MobileSearch() {
         <AlignCenter size="18" />
       </button>
       <dialog
+        onKeyDown={(e) => e.key === 'Enter' && closeModalDialog}
         ref={modaDialogRef}
         aria-labelledby={labelId}
         aria-describedby={descriptionId}
@@ -40,7 +41,7 @@ export function MobileSearch() {
             <X size="16" />
           </button>
         </div>
-        <Search />
+        <Search dialogRef={modaDialogRef} />
       </dialog>
     </>
   );
