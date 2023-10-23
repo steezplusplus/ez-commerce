@@ -1,27 +1,45 @@
 'use client';
 
 import { Category } from '@prisma/client';
+import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import React from 'react';
 
 type MobileCategoriesProps = {
   categories: Category[];
 };
 
-// TODO control search params
 export function MobileCategoriesSelect(props: MobileCategoriesProps) {
   const { categories } = props;
-  // const router = useRouter();
-  // const path = usePathname();
-  // const params = useSearchParams();
+  const path = usePathname();
+  const router = useRouter();
+  const params = useSearchParams();
 
-  const onChange = () => {
-    // router.push(`${path}`);
+  const newParams = new URLSearchParams(params.toString());
+  newParams.delete('q');
+
+  const selectedCategory = path.substring(path.lastIndexOf('/') + 1);
+
+  const onChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    router.push(`/search/${e.target.value}${newParams.size ? `?${newParams.toString()}` : ''}`);
   };
+
   return (
-    <select onChange={onChange} className="w-full">
-      <option>All</option>
-      {categories.map((category) => {
-        return <option key={category.id}>{category.name}</option>;
-      })}
-    </select>
+    <label>
+      <span className="font-light">Categories</span>
+      <select
+        onChange={onChange}
+        value={selectedCategory}
+        className="w-full rounded-sm px-2 py-1 text-sm"
+      >
+        <option value="">All</option>
+        {categories.map((category) => {
+          return (
+            <option key={category.id} value={category.slug}>
+              {category.name}
+            </option>
+          );
+        })}
+      </select>
+    </label>
   );
 }
