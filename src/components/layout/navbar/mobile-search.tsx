@@ -8,8 +8,8 @@ import { Search } from './search';
 
 export function MobileSearch() {
   const modaDialogRef = useRef<HTMLDialogElement>(null);
-  const labelId = 'modal-dialog-label';
-  const descriptionId = 'modal-dialog-description';
+  const labelId = 'mobile-search-label';
+  const descriptionId = 'mobile-search-description';
 
   const showModalDialog = () => {
     if (modaDialogRef.current) {
