@@ -42,12 +42,15 @@ export function Cart() {
         </div>
         <ul className="mb-2">
           <li>
-            <Link href={`/`}>Item</Link>
+            <Link href={`/`} onClick={closeModalDialog}>
+              Item
+            </Link>
           </li>
         </ul>
         <Link
           href="/checkout"
           className="rounded-mb border px-2 py-1 text-blue-500 hover:text-blue-700"
+          onClick={closeModalDialog}
         >
           Check out
         </Link>
