@@ -1,8 +1,10 @@
-export function MobileFilters() {
+import { MobileFiltersSelect } from './mobile-filters-select';
+
+export function MobileCategories() {
   return (
-    <select>
-      <option>Relevance</option>
-      <option>Price: Low to high</option>
-    </select>
+    <label>
+      <span className="font-light">Filters</span>
+      <MobileFiltersSelect />
+    </label>
   );
 }

@@ -4,7 +4,7 @@ import { Footer } from 'components/layout/footer/footer';
 import { Categories } from 'components/layout/search/categories/categories';
 import { MobileCategories } from 'components/layout/search/categories/mobile-categories';
 import { Filter } from 'components/layout/search/filter/filter';
-import { MobileFilters } from 'components/layout/search/filter/mobile-filters';
+import { MobileFiltersSelect } from 'components/layout/search/filter/mobile-filters-select';
 
 type SearchLayoutProps = {
   children: React.ReactNode;
@@ -30,7 +30,7 @@ export default async function SearchLayout(props: SearchLayoutProps) {
             <Filter />
           </div>
           <div className="block md:hidden">
-            <MobileFilters />
+            <MobileFiltersSelect />
           </div>
         </div>
       </div>
