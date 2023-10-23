@@ -1,9 +1,8 @@
 'use client';
 
-import Link from 'next/link';
 import { useRef } from 'react';
 
-import { AlignCenter } from 'lucide-react';
+import { AlignCenter, X } from 'lucide-react';
 import { Search } from './search';
 
 export function MobileSearch() {
@@ -35,30 +34,13 @@ export function MobileSearch() {
         autoFocus
         className="rounded-lg border p-2"
       >
-        <div className="mb-4">
-          <h3 className="mb-2">Search products</h3>
-          <Search />
+        <div className="mb-2 flex justify-between">
+          <h3 className="text-lg">Search products</h3>
+          <button onClick={closeModalDialog} className="rounded-md border border-neutral-800 p-1">
+            <X size="16" />
+          </button>
         </div>
-        <div className="mb-4">
-          <h3 className="mb-2">Categories</h3>
-          <ul className="pl-2">
-            <li>
-              <Link href={`/search/`}>1</Link>
-            </li>
-            <li>
-              <Link href={`/search/`}>2</Link>
-            </li>
-            <li>
-              <Link href={`/search/`}>3</Link>
-            </li>
-          </ul>
-        </div>
-        <button
-          onClick={closeModalDialog}
-          className="rounded-md border border-neutral-800 px-2 py-1"
-        >
-          Close
-        </button>
+        <Search />
       </dialog>
     </>
   );
