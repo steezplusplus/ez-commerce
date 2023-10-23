@@ -33,7 +33,7 @@ export function MobileFiltersSelect() {
       <select
         onChange={onChange}
         value={selectedFilter}
-        className="w-full rounded-sm px-2 py-1 text-sm"
+        className="w-full rounded-sm border border-neutral-200 px-2 py-1 text-sm dark:border-neutral-800"
       >
         <option value="">Relevance</option>
         {sortBy.map((sort) => {

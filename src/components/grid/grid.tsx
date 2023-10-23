@@ -8,7 +8,7 @@ export function Grid(props: { children: React.ReactNode }) {
 
 export function GridItem(props: { children: React.ReactNode }) {
   return (
-    <li className="aspect-square rounded-sm border px-2 py-1 text-sm font-extralight hover:border-blue-500">
+    <li className="aspect-square rounded-sm border border-neutral-200 px-2 py-1 text-sm font-extralight hover:border-blue-500 dark:border-neutral-800">
       {props.children}
     </li>
   );

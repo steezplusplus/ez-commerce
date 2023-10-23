@@ -2,13 +2,13 @@
 
 import { useRef } from 'react';
 
-import { AlignCenter, X } from 'lucide-react';
+import { SearchIcon, X } from 'lucide-react';
 import { Search } from './search';
 
 export function MobileSearch() {
   const modaDialogRef = useRef<HTMLDialogElement>(null);
-  const labelId = 'mobile-search-label';
-  const descriptionId = 'mobile-search-description';
+  const labelId = 'mobile-search-label'; // TODO
+  const descriptionId = 'mobile-search-description'; // TODO
 
   const showModalDialog = () => {
     if (modaDialogRef.current) {
@@ -24,8 +24,11 @@ export function MobileSearch() {
 
   return (
     <>
-      <button onClick={showModalDialog} className="mr-2 rounded-md border p-2">
-        <AlignCenter size="18" />
+      <button
+        onClick={showModalDialog}
+        className="mr-2 rounded-md border border-neutral-200 p-2 dark:border-neutral-800"
+      >
+        <SearchIcon size="18" />
       </button>
       <dialog
         onKeyDown={(e) => e.key === 'Enter' && closeModalDialog}
@@ -33,11 +36,14 @@ export function MobileSearch() {
         aria-labelledby={labelId}
         aria-describedby={descriptionId}
         autoFocus
-        className="rounded-lg border p-2"
+        className="rounded-lg border border-neutral-200 p-2 dark:border-neutral-800"
       >
-        <div className="mb-2 flex justify-between">
+        <div className="mb-2 flex items-center justify-between">
           <h3 className="text-lg">Search products</h3>
-          <button onClick={closeModalDialog} className="rounded-md border border-neutral-800 p-1">
+          <button
+            onClick={closeModalDialog}
+            className="rounded-md border border-neutral-200 p-1 dark:border-neutral-800"
+          >
             <X size="16" />
           </button>
         </div>
