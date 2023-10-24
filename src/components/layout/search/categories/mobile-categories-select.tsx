@@ -29,7 +29,7 @@ export function MobileCategoriesSelect(props: MobileCategoriesProps) {
       <select
         onChange={onChange}
         value={selectedCategory}
-        className="w-full rounded-sm border border-neutral-200 px-2 py-1 text-sm dark:border-neutral-800"
+        className="w-full rounded-sm border border-neutral-200 px-2 py-1 text-sm dark:border-neutral-800 dark:bg-transparent"
       >
         <option value="">All</option>
         {categories.map((category) => {
