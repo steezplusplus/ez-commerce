@@ -4,7 +4,7 @@ import { Footer } from 'components/layout/footer/footer';
 import { Categories } from 'components/layout/search/categories/categories';
 import { MobileCategories } from 'components/layout/search/categories/mobile-categories';
 import { Filter } from 'components/layout/search/filter/filter';
-import { MobileFiltersSelect } from 'components/layout/search/filter/mobile-filters-select';
+import { sorting } from 'lib/constants';
 
 type SearchLayoutProps = {
   children: React.ReactNode;
@@ -26,12 +26,7 @@ export default async function SearchLayout(props: SearchLayoutProps) {
         </div>
         <div className="order-last min-h-screen w-full md:order-none">{children}</div>
         <div className="order-none flex-none md:order-last md:w-[9rem]">
-          <div className="hidden md:block">
-            <Filter />
-          </div>
-          <div className="block md:hidden">
-            <MobileFiltersSelect />
-          </div>
+          <Filter list={sorting} title="Sort by" />
         </div>
       </div>
       <Footer />
