@@ -8,19 +8,37 @@ type CategoryPageProps = {
   params: {
     category: string;
   };
+  searchParams?: {
+    [key: string]: string | string[] | undefined;
+  };
+};
+
+// todo temp solution
+const sorts: Record<string, 'asc' | 'desc'> = {
+  'price-asc': 'asc',
+  'price-desc': 'desc',
 };
 
 export default async function CategoryPage(props: CategoryPageProps) {
+  const { params, searchParams } = props;
+
+  const { sort = '' } = searchParams as { [key: string]: string };
+
   const category = await prisma.category.findFirstOrThrow({
     where: {
       name: {
-        equals: props.params.category,
+        equals: params.category,
         mode: 'insensitive',
       },
     },
     include: {
-      products: true,
+      products: {
+        orderBy: {
+          price: sorts[sort],
+        },
+      },
     },
+    orderBy: {},
   });
 
   if (category.products.length === 0) {

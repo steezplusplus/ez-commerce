@@ -16,15 +16,24 @@ type SearchPageProps = {
   };
 };
 
+// todo temp solution
+const sorts: Record<string, 'asc' | 'desc'> = {
+  'price-asc': 'asc',
+  'price-desc': 'desc',
+};
+
 export default async function SearchPage({ searchParams }: SearchPageProps) {
-  const { q: searchValue } = searchParams as { [key: string]: string };
+  const { q: searchValue = '', sort = '' } = searchParams as { [key: string]: string };
 
   const products = await prisma.product.findMany({
     where: {
       name: {
-        contains: searchValue || '',
+        contains: searchValue,
         mode: 'insensitive',
       },
+    },
+    orderBy: {
+      price: sorts[sort],
     },
     take: 9,
   });
