@@ -1,16 +1,17 @@
 import { Suspense } from 'react';
 
+import { AddToCart } from 'components/checkout/add-to-cart';
 import { Footer } from 'components/layout/footer/footer';
 import { Price } from 'components/price/price';
 import { prisma } from 'lib/db';
 
+// TODO Break down into components
 export default async function ProductPage({ params }: { params: { product: string } }) {
   const product = await prisma.product.findFirstOrThrow({
     where: {
       slug: params.product,
     },
   });
-
   const { name, price, description, images, colors, sizes } = product;
 
   return (
@@ -47,7 +48,7 @@ export default async function ProductPage({ params }: { params: { product: strin
               </div>
             )}
             <p className="my-4 text-sm font-light text-neutral-400">{description}</p>
-            <button className="w-full rounded border px-2 py-1">Add to cart</button>
+            <AddToCart product={product} />
           </div>
         </div>
       </div>
