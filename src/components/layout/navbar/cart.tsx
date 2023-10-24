@@ -2,7 +2,7 @@
 
 import { useCart } from 'hooks/use-cart';
 import Link from 'next/link';
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { Price } from 'components/price/price';
 import { ArrowBigRight, ShoppingCart, X } from 'lucide-react';
@@ -10,6 +10,8 @@ import { ArrowBigRight, ShoppingCart, X } from 'lucide-react';
 // TODO Break down into components
 export function Cart() {
   const modaDialogRef = useRef<HTMLDialogElement>(null);
+  const [isMounted, setIsMounted] = useState<boolean>(false);
+
   const labelId = 'cart-label'; // TODO
   const descriptionId = 'cart-description'; // TODO
 
@@ -30,6 +32,15 @@ export function Cart() {
       modaDialogRef.current.close();
     }
   };
+
+  // Avoid hydration error from using localstorage from useCart()
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) {
+    return null;
+  }
 
   return (
     <>
