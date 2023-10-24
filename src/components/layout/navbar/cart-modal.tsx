@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 
 import { Grid, GridItem } from 'components/grid/grid';
+import { IconButton } from 'components/icon-button/icon-button';
 import { Modal } from 'components/modal/modal';
 import { Price } from 'components/price/price';
 import { useCart } from 'hooks/use-cart';
@@ -29,13 +30,7 @@ export function CartModal() {
 
   return (
     <>
-      <button
-        onClick={showModal}
-        className="rounded-md border border-neutral-200 p-2 dark:border-neutral-800"
-      >
-        <span className="sr-only">Open cart</span>
-        <ShoppingCart size="18" />
-      </button>
+      <IconButton icon={<ShoppingCart size="18" />} onClick={showModal} />
       <Modal
         modalDialogRef={modaDialogRef}
         labelId={labelId}
@@ -80,10 +75,7 @@ function ProductList() {
             <GridItem key={product.id}>
               <div className="flex items-center justify-between">
                 {product.name}
-                <button
-                  onClick={() => cart.removeItem(product.id)}
-                  className="rounded-md border border-neutral-200 p-1 dark:border-neutral-800"
-                >
+                <button onClick={() => cart.removeItem(product.id)}>
                   <X size="12" />
                 </button>
               </div>
