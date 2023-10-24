@@ -11,38 +11,29 @@ import { ShoppingCart, X } from 'lucide-react';
 
 export function CartModal() {
   const modaDialogRef = useRef<HTMLDialogElement>(null);
-  const [isMounted, setIsMounted] = useState<boolean>(false);
 
   const labelId = 'cart-label'; // TODO
   const descriptionId = 'cart-description'; // TODO
 
-  const showModalDialog = () => {
+  const showModal = () => {
     if (modaDialogRef.current) {
       modaDialogRef.current.showModal();
     }
   };
 
-  const closeModalDialog = () => {
+  const closeModal = () => {
     if (modaDialogRef.current) {
       modaDialogRef.current.close();
     }
   };
 
-  // Avoid hydration error from using localstorage from useCart()
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  if (!isMounted) {
-    return null;
-  }
-
   return (
     <>
       <button
-        onClick={showModalDialog}
+        onClick={showModal}
         className="rounded-md border border-neutral-200 p-2 dark:border-neutral-800"
       >
+        <span className="sr-only">Open cart</span>
         <ShoppingCart size="18" />
       </button>
       <Modal
@@ -55,7 +46,7 @@ export function CartModal() {
         <Link
           href="/checkout"
           className="mt-4 flex w-full justify-center rounded-md border border-neutral-200 px-2 py-1 dark:border-neutral-800"
-          onClick={closeModalDialog}
+          onClick={closeModal}
         >
           Check out
         </Link>
@@ -65,27 +56,32 @@ export function CartModal() {
 }
 
 function ProductList() {
-  const cartItems = useCart((cart) => cart.items);
+  const [isMounted, setIsMounted] = useState<boolean>(false);
   const cart = useCart();
 
-  const onRemove = (productId: string) => {
-    cart.removeItem(productId);
-  };
+  // Avoid hydration error from using localstorage from useCart()
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
-  if (cartItems.length === 0) {
+  if (!isMounted) {
+    return null;
+  }
+
+  if (cart.items.length === 0) {
     return <p>No products have been added to your cart</p>;
   }
 
   return (
     <>
       <Grid>
-        {cartItems.map((product) => {
+        {cart.items.map((product) => {
           return (
             <GridItem key={product.id}>
               <div className="flex items-center justify-between">
                 {product.name}
                 <button
-                  onClick={() => onRemove(product.id)}
+                  onClick={() => cart.removeItem(product.id)}
                   className="rounded-md border border-neutral-200 p-1 dark:border-neutral-800"
                 >
                   <X size="12" />
