@@ -5,7 +5,7 @@ import { useRef } from 'react';
 import { SearchIcon, X } from 'lucide-react';
 import { Search } from './search';
 
-export function MobileSearch() {
+export function SearchModal() {
   const modaDialogRef = useRef<HTMLDialogElement>(null);
   const labelId = 'mobile-search-label'; // TODO
   const descriptionId = 'mobile-search-description'; // TODO

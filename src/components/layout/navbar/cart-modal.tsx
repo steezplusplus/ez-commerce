@@ -9,7 +9,7 @@ import { Price } from 'components/price/price';
 import { useCart } from 'hooks/use-cart';
 import { ShoppingCart, X } from 'lucide-react';
 
-export function Cart() {
+export function CartModal() {
   const modaDialogRef = useRef<HTMLDialogElement>(null);
   const [isMounted, setIsMounted] = useState<boolean>(false);
 
