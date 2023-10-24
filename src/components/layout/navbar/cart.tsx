@@ -1,14 +1,23 @@
 'use client';
 
+import { useCart } from 'hooks/use-cart';
 import Link from 'next/link';
 import { useRef } from 'react';
 
+import { Price } from 'components/price/price';
 import { ArrowBigRight, ShoppingCart, X } from 'lucide-react';
 
+// TODO Break down into components
 export function Cart() {
   const modaDialogRef = useRef<HTMLDialogElement>(null);
   const labelId = 'cart-label'; // TODO
   const descriptionId = 'cart-description'; // TODO
+
+  const cartItems = useCart((cart) => cart.items);
+
+  const totalPrice = cartItems.reduce((sum, item) => {
+    return (sum += Number(item.price));
+  }, 0);
 
   const showModalDialog = () => {
     if (modaDialogRef.current) {
@@ -47,16 +56,25 @@ export function Cart() {
           </button>
         </div>
         <ul className="mb-2">
-          <li>
-            <Link
-              href={`/`}
-              onClick={closeModalDialog}
-              className="text-blue-500 hover:text-blue-700 hover:underline dark:text-violet-500  dark:hover:text-violet-700"
-            >
-              Item
-            </Link>
-          </li>
+          {cartItems.map((product) => {
+            return (
+              <li
+                key={product.id}
+                className="aspect-square rounded-sm border border-neutral-200 px-2 py-1 text-sm font-extralight hover:border-blue-500 dark:border-neutral-800"
+              >
+                <Link
+                  href="/" // TODO need category
+                  onClick={closeModalDialog}
+                  className="text-blue-500 hover:text-blue-700 hover:underline dark:text-violet-500  dark:hover:text-violet-700"
+                >
+                  {product.name}
+                  <Price amount={String(product.price)} />
+                </Link>
+              </li>
+            );
+          })}
         </ul>
+        <Price amount={String(totalPrice)} />
         <Link
           href="/checkout"
           className="flex w-full rounded-md border border-neutral-200 px-2 py-1 dark:border-neutral-800"
