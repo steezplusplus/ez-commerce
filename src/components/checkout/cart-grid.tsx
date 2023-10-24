@@ -25,6 +25,10 @@ export function CartGrid() {
     return null;
   }
 
+  if (cartItems.length === 0) {
+    return <p>No products have been added to your cart</p>;
+  }
+
   return (
     <Grid>
       {cartItems.map((product) => {
