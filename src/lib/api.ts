@@ -23,6 +23,33 @@ export async function getSearchPage(props: GetSearchPageParams) {
   });
 }
 
+type GetCategoryPageProps = {
+  name: string;
+  order?: 'asc' | 'desc';
+  take?: number;
+  skip?: number;
+};
+
+export async function getCategoryPage(props: GetCategoryPageProps) {
+  return await prisma.category.findFirstOrThrow({
+    where: {
+      name: {
+        equals: props.name,
+        mode: 'insensitive',
+      },
+    },
+    include: {
+      products: {
+        orderBy: {
+          price: props.order,
+        },
+      },
+    },
+    skip: props.skip,
+    take: props.take,
+  });
+}
+
 export async function getCategories({ take = 100, skip = 0 }) {
   return await prisma.category.findMany({
     skip: skip,

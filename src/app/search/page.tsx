@@ -39,7 +39,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
             <GridItem key={product.id}>
               <Link className="block h-full w-full" href={`/product/${product.slug}`}>
                 <h3>{product.name}</h3>
-                <Price amount={product.price.toString()} />
+                <Price amount={String(product.price)} />
               </Link>
             </GridItem>
           );
