@@ -1,9 +1,9 @@
-import { Product } from '@prisma/client';
 import Link from 'next/link';
 
 import { Grid, GridItem } from 'components/grid/grid';
 import { Price } from 'components/price/price';
-import { prisma } from 'lib/db';
+import { getSearchPage } from 'lib/api';
+import { sorting } from 'lib/constants';
 
 export const metadata = {
   title: 'Search',
@@ -16,30 +16,18 @@ type SearchPageProps = {
   };
 };
 
-// todo temp solution
-const sorts: Record<string, 'asc' | 'desc'> = {
-  'price-asc': 'asc',
-  'price-desc': 'desc',
-};
-
 export default async function SearchPage({ searchParams }: SearchPageProps) {
-  const { q: searchValue = '', sort = '' } = searchParams as { [key: string]: string };
+  const { q: searchValue, sort } = searchParams as { [key: string]: string };
+  const sortKey = sorting.find((item) => item.slug === sort);
 
-  const products = await prisma.product.findMany({
-    where: {
-      name: {
-        contains: searchValue,
-        mode: 'insensitive',
-      },
-    },
-    orderBy: {
-      price: sorts[sort],
-    },
-    take: 9,
-  });
+  const products = await getSearchPage({ searchValue: searchValue, order: sortKey?.order });
 
   if (products.length === 0) {
-    return <NoData searchValue={searchValue} />;
+    return (
+      <p>
+        There are no listings for your search {searchValue && <b>&quot;{searchValue}&quot;</b>}.
+      </p>
+    );
   }
 
   return (
@@ -49,21 +37,15 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
         {products.map((product) => {
           return (
             <GridItem key={product.id}>
-              <ProductLink {...product} />
+              <Link className="block h-full w-full" href={`/product/${product.slug}`}>
+                <h3>{product.name}</h3>
+                <Price amount={product.price.toString()} />
+              </Link>
             </GridItem>
           );
         })}
       </Grid>
     </>
-  );
-}
-
-function NoData(props: { searchValue?: string }) {
-  return (
-    <p>
-      There are no listings for your search{' '}
-      {props.searchValue && <b>&quot;{props.searchValue}&quot;</b>}.
-    </p>
   );
 }
 
@@ -77,14 +59,5 @@ function ResultsText(props: { searchValue?: string; numProducts: number }) {
     <p className="mb-3">
       Showing {props.numProducts} {resultsText} for <b>&quot;{props.searchValue}&quot;</b>.
     </p>
-  );
-}
-
-function ProductLink(props: Product) {
-  return (
-    <Link className="block h-full w-full" href={`/product/${props.slug}`}>
-      <h3>{props.name}</h3>
-      <Price amount={props.price.toString()} />
-    </Link>
   );
 }

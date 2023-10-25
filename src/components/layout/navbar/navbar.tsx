@@ -1,9 +1,9 @@
 import Link from 'next/link';
 
 import { getStore } from 'lib/api';
-import { Cart } from './cart';
-import { MobileSearch } from './mobile-search';
+import { CartModal } from './cart-modal';
 import { Search } from './search';
+import { SearchModal } from './search-modal';
 
 export async function Navbar() {
   const store = await getStore();
@@ -11,7 +11,7 @@ export async function Navbar() {
   return (
     <nav className="flex w-full items-center justify-between p-4 lg:p-6">
       <div className="flex flex-none md:hidden">
-        <MobileSearch />
+        <SearchModal />
       </div>
 
       <div className="flex w-full items-center">
@@ -26,7 +26,7 @@ export async function Navbar() {
         </div>
 
         <div className="flex justify-end md:w-1/3">
-          <Cart />
+          <CartModal />
         </div>
       </div>
     </nav>
