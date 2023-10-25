@@ -60,3 +60,14 @@ export async function getCategories({ take = 100, skip = 0 }) {
 export async function getStore() {
   return await prisma.store.findFirstOrThrow();
 }
+
+type GetProductProps = {
+  slug: string;
+};
+export async function getProduct(props: GetProductProps) {
+  return await prisma.product.findFirstOrThrow({
+    where: {
+      slug: props.slug,
+    },
+  });
+}
