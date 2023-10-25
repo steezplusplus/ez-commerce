@@ -6,6 +6,7 @@ type ProductFormProps = {
   product: Product;
 };
 
+// TODO Form should control search params. Include them in product added to localstorage
 export function ProductForm(props: ProductFormProps) {
   const { product } = props;
   return (
