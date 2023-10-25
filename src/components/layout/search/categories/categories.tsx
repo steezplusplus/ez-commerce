@@ -1,24 +1,32 @@
+import { Suspense } from 'react';
+
 import { getCategories } from 'lib/api';
-import { CategoryLink, DefaultCategoryLink } from './category-links';
+import { CategoriesItem, DefaultCategoryItem } from './categories-item';
+import { CategoriesSelect } from './categories-select';
 
-export async function Categories() {
+type CategoriesProps = {
+  title: string;
+};
+
+export async function Categories(props: CategoriesProps) {
   const categories = await getCategories({});
-
+  const { title } = props;
   return (
-    <nav>
-      <h3 className="mb-1 text-sm">Categories</h3>
-      <ul className="space-y-2">
-        <li className="text-xs font-light hover:underline">
-          <DefaultCategoryLink />
-        </li>
-        {categories.map((category) => {
-          return (
-            <li className="text-xs font-light hover:underline" key={category.id}>
-              <CategoryLink key={category.id} {...category} />
-            </li>
-          );
-        })}
-      </ul>
-    </nav>
+    <Suspense>
+      <nav>
+        <h3 className="mb-1 text-sm">{title}</h3>
+        <div className="hidden md:block">
+          <ul>
+            <DefaultCategoryItem />
+            {categories.map((category) => {
+              return <CategoriesItem category={category} key={category.id} />;
+            })}
+          </ul>
+        </div>
+        <div className="block md:hidden">
+          <CategoriesSelect categories={categories} />
+        </div>
+      </nav>
+    </Suspense>
   );
 }
