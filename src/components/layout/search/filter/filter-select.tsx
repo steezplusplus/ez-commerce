@@ -29,7 +29,11 @@ export function FilterSelect(props: FilterOptionProps) {
   };
 
   return (
-    <select value={selectedFilter} onChange={onChange}>
+    <select
+      value={selectedFilter}
+      onChange={onChange}
+      className="w-full rounded-sm border border-neutral-200 px-2 py-1 text-sm dark:border-neutral-800 dark:bg-transparent"
+    >
       {list.map((item, i) => {
         return (
           <option key={i} value={item.slug}>
