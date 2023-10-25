@@ -3,7 +3,6 @@ import { Suspense } from 'react';
 import { CartGrid } from 'components/checkout/cart-grid';
 import { Footer } from 'components/layout/footer/footer';
 
-// TODO Get items from localstorage
 export default function CheckoutPage() {
   return (
     <>
