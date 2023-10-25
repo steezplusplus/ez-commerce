@@ -1,6 +1,6 @@
 import { SortFilterItem } from 'lib/constants';
 import { FilterItem } from './filter-item';
-import { FilterOption } from './filter-option';
+import { FilterSelect } from './filter-select';
 
 type FilterProps = {
   list: SortFilterItem[];
@@ -20,11 +20,7 @@ export async function Filter(props: FilterProps) {
         </ul>
       </div>
       <div className="block md:hidden">
-        <select>
-          {list.map((opt, i) => {
-            return <FilterOption key={i} option={opt} />;
-          })}
-        </select>
+        <FilterSelect list={list} />
       </div>
     </nav>
   );

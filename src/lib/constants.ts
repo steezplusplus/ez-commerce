@@ -1,13 +1,13 @@
 export type SortFilterItem = {
   title: string;
-  slug: string | null;
+  slug: string;
   sortKey: 'RELEVANCE' | 'PRICE';
   order: 'asc' | 'desc';
 };
 
 export const defaultSort: SortFilterItem = {
   title: 'Relevance', // TODO my relevance sort is actually by date created
-  slug: null,
+  slug: '',
   sortKey: 'RELEVANCE',
   order: 'asc',
 };
