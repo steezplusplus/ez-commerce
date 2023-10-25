@@ -4,14 +4,24 @@ import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 
 import { Grid, GridItem } from 'components/grid/grid';
-import { IconButton } from 'components/icon-button/icon-button';
 import { Modal } from 'components/modal/modal';
 import { Price } from 'components/price/price';
-import { useCart } from 'hooks/use-cart';
+import { CartStore, useCart } from 'hooks/use-cart';
 import { ShoppingCart, X } from 'lucide-react';
 
 export function CartModal() {
   const modaDialogRef = useRef<HTMLDialogElement>(null);
+  const [isMounted, setIsMounted] = useState<boolean>(false);
+  const cart = useCart();
+
+  // Avoid hydration error from using localstorage from useCart()
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) {
+    return null;
+  }
 
   const labelId = 'cart-label'; // TODO
   const descriptionId = 'cart-description'; // TODO
@@ -30,14 +40,20 @@ export function CartModal() {
 
   return (
     <>
-      <IconButton icon={<ShoppingCart size="18" />} onClick={showModal} />
+      <button
+        className="flex items-center rounded-md border border-neutral-200 p-2 dark:border-neutral-800"
+        onClick={showModal}
+      >
+        <ShoppingCart size="18" />
+        <span className="ml-2 text-sm font-medium text-white">{cart.items.length}</span>
+      </button>
       <Modal
         modalDialogRef={modaDialogRef}
         labelId={labelId}
         descriptionId={descriptionId}
         title="Cart"
       >
-        <ProductList />
+        <ProductList cart={cart} />
         <Link
           href="/checkout"
           className="mt-4 flex w-full justify-center rounded-md border border-neutral-200 px-2 py-1 dark:border-neutral-800"
@@ -50,18 +66,11 @@ export function CartModal() {
   );
 }
 
-function ProductList() {
-  const [isMounted, setIsMounted] = useState<boolean>(false);
-  const cart = useCart();
-
-  // Avoid hydration error from using localstorage from useCart()
-  useEffect(() => {
-    setIsMounted(true);
-  }, []);
-
-  if (!isMounted) {
-    return null;
-  }
+type ProductListProps = {
+  cart: CartStore;
+};
+function ProductList(props: ProductListProps) {
+  const { cart } = props;
 
   if (cart.items.length === 0) {
     return <p>No products have been added to your cart</p>;
