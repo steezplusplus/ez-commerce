@@ -36,12 +36,33 @@ export default async function CategoryPage(props: CategoryPageProps) {
         return (
           <GridItem key={product.id}>
             <Link href={`/product/${product.slug}`}>
-              <h3>{product.name}</h3>
-              <Price amount={String(product.price)} />
+              <ProductImage image={product.images[0]} price={product.price} name={product.name} />
             </Link>
           </GridItem>
         );
       })}
     </Grid>
   );
+}
+
+type ProductImage = {
+  image?: string;
+  price: number;
+  name: string;
+};
+// TODO Alt text, image
+function ProductImage(props: ProductImage) {
+  if (props.image === undefined) {
+    return (
+      <div className="relative flex aspect-square h-full max-h-[550px] w-full flex-col items-center justify-center overflow-hidden">
+        <p className="text-sm">No images found for this product.</p>
+        <div className="absolute bottom-0 left-0">
+          <h3>{props.name}</h3>
+          <Price amount={String(props.price)} />
+        </div>
+      </div>
+    );
+  }
+
+  return <div className="aspect-square h-full max-h-[550px] w-full overflow-hidden">Todo</div>;
 }
