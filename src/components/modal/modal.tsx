@@ -21,7 +21,7 @@ export function Modal(props: ModalProps) {
       aria-labelledby={props.labelId}
       aria-describedby={props.descriptionId}
       autoFocus
-      className="w-1/2 rounded-lg border border-neutral-200 p-2 dark:border-neutral-800"
+      className="w-1/2 rounded-lg border border-neutral-200 px-4 py-2 dark:border-neutral-800"
     >
       <div className="mb-4 flex items-center justify-between">
         <h3 className="text-lg">{props.title}</h3>
