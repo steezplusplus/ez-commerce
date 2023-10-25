@@ -1,6 +1,7 @@
 import Link from 'next/link';
 
 import { CircleLogo } from 'components/logo/logo';
+import { ThemeSelect } from 'components/theme-select/theme-select';
 import { getCategories, getStore } from 'lib/api';
 
 export async function Footer() {
@@ -42,6 +43,9 @@ export async function Footer() {
             View source code
           </Link>
           <p className="mt-1 font-thin">Made by Jesse Breuer-Penello</p>
+        </div>
+        <div>
+          <ThemeSelect />
         </div>
       </div>
     </footer>

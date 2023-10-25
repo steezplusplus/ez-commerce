@@ -2,17 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  @apply bg-neutral-50 text-black selection:bg-teal-300;
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    @apply bg-neutral-900 text-white selection:bg-pink-500 selection:text-white;
+    @apply text-base;
   }
 }
 
-dialog {
-  @apply bg-neutral-50 text-black selection:bg-teal-300;
-  @apply dark:bg-neutral-900 dark:text-white dark:selection:bg-pink-500 dark:selection:text-white;
+@layer components {
+  body {
+    @apply transition-colors duration-500 ease-out;
+    @apply bg-neutral-50 text-black selection:bg-teal-300;
+    @apply dark:bg-neutral-900 dark:text-white dark:selection:bg-pink-500 dark:selection:text-white;
+  }
+
+  dialog {
+    @apply bg-neutral-50 text-black selection:bg-teal-300;
+    @apply dark:bg-neutral-900 dark:text-white dark:selection:bg-pink-500 dark:selection:text-white;
+  }
 }
