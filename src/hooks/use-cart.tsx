@@ -1,3 +1,4 @@
+import { toast } from 'react-hot-toast';
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 
@@ -19,15 +20,15 @@ export const useCart = create(
         const existingItem = currentItems.find((item) => item.id === data.id);
 
         if (existingItem) {
-          return console.log('Item already in cart.');
+          return toast.error('Item already in cart.');
         }
 
         set({ items: [...get().items, data] });
-        console.log('Item added to cart.');
+        toast.success('Item added to cart.');
       },
       removeItem: (id: string) => {
         set({ items: [...get().items.filter((item) => item.id !== id)] });
-        console.log('Item removed from cart.');
+        toast.success('Item removed from cart.');
       },
       removeAll: () => set({ items: [] }),
     }),

@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google';
 import { Suspense } from 'react';
 
 import { Navbar } from 'components/layout/navbar/navbar';
+import { ToastProvider } from 'providers/toast-provider';
 import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -15,6 +16,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <html lang="en" className={inter.className}>
       <body>
+        <ToastProvider />
         <Navbar />
         <Suspense>
           <main>{children}</main>
