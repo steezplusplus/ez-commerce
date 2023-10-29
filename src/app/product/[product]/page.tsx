@@ -1,6 +1,8 @@
 import { Suspense } from 'react';
 
+import { AddToCart } from 'components/checkout/add-to-cart';
 import { Footer } from 'components/layout/footer/footer';
+import { Price } from 'components/price/price';
 import { Gallery } from 'components/product/gallery';
 import { ProductForm } from 'components/product/product-form';
 import { getProduct } from 'lib/api';
@@ -17,7 +19,15 @@ export default async function ProductPage({ params }: { params: { product: strin
           </div>
 
           <div className="basis-full lg:basis-2/6">
-            <ProductForm product={product} />
+            <div className="mb-6 flex flex-col border-b pb-6 dark:border-neutral-700">
+              <h1 className="mb-2 text-5xl font-medium">{product.name}</h1>
+              <Price amount={String(product.price)} />
+            </div>
+            <ProductForm sizes={product.sizes} colors={product.colors} />
+            <AddToCart product={product} />
+            <p className="my-6 text-sm leading-tight dark:text-white/[60%]">
+              {product.description}
+            </p>
           </div>
         </div>
       </div>
