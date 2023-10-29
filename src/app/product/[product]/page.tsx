@@ -1,6 +1,7 @@
 import { Suspense } from 'react';
 
 import { AddToCart } from 'components/checkout/add-to-cart';
+import { Container } from 'components/container/container';
 import { Footer } from 'components/layout/footer/footer';
 import { Price } from 'components/price/price';
 import { Gallery } from 'components/product/gallery';
@@ -12,7 +13,7 @@ export default async function ProductPage({ params }: { params: { product: strin
 
   return (
     <>
-      <div className="mx-auto max-w-screen-2xl px-4 pb-8">
+      <Container className="px-4 pb-8">
         <div className="flex flex-col rounded-lg border border-neutral-200 bg-white p-8 dark:border-neutral-800 dark:bg-black md:p-12 lg:flex-row lg:gap-8">
           <div className="h-full w-full basis-full border border-neutral-200 dark:border-neutral-800 lg:basis-4/6">
             <Gallery images={product.images} />
@@ -30,7 +31,7 @@ export default async function ProductPage({ params }: { params: { product: strin
             </p>
           </div>
         </div>
-      </div>
+      </Container>
       <Suspense>
         <Footer />
       </Suspense>
