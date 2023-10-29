@@ -33,7 +33,7 @@ export function ProductForm(props: ProductFormProps) {
               const isChecked = searchParams.get('color') === colorLowerCase;
               return (
                 <Radio
-                  displayName="Sizes"
+                  displayName={color}
                   name="color"
                   key={color}
                   onChange={() => updateParams(colorUrl)}
@@ -56,7 +56,7 @@ export function ProductForm(props: ProductFormProps) {
               const isChecked = searchParams.get('size') === sizeLowerCase;
               return (
                 <Radio
-                  displayName="Sizes"
+                  displayName={size}
                   name="size"
                   key={size}
                   onChange={() => updateParams(sizeUrl)}
