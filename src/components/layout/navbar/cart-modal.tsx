@@ -45,7 +45,7 @@ export function CartModal() {
         onClick={showModal}
       >
         <ShoppingCart size="18" />
-        <span className="ml-2 text-sm font-medium text-white">{cart.items.length}</span>
+        <span className="ml-2 text-sm font-medium dark:text-white">{cart.items.length}</span>
       </button>
       <Modal
         modalDialogRef={modaDialogRef}
