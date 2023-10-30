@@ -7,7 +7,7 @@ import { Product } from '@prisma/client';
 export interface CartStore {
   items: Product[];
   addItem: (product: Product, color: string, size: string) => void;
-  removeItem: (id: string) => void;
+  removeItem: (id: string, name: string) => void;
   removeAll: () => void;
 }
 
@@ -26,9 +26,9 @@ export const useCart = create(
         set({ items: [...get().items, product] });
         toast.success(`${product.name} added to cart.`);
       },
-      removeItem: (id: string) => {
+      removeItem: (id: string, name: string) => {
         set({ items: [...get().items.filter((item) => item.id !== id)] });
-        toast.success('Removed product from your cart.');
+        toast.success(`${name} removed from your cart.`);
       },
       removeAll: () => set({ items: [] }),
     }),

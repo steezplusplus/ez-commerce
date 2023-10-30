@@ -3,11 +3,12 @@
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 
+import { RemoveFromCart } from 'components/checkout/remove-from-cart';
 import { Grid, GridItem } from 'components/ui/grid';
 import { Modal } from 'components/ui/modal';
 import { Price } from 'components/ui/price';
 import { CartStore, useCart } from 'hooks/use-cart';
-import { ShoppingCart, X } from 'lucide-react';
+import { ShoppingCart } from 'lucide-react';
 
 export function CartModal() {
   const modaDialogRef = useRef<HTMLDialogElement>(null);
@@ -84,9 +85,7 @@ function ProductList(props: ProductListProps) {
             <GridItem key={product.id}>
               <div className="flex items-center justify-between">
                 {product.name}
-                <button onClick={() => cart.removeItem(product.id)}>
-                  <X size="12" />
-                </button>
+                <RemoveFromCart productId={product.id} name={product.name} />
               </div>
               <Price amount={String(product.price)} />
             </GridItem>
