@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { Suspense } from 'react';
 
-import { Navbar } from 'components/layout/navbar/navbar';
+import { Navbar } from 'components/layout/navbar';
 import { ThemeProvider } from 'providers/theme-provider';
 import { ToastProvider } from 'providers/toast-provider';
 import './globals.css';
