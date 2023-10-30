@@ -2,7 +2,7 @@ import { Suspense } from 'react';
 
 import { CartGrid } from 'components/checkout/cart-grid';
 import { Container } from 'components/container/container';
-import { Footer } from 'components/layout/footer/footer';
+import { Footer } from 'components/layout/footer';
 
 export default function CheckoutPage() {
   return (

@@ -1,8 +1,8 @@
 import Link from 'next/link';
 
-import { CircleLogo } from 'components/logo/logo';
-import { ThemeSelect } from 'components/theme-select/theme-select';
 import { getCategories, getStore } from 'lib/api';
+import { CircleLogo } from './circle-logo';
+import { ThemeSelect } from './theme-select';
 
 export async function Footer() {
   const store = await getStore();

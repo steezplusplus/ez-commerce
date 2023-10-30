@@ -2,7 +2,7 @@ import { Suspense } from 'react';
 
 import { AddToCart } from 'components/checkout/add-to-cart';
 import { Container } from 'components/container/container';
-import { Footer } from 'components/layout/footer/footer';
+import { Footer } from 'components/layout/footer';
 import { Price } from 'components/price/price';
 import { Gallery } from 'components/product/gallery';
 import { ProductForm } from 'components/product/product-form';
