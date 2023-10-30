@@ -6,7 +6,7 @@ import { Product } from '@prisma/client';
 
 export interface CartStore {
   items: Product[];
-  addItem: (data: Product) => void;
+  addItem: (product: Product, color: string, size: string) => void;
   removeItem: (id: string) => void;
   removeAll: () => void;
 }
@@ -15,20 +15,20 @@ export const useCart = create(
   persist<CartStore>(
     (set, get) => ({
       items: [],
-      addItem: (data: Product) => {
+      addItem: (product: Product, color: string, size: string) => {
         const currentItems = get().items;
-        const existingItem = currentItems.find((item) => item.id === data.id);
+        const existingItem = currentItems.find((item) => item.id === product.id);
 
         if (existingItem) {
-          return toast.error('Item already in cart.');
+          return toast.error('This product is already in your cart.');
         }
 
-        set({ items: [...get().items, data] });
-        toast.success('Item added to cart.');
+        set({ items: [...get().items, product] });
+        toast.success(`${product.name} added to cart.`);
       },
       removeItem: (id: string) => {
         set({ items: [...get().items.filter((item) => item.id !== id)] });
-        toast.success('Item removed from cart.');
+        toast.success('Removed product from your cart.');
       },
       removeAll: () => set({ items: [] }),
     }),
