@@ -2,8 +2,8 @@ import { Suspense } from 'react';
 
 import { Container } from 'components/container/container';
 import { Footer } from 'components/layout/footer';
-import { Categories } from 'components/layout/search/categories/categories';
-import { Filter } from 'components/layout/search/filter/filter';
+import { Categories } from 'components/layout/search/categories';
+import { Filter } from 'components/layout/search/filter';
 import { sorting } from 'lib/constants';
 
 type SearchLayoutProps = {
