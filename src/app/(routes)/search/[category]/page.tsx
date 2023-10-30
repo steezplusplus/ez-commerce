@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
-import { Grid, GridItem } from 'components/grid/grid';
-import { Price } from 'components/price/price';
+import { Grid, GridItem } from 'components/ui/grid';
+import { Price } from 'components/ui/price';
 import { getCategoryPage } from 'lib/api';
 import { sorting } from 'lib/constants';
 

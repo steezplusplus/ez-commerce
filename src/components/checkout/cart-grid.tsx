@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from 'react';
 
-import { Grid, GridItem } from 'components/grid/grid';
-import { Price } from 'components/price/price';
+import { Grid, GridItem } from 'components/ui/grid';
+import { Price } from 'components/ui/price';
 import { useCart } from 'hooks/use-cart';
 import { X } from 'lucide-react';
 

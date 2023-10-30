@@ -3,9 +3,9 @@
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 
-import { Grid, GridItem } from 'components/grid/grid';
-import { Modal } from 'components/modal/modal';
-import { Price } from 'components/price/price';
+import { Grid, GridItem } from 'components/ui/grid';
+import { Modal } from 'components/ui/modal';
+import { Price } from 'components/ui/price';
 import { CartStore, useCart } from 'hooks/use-cart';
 import { ShoppingCart, X } from 'lucide-react';
 

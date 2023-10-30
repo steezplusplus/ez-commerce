@@ -1,5 +1,5 @@
-import { Container } from 'components/container/container';
 import { Footer } from 'components/layout/footer';
+import { Container } from 'components/ui/container';
 import { Suspense } from 'react';
 
 export default async function Home() {
