@@ -25,11 +25,14 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
   const resultsText = numProducts > 1 ? 'results' : 'result';
 
   if (products.length === 0) {
-    return (
-      <p>
-        There are no listings for your search {searchValue && <b>&quot;{searchValue}&quot;</b>}.
-      </p>
-    );
+    if (searchValue) {
+      return (
+        <p>
+          There are no listings for your search {searchValue && <b>&quot;{searchValue}&quot;</b>}.
+        </p>
+      );
+    }
+    return <p>There are no products in this store.</p>;
   }
 
   // TODO Use Next.js <Image /> component
