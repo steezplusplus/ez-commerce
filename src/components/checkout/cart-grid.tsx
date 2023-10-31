@@ -26,14 +26,17 @@ export function CartGrid() {
 
   return (
     <Grid>
-      {cartItems.map((product) => {
+      {cartItems.map((item) => {
         return (
-          <GridItem key={product.id}>
+          <GridItem key={item.product.id}>
             <div className="flex items-center justify-between">
-              {product.name}
-              <RemoveFromCart product={product} key={product.id} />
+              <p>{item.product.name}</p>
+
+              <RemoveFromCart product={item.product} />
             </div>
-            <Price amount={String(product.price)} />
+            <p>{item.size}</p>
+            <p>{item.color}</p>
+            <Price amount={String(item.product.price)} />
           </GridItem>
         );
       })}

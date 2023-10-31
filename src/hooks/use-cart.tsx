@@ -3,8 +3,14 @@ import { toast } from 'react-hot-toast';
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 
+type CartProduct = {
+  size: string | null;
+  color: string | null;
+  product: Product;
+};
+
 export interface CartStore {
-  items: Product[]; // TODO add color and size
+  items: CartProduct[];
   addItem: (product: Product, color: string | null, size: string | null) => void;
   removeItem: (product: Product) => void;
   removeAll: () => void;
@@ -16,17 +22,17 @@ export const useCart = create(
       items: [],
       addItem: (product: Product, color: string | null, size: string | null) => {
         const currentItems = get().items;
-        const existingItem = currentItems.find((item) => item.id === product.id);
+        const existingItem = currentItems.find((item) => item.product.id === product.id);
 
         if (existingItem) {
           return toast.error(`${product.name} is already in your cart.`);
         }
 
-        set({ items: [...get().items, product] }); // TODO add color and size
+        set({ items: [...get().items, { product, color, size }] });
         toast.success(`${product.name} added to cart.`);
       },
       removeItem: (product: Product) => {
-        set({ items: [...get().items.filter((item) => item.id !== product.id)] });
+        set({ items: [...get().items.filter((item) => item.product.id !== product.id)] });
         toast.success(`${product.name} removed from your cart.`);
       },
       removeAll: () => set({ items: [] }),
