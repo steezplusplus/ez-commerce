@@ -43,7 +43,7 @@ export default async function CategoryPage(props: CategoryPageProps) {
                   <h3>{product.name}</h3>
                   <Price amount={String(product.price)} />
                 </div>
-              </div>{' '}
+              </div>
             </Link>
           </GridItem>
         );
