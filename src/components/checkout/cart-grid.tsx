@@ -31,7 +31,7 @@ export function CartGrid() {
           <GridItem key={product.id}>
             <div className="flex items-center justify-between">
               {product.name}
-              <RemoveFromCart productId={product.id} name={product.name} />
+              <RemoveFromCart product={product} key={product.id} />
             </div>
             <Price amount={String(product.price)} />
           </GridItem>
