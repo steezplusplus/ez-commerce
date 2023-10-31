@@ -21,6 +21,8 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
   const sortKey = sorting.find((item) => item.slug === sort);
 
   const products = await getSearchPage({ searchValue: searchValue, order: sortKey?.order });
+  const numProducts = products.length;
+  const resultsText = numProducts > 1 ? 'results' : 'result';
 
   if (products.length === 0) {
     return (
@@ -30,15 +32,26 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
     );
   }
 
+  // TODO Use Next.js <Image /> component
   return (
     <>
-      <ResultsText numProducts={products.length} searchValue={searchValue} />
+      {searchValue && (
+        <p className="mb-3">
+          Showing {products.length} {resultsText} for <b>&quot;{searchValue}&quot;</b>.
+        </p>
+      )}
       <Grid>
         {products.map((product) => {
           return (
             <GridItem key={product.id}>
               <Link className="block h-full w-full" href={`/product/${product.slug}`}>
-                <ProductImage image={product.images[0]} price={product.price} name={product.name} />
+                <div className="relative flex aspect-square h-full max-h-[550px] w-full flex-col items-center justify-center overflow-hidden">
+                  <p className="text-sm">No images found for this product.</p>
+                  <div className="absolute bottom-0 left-0">
+                    <h3>{product.name}</h3>
+                    <Price amount={String(product.price)} />
+                  </div>
+                </div>
               </Link>
             </GridItem>
           );
@@ -46,39 +59,4 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
       </Grid>
     </>
   );
-}
-
-function ResultsText(props: { searchValue?: string; numProducts: number }) {
-  const resultsText = props.numProducts > 1 ? 'results' : 'result';
-  if (!props.searchValue) {
-    return <></>;
-  }
-
-  return (
-    <p className="mb-3">
-      Showing {props.numProducts} {resultsText} for <b>&quot;{props.searchValue}&quot;</b>.
-    </p>
-  );
-}
-
-type ProductImage = {
-  image?: string;
-  price: number;
-  name: string;
-};
-// TODO Alt text, image
-function ProductImage(props: ProductImage) {
-  if (props.image === undefined) {
-    return (
-      <div className="relative flex aspect-square h-full max-h-[550px] w-full flex-col items-center justify-center overflow-hidden">
-        <p className="text-sm">No images found for this product.</p>
-        <div className="absolute bottom-0 left-0">
-          <h3>{props.name}</h3>
-          <Price amount={String(props.price)} />
-        </div>
-      </div>
-    );
-  }
-
-  return <div className="aspect-square h-full max-h-[550px] w-full overflow-hidden">Todo</div>;
 }
