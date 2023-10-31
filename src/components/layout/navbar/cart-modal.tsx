@@ -3,11 +3,9 @@
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 
-import { RemoveFromCart } from 'components/checkout/remove-from-cart';
-import { Grid, GridItem } from 'components/ui/grid';
+import { CartGrid } from 'components/checkout/cart-grid';
 import { Modal } from 'components/ui/modal';
-import { Price } from 'components/ui/price';
-import { CartStore, useCart } from 'hooks/use-cart';
+import { useCart } from 'hooks/use-cart';
 import { ShoppingCart } from 'lucide-react';
 
 export function CartModal() {
@@ -54,7 +52,7 @@ export function CartModal() {
         descriptionId={descriptionId}
         title="Cart"
       >
-        <ProductList cart={cart} />
+        <CartGrid />
         <Link
           href="/checkout"
           className="mt-4 flex w-full justify-center rounded-md border border-neutral-200 px-2 py-1 dark:border-neutral-800"
@@ -63,37 +61,6 @@ export function CartModal() {
           Check out
         </Link>
       </Modal>
-    </>
-  );
-}
-
-type ProductListProps = {
-  cart: CartStore;
-};
-function ProductList(props: ProductListProps) {
-  const { cart } = props;
-
-  if (cart.items.length === 0) {
-    return <p>No products have been added to your cart</p>;
-  }
-
-  return (
-    <>
-      <Grid>
-        {cart.items.map((item) => {
-          return (
-            <GridItem key={item.product.id}>
-              <div className="flex items-center justify-between">
-                <p>{item.product.name}</p>
-                <RemoveFromCart product={item.product} />
-              </div>
-              <p>{item.size}</p>
-              <p>{item.color}</p>
-              <Price amount={String(item.product.price)} />
-            </GridItem>
-          );
-        })}
-      </Grid>
     </>
   );
 }
