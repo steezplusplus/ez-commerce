@@ -3,10 +3,6 @@ name: Prettify & Lint
 on:
   pull_request:
 
-env:
-  GIT_PAT: ${{ secrets.GIT_PAT }}
-  GIT_USERNAME: ${{ secrets.GIT_USERNAME }}
-
 jobs:
   lint:
     name: Prettify & Lint
