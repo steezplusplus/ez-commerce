@@ -1,0 +1,27 @@
+name: Prettify & Lint
+
+on:
+  pull_request:
+
+env:
+  GIT_PAT: ${{ secrets.GIT_PAT }}
+  GIT_USERNAME: ${{ secrets.GIT_USERNAME }}
+
+jobs:
+  lint:
+    name: Prettify & Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'npm'
+      - name: Download dependencies
+        run: npm ci
+      - name: Run Prettier
+        run: npm run prettier
+      - name: Run ESLint
+        run: npm run lint
