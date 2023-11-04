@@ -18,10 +18,12 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
-          cache: 'npm'
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
       - name: Download dependencies
-        run: npm ci
+        run: pnpm install
       - name: Run Prettier
-        run: npm run prettier
+        run: pnpm run prettier
       - name: Run ESLint
-        run: npm run lint
+        run: pnpm run lint
