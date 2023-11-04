@@ -10,7 +10,7 @@ type SearchLayoutProps = {
   children: React.ReactNode;
 };
 
-export default async function SearchLayout(props: SearchLayoutProps) {
+export default function SearchLayout(props: SearchLayoutProps) {
   const { children } = props;
 
   return (
