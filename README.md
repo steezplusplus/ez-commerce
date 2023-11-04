@@ -1,8 +1,10 @@
 <div align="center">
   <section>
+    <h1>
       <a href="https://ez-commerce-steez.vercel.app/" target="_blank">
-      <h1>My E-Commerce Store</h1>
-    </a>
+        My E-Commerce Store
+      </a>
+    </h1>
     <p>(Still in development)</p>
     <img 
       alt="Blue and white textured pattern"
