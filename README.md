@@ -1,6 +1,6 @@
 <div align="center">
   <section>
-    <a href="https://ez-commerce-steez.vercel.app/">
+      <a href="https://ez-commerce-steez.vercel.app/" target="_blank">
       <h1>My E-Commerce Store</h1>
     </a>
     <p>(Still in development)</p>
