@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { Grid, GridItem } from 'components/ui/grid';
 import { Price } from 'components/ui/price';
 import { useCart } from 'hooks/use-cart';
+import Link from 'next/link';
 import { RemoveFromCart } from './remove-from-cart';
 
 export function CartGrid() {
@@ -29,14 +30,19 @@ export function CartGrid() {
       {cartItems.map((item) => {
         return (
           <GridItem key={item.product.id}>
-            <div className="flex items-center justify-between">
-              <p>{item.product.name}</p>
-
-              <RemoveFromCart product={item.product} />
-            </div>
-            <p>{item.size}</p>
-            <p>{item.color}</p>
-            <Price amount={String(item.product.price)} />
+            <Link className="relative block h-full w-full" href={`/product/${item.product.slug}`}>
+              <div className="flex items-center justify-between">
+                <h3>{item.product.name}</h3>
+                <RemoveFromCart product={item.product} />
+              </div>
+              <div className=" flex aspect-square h-full max-h-[550px] w-full flex-col items-center justify-center overflow-hidden">
+                <div className="absolute bottom-0 left-0">
+                  {item.size && <p>Size: {item.size}</p>}
+                  {item.color && <p>Color: {item.color}</p>}
+                  <Price amount={String(item.product.price)} />
+                </div>
+              </div>
+            </Link>
           </GridItem>
         );
       })}
