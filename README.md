@@ -1,7 +1,7 @@
 <div align="center">
   <section>
     <h1>
-      <a href="https://ez-commerce-steez.vercel.app/" target="_blank">
+      <a href="digital-hypnospace-garden.vercel.app" target="_blank">
         Visit my store
       </a>
     </h1>
@@ -13,24 +13,24 @@
     />
   <br />
     <a
-      href="https://github.com/steezplusplus/ez-commerce/stargazers"
+      href="https://github.com/steezplusplus/digital-commerce/stargazers"
       target="_blank"
     >
       <img
         alt="Number of stargazers"
         title="Number of stargazers"
-        src="https://custom-icon-badges.demolab.com/github/stars/steezplusplus/ez-commerce?logo=star"
+        src="https://custom-icon-badges.demolab.com/github/stars/steezplusplus/digital-commerce?logo=star"
       />
     </a>
     &nbsp;
     <a
-      href="https://github.com/steezplusplus/ez-commerce/issues"
+      href="https://github.com/steezplusplus/digital-commerce/issues"
       target="_blank"
     >
       <img
         alt="number of issues"
         title="number of issues"
-        src="https://custom-icon-badges.demolab.com/github/issues-raw/steezplusplus/ez-commerce?logo=issue"
+        src="https://custom-icon-badges.demolab.com/github/issues-raw/steezplusplus/digital-commerce?logo=issue"
       />
     </a>
     &nbsp;
@@ -38,7 +38,7 @@
       <img
         alt="license"
         title="license"
-        src="https://custom-icon-badges.demolab.com/github/license/steezplusplus/ez-commerce?logo=law"
+        src="https://custom-icon-badges.demolab.com/github/license/steezplusplus/digital-commerce?logo=law"
       />
     </a>
     &nbsp;
@@ -46,7 +46,7 @@
       <img
         alt="last commit time"
         title="last commit time"
-        src="https://custom-icon-badges.demolab.com/github/last-commit/steezplusplus/ez-commerce?logo=history&logoColor=white"
+        src="https://custom-icon-badges.demolab.com/github/last-commit/steezplusplus/digital-commerce?logo=history&logoColor=white"
       />
     </a>
     &nbsp;
@@ -54,7 +54,7 @@
       <img
         alt="num of bytes"
         title="num of bytes"
-        src="https://custom-icon-badges.demolab.com/github/languages/code-size/steezplusplus/ez-commerce?logo=file-code&logoColor=white"
+        src="https://custom-icon-badges.demolab.com/github/languages/code-size/steezplusplus/digital-commerce?logo=file-code&logoColor=white"
       />
     </a>
   </section>

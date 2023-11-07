@@ -38,7 +38,7 @@ export async function Footer() {
         <div>
           <Link
             className="text-blue-500 hover:text-blue-700 hover:underline"
-            href="https://github.com/steezplusplus/ez-commerce"
+            href="https://github.com/steezplusplus/digital-commerce"
           >
             View source code
           </Link>
