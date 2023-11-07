@@ -10,7 +10,8 @@ import './globals.css';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Ez-commerce',
+  title: 'Digital Commerce',
+  description: 'An open source digital commerce platform',
 };
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {

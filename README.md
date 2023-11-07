@@ -2,7 +2,7 @@
   <section>
     <h1>
       <a href="https://ez-commerce-steez.vercel.app/" target="_blank">
-        My E-Commerce Store
+        Visit my store
       </a>
     </h1>
     <p>(Still in development)</p>
