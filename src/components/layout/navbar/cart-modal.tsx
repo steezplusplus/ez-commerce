@@ -6,7 +6,7 @@ import { useEffect, useRef, useState } from 'react';
 import { CartGrid } from 'components/checkout/cart-grid';
 import { Modal } from 'components/ui/modal';
 import { useCart } from 'hooks/use-cart';
-import { ShoppingCart } from 'lucide-react';
+import { ShoppingBag, ShoppingCart } from 'lucide-react';
 
 export function CartModal() {
   const modaDialogRef = useRef<HTMLDialogElement>(null);
@@ -43,7 +43,7 @@ export function CartModal() {
         className="flex items-center rounded-md border border-neutral-200 p-2 dark:border-neutral-800"
         onClick={showModal}
       >
-        <ShoppingCart size="18" />
+        <ShoppingBag size="18" />
         <span className="ml-2 text-sm font-medium dark:text-white">{cart.items.length}</span>
       </button>
       <Modal
@@ -55,10 +55,11 @@ export function CartModal() {
         <CartGrid />
         <Link
           href="/checkout"
-          className="mt-4 flex w-full justify-center rounded-md border border-neutral-200 px-2 py-1 dark:border-neutral-800"
+          className="mt-4 flex w-full items-center justify-center rounded-md border border-neutral-200 px-2 py-1 dark:border-neutral-800"
           onClick={closeModal}
         >
           Check out
+          <ShoppingCart className="ml-1" size="18" />
         </Link>
       </Modal>
     </>
