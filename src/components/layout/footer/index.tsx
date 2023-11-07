@@ -36,6 +36,9 @@ export async function Footer() {
           </ul>
         </nav>
         <div>
+          <ThemeSelect />
+        </div>
+        <div>
           <Link
             className="text-blue-500 hover:text-blue-700 hover:underline"
             href="https://github.com/steezplusplus/digital-commerce"
@@ -43,9 +46,6 @@ export async function Footer() {
             View source code
           </Link>
           <p className="mt-1 font-thin">Made by Jesse Breuer-Penello</p>
-        </div>
-        <div>
-          <ThemeSelect />
         </div>
       </div>
     </footer>
