@@ -1,7 +1,7 @@
 <div align="center">
   <section>
     <h1>
-      <a href="digital-hypnospace-garden.vercel.app" target="_blank">
+      <a href="https://digital-hypnospace-garden.vercel.app" target="_blank">
         Visit my store
       </a>
     </h1>
