@@ -1,5 +1,12 @@
 import { prisma } from './db';
 
+export async function getHomePage({ take = 100, skip = 0 }) {
+  return await prisma.product.findMany({
+    skip: skip,
+    take: take,
+  });
+}
+
 type GetSearchPageParams = {
   searchValue?: string;
   order?: 'asc' | 'desc';
