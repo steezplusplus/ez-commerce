@@ -8,7 +8,7 @@ async function main() {
 
   const store = await prisma.store.create({
     data: {
-      name: 'My store',
+      name: 'Digital Commerce',
     },
   });
 
