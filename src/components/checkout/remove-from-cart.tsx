@@ -13,12 +13,13 @@ export function RemoveFromCart(props: RemoveFromCartProps) {
   const { product } = props;
   const cart = useCart();
 
-  const removeFromCart = () => {
+  const removeFromCart = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.preventDefault();
     cart.removeItem(product);
   };
 
   return (
-    <button onClick={removeFromCart}>
+    <button onClick={(e) => removeFromCart(e)}>
       <X size="12" />
     </button>
   );
