@@ -1,12 +1,12 @@
 'use client';
 
+import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
+import { RemoveFromCart } from 'components/checkout/remove-from-cart';
 import { Grid, GridItem } from 'components/ui/grid';
 import { Price } from 'components/ui/price';
 import { useCart } from 'hooks/use-cart';
-import Link from 'next/link';
-import { RemoveFromCart } from './remove-from-cart';
 
 export function CartGrid() {
   const [isMounted, setIsMounted] = useState<boolean>(false);
