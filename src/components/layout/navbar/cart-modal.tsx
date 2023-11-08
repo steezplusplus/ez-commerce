@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 
-import { CartGrid } from 'components/checkout/cart-grid';
+import { CartGrid } from 'components/ui/grid/cart-grid';
 import { Modal } from 'components/ui/modal';
 import { useCart } from 'hooks/use-cart';
 import { ShoppingBag, ShoppingCart } from 'lucide-react';
