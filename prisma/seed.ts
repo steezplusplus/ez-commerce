@@ -38,54 +38,26 @@ async function main() {
   //   },
   // });
 
-  // await prisma.category.create({
-  //   data: {
-  //     name: 'Drinkware',
-  //     slug: 'drinkware',
-  //     storeId: store.id,
-  //     products: {
-  //       create: [
-  //         {
-  //           name: 'Cup',
-  //           slug: 'cup',
-  //           description: '12oz double wall ceramic body with a padded bottom.',
-  //           price: 15,
-  //           images: [],
-  //           colors: ['Black', 'White'],
-  //           sizes: [],
-  //         },
-  //         {
-  //           name: 'Mug',
-  //           slug: 'mug',
-  //           description: '',
-  //           price: 15,
-  //           images: [],
-  //           colors: [],
-  //           sizes: [],
-  //         },
-  //       ],
-  //     },
-  //   },
-  // });
-
-  // await prisma.category.create({
-  //   data: {
-  //     name: 'Electronics',
-  //     slug: 'electronics',
-  //     storeId: store.id,
-  //     products: {
-  //       create: {
-  //         name: 'Keyboard',
-  //         slug: 'keyboard',
-  //         description: '',
-  //         price: 150,
-  //         images: [],
-  //         colors: ['Black', 'White'],
-  //         sizes: [],
-  //       },
-  //     },
-  //   },
-  // });
+  await prisma.category.create({
+    data: {
+      name: 'Drinkware',
+      slug: 'drinkware',
+      storeId: store.id,
+      products: {
+        create: [
+          {
+            name: 'Mug',
+            slug: 'mug',
+            description: '16oz double wall ceramic body with a padded bottom.',
+            price: 15,
+            images: ['https://utfs.io/f/69e16c20-a52e-4f8c-84fb-8bd8a79bd17e-8masf7.jpeg'],
+            colors: ['White'],
+            sizes: ['16 oz.'],
+          },
+        ],
+      },
+    },
+  });
 
   await prisma.category.create({
     data: {
