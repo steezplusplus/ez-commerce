@@ -104,15 +104,6 @@ async function main() {
             sizes: ['8', '8.5', '9', '9.5', '10', '10.5', '11', '11.5', '12', '12.5', '13'],
           },
           {
-            name: 'Running shoes',
-            slug: 'running-shoes',
-            description: 'These shoes are the perfect middle ground between style and convenience.',
-            price: 700,
-            images: ['https://utfs.io/f/8f169975-771a-40ee-aed6-a8fd228ac723-y6i365.jpeg'],
-            colors: ['White'],
-            sizes: ['8', '8.5', '9', '9.5', '10', '10.5', '11', '11.5', '12', '12.5', '13'],
-          },
-          {
             name: 'Tennis shoes',
             slug: 'tennis-shoes',
             description: 'These shoes are the perfect middle ground between style and convenience.',
