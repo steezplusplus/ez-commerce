@@ -1,7 +1,4 @@
-import Link from 'next/link';
-
-import { Grid, GridItem } from 'components/ui/grid';
-import { Price } from 'components/ui/price';
+import { ProductGrid } from 'components/ui/grid/product-grid';
 import { getCategoryPage } from 'lib/api';
 import { sorting } from 'lib/constants';
 
@@ -30,24 +27,5 @@ export default async function CategoryPage(props: CategoryPageProps) {
     return <p>No products found in this category.</p>;
   }
 
-  // TODO Use Next.js <Image /> component
-  return (
-    <Grid>
-      {category.products.map((product) => {
-        return (
-          <GridItem key={product.id}>
-            <Link href={`/product/${product.slug}`}>
-              <div className="relative flex aspect-square h-full max-h-[550px] w-full flex-col items-center justify-center overflow-hidden">
-                <p className="text-sm">No images found for this product.</p>
-                <div className="absolute bottom-0 left-0">
-                  <h3>{product.name}</h3>
-                  <Price amount={String(product.price)} />
-                </div>
-              </div>
-            </Link>
-          </GridItem>
-        );
-      })}
-    </Grid>
-  );
+  return <ProductGrid products={category.products} />;
 }
