@@ -20,7 +20,7 @@ export function RemoveFromCart(props: RemoveFromCartProps) {
 
   return (
     <button onClick={(e) => removeFromCart(e)}>
-      <X size="12" />
+      <X size="18" />
     </button>
   );
 }
