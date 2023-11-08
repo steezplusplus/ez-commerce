@@ -98,7 +98,7 @@ async function main() {
             name: 'Skate shoes',
             slug: 'skate-shoes',
             description: 'These shoes are the perfect middle ground between style and convenience.',
-            price: 45,
+            price: 450,
             images: ['https://utfs.io/f/85b4d11a-0355-41d5-a5c9-a95f0ca9a320-y6i364.jpeg'],
             colors: ['Gray'],
             sizes: ['8', '8.5', '9', '9.5', '10', '10.5', '11', '11.5', '12', '12.5', '13'],
@@ -107,7 +107,7 @@ async function main() {
             name: 'Running shoes',
             slug: 'running-shoes',
             description: 'These shoes are the perfect middle ground between style and convenience.',
-            price: 70,
+            price: 700,
             images: ['https://utfs.io/f/8f169975-771a-40ee-aed6-a8fd228ac723-y6i365.jpeg'],
             colors: ['White'],
             sizes: ['8', '8.5', '9', '9.5', '10', '10.5', '11', '11.5', '12', '12.5', '13'],
@@ -116,7 +116,7 @@ async function main() {
             name: 'Tennis shoes',
             slug: 'tennis-shoes',
             description: 'These shoes are the perfect middle ground between style and convenience.',
-            price: 70,
+            price: 750,
             images: ['https://utfs.io/f/94d8183b-3be9-4ddd-b86c-eb382474d48c-y6i366.jpeg'],
             colors: ['Off White'],
             sizes: ['8', '8.5', '9', '9.5', '10', '10.5', '11', '11.5', '12', '12.5', '13'],
@@ -125,7 +125,7 @@ async function main() {
             name: 'Dad shoes',
             slug: 'dad-shoes',
             description: 'These shoes are the perfect middle ground between style and convenience.',
-            price: 70,
+            price: 500,
             images: ['https://utfs.io/f/b36b1c10-9267-413f-9619-dca9404044c8-y6i367.jpeg'],
             colors: ['White'],
             sizes: ['8', '8.5', '9', '9.5', '10', '10.5', '11', '11.5', '12', '12.5', '13'],
@@ -135,48 +135,56 @@ async function main() {
     },
   });
 
-  // await prisma.category.create({
-  //   data: {
-  //     name: 'Headwear',
-  //     slug: 'headwear',
-  //     storeId: store.id,
-  //     products: {
-  //       create: [
-  //         {
-  //           name: 'Beanie',
-  //           slug: 'beanie',
-  //           description: '100% combed ringspun cotton.',
-  //           price: 10,
-  //           images: [],
-  //           colors: ['Black', 'Gray', 'White'],
-  //           sizes: [],
-  //         },
-  //         {
-  //           name: 'Cowboy Hat',
-  //           slug: 'cowboy-hat',
-  //           description: `
-  //             Part of our Buffalo collection, this cowboy hat is made in the USA of high-quality, weather-resistant 4X buffalo felt.
-  //             Its classic Western profile features a classic cattleman crease, a 4" brim and a 4 1/2" regular oval crown.
-  //             Additional details include a leather sweatband, satin lining, and a self-matching hat band with a three-piece silver-toned buckle set, as well as a hat box.
-  //           `,
-  //           price: 1000,
-  //           images: [],
-  //           colors: ['Black', 'Tan'],
-  //           sizes: ['6 3/4', '6 7/8', '7', '7 1/8', '7 1/4', '7 3/8', '7 1/2', '7 5/8', '7 3/4'],
-  //         },
-  //         {
-  //           name: 'Dad Hat',
-  //           slug: 'dad-hat',
-  //           description: '100% peach-washed cotton.',
-  //           price: 20,
-  //           images: [],
-  //           colors: [],
-  //           sizes: [],
-  //         },
-  //       ],
-  //     },
-  //   },
-  // });
+  await prisma.category.create({
+    data: {
+      name: 'Headwear',
+      slug: 'headwear',
+      storeId: store.id,
+      products: {
+        create: [
+          {
+            name: 'Beanie',
+            slug: 'beanie',
+            description: '100% combed ringspun cotton.',
+            price: 10,
+            images: [],
+            colors: ['Black', 'Gray', 'White'],
+            sizes: [],
+          },
+          {
+            name: 'Embroidered Cap',
+            slug: 'embroidered-cap',
+            description:
+              'Classic design, comfortable fit. Velcro closure for easy adjustability. One size fits all.',
+            price: 1000,
+            images: ['https://utfs.io/f/93ad8c1d-5b67-433b-b5d3-bee04fa64380-is1517.jpeg'],
+            colors: ['Black'],
+            sizes: [],
+          },
+          {
+            name: 'Embroidered Flag Cap',
+            slug: 'embroidered-flag-cap',
+            description:
+              'Classic design, comfortable fit. Velcro closure for easy adjustability. One size fits all.',
+            price: 1000,
+            images: ['https://utfs.io/f/ec7157f0-2107-4e95-ae51-40d3b1e89323-is1516.jpeg'],
+            colors: ['Black'],
+            sizes: [],
+          },
+          {
+            name: 'Embroidered Logo Cap',
+            slug: 'embroidered-logo-cap',
+            description:
+              'Classic design, comfortable fit. Velcro closure for easy adjustability. One size fits all.',
+            price: 1000,
+            images: ['https://utfs.io/f/29594051-cb9f-4fb6-b82e-80068ff538b7-is1515.jpeg'],
+            colors: ['Black'],
+            sizes: [],
+          },
+        ],
+      },
+    },
+  });
 
   // await prisma.category.create({
   //   data: {
