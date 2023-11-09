@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
+import { CircleLogo } from 'components/ui/circle-logo';
 import { getStore } from 'lib/api';
-import { CircleLogo } from '../footer/circle-logo'; // TODO Move this component to ui/
 import { CartModal } from './cart-modal';
 import { Search } from './search';
 import { SearchModal } from './search-modal';
