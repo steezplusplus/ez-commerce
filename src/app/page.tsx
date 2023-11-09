@@ -1,9 +1,8 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import { Suspense } from 'react';
 
 import { Footer } from 'components/layout/footer';
-import { Container } from 'components/ui/container';
-import { Grid, GridItem } from 'components/ui/grid';
 import { getHomePage } from 'lib/api';
 
 export default async function Home() {
@@ -11,28 +10,31 @@ export default async function Home() {
 
   return (
     <>
-      <Container className="flex flex-col gap-8 px-4 pb-4 md:flex-row">
-        <div className="order-first w-full flex-none md:max-w-[9rem]" />
-        <div className="order-last min-h-screen w-full md:order-none">
-          <Grid className="pb-4">
-            {products.map((product) => {
-              return (
-                <GridItem key={product.id}>
-                  <Link className="block h-full w-full" href={`/product/${product.slug}`}>
-                    <div className="relative flex aspect-square h-full max-h-[550px] w-full flex-col items-center justify-center overflow-hidden">
-                      <p className="text-sm">No images found for this product.</p>
-                      <div className="absolute bottom-0 left-0">
-                        <h3>{product.name}</h3>
-                      </div>
-                    </div>
-                  </Link>
-                </GridItem>
-              );
-            })}
-          </Grid>
-        </div>
-        <div className="order-none flex-none md:order-last md:w-[9rem]" />
-      </Container>
+      <div className="w-full overflow-x-auto">
+        <ul className="flex gap-4">
+          {products.map((product) => {
+            return (
+              <li
+                className="relative aspect-square h-[30vh] max-h-[275px] w-2/3 max-w-[475px] flex-none md:w-1/3"
+                key={product.id}
+              >
+                <Link href={`/product/${product.slug}`} className="relative h-full w-full">
+                  <div className="group relative flex h-full w-full items-center justify-center overflow-hidden rounded-lg border border-neutral-200 bg-white hover:border-blue-600 dark:border-neutral-800 dark:bg-black">
+                    <Image
+                      fill
+                      sizes="(min-width: 1024px) 25vw, (min-width: 768px) 33vw, 50vw"
+                      className="relative h-full w-full object-contain transition duration-300 ease-in-out group-hover:scale-105"
+                      src={product.images[0] as string}
+                      alt={`Image of ${product.name}`}
+                    />
+                  </div>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+
       <Suspense>
         <Footer />
       </Suspense>
