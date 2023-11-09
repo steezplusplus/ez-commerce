@@ -5,7 +5,6 @@ type GalleryProps = {
 };
 
 // TODO Alt text
-// TODO if images.length > 1 show rest of images
 export function Gallery(props: GalleryProps) {
   const { images } = props;
 
@@ -18,15 +17,24 @@ export function Gallery(props: GalleryProps) {
   }
 
   return (
-    <div className="relative aspect-square h-full max-h-[550px] w-full overflow-hidden">
-      <Image
-        className="h-full w-full object-contain"
-        fill
-        sizes="(min-width: 1024px) 66vw, 100vw"
-        alt="TODO"
-        src={images[0] as string}
-        priority={true}
-      />
-    </div>
+    <>
+      {images.map((image) => {
+        return (
+          <div
+            key={image}
+            className="relative aspect-square h-full max-h-[550px] w-full overflow-hidden"
+          >
+            <Image
+              src={image}
+              alt="TODO"
+              fill
+              className="h-full w-full object-contain"
+              sizes="(min-width: 1024px) 66vw, 100vw"
+              priority={true}
+            />
+          </div>
+        );
+      })}
+    </>
   );
 }
