@@ -12,32 +12,6 @@ async function main() {
     },
   });
 
-  // await prisma.category.create({
-  //   data: {
-  //     name: 'Bags',
-  //     slug: 'bags',
-  //     storeId: store.id,
-  //     products: {
-  //       create: {
-  //         name: 'Drawstring Bag',
-  //         slug: 'drawstring-bag',
-  //         description: 'Strong nylon drawstring bag. Sturdy, reusable, and resilient',
-  //         price: 12,
-  //         images: [],
-  //         colors: ['Black', 'White'],
-  //         sizes: [
-  //           '6 x 8 inch',
-  //           '7 x 9 inch',
-  //           '8 x 11 inch',
-  //           '9 x 12 inch',
-  //           '10 x 15 inch',
-  //           '12 x 16 inch',
-  //         ],
-  //       },
-  //     },
-  //   },
-  // });
-
   await prisma.category.create({
     data: {
       name: 'Drinkware',
@@ -46,52 +20,16 @@ async function main() {
       products: {
         create: [
           {
-            name: 'Mug',
+            name: 'Coffee Mug',
             slug: 'mug',
             description: '16oz double wall ceramic body with a padded bottom.',
             price: 15,
-            images: ['https://utfs.io/f/69e16c20-a52e-4f8c-84fb-8bd8a79bd17e-8masf7.jpeg'],
-            colors: ['White'],
+            images: [
+              'https://utfs.io/f/a5c84a2e-ebda-4d70-be34-a476c7a50197-m0iy29.jpeg',
+              'https://utfs.io/f/d23f59b0-1296-4ee3-b619-d972500ad60c-rdrw11.jpeg',
+            ],
+            colors: ['Black', 'White'],
             sizes: ['16 oz.'],
-          },
-        ],
-      },
-    },
-  });
-
-  await prisma.category.create({
-    data: {
-      name: 'Footware',
-      slug: 'footware',
-      storeId: store.id,
-      products: {
-        create: [
-          {
-            name: 'Skate shoes',
-            slug: 'skate-shoes',
-            description: 'These shoes are the perfect middle ground between style and convenience.',
-            price: 450,
-            images: ['https://utfs.io/f/85b4d11a-0355-41d5-a5c9-a95f0ca9a320-y6i364.jpeg'],
-            colors: ['Gray'],
-            sizes: ['8', '8.5', '9', '9.5', '10', '10.5', '11', '11.5', '12', '12.5', '13'],
-          },
-          {
-            name: 'Tennis shoes',
-            slug: 'tennis-shoes',
-            description: 'These shoes are the perfect middle ground between style and convenience.',
-            price: 750,
-            images: ['https://utfs.io/f/94d8183b-3be9-4ddd-b86c-eb382474d48c-y6i366.jpeg'],
-            colors: ['Off White'],
-            sizes: ['8', '8.5', '9', '9.5', '10', '10.5', '11', '11.5', '12', '12.5', '13'],
-          },
-          {
-            name: 'Dad shoes',
-            slug: 'dad-shoes',
-            description: 'These shoes are the perfect middle ground between style and convenience.',
-            price: 500,
-            images: ['https://utfs.io/f/b36b1c10-9267-413f-9619-dca9404044c8-y6i367.jpeg'],
-            colors: ['White'],
-            sizes: ['8', '8.5', '9', '9.5', '10', '10.5', '11', '11.5', '12', '12.5', '13'],
           },
         ],
       },
@@ -109,39 +47,25 @@ async function main() {
             name: 'Beanie',
             slug: 'beanie',
             description: '100% combed ringspun cotton.',
-            price: 10,
-            images: [],
-            colors: ['Black', 'Gray', 'White'],
+            price: 200,
+            images: [
+              'https://utfs.io/f/c4be5481-1c42-4661-906f-b436152f9e92-3p70be.jpeg',
+              'https://utfs.io/f/0daf3012-0965-4054-af61-9fd06fbd1715-86tc8a.jpeg',
+            ],
+            colors: ['Black', 'Green'],
             sizes: [],
           },
           {
-            name: 'Embroidered Cap',
-            slug: 'embroidered-cap',
-            description:
-              'Classic design, comfortable fit. Velcro closure for easy adjustability. One size fits all.',
-            price: 1000,
-            images: ['https://utfs.io/f/93ad8c1d-5b67-433b-b5d3-bee04fa64380-is1517.jpeg'],
-            colors: ['Black'],
-            sizes: [],
-          },
-          {
-            name: 'Embroidered Flag Cap',
-            slug: 'embroidered-flag-cap',
-            description:
-              'Classic design, comfortable fit. Velcro closure for easy adjustability. One size fits all.',
-            price: 1000,
-            images: ['https://utfs.io/f/ec7157f0-2107-4e95-ae51-40d3b1e89323-is1516.jpeg'],
-            colors: ['Black'],
-            sizes: [],
-          },
-          {
-            name: 'Embroidered Logo Cap',
-            slug: 'embroidered-logo-cap',
-            description:
-              'Classic design, comfortable fit. Velcro closure for easy adjustability. One size fits all.',
-            price: 1000,
-            images: ['https://utfs.io/f/29594051-cb9f-4fb6-b82e-80068ff538b7-is1515.jpeg'],
-            colors: ['Black'],
+            name: 'Baseball Cap',
+            slug: 'baseball-cap',
+            description: '',
+            price: 150,
+            images: [
+              'https://utfs.io/f/d3dc985d-6118-4cf1-898e-b560f0360e6e-y5x62w.jpeg',
+              'https://utfs.io/f/2a0e339b-265e-4519-b100-2c2d8bf05be7-m0iq6c.jpeg',
+              'https://utfs.io/f/831b3317-d7d3-46c2-8655-08e2781af040-rds3wy.jpeg',
+            ],
+            colors: ['Green', 'Black', 'White'],
             sizes: [],
           },
         ],
@@ -149,24 +73,42 @@ async function main() {
     },
   });
 
-  // await prisma.category.create({
-  //   data: {
-  //     name: 'Hoodies',
-  //     slug: 'hoodies',
-  //     storeId: store.id,
-  //     products: {
-  //       create: {
-  //         name: 'Hoodie',
-  //         slug: 'hoodie',
-  //         description: 'Fabric blend of Supima Cotton and Micromodal.',
-  //         price: 50,
-  //         images: [],
-  //         colors: [],
-  //         sizes: [],
-  //       },
-  //     },
-  //   },
-  // });
+  await prisma.category.create({
+    data: {
+      name: 'Tops',
+      slug: 'tops',
+      storeId: store.id,
+      products: {
+        create: [
+          {
+            name: 'T-shirt',
+            slug: 't-shirt',
+            description: 'Fabric blend of Supima Cotton and Micromodal.',
+            price: 120,
+            images: [
+              'https://utfs.io/f/658ecb31-81fd-452d-b1df-cacd610314d9-m0j2va.jpeg',
+              'https://utfs.io/f/0b4b9e41-2cae-435c-9aab-b6718f1b0345-rdrr80.jpeg',
+            ],
+            colors: ['Black', 'White'],
+            sizes: ['Small', 'Medium', 'Large', 'X-Large', '2X-Large'],
+          },
+          {
+            name: 'Logo Tie Dye Tee',
+            slug: 'logo-tie-dye-tee',
+            description:
+              'Fabric blend of Supima Cotton and Micromodal. Each tie-dye shirt is unique.',
+            price: 160,
+            images: [
+              'https://utfs.io/f/f78d04b9-0869-48bb-b9e8-874fb6f873b7-pruti1.jpeg',
+              'https://utfs.io/f/61f3664a-6b8d-42c7-afb0-0723f1e3b448-pruti0.jpeg',
+            ],
+            colors: [],
+            sizes: ['Small', 'Medium', 'Large', 'X-Large', '2X-Large'],
+          },
+        ],
+      },
+    },
+  });
 }
 
 main()
