@@ -1,7 +1,7 @@
 import Link from 'next/link';
 
+import { CircleLogo } from 'components/ui/circle-logo';
 import { getCategories, getStore } from 'lib/api';
-import { CircleLogo } from '../../ui/circle-logo';
 import { ThemeSelect } from './theme-select';
 
 export async function Footer() {
