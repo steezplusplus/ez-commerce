@@ -9,8 +9,9 @@ export async function CircleLogo() {
   return (
     <Image
       alt={`${store.name} logo`}
+      priority={true}
       src="/logo.jpg"
-      className="mb-2 h-12 w-12 rounded-full"
+      className="h-12 w-12 rounded-full"
       width="48"
       height="48"
     />
