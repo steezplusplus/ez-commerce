@@ -1,23 +1,24 @@
-type MarqueeProps = {};
+type MarqueeProps = {
+  messages: string[];
+};
 
 export function Marquee(props: MarqueeProps) {
+  const { messages } = props;
   return (
-    <div className="flex select-none gap-x-4 overflow-hidden">
+    <div className="mb-4 flex select-none gap-x-4 overflow-hidden whitespace-nowrap">
       <ul className="animate-marquee flex min-w-full shrink-0 justify-around gap-x-4">
-        <li>Item 1</li>
-        <li>Item 2</li>
-        <li>Item 3</li>
-        <li>Item 4</li>
+        {messages.map((message, i) => {
+          return <li key={`${message}-${i}`}>{message}</li>;
+        })}
       </ul>
 
       <ul
         className="animate-marquee flex min-w-full shrink-0 justify-around gap-x-4"
         aria-hidden="true"
       >
-        <li>display only 1</li>
-        <li>display only 2</li>
-        <li>display only 3</li>
-        <li>display only 4</li>
+        {messages.map((message, i) => {
+          return <li key={`${message}-${i}-aria-hidden`}>{message}</li>;
+        })}
       </ul>
     </div>
   );

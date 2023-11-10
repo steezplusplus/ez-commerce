@@ -12,7 +12,21 @@ export default async function Home() {
   return (
     <>
       <Container>
-        <Marquee />
+        <Marquee
+          messages={[
+            '=Digital=',
+            'Traverse the technospace',
+            '=Digital=',
+            'Electrify your style',
+            '=Digital=',
+            'Fight mass production',
+          ]}
+        />
+        <h2 className="my-2 pl-2 text-xl">Something</h2>
+        <Carousel products={products} />
+        <h2 className="my-2 pl-2 text-xl">Something</h2>
+        <Carousel products={products} />
+        <h2 className="my-2 pl-2 text-xl">Something</h2>
         <Carousel products={products} />
       </Container>
 
