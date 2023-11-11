@@ -109,6 +109,47 @@ async function main() {
       },
     },
   });
+
+  await prisma.category.create({
+    data: {
+      name: 'Hoodies',
+      slug: 'hoodies',
+      storeId: store.id,
+      products: {
+        create: [
+          {
+            name: '',
+            slug: '',
+            description: '',
+            price: 140,
+            images: [
+              'https://utfs.io/f/f8e6ff9e-9cb9-4754-b7b6-bd352499d57e-y44oz3.jpeg',
+              'https://utfs.io/f/f7013618-df2a-4877-b8e3-8eb04fc57a0b-go3rn5.jpeg',
+              'https://utfs.io/f/860796f5-18c2-4634-abee-a3ef60a1081c-ykeh2w.jpeg',
+              'https://utfs.io/f/78421ffa-7daa-43f9-861f-b9f33c6289e7-56sxj2.jpeg',
+              'https://utfs.io/f/9f145f62-bc7b-4de6-9c4c-02684e16c684-8whij0.jpeg',
+              'https://utfs.io/f/2988b9f7-d850-44f2-a831-9bdaebc77452-cshlo5.jpeg',
+              'https://utfs.io/f/9725e90d-4927-462a-90d6-06c281f20d02-sqcqzb.jpeg',
+              'https://utfs.io/f/37053290-f283-47c0-9e39-4d985f84a9a9-8e39e1.jpeg',
+              'https://utfs.io/f/56984cd7-cf23-4f2a-8a9a-e4c2c6af24d2-855r3i.jpeg',
+            ],
+            colors: [
+              'Pink',
+              'Yellow',
+              'Gray',
+              'Green',
+              'Red',
+              'Blue',
+              'Purple',
+              'Orange',
+              'Tie Dye',
+            ],
+            sizes: ['Small', 'Medium', 'Large', 'X-Large', '2X-Large'],
+          },
+        ],
+      },
+    },
+  });
 }
 
 main()
