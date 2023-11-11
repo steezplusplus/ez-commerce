@@ -1,4 +1,4 @@
-import { Grid, GridItemProduct } from 'components/ui/grid';
+import { Grid, ProductCell } from 'components/ui/grid';
 import { getCategoryPage } from 'lib/api';
 import { sorting } from 'lib/constants';
 
@@ -29,7 +29,7 @@ export default async function CategoryPage(props: CategoryPageProps) {
 
   return (
     <Grid className="grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-      <GridItemProduct products={category.products} />
+      <ProductCell products={category.products} />
     </Grid>
   );
 }
