@@ -1,3 +1,4 @@
+import { Grid, GridItemProduct } from 'components/ui/grid';
 import { getCategoryPage } from 'lib/api';
 import { sorting } from 'lib/constants';
 
@@ -26,5 +27,9 @@ export default async function CategoryPage(props: CategoryPageProps) {
     return <p>No products found in this category.</p>;
   }
 
-  return <p>Grid TODO</p>;
+  return (
+    <Grid className="grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+      <GridItemProduct products={category.products} />
+    </Grid>
+  );
 }
