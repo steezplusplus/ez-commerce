@@ -28,6 +28,9 @@ export function Carousel(props: CarouselProps) {
                     alt={`Image of ${product.name}`}
                   />
                 </div>
+                <div className="absolute bottom-2 left-2">
+                  <h3>{product.name}</h3>
+                </div>
               </Link>
             </li>
           );
