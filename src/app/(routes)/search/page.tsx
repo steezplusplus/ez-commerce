@@ -1,4 +1,3 @@
-import { ProductGrid } from 'components/ui/grid/product-grid';
 import { getSearchPage } from 'lib/api';
 import { sorting } from 'lib/constants';
 
@@ -37,7 +36,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
           <b>&quot;{searchValue}&quot;</b>.
         </p>
       )}
-      <ProductGrid products={products} />
+      <p>Grid TODO</p>
     </>
   );
 }

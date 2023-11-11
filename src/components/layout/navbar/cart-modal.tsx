@@ -3,7 +3,6 @@
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 
-import { CartGrid } from 'components/ui/grid/cart-grid';
 import { Modal } from 'components/ui/modal';
 import { useCart } from 'hooks/use-cart';
 import { ShoppingBag, ShoppingCart } from 'lucide-react';
@@ -52,7 +51,7 @@ export function CartModal() {
         descriptionId={descriptionId}
         title="Cart"
       >
-        <CartGrid />
+        <p>Grid TODO</p>
         <Link
           href="/checkout"
           className="mt-4 flex w-full items-center justify-center rounded-md border border-neutral-200 px-2 py-1 dark:border-neutral-800"
