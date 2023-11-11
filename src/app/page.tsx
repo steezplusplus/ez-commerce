@@ -4,10 +4,10 @@ import { Footer } from 'components/layout/footer';
 import { Carousel } from 'components/ui/carousel';
 import { Container } from 'components/ui/container';
 import { Marquee } from 'components/ui/marquee';
-import { getHomePage } from 'lib/api';
+import { getLatestArrivals } from 'lib/api';
 
 export default async function Home() {
-  const products = await getHomePage({ take: 9 });
+  const latestProducts = await getLatestArrivals({ take: 9 });
 
   return (
     <>
@@ -22,12 +22,8 @@ export default async function Home() {
             'Fight mass production',
           ]}
         />
-        <h2 className="my-2 pl-2 text-xl">Something</h2>
-        <Carousel products={products} />
-        <h2 className="my-2 pl-2 text-xl">Something</h2>
-        <Carousel products={products} />
-        <h2 className="my-2 pl-2 text-xl">Something</h2>
-        <Carousel products={products} />
+        <h2 className="my-2 pl-2 text-xl">Latest Arrivals</h2>
+        <Carousel products={latestProducts} />
       </Container>
 
       <Suspense>

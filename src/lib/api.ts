@@ -1,7 +1,10 @@
 import { prisma } from './db';
 
-export async function getHomePage({ take = 100, skip = 0 }) {
+export async function getLatestArrivals({ take = 100, skip = 0 }) {
   return await prisma.product.findMany({
+    orderBy: {
+      createdAt: 'desc',
+    },
     skip: skip,
     take: take,
   });
