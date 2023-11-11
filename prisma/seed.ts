@@ -118,9 +118,9 @@ async function main() {
       products: {
         create: [
           {
-            name: '',
-            slug: '',
-            description: '',
+            name: 'Hoodie',
+            slug: 'hoodie',
+            description: 'Embroidered logo hoodie.',
             price: 140,
             images: [
               'https://utfs.io/f/f8e6ff9e-9cb9-4754-b7b6-bd352499d57e-y44oz3.jpeg',
