@@ -183,6 +183,20 @@ async function main() {
                   altText: 'An image of a white tee shirt.',
                   isFeatured: false,
                 },
+                {
+                  name: 'Tie-Dye Caps',
+                  value: 'tie-dye-caps',
+                  image: 'https://utfs.io/f/f78d04b9-0869-48bb-b9e8-874fb6f873b7-pruti1.jpeg',
+                  altText: 'An image of a tie dye tee shirt with a capital case logo.',
+                  isFeatured: false,
+                },
+                {
+                  name: 'Tie-Dye',
+                  value: 'tie-dye',
+                  image: 'https://utfs.io/f/61f3664a-6b8d-42c7-afb0-0723f1e3b448-pruti0.jpeg',
+                  altText: 'An image of a tie dye tee shirt.',
+                  isFeatured: false,
+                },
               ],
             },
             sizes: {
@@ -211,6 +225,7 @@ async function main() {
     },
   });
 
+  // Headwear
   await prisma.category.create({
     data: {
       name: 'Headwear',
