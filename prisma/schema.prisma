@@ -44,18 +44,16 @@ model Product {
 
 model Variant {
   id          String   @id @default(uuid())
-  slug        String
-  image       String   @unique
   color       String
+  slug        String
   size        String
   altText     String
-  isFeatured  Boolean  @default(false)
+  image       String   @unique
   inventory   Int
+  isFeatured  Boolean  @default(false)
   description String
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
   Product     Product  @relation(fields: [productId], references: [id])
   productId   String
-
-  @@unique([productId, color, size, slug])
 }
