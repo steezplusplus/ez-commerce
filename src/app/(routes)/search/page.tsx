@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { Grid, GridItem } from 'components/ui/grid';
 import { Price } from 'components/ui/price';
 import { getSearchPage } from 'lib/api';
 import { sorting } from 'lib/constants';
@@ -24,11 +23,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
 
   if (products.length === 0) {
     if (searchValue) {
-      return (
-        <p>
-          There are no listings for your search {searchValue && <b>&quot;{searchValue}&quot;</b>}.
-        </p>
-      );
+      return <p>There are no listings for your search {searchValue && <b>&quot;{searchValue}&quot;</b>}.</p>;
     }
     return <p>There are no products in this store.</p>;
   }
@@ -38,28 +33,28 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
     <>
       {searchValue && (
         <p className="mb-3">
-          Showing {products.length} {products.length > 1 ? 'results' : 'result'} for{' '}
-          <b>&quot;{searchValue}&quot;</b>.
+          Showing {products.length} {products.length > 1 ? 'results' : 'result'} for <b>&quot;{searchValue}&quot;</b>.
         </p>
       )}
-      <Grid className="sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+      <ul className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {products.map((product) => {
           return (
-            <GridItem key={product.id}>
-              <Link href={`/product/${product.slug}`}>
+            <li key={product.id} className="relative aspect-square">
+              <Link href={`/product/${product.slug}`} className="h-full w-full">
                 <Image
-                  width="64"
-                  height="64"
-                  alt={product.colors[0]?.altText || ''}
-                  src={product.colors[0]?.image || ''}
+                  fill
+                  alt={product.altText}
+                  src={product.image}
+                  className="aspect-square rounded-md object-cover"
+                  sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw"
                 />
               </Link>
               <h2>{product.name}</h2>
               <Price amount={String(product.price)} />
-            </GridItem>
+            </li>
           );
         })}
-      </Grid>
+      </ul>
     </>
   );
 }

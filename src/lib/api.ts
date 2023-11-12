@@ -9,7 +9,7 @@ export async function getAllCategory() {
 }
 
 export async function getSearchPage(props: { name?: string; order?: 'asc' | 'desc' }) {
-  return await prisma.product.findMany({
+  const products = await prisma.product.findMany({
     where: {
       name: {
         contains: props.name,
@@ -21,18 +21,25 @@ export async function getSearchPage(props: { name?: string; order?: 'asc' | 'des
     },
     include: {
       colors: true,
-      sizes: true,
     },
+  });
+  return products.map((product) => {
+    return {
+      id: product.id,
+      name: product.name,
+      slug: product.slug,
+      price: product.price,
+      image: product.colors[0]?.image as string,
+      altText: product.colors[0]?.altText as string,
+    };
   });
 }
 
-// TODO Why search where name instead of slug?
 export async function getCategoryPage(props: { name: string; order?: 'asc' | 'desc' }) {
-  return await prisma.category.findFirstOrThrow({
+  const category = await prisma.category.findFirstOrThrow({
     where: {
-      name: {
-        contains: props.name,
-        mode: 'insensitive',
+      slug: {
+        equals: props.name,
       },
     },
     include: {
@@ -45,6 +52,17 @@ export async function getCategoryPage(props: { name: string; order?: 'asc' | 'de
         },
       },
     },
+  });
+
+  return category.products.map((product) => {
+    return {
+      id: product.id,
+      name: product.name,
+      slug: product.slug,
+      price: product.price,
+      image: product.colors[0]?.image as string,
+      altText: product.colors[0]?.image as string,
+    };
   });
 }
 
