@@ -57,75 +57,76 @@ async function main() {
     },
   });
 
-  // await prisma.category.create({
-  //   data: {
-  //     name: 'Tops',
-  //     slug: 'tops',
-  //     storeId: store.id,
-  //     products: {
-  //       create: [
-  //         {
-  //           name: 'Hoodie',
-  //           slug: 'hoodie',
-  //           price: 100,
-  //           variants: {
-  //             create: [
-  //               {
-  //                 color: 'Pink',
-  //                 slug: 'pink',
-  //                 size: '',
-  //                 image: 'https://utfs.io/f/f8e6ff9e-9cb9-4754-b7b6-bd352499d57e-y44oz3.jpeg',
-  //                 altText: 'An image of a pink hoodie.',
-  //                 description: '',
-  //                 isFeatured: false,
-  //                 inventory: 10000,
-  //               },
-  //               {
-  //                 color: 'Yellow',
-  //                 slug: 'yellow',
-  //                 size: '',
-  //                 image: 'https://utfs.io/f/f7013618-df2a-4877-b8e3-8eb04fc57a0b-go3rn5.jpeg',
-  //                 altText: 'An image of a yellow hoodie.',
-  //                 description: '',
-  //                 isFeatured: false,
-  //                 inventory: 10000,
-  //               },
-  //             ],
-  //           },
-  //         },
-  //         {
-  //           name: 'T-shirt',
-  //           slug: 't-shirt',
-  //           price: 75,
-  //           variants: {
-  //             create: [
-  //               {
-  //                 color: 'Black',
-  //                 slug: 'black',
-  //                 size: '',
-  //                 image: 'https://utfs.io/f/658ecb31-81fd-452d-b1df-cacd610314d9-m0j2va.jpeg',
-  //                 altText: 'An image of a white tee shirt.',
-  //                 description: '',
-  //                 isFeatured: false,
-  //                 inventory: 10000,
-  //               },
-  //               {
-  //                 color: 'White',
-  //                 slug: 'white',
-  //                 size: '',
-  //                 image: 'https://utfs.io/f/0b4b9e41-2cae-435c-9aab-b6718f1b0345-rdrr80.jpeg',
-  //                 altText: 'An image of a white tee shirt.',
-  //                 description: '',
-  //                 isFeatured: false,
-  //                 inventory: 10000,
-  //               },
-  //             ],
-  //           },
-  //         },
-  //       ],
-  //     },
-  //   },
-  // });
+  // Tops
+  await prisma.category.create({
+    data: {
+      name: 'Tops',
+      slug: 'tops',
+      storeId: store.id,
+      products: {
+        create: [
+          {
+            name: 'Hoodie',
+            slug: 'hoodie',
+            price: 100,
+            variants: {
+              create: [
+                {
+                  color: 'Pink',
+                  slug: 'pink',
+                  size: '',
+                  image: 'https://utfs.io/f/f8e6ff9e-9cb9-4754-b7b6-bd352499d57e-y44oz3.jpeg',
+                  altText: 'An image of a pink hoodie.',
+                  description: '',
+                  isFeatured: false,
+                  inventory: 10000,
+                },
+                {
+                  color: 'Yellow',
+                  slug: 'yellow',
+                  size: '',
+                  image: 'https://utfs.io/f/f7013618-df2a-4877-b8e3-8eb04fc57a0b-go3rn5.jpeg',
+                  altText: 'An image of a yellow hoodie.',
+                  description: '',
+                  isFeatured: false,
+                  inventory: 10000,
+                },
+              ],
+            },
+          },
+          {
+            name: 'T-shirt',
+            slug: 't-shirt',
+            price: 75,
+            variants: {
+              create: [
+                {
+                  color: 'Black',
+                  slug: 'black',
+                  size: '',
+                  image: 'https://utfs.io/f/658ecb31-81fd-452d-b1df-cacd610314d9-m0j2va.jpeg',
+                  altText: 'An image of a white tee shirt.',
+                  description: '',
+                  isFeatured: false,
+                  inventory: 10000,
+                },
+                {
+                  color: 'White',
+                  slug: 'white',
+                  size: '',
+                  image: 'https://utfs.io/f/0b4b9e41-2cae-435c-9aab-b6718f1b0345-rdrr80.jpeg',
+                  altText: 'An image of a white tee shirt.',
+                  description: '',
+                  isFeatured: false,
+                  inventory: 10000,
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  });
 }
 
 main()
