@@ -210,6 +210,73 @@ async function main() {
       },
     },
   });
+
+  await prisma.category.create({
+    data: {
+      name: 'Headwear',
+      slug: 'headwear',
+      storeId: store.id,
+      products: {
+        create: [
+          {
+            name: 'Baseball Hat',
+            slug: 'baseball-hat',
+            price: 50,
+            description: '',
+            colors: {
+              create: [
+                {
+                  name: 'Green',
+                  value: 'green',
+                  image: 'https://utfs.io/f/d3dc985d-6118-4cf1-898e-b560f0360e6e-y5x62w.jpeg',
+                  altText: 'An image of a green hat.',
+                  isFeatured: false,
+                },
+                {
+                  name: 'Black',
+                  value: 'black',
+                  image: 'https://utfs.io/f/2a0e339b-265e-4519-b100-2c2d8bf05be7-m0iq6c.jpeg',
+                  altText: 'An image of a black hat.',
+                  isFeatured: false,
+                },
+                {
+                  name: 'White',
+                  value: 'white',
+                  image: 'https://utfs.io/f/831b3317-d7d3-46c2-8655-08e2781af040-rds3wy.jpeg',
+                  altText: 'An image of a white hat.',
+                  isFeatured: false,
+                },
+              ],
+            },
+          },
+          {
+            name: 'Beanie',
+            slug: 'beanie',
+            price: 75,
+            description: '',
+            colors: {
+              create: [
+                {
+                  name: 'Black',
+                  value: 'black',
+                  image: 'https://utfs.io/f/c4be5481-1c42-4661-906f-b436152f9e92-3p70be.jpeg',
+                  altText: 'An image of a black beanie hat.',
+                  isFeatured: false,
+                },
+                {
+                  name: 'Green',
+                  value: 'green',
+                  image: 'https://utfs.io/f/0daf3012-0965-4054-af61-9fd06fbd1715-86tc8a.jpeg',
+                  altText: 'An image of a green beanie hat.',
+                  isFeatured: false,
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  });
 }
 
 main()

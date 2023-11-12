@@ -51,8 +51,8 @@ export async function getCategoryPage(props: { name: string; order?: 'asc' | 'de
 export async function getProductPage(props: { name: string }) {
   return await prisma.product.findFirstOrThrow({
     where: {
-      name: {
-        contains: props.name,
+      slug: {
+        equals: props.name,
         mode: 'insensitive',
       },
     },
