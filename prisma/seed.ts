@@ -2,7 +2,8 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 async function main() {
-  await prisma.variant.deleteMany();
+  await prisma.size.deleteMany();
+  await prisma.color.deleteMany();
   await prisma.product.deleteMany();
   await prisma.category.deleteMany();
   await prisma.store.deleteMany();
@@ -27,25 +28,29 @@ async function main() {
             price: 50,
             description:
               'An exquisite blend of style and functionality designed to elevate your sipping experience.',
-            variants: {
+            colors: {
               create: [
                 {
-                  color: 'White',
-                  slug: 'white',
-                  size: '16 oz',
+                  name: 'White',
+                  value: 'white',
                   image: 'https://utfs.io/f/d23f59b0-1296-4ee3-b619-d972500ad60c-rdrw11.jpeg',
                   altText: 'An image of a 16 oz white mug.',
                   isFeatured: false,
-                  inventory: 10000,
                 },
                 {
-                  color: 'Black',
-                  slug: 'black',
-                  size: '16 oz',
+                  name: 'Black',
+                  value: 'black',
                   image: 'https://utfs.io/f/a5c84a2e-ebda-4d70-be34-a476c7a50197-m0iy29.jpeg',
                   altText: 'An image of a 16 oz black mug.',
                   isFeatured: false,
-                  inventory: 10000,
+                },
+              ],
+            },
+            sizes: {
+              create: [
+                {
+                  name: '16 oz.',
+                  value: '16-oz',
                 },
               ],
             },
@@ -69,25 +74,41 @@ async function main() {
             price: 100,
             description:
               'A fusion of coziness and style designed to be your ultime go-to piece in the fall season.',
-            variants: {
+            colors: {
               create: [
                 {
-                  color: 'Pink',
-                  slug: 'pink',
-                  size: '',
+                  name: 'Pink',
+                  value: 'pink',
                   image: 'https://utfs.io/f/f8e6ff9e-9cb9-4754-b7b6-bd352499d57e-y44oz3.jpeg',
                   altText: 'An image of a pink hoodie.',
                   isFeatured: false,
-                  inventory: 10000,
                 },
                 {
-                  color: 'Yellow',
-                  slug: 'yellow',
-                  size: '',
+                  name: 'Yellow',
+                  value: 'yellow',
                   image: 'https://utfs.io/f/f7013618-df2a-4877-b8e3-8eb04fc57a0b-go3rn5.jpeg',
                   altText: 'An image of a yellow hoodie.',
                   isFeatured: false,
-                  inventory: 10000,
+                },
+              ],
+            },
+            sizes: {
+              create: [
+                {
+                  name: 'Small',
+                  value: 'small',
+                },
+                {
+                  name: 'Medium',
+                  value: 'medium',
+                },
+                {
+                  name: 'Large',
+                  value: 'large',
+                },
+                {
+                  name: 'X-Large',
+                  value: 'x-large',
                 },
               ],
             },
@@ -97,25 +118,41 @@ async function main() {
             slug: 't-shirt',
             price: 75,
             description: 'A classic, versatile style that will effortlessly complement any outfit.',
-            variants: {
+            colors: {
               create: [
                 {
-                  color: 'Black',
-                  slug: 'black',
-                  size: '',
+                  name: 'Black',
+                  value: 'black',
                   image: 'https://utfs.io/f/658ecb31-81fd-452d-b1df-cacd610314d9-m0j2va.jpeg',
                   altText: 'An image of a white tee shirt.',
                   isFeatured: false,
-                  inventory: 10000,
                 },
                 {
-                  color: 'White',
-                  slug: 'white',
-                  size: '',
+                  name: 'White',
+                  value: 'white',
                   image: 'https://utfs.io/f/0b4b9e41-2cae-435c-9aab-b6718f1b0345-rdrr80.jpeg',
                   altText: 'An image of a white tee shirt.',
                   isFeatured: false,
-                  inventory: 10000,
+                },
+              ],
+            },
+            sizes: {
+              create: [
+                {
+                  name: 'Small',
+                  value: 'small',
+                },
+                {
+                  name: 'Medium',
+                  value: 'medium',
+                },
+                {
+                  name: 'Large',
+                  value: 'large',
+                },
+                {
+                  name: 'X-Large',
+                  value: 'x-large',
                 },
               ],
             },

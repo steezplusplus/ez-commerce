@@ -50,8 +50,8 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
                 <Image
                   width="64"
                   height="64"
-                  alt={product.variants[0]?.altText || ''}
-                  src={product.variants[0]?.image || ''}
+                  alt={product.colors[0]?.altText || ''}
+                  src={product.colors[0]?.image || ''}
                 />
               </Link>
               <h2>{product.name}</h2>

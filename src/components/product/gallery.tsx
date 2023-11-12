@@ -1,7 +1,11 @@
 import Image from 'next/image';
 
 type GalleryProps = {
-  images: string[];
+  images: {
+    id: string;
+    src: string;
+    alt: string;
+  }[];
 };
 
 // TODO Alt text
@@ -21,12 +25,12 @@ export function Gallery(props: GalleryProps) {
       {images.map((image) => {
         return (
           <div
-            key={image}
+            key={image.id}
             className="relative aspect-square h-full max-h-[550px] w-full overflow-hidden"
           >
             <Image
-              src={image}
-              alt="TODO"
+              src={image.src}
+              alt={image.alt}
               fill
               className="h-full w-full object-contain"
               sizes="(min-width: 1024px) 66vw, 100vw"

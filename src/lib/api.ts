@@ -20,11 +20,13 @@ export async function getSearchPage(props: { name?: string; order?: 'asc' | 'des
       price: props.order,
     },
     include: {
-      variants: true,
+      colors: true,
+      sizes: true,
     },
   });
 }
 
+// TODO Why search where name instead of slug?
 export async function getCategoryPage(props: { name: string; order?: 'asc' | 'desc' }) {
   return await prisma.category.findFirstOrThrow({
     where: {
@@ -39,7 +41,7 @@ export async function getCategoryPage(props: { name: string; order?: 'asc' | 'de
           price: props.order,
         },
         include: {
-          variants: true,
+          colors: true,
         },
       },
     },
@@ -55,7 +57,8 @@ export async function getProductPage(props: { name: string }) {
       },
     },
     include: {
-      variants: true,
+      colors: true,
+      sizes: true,
     },
   });
 }

@@ -31,29 +31,40 @@ model Category {
 }
 
 model Product {
-  id          String    @id @default(uuid())
-  name        String    @unique
-  slug        String    @unique
+  id          String   @id @default(uuid())
+  name        String   @unique
+  slug        String   @unique
   description String
   price       Float
   categoryId  String
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @updatedAt
-  Category    Category  @relation(fields: [categoryId], references: [id])
-  variants    Variant[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  Category    Category @relation(fields: [categoryId], references: [id])
+  colors      Color[]
+  sizes       Size[]
 }
 
-model Variant {
+model Color {
   id         String   @id @default(uuid())
-  color      String
-  slug       String
-  size       String
+  name       String
+  value      String
   altText    String
   image      String   @unique
-  inventory  Int
   isFeatured Boolean  @default(false)
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
   Product    Product  @relation(fields: [productId], references: [id])
   productId  String
 }
+
+model Size {
+  id        String   @id @default(uuid())
+  name      String
+  value     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  Product   Product  @relation(fields: [productId], references: [id])
+  productId String
+}
+
+// TODO model Inventory {}
