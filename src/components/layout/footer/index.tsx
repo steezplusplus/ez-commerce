@@ -1,12 +1,12 @@
 import Link from 'next/link';
 
 import { CircleLogo } from 'components/ui/circle-logo';
-import { getCategories, getStore } from 'lib/api';
+import { getAllCategory, getStore } from 'lib/api';
 import { ThemeSelect } from './theme-select';
 
 export async function Footer() {
   const store = await getStore();
-  const categories = await getCategories({});
+  const categories = await getAllCategory();
 
   return (
     <footer className="text-sm">

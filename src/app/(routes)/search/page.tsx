@@ -1,4 +1,4 @@
-import { Grid, ProductCell } from 'components/ui/grid';
+import { Price } from 'components/ui/price';
 import { getSearchPage } from 'lib/api';
 import { sorting } from 'lib/constants';
 
@@ -16,7 +16,7 @@ type SearchPageProps = {
 export default async function SearchPage({ searchParams }: SearchPageProps) {
   const { q: searchValue, sort } = searchParams as { [key: string]: string };
   const sortKey = sorting.find((item) => item.slug === sort);
-  const products = await getSearchPage({ searchValue: searchValue, order: sortKey?.order });
+  const products = await getSearchPage({ name: searchValue, order: sortKey?.order });
 
   if (products.length === 0) {
     if (searchValue) {
@@ -37,9 +37,14 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
           <b>&quot;{searchValue}&quot;</b>.
         </p>
       )}
-      <Grid className="grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-        <ProductCell products={products} />
-      </Grid>
+      {products.map((product) => {
+        return (
+          <div key={product.id}>
+            <h2>{product.name}</h2>
+            <Price amount={String(product.price)} />
+          </div>
+        );
+      })}
     </>
   );
 }

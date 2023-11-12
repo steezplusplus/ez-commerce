@@ -1,4 +1,4 @@
-import { Grid, ProductCell } from 'components/ui/grid';
+import { Price } from 'components/ui/price';
 import { getCategoryPage } from 'lib/api';
 import { sorting } from 'lib/constants';
 
@@ -18,18 +18,22 @@ export default async function CategoryPage(props: CategoryPageProps) {
   const { sort } = searchParams as { [key: string]: string };
   const sortKey = sorting.find((item) => item.slug === sort);
 
-  const category = await getCategoryPage({
-    name: params.category,
-    order: sortKey?.order,
-  });
+  const category = await getCategoryPage({ name: params.category });
 
   if (category.products.length === 0) {
     return <p>No products found in this category.</p>;
   }
 
   return (
-    <Grid className="grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-      <ProductCell products={category.products} />
-    </Grid>
+    <>
+      {category.products.map((product) => {
+        return (
+          <div key={product.id}>
+            <h2>{product.name}</h2>
+            <Price amount={String(product.price)} />
+          </div>
+        );
+      })}
+    </>
   );
 }

@@ -1,50 +1,34 @@
 import { prisma } from './db';
 
-export async function getLatestArrivals({ take = 100, skip = 0 }) {
-  return await prisma.product.findMany({
-    orderBy: {
-      createdAt: 'desc',
-    },
-    skip: skip,
-    take: take,
-  });
+export async function getStore() {
+  return await prisma.store.findFirstOrThrow();
 }
 
-type GetSearchPageParams = {
-  searchValue?: string;
-  order?: 'asc' | 'desc';
-  take?: number;
-  skip?: number;
-};
+export async function getAllCategory() {
+  return await prisma.category.findMany();
+}
 
-export async function getSearchPage(props: GetSearchPageParams) {
+// TODO order by
+export async function getSearchPage(props: { name?: string; order?: 'asc' | 'desc' }) {
   return await prisma.product.findMany({
     where: {
       name: {
-        contains: props.searchValue,
+        contains: props.name,
         mode: 'insensitive',
       },
     },
     orderBy: {
       price: props.order,
     },
-    skip: props.skip,
-    take: props.take,
   });
 }
 
-type GetCategoryPageProps = {
-  name: string;
-  order?: 'asc' | 'desc';
-  take?: number;
-  skip?: number;
-};
-
-export async function getCategoryPage(props: GetCategoryPageProps) {
+// TODO order by
+export async function getCategoryPage(props: { name?: string; order?: 'asc' | 'desc' }) {
   return await prisma.category.findFirstOrThrow({
     where: {
       name: {
-        equals: props.name,
+        contains: props.name,
         mode: 'insensitive',
       },
     },
@@ -54,30 +38,6 @@ export async function getCategoryPage(props: GetCategoryPageProps) {
           price: props.order,
         },
       },
-    },
-    skip: props.skip,
-    take: props.take,
-  });
-}
-
-export async function getCategories({ take = 100, skip = 0 }) {
-  return await prisma.category.findMany({
-    skip: skip,
-    take: take,
-  });
-}
-
-export async function getStore() {
-  return await prisma.store.findFirstOrThrow();
-}
-
-type GetProductProps = {
-  slug: string;
-};
-export async function getProduct(props: GetProductProps) {
-  return await prisma.product.findFirstOrThrow({
-    where: {
-      slug: props.slug,
     },
   });
 }

@@ -1,19 +1,18 @@
 import { Suspense } from 'react';
 
 import { Footer } from 'components/layout/footer';
-import { Carousel } from 'components/ui/carousel';
 import { Container } from 'components/ui/container';
 import { Marquee } from 'components/ui/marquee';
-import { getLatestArrivals } from 'lib/api';
+// import { getLatestArrivals } from 'lib/api';
 
 export default async function Home() {
-  const latestProducts = await getLatestArrivals({ take: 5 });
+  // const latestProducts = await getLatestArrivals({ take: 5 });
 
   return (
     <>
       <Container>
         <h2 className="my-2 pl-2 text-xl">Latest Arrivals</h2>
-        <Carousel products={latestProducts} />
+        {/* <Carousel products={latestProducts} /> */}
         <div className="flex flex-col items-center justify-center">
           <h2 className="my-2 pl-2 text-xl">More to Explore</h2>
           <div className="grid grid-cols-3 gap-x-2">
