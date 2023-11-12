@@ -1,4 +1,3 @@
-// import Image from 'next/image';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -15,7 +14,6 @@ type CarouselProps = {
   }[];
 };
 
-// TODO Should link to the product page with the color already selected
 export function Carousel(props: CarouselProps) {
   const { items } = props;
 
@@ -25,7 +23,10 @@ export function Carousel(props: CarouselProps) {
         {items.map((item) => {
           return (
             <li className="relative aspect-square w-1/5 flex-none snap-center md:w-1/4" key={item.id}>
-              <Link href={`/product/${item.productSlug}`} className="relative inline-block h-full w-full">
+              <Link
+                href={`/product/${item.productSlug}?color=${item.value}`}
+                className="relative inline-block h-full w-full"
+              >
                 <Image
                   fill
                   sizes="(min-width: 1024px) 25vw, (min-width: 768px) 20vw"
