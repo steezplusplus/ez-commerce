@@ -21,7 +21,7 @@ export function Carousel(props: CarouselProps) {
 
   return (
     <div className="w-full overflow-x-auto">
-      <ul className="flex gap-4">
+      <ul className="flex h-full gap-4">
         {items.map((item) => {
           return (
             <li
