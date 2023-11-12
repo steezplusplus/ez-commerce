@@ -6,6 +6,7 @@ import { Container } from 'components/ui/container';
 import { Price } from 'components/ui/price';
 import { getProductPage } from 'lib/api';
 
+// TODO Gallery, forms, inventory
 export default async function ProductPage({ params }: { params: { product: string } }) {
   const product = await getProductPage({ name: params.product });
 
@@ -25,7 +26,7 @@ export default async function ProductPage({ params }: { params: { product: strin
             {/* <ProductForm sizes={product.sizes} colors={product.colors} /> */}
             <AddToCart product={product} />
             <p className="my-6 text-sm leading-tight dark:text-white/[60%]">
-              {product.variants[0]?.description}
+              {product.description}
             </p>
           </div>
         </div>

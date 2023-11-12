@@ -31,29 +31,29 @@ model Category {
 }
 
 model Product {
-  id         String    @id @default(uuid())
-  name       String    @unique
-  slug       String    @unique
-  price      Float
-  categoryId String
-  createdAt  DateTime  @default(now())
-  updatedAt  DateTime  @updatedAt
-  Category   Category  @relation(fields: [categoryId], references: [id])
-  variants   Variant[]
+  id          String    @id @default(uuid())
+  name        String    @unique
+  slug        String    @unique
+  description String
+  price       Float
+  categoryId  String
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  Category    Category  @relation(fields: [categoryId], references: [id])
+  variants    Variant[]
 }
 
 model Variant {
-  id          String   @id @default(uuid())
-  color       String
-  slug        String
-  size        String
-  altText     String
-  image       String   @unique
-  inventory   Int
-  isFeatured  Boolean  @default(false)
-  description String
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-  Product     Product  @relation(fields: [productId], references: [id])
-  productId   String
+  id         String   @id @default(uuid())
+  color      String
+  slug       String
+  size       String
+  altText    String
+  image      String   @unique
+  inventory  Int
+  isFeatured Boolean  @default(false)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  Product    Product  @relation(fields: [productId], references: [id])
+  productId  String
 }
