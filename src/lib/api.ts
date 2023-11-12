@@ -19,6 +19,9 @@ export async function getSearchPage(props: { name?: string; order?: 'asc' | 'des
     orderBy: {
       price: props.order,
     },
+    include: {
+      variants: true,
+    },
   });
 }
 
@@ -35,7 +38,24 @@ export async function getCategoryPage(props: { name: string; order?: 'asc' | 'de
         orderBy: {
           price: props.order,
         },
+        include: {
+          variants: true,
+        },
       },
+    },
+  });
+}
+
+export async function getProductPage(props: { name: string }) {
+  return await prisma.product.findFirstOrThrow({
+    where: {
+      name: {
+        contains: props.name,
+        mode: 'insensitive',
+      },
+    },
+    include: {
+      variants: true,
     },
   });
 }

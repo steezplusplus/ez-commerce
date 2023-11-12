@@ -1,3 +1,7 @@
+import Image from 'next/image';
+import Link from 'next/link';
+
+import { Grid, GridItem } from 'components/ui/grid';
 import { Price } from 'components/ui/price';
 import { getSearchPage } from 'lib/api';
 import { sorting } from 'lib/constants';
@@ -29,6 +33,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
     return <p>There are no products in this store.</p>;
   }
 
+  // TODO duplicate grid with category page
   return (
     <>
       {searchValue && (
@@ -37,14 +42,24 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
           <b>&quot;{searchValue}&quot;</b>.
         </p>
       )}
-      {products.map((product) => {
-        return (
-          <div key={product.id}>
-            <h2>{product.name}</h2>
-            <Price amount={String(product.price)} />
-          </div>
-        );
-      })}
+      <Grid className="sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+        {products.map((product) => {
+          return (
+            <GridItem key={product.id}>
+              <Link href={`/product/${product.slug}`}>
+                <Image
+                  width="64"
+                  height="64"
+                  alt={product.variants[0]?.altText || ''}
+                  src={product.variants[0]?.image || ''}
+                />
+              </Link>
+              <h2>{product.name}</h2>
+              <Price amount={String(product.price)} />
+            </GridItem>
+          );
+        })}
+      </Grid>
     </>
   );
 }
