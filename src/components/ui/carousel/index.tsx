@@ -21,18 +21,15 @@ export function Carousel(props: CarouselProps) {
 
   return (
     <div className="w-full overflow-x-auto">
-      <ul className="flex h-full gap-4">
+      <ul className="flex h-full gap-4 pl-2">
         {items.map((item) => {
           return (
-            <li
-              className="relative aspect-square w-1/5 flex-none snap-center first:pl-2 last:pr-2 md:w-1/4"
-              key={item.id}
-            >
-              <Link href={`/product/${item.productSlug}`} className="group relative inline-block h-full w-full">
+            <li className="relative aspect-square w-1/5 flex-none snap-center md:w-1/4" key={item.id}>
+              <Link href={`/product/${item.productSlug}`} className="relative inline-block h-full w-full">
                 <Image
                   fill
                   sizes="(min-width: 1024px) 25vw, (min-width: 768px) 20vw"
-                  className="relative h-full w-full object-contain transition duration-300 ease-in-out group-hover:scale-105"
+                  className="relative h-full w-full object-contain"
                   src={item.image}
                   alt={item.altText}
                 />
