@@ -26,8 +26,7 @@ async function main() {
             name: 'Mug',
             slug: 'mug',
             price: 50,
-            description:
-              'An exquisite blend of style and functionality designed to elevate your sipping experience.',
+            description: 'An exquisite blend of style and functionality designed to elevate your sipping experience.',
             colors: {
               create: [
                 {
@@ -42,7 +41,7 @@ async function main() {
                   value: 'black',
                   image: 'https://utfs.io/f/a5c84a2e-ebda-4d70-be34-a476c7a50197-m0iy29.jpeg',
                   altText: 'An image of a 16 oz black mug.',
-                  isFeatured: false,
+                  isFeatured: true,
                 },
               ],
             },
@@ -72,8 +71,7 @@ async function main() {
             name: 'Hoodie',
             slug: 'hoodie',
             price: 100,
-            description:
-              'A fusion of coziness and style designed to be your ultime go-to piece in the fall season.',
+            description: 'A fusion of coziness and style designed to be your ultime go-to piece in the fall season.',
             colors: {
               create: [
                 {
@@ -95,7 +93,7 @@ async function main() {
                   value: 'tie-dye',
                   image: 'https://utfs.io/f/56984cd7-cf23-4f2a-8a9a-e4c2c6af24d2-855r3i.jpeg',
                   altText: 'An image of a tie dye hoodie.',
-                  isFeatured: false,
+                  isFeatured: true,
                 },
                 {
                   name: 'Silver',
@@ -195,7 +193,7 @@ async function main() {
                   value: 'tie-dye',
                   image: 'https://utfs.io/f/61f3664a-6b8d-42c7-afb0-0723f1e3b448-pruti0.jpeg',
                   altText: 'An image of a tie dye tee shirt.',
-                  isFeatured: false,
+                  isFeatured: true,
                 },
               ],
             },
@@ -245,7 +243,7 @@ async function main() {
                   value: 'green',
                   image: 'https://utfs.io/f/d3dc985d-6118-4cf1-898e-b560f0360e6e-y5x62w.jpeg',
                   altText: 'An image of a green hat.',
-                  isFeatured: false,
+                  isFeatured: true,
                 },
                 {
                   name: 'Black',
@@ -276,7 +274,7 @@ async function main() {
                   value: 'black',
                   image: 'https://utfs.io/f/c4be5481-1c42-4661-906f-b436152f9e92-3p70be.jpeg',
                   altText: 'An image of a black beanie hat.',
-                  isFeatured: false,
+                  isFeatured: true,
                 },
                 {
                   name: 'Green',
