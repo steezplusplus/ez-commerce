@@ -68,3 +68,4 @@ model Size {
 }
 
 // TODO model Inventory {}
+// TODO Is capital P for column names correct?
