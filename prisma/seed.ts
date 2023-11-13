@@ -290,6 +290,43 @@ async function main() {
       },
     },
   });
+
+  // Gifts
+  await prisma.category.create({
+    data: {
+      name: 'Gifts',
+      slug: 'gifts',
+      storeId: store.id,
+      products: {
+        create: [
+          {
+            name: 'Gift Card',
+            slug: 'gift-card',
+            price: 100,
+            description: '',
+            colors: {
+              create: [
+                {
+                  name: 'White',
+                  value: 'white',
+                  image: 'https://utfs.io/f/de385958-21e6-41d9-ac60-198eac0fc443-p1zymv.jpeg',
+                  altText: 'An image of a white gift card.',
+                  isFeatured: false,
+                },
+                {
+                  name: 'Yellow',
+                  value: 'yellow',
+                  image: 'https://utfs.io/f/f7960823-4972-4d48-8e3e-37a3979bdb26-t6jki4.jpeg',
+                  altText: 'An image of a white gift card.',
+                  isFeatured: false,
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  });
 }
 
 main()
