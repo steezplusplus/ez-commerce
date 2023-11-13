@@ -11,7 +11,7 @@ type Item = {
 export interface CartStore {
   items: Item[];
   addItem: (item: Item) => void;
-  removeItem: (item: Item) => void;
+  removeItem: (id: string) => void;
   removeAll: () => void;
 }
 
@@ -30,8 +30,8 @@ export const useCart = create(
         set({ items: [...get().items, item] });
         toast.success('Added to cart.');
       },
-      removeItem: (item: Item) => {
-        set({ items: [...get().items.filter((currentItem) => currentItem.id !== item.id)] });
+      removeItem: (id: string) => {
+        set({ items: [...get().items.filter((currentItem) => currentItem.id !== id)] });
         toast.success('Removed from your cart.');
       },
       removeAll: () => set({ items: [] }),

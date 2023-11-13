@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 
+import { RemoveFromCart } from 'components/checkout/remove-from-cart';
 import { Modal } from 'components/ui/modal';
 import { useCart } from 'hooks/use-cart';
 import { ShoppingBag, ShoppingCart } from 'lucide-react';
@@ -45,13 +46,17 @@ export function CartModal() {
         <ShoppingBag size="18" />
         <span className="ml-2 text-sm font-medium dark:text-white">{cart.items.length}</span>
       </button>
-      <Modal
-        modalDialogRef={modaDialogRef}
-        labelId={labelId}
-        descriptionId={descriptionId}
-        title="Cart"
-      >
-        <p>Grid TODO</p>
+      <Modal modalDialogRef={modaDialogRef} labelId={labelId} descriptionId={descriptionId} title="Cart">
+        {cart.items.map((item) => {
+          return (
+            <div key={item.id} className="border">
+              <p>{item.id}</p>
+              <p>{item.color}</p>
+              <p>{item.size}</p>
+              <RemoveFromCart productId={item.id} />
+            </div>
+          );
+        })}
         <Link
           href="/checkout"
           className="mt-4 flex w-full items-center justify-center rounded-md border border-neutral-200 px-2 py-1 dark:border-neutral-800"
