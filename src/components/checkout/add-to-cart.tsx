@@ -27,7 +27,8 @@ export function AddToCart(props: AddToCartProps) {
       return toast.error('Please select a size');
     }
 
-    cart.addItem({ id: productId, color, size });
+    return toast.success('Placeholder add to cart.');
+    // TODO Check inventory! Make inventory model. If item with productId, colorId, sizeId has inventory, add to cart.
   };
 
   return (

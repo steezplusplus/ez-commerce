@@ -49,11 +49,11 @@ export function CartModal() {
       <Modal modalDialogRef={modaDialogRef} labelId={labelId} descriptionId={descriptionId} title="Cart">
         {cart.items.map((item) => {
           return (
-            <div key={item.id} className="border">
-              <p>{item.id}</p>
-              <p>{item.color}</p>
-              <p>{item.size}</p>
-              <RemoveFromCart productId={item.id} />
+            <div key={item.productId} className="border">
+              <p>{item.productId}</p>
+              <p>{item.colorId}</p>
+              <p>{item.sizeId}</p>
+              <RemoveFromCart productId={item.productId} />
             </div>
           );
         })}
