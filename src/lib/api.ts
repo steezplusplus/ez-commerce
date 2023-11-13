@@ -67,7 +67,7 @@ export async function getCategoryPage(props: { name: string; order?: 'asc' | 'de
 }
 
 export async function getProductPage(props: { name: string }) {
-  return await prisma.product.findFirstOrThrow({
+  const product = await prisma.product.findFirstOrThrow({
     where: {
       slug: {
         equals: props.name,
@@ -79,6 +79,36 @@ export async function getProductPage(props: { name: string }) {
       sizes: true,
     },
   });
+
+  return {
+    id: product.id,
+    name: product.name,
+    description: product.description,
+    price: product.price,
+    images: product.colors.map((color) => {
+      return {
+        id: color.id,
+        src: color.image,
+        alt: color.altText,
+        name: color.name,
+        value: color.value,
+      };
+    }),
+    colors: product.colors.map((color) => {
+      return {
+        id: color.id,
+        name: color.name,
+        value: color.value,
+      };
+    }),
+    sizes: product.sizes.map((size) => {
+      return {
+        id: size.id,
+        name: size.name,
+        value: size.value,
+      };
+    }),
+  };
 }
 
 export async function getLatestArrivals(props: { take: number }) {

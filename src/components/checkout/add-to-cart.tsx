@@ -1,35 +1,33 @@
 'use client';
 
-import { Product } from '@prisma/client';
+import { useSearchParams } from 'next/navigation';
 import { toast } from 'react-hot-toast';
 
 import { useCart } from 'hooks/use-cart';
-import { useSearchParams } from 'next/navigation';
 
 type AddToCartProps = {
-  product: Product;
+  sizeRequired: boolean;
+  colorRequired: boolean;
+  productId: string;
 };
 
 export function AddToCart(props: AddToCartProps) {
-  const { product } = props;
+  const { sizeRequired, colorRequired, productId } = props;
+  const cart = useCart();
   const searchParams = useSearchParams();
   const size = searchParams.get('size');
   const color = searchParams.get('color');
 
-  const cart = useCart();
-
   const addToCart = () => {
-    if (product.sizes.length > 0 && size === null) {
+    if (colorRequired && !color) {
+      return toast.error('Please select a color');
+    }
+
+    if (sizeRequired && !size) {
       return toast.error('Please select a size');
     }
 
-    if (product.colors.length > 0 && color == null) {
-      if (color === null) {
-        return toast.error('Please select a color');
-      }
-    }
-
-    cart.addItem(product, color, size);
+    cart.addItem({ id: productId, color, size });
   };
 
   return (
