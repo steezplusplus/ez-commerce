@@ -327,6 +327,70 @@ async function main() {
       },
     },
   });
+
+  // Socks
+  await prisma.category.create({
+    data: {
+      name: 'Socks',
+      slug: 'socks',
+      storeId: store.id,
+      products: {
+        create: [
+          {
+            name: 'Socks',
+            slug: 'socks',
+            price: 30,
+            description: '',
+            colors: {
+              create: [
+                {
+                  name: 'White',
+                  value: 'white',
+                  image: 'https://utfs.io/f/101eaff9-17da-4963-8e62-ee1379c5c4c7-x6mr91.jpeg',
+                  altText: 'An image of white socks',
+                  isFeatured: false,
+                },
+                {
+                  name: 'Black',
+                  value: 'black',
+                  image: 'https://utfs.io/f/ac0edf5e-3a4f-4191-8d9c-8d165b410adb-b2m59b.jpeg',
+                  altText: 'An image of black socks',
+                  isFeatured: false,
+                },
+                {
+                  name: 'Gray',
+                  value: 'gray',
+                  image: 'https://utfs.io/f/ef6f9c41-9675-46df-acfe-2fc639aadab7-4uybp.jpeg',
+                  altText: 'An image of gray socks',
+                  isFeatured: false,
+                },
+              ],
+            },
+            sizes: {
+              create: [
+                {
+                  name: 'Small (5-7)',
+                  value: 'small',
+                },
+                {
+                  name: 'Medium (7-9)',
+                  value: 'medium',
+                },
+                {
+                  name: 'Large (9-12)',
+                  value: 'large',
+                },
+                {
+                  name: 'X-Large (12-15)',
+                  value: 'x-large',
+                },
+              ],
+            },
+          },
+        ],
+      },
+    },
+  });
 }
 
 main()
