@@ -31,40 +31,55 @@ model Category {
 }
 
 model Product {
-  id          String   @id @default(uuid())
-  name        String   @unique
-  slug        String   @unique
+  id          String      @id @default(uuid())
+  name        String      @unique
+  slug        String      @unique
   description String
   price       Float
   categoryId  String
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-  Category    Category @relation(fields: [categoryId], references: [id])
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  Category    Category    @relation(fields: [categoryId], references: [id])
   colors      Color[]
   sizes       Size[]
+  Inventory   Inventory[]
 }
 
 model Color {
-  id         String   @id @default(uuid())
+  id         String      @id @default(uuid())
   name       String
   value      String
   altText    String
-  image      String   @unique
-  isFeatured Boolean  @default(false)
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
-  Product    Product  @relation(fields: [productId], references: [id])
+  image      String      @unique
+  isFeatured Boolean     @default(false)
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
+  Product    Product     @relation(fields: [productId], references: [id])
   productId  String
+  Inventory  Inventory[]
 }
 
 model Size {
-  id        String   @id @default(uuid())
+  id        String      @id @default(uuid())
   name      String
   value     String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  Product   Product  @relation(fields: [productId], references: [id])
+  createdAt DateTime    @default(now())
+  updatedAt DateTime    @updatedAt
+  Product   Product     @relation(fields: [productId], references: [id])
   productId String
+  Inventory Inventory[]
 }
 
-// TODO model Inventory {}
+model Inventory {
+  id        String   @id @default(uuid())
+  sku       String
+  productId String
+  Product   Product  @relation(fields: [productId], references: [id])
+  colorId   String
+  Color     Color    @relation(fields: [colorId], references: [id])
+  sizeId    String
+  Size      Size     @relation(fields: [sizeId], references: [id])
+  inventory Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
