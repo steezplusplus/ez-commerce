@@ -12,10 +12,7 @@ export function Marquee(props: MarqueeProps) {
         })}
       </ul>
 
-      <ul
-        className="flex min-w-full shrink-0 animate-marquee justify-around gap-x-48"
-        aria-hidden="true"
-      >
+      <ul className="flex min-w-full shrink-0 animate-marquee justify-around gap-x-48" aria-hidden="true">
         {messages.map((message, i) => {
           return <li key={`${message}-${i}-aria-hidden`}>{message}</li>;
         })}

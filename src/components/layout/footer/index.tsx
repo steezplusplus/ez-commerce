@@ -25,10 +25,7 @@ export async function Footer() {
             </li>
             {categories.map((category) => {
               return (
-                <li
-                  className="font-light text-blue-500 hover:text-blue-700 hover:underline"
-                  key={category.id}
-                >
+                <li className="font-light text-blue-500 hover:text-blue-700 hover:underline" key={category.id}>
                   <Link href={`/search/${category.slug}`}>{category.name}</Link>
                 </li>
               );

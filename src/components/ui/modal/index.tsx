@@ -25,10 +25,7 @@ export function Modal(props: ModalProps) {
     >
       <div className="mb-4 flex items-center justify-between">
         <h3 className="text-lg">{props.title}</h3>
-        <button
-          onClick={closeModalDialog}
-          className="rounded-md border border-neutral-200 p-1 dark:border-neutral-800"
-        >
+        <button onClick={closeModalDialog} className="rounded-md border border-neutral-200 p-1 dark:border-neutral-800">
           <X size="16" />
         </button>
       </div>
