@@ -1,21 +1,20 @@
 'use client';
 
-import { Product } from '@prisma/client';
 import { X } from 'lucide-react';
 
 import { useCart } from 'hooks/use-cart';
 
 type RemoveFromCartProps = {
-  product: Product;
+  productId: string;
 };
 
 export function RemoveFromCart(props: RemoveFromCartProps) {
-  const { product } = props;
+  const { productId } = props;
   const cart = useCart();
 
   const removeFromCart = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
-    cart.removeItem(product);
+    cart.removeItem(productId);
   };
 
   return (

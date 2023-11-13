@@ -1,39 +1,31 @@
-import { Product } from '@prisma/client';
-import { toast } from 'react-hot-toast';
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 
-type CartProduct = {
-  size: string | null;
-  color: string | null;
-  product: Product;
+type Item = {
+  sizeId: string | null;
+  colorId: string | null;
+  productId: string;
 };
 
 export interface CartStore {
-  items: CartProduct[];
-  addItem: (product: Product, color: string | null, size: string | null) => void;
-  removeItem: (product: Product) => void;
+  items: Item[];
+  addItem: (productId: string) => void;
+  removeItem: (productId: string) => void;
   removeAll: () => void;
 }
 
+// TODO finish cart after inventory.
 export const useCart = create(
   persist<CartStore>(
     (set, get) => ({
       items: [],
-      addItem: (product: Product, color: string | null, size: string | null) => {
-        const currentItems = get().items;
-        const existingItem = currentItems.find((item) => item.product.id === product.id);
-
-        if (existingItem) {
-          return toast.error(`${product.name} is already in your cart.`);
-        }
-
-        set({ items: [...get().items, { product, color, size }] });
-        toast.success(`${product.name} added to cart.`);
+      addItem: (productId: string) => {
+        // set({ items: [...get().items, TODO ] });
+        // toast.success('Added to cart.');
       },
-      removeItem: (product: Product) => {
-        set({ items: [...get().items.filter((item) => item.product.id !== product.id)] });
-        toast.success(`${product.name} removed from your cart.`);
+      removeItem: (productId: string) => {
+        // set({ items: [...get().items.filter((currentItem) => currentItem.productId !== productId)] });
+        // toast.success('Removed from your cart.');
       },
       removeAll: () => set({ items: [] }),
     }),

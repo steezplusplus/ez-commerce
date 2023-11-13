@@ -1,7 +1,13 @@
 import Image from 'next/image';
 
 type GalleryProps = {
-  images: string[];
+  images: {
+    id: string;
+    src: string;
+    alt: string;
+    name: string;
+    value: string;
+  }[];
 };
 
 // TODO Alt text
@@ -17,24 +23,21 @@ export function Gallery(props: GalleryProps) {
   }
 
   return (
-    <>
+    <div className="flex flex-col gap-y-4">
       {images.map((image) => {
         return (
-          <div
-            key={image}
-            className="relative aspect-square h-full max-h-[550px] w-full overflow-hidden"
-          >
+          <div key={image.id} className="relative aspect-square">
             <Image
-              src={image}
-              alt="TODO"
+              src={image.src}
+              alt={image.alt}
               fill
-              className="h-full w-full object-contain"
+              className="aspect-square rounded-md object-cover"
               sizes="(min-width: 1024px) 66vw, 100vw"
               priority={true}
             />
           </div>
         );
       })}
-    </>
+    </div>
   );
 }

@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 
-import { getCategories } from 'lib/api';
+import { getAllCategory } from 'lib/api';
 import { CategoriesItem, DefaultCategoryItem } from './categories-item';
 import { CategoriesSelect } from './categories-select';
 
@@ -9,8 +9,9 @@ type CategoriesProps = {
 };
 
 export async function Categories(props: CategoriesProps) {
-  const categories = await getCategories({});
+  const categories = await getAllCategory();
   const { title } = props;
+
   return (
     <Suspense>
       <nav>

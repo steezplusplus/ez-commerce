@@ -34,13 +34,37 @@ model Product {
   id          String   @id @default(uuid())
   name        String   @unique
   slug        String   @unique
-  price       Float
   description String
-  images      String[]
-  sizes       String[]
-  colors      String[]
+  price       Float
   categoryId  String
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
-  category    Category @relation(fields: [categoryId], references: [id])
+  Category    Category @relation(fields: [categoryId], references: [id])
+  colors      Color[]
+  sizes       Size[]
 }
+
+model Color {
+  id         String   @id @default(uuid())
+  name       String
+  value      String
+  altText    String
+  image      String   @unique
+  isFeatured Boolean  @default(false)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  Product    Product  @relation(fields: [productId], references: [id])
+  productId  String
+}
+
+model Size {
+  id        String   @id @default(uuid())
+  name      String
+  value     String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  Product   Product  @relation(fields: [productId], references: [id])
+  productId String
+}
+
+// TODO model Inventory {}

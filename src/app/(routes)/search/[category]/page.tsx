@@ -1,4 +1,7 @@
-import { ProductGrid } from 'components/ui/grid/product-grid';
+import Image from 'next/image';
+import Link from 'next/link';
+
+import { Price } from 'components/ui/price';
 import { getCategoryPage } from 'lib/api';
 import { sorting } from 'lib/constants';
 
@@ -18,14 +21,31 @@ export default async function CategoryPage(props: CategoryPageProps) {
   const { sort } = searchParams as { [key: string]: string };
   const sortKey = sorting.find((item) => item.slug === sort);
 
-  const category = await getCategoryPage({
-    name: params.category,
-    order: sortKey?.order,
-  });
+  const products = await getCategoryPage({ name: params.category, order: sortKey?.order });
 
-  if (category.products.length === 0) {
+  if (products.length === 0) {
     return <p>No products found in this category.</p>;
   }
 
-  return <ProductGrid products={category.products} />;
+  return (
+    <ul className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+      {products.map((product) => {
+        return (
+          <li key={product.id} className="relative aspect-square">
+            <Link href={`/product/${product.slug}`} className="h-full w-full">
+              <Image
+                fill
+                alt={product.altText}
+                src={product.image}
+                className="aspect-square rounded-md object-cover"
+                sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw"
+              />
+            </Link>
+            <h2>{product.name}</h2>
+            <Price amount={String(product.price)} />
+          </li>
+        );
+      })}
+    </ul>
+  );
 }
