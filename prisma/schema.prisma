@@ -36,6 +36,7 @@ model Product {
   slug        String      @unique
   description String
   categoryId  String
+  price       Int
   createdAt   DateTime    @default(now())
   updatedAt   DateTime    @updatedAt
   Category    Category    @relation(fields: [categoryId], references: [id])
@@ -79,9 +80,6 @@ model Inventory {
   sizeId    String
   Size      Size     @relation(fields: [sizeId], references: [id])
   inventory Int
-  price     Int
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
-
-// TODO Move price back to product

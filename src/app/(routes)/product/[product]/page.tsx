@@ -4,6 +4,7 @@ import { AddToCart } from 'components/checkout/add-to-cart';
 import { Footer } from 'components/layout/footer';
 import { Gallery } from 'components/product/gallery';
 import { Radio } from 'components/product/radio';
+import { Price } from 'components/ui/price';
 import { getProductPage } from 'lib/api';
 
 type ProductPageProps = {
@@ -28,7 +29,7 @@ export default async function ProductPage(props: ProductPageProps) {
           <div className="bottom-0 aspect-auto self-start sm:sticky sm:top-10 sm:aspect-square">
             <div className="absolute top-2">
               <h1 className="mb-2 text-5xl font-medium">{product.name}</h1>
-              {/* <Price amount={String(product.inventory[0]?.price)} /> */}
+              <Price amount={String(product.price)} />
               <p>{product.description}</p>
 
               <h3 className="text-md mb-2">Colors</h3>

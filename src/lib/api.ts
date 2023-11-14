@@ -29,7 +29,7 @@ export async function getSearchPage(props: { name?: string; order?: 'asc' | 'des
       id: product.id,
       name: product.Product.name,
       slug: product.Product.slug,
-      price: product.price,
+      price: product.Product.price,
       image: product.Color.image,
       altText: product.Color.altText,
     };
@@ -49,7 +49,7 @@ export async function getCategoryPage(props: { name: string; order?: 'asc' | 'de
       id: product.id,
       name: product.Product.name,
       slug: product.Product.slug,
-      price: product.price,
+      price: product.Product.price,
       image: product.Color.image,
       altText: product.Color.altText,
     };
@@ -75,6 +75,7 @@ export async function getProductPage(props: { name: string }) {
     id: product.id,
     name: product.name,
     description: product.description,
+    price: product.price,
     inventory: product.Inventory,
     colors: product.colors,
     sizes: product.sizes,

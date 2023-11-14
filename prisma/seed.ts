@@ -27,6 +27,7 @@ async function main() {
     data: {
       name: 'Mug',
       slug: 'mug',
+      price: 30,
       description: 'An exquisite blend of style and functionality designed to elevate your sipping experience.',
       categoryId: categoryDrinkware.id,
     },
@@ -69,7 +70,6 @@ async function main() {
       productId: productMug.id,
       colorId: colorMugBlack.id,
       sizeId: sizeMugSixteenOunce.id,
-      price: 30,
     },
   });
 
@@ -80,7 +80,6 @@ async function main() {
       productId: productMug.id,
       colorId: colorMugWhite.id,
       sizeId: sizeMugSixteenOunce.id,
-      price: 30,
     },
   });
 }
