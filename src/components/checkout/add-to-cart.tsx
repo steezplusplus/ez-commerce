@@ -18,6 +18,8 @@ export function AddToCart(props: AddToCartProps) {
   const size = searchParams.get('size');
   const color = searchParams.get('color');
 
+  const usersCart = cart.items;
+
   const addToCart = () => {
     if (colorRequired && !color) {
       return toast.error('Please select a color');

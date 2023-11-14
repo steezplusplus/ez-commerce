@@ -9,59 +9,49 @@ export async function getAllCategory() {
 }
 
 export async function getSearchPage(props: { name?: string; order?: 'asc' | 'desc' }) {
-  const products = await prisma.product.findMany({
+  const products = await prisma.inventory.findMany({
+    include: {
+      Color: true,
+      Product: true,
+    },
     where: {
-      name: {
-        contains: props.name,
-        mode: 'insensitive',
+      Product: {
+        name: {
+          contains: props.name,
+          mode: 'insensitive',
+        },
       },
     },
-    orderBy: {
-      price: props.order,
-    },
-    include: {
-      colors: true,
-    },
   });
+
   return products.map((product) => {
     return {
       id: product.id,
-      name: product.name,
-      slug: product.slug,
+      name: product.Product.name,
+      slug: product.Product.slug,
       price: product.price,
-      image: product.colors[0]?.image as string,
-      altText: product.colors[0]?.altText as string,
+      image: product.Color.image,
+      altText: product.Color.altText,
     };
   });
 }
 
 export async function getCategoryPage(props: { name: string; order?: 'asc' | 'desc' }) {
-  const category = await prisma.category.findFirstOrThrow({
-    where: {
-      slug: {
-        equals: props.name,
-      },
-    },
+  const category = await prisma.inventory.findMany({
     include: {
-      products: {
-        orderBy: {
-          price: props.order,
-        },
-        include: {
-          colors: true,
-        },
-      },
+      Color: true,
+      Product: true,
     },
   });
 
-  return category.products.map((product) => {
+  return category.map((product) => {
     return {
       id: product.id,
-      name: product.name,
-      slug: product.slug,
+      name: product.Product.name,
+      slug: product.Product.slug,
       price: product.price,
-      image: product.colors[0]?.image as string,
-      altText: product.colors[0]?.image as string,
+      image: product.Color.image,
+      altText: product.Color.altText,
     };
   });
 }
@@ -75,8 +65,9 @@ export async function getProductPage(props: { name: string }) {
       },
     },
     include: {
-      colors: true,
+      colors: true, // TODO why not cap
       sizes: true,
+      Inventory: true,
     },
   });
 
@@ -84,94 +75,57 @@ export async function getProductPage(props: { name: string }) {
     id: product.id,
     name: product.name,
     description: product.description,
-    price: product.price,
-    images: product.colors.map((color) => {
-      return {
-        id: color.id,
-        src: color.image,
-        alt: color.altText,
-        name: color.name,
-        value: color.value,
-      };
-    }),
-    colors: product.colors.map((color) => {
-      return {
-        id: color.id,
-        name: color.name,
-        value: color.value,
-      };
-    }),
-    sizes: product.sizes.map((size) => {
-      return {
-        id: size.id,
-        name: size.name,
-        value: size.value,
-      };
-    }),
+    inventory: product.Inventory,
+    colors: product.colors,
+    sizes: product.sizes,
   };
 }
 
-export async function getLatestArrivals(props: { take: number }) {
-  const colors = await prisma.color.findMany({
-    orderBy: {
-      createdAt: 'desc',
-    },
+export async function getLatestProducts(props: { take: number }) {
+  const inventory = await prisma.inventory.findMany({
     include: {
-      Product: {
-        select: {
-          name: true,
-          slug: true,
-          price: true,
-        },
+      Color: true,
+      Product: true,
+    },
+    orderBy: {
+      Color: {
+        createdAt: 'desc',
       },
     },
     take: props.take,
   });
-
-  return colors.map((color) => {
+  return inventory.map((product) => {
     return {
-      id: color.id,
-      name: color.name,
-      value: color.value,
-      image: color.image,
-      altText: color.altText,
-      productName: color.Product.name,
-      productSlug: color.Product.slug,
-      price: color.Product.price,
+      id: product.productId,
+      slug: product.Product.slug,
+      image: product.Color.image,
+      handle: product.Color.value,
+      altText: product.Color.altText,
     };
   });
 }
 
 export async function getFeaturedProducts(props: { take: number }) {
-  const colors = await prisma.color.findMany({
-    where: {
-      isFeatured: true,
-    },
-    orderBy: {
-      createdAt: 'desc',
-    },
+  const inventory = await prisma.inventory.findMany({
     include: {
-      Product: {
-        select: {
-          name: true,
-          slug: true,
-          price: true,
-        },
+      Color: true,
+      Product: true,
+    },
+    where: {
+      Color: {
+        isFeatured: true,
       },
     },
     take: props.take,
   });
 
-  return colors.map((color) => {
+  return inventory.map((product) => {
     return {
-      id: color.id,
-      name: color.name,
-      value: color.value,
-      image: color.image,
-      altText: color.altText,
-      productName: color.Product.name,
-      productSlug: color.Product.slug,
-      price: color.Product.price,
+      id: product.productId,
+      slug: product.Product.slug,
+      image: product.Color.image,
+      handle: product.Color.value,
+      altText: product.Color.altText,
     };
   });
 }

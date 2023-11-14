@@ -83,3 +83,5 @@ model Inventory {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
+// TODO Move price back to product

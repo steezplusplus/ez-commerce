@@ -4,7 +4,6 @@ import { AddToCart } from 'components/checkout/add-to-cart';
 import { Footer } from 'components/layout/footer';
 import { Gallery } from 'components/product/gallery';
 import { Radio } from 'components/product/radio';
-import { Price } from 'components/ui/price';
 import { getProductPage } from 'lib/api';
 
 type ProductPageProps = {
@@ -18,6 +17,7 @@ type ProductPageProps = {
 
 // TODO Use searchParams to scroll to relevant image
 // TODO Mobile view broken
+// TODO Show inventory
 export default async function ProductPage(props: ProductPageProps) {
   const product = await getProductPage({ name: props.params.product });
 
@@ -28,7 +28,7 @@ export default async function ProductPage(props: ProductPageProps) {
           <div className="bottom-0 aspect-auto self-start sm:sticky sm:top-10 sm:aspect-square">
             <div className="absolute top-2">
               <h1 className="mb-2 text-5xl font-medium">{product.name}</h1>
-              <Price amount={String(product.price)} />
+              {/* <Price amount={String(product.inventory[0]?.price)} /> */}
               <p>{product.description}</p>
 
               <h3 className="text-md mb-2">Colors</h3>
@@ -55,7 +55,17 @@ export default async function ProductPage(props: ProductPageProps) {
           </div>
 
           <div>
-            <Gallery images={product.images} />
+            <Gallery
+              images={product.colors.map((image) => {
+                return {
+                  id: image.id,
+                  src: image.image,
+                  alt: image.altText,
+                  name: image.name,
+                  value: image.value,
+                };
+              })}
+            />
           </div>
         </div>
       </div>
