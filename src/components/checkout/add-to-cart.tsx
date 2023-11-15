@@ -1,40 +1,25 @@
 'use client';
 
-import { useSearchParams } from 'next/navigation';
-import { toast } from 'react-hot-toast';
-
+import { Inventory } from '@prisma/client';
 import { useCart } from 'hooks/use-cart';
 
 type AddToCartProps = {
-  sizeRequired: boolean;
-  colorRequired: boolean;
-  productId: string;
+  selectedProduct?: Inventory;
 };
 
+// TODO check inventory
 export function AddToCart(props: AddToCartProps) {
-  const { sizeRequired, colorRequired, productId } = props;
+  const { selectedProduct } = props;
   const cart = useCart();
-  const searchParams = useSearchParams();
-  const size = searchParams.get('size');
-  const color = searchParams.get('color');
 
-  const usersCart = cart.items;
-
-  const addToCart = () => {
-    if (colorRequired && !color) {
-      return toast.error('Please select a color');
+  const onClick = () => {
+    if (selectedProduct) {
+      cart.addItem(selectedProduct);
     }
-
-    if (sizeRequired && !size) {
-      return toast.error('Please select a size');
-    }
-
-    return toast.success('Placeholder add to cart.');
-    // TODO Check inventory! Make inventory model. If item with productId, colorId, sizeId has inventory, add to cart.
   };
 
   return (
-    <button className="w-full rounded border px-2 py-1" onClick={addToCart}>
+    <button className="w-full rounded border px-2 py-1" onClick={onClick}>
       Add to cart
     </button>
   );

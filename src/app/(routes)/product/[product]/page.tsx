@@ -1,5 +1,6 @@
 import { Suspense } from 'react';
 
+import { Color, Inventory, Size } from '@prisma/client';
 import { AddToCart } from 'components/checkout/add-to-cart';
 import { Footer } from 'components/layout/footer';
 import { Gallery } from 'components/product/gallery';
@@ -17,62 +18,69 @@ type ProductPageProps = {
 };
 
 // TODO Use searchParams to scroll to relevant image
-// TODO Mobile view broken
 // TODO Show inventory
 export default async function ProductPage(props: ProductPageProps) {
   const product = await getProductPage({ name: props.params.product });
+  const { color: selectedColor, size: selectedSize } = props.searchParams as { [key: string]: string };
+  const selectedColorId = product.colors.find((color) => color.value === selectedColor)?.id;
+  const selectedSizeId = product.sizes.find((size) => size.value === selectedSize)?.id;
+  const selectedProduct = product.Inventory.find(
+    (inventory) => inventory.colorId === selectedColorId && inventory.sizeId === selectedSizeId
+  );
 
   return (
     <>
       <div className="mx-auto max-w-screen-2xl">
-        <div className="grid grid-cols-1 gap-4 px-2 md:grid-cols-2">
-          <div className="bottom-0 aspect-auto self-start sm:sticky sm:top-10 sm:aspect-square">
-            <div className="absolute top-2">
-              <h1 className="mb-2 text-5xl font-medium">{product.name}</h1>
-              <Price amount={String(product.price)} />
-              <p>{product.description}</p>
-
-              <h3 className="text-md mb-2">Colors</h3>
-              <fieldset className="flex flex-wrap gap-1">
-                {product.colors.map((color) => {
-                  return <Radio key={color.id} name="color" value={color.value} displayName={color.name} />;
-                })}
-              </fieldset>
-
-              <h3 className="text-md mb-2">Sizes</h3>
-              <fieldset className="flex flex-wrap gap-1">
-                {product.sizes.map((size) => {
-                  return <Radio key={size.id} name="size" value={size.value} displayName={size.name} />;
-                })}
-              </fieldset>
-
-              <AddToCart
-                productId={product.id}
-                colorRequired={product.colors.length > 0}
-                sizeRequired={product.sizes.length > 0}
-              />
-              <p className="text-xs">Limit 1 per person</p>
-            </div>
-          </div>
-
-          <div>
-            <Gallery
-              images={product.colors.map((image) => {
-                return {
-                  id: image.id,
-                  src: image.image,
-                  alt: image.altText,
-                  name: image.name,
-                  value: image.value,
-                };
-              })}
-            />
-          </div>
+        <div className="grid grid-cols-1 gap-4 px-4 md:grid-cols-2">
+          <Gallery colors={product.colors} />
+          <ProductSlider
+            price={product.price}
+            name={product.name}
+            description={product.description}
+            colors={product.colors}
+            sizes={product.sizes}
+            selectedProduct={selectedProduct}
+          />
         </div>
       </div>
       <Suspense>
         <Footer />
       </Suspense>
     </>
+  );
+}
+
+type ProductSliderProps = {
+  price: number;
+  name: string;
+  description: string;
+  colors: Color[];
+  sizes: Size[];
+  selectedProduct?: Inventory;
+};
+function ProductSlider(props: ProductSliderProps) {
+  return (
+    <div className="bottom-0 aspect-auto self-start sm:sticky sm:top-10 sm:aspect-square">
+      <div className="absolute top-2">
+        <h1 className="mb-2 text-5xl font-medium">{props.name}</h1>
+        <Price amount={String(props.price)} />
+        <p>{props.description}</p>
+
+        <h3 className="text-md mb-2">Colors</h3>
+        <fieldset className="flex flex-wrap gap-1">
+          {props.colors.map((color) => {
+            return <Radio key={color.id} name="color" value={color.value} displayName={color.name} />;
+          })}
+        </fieldset>
+
+        <h3 className="text-md mb-2">Sizes</h3>
+        <fieldset className="flex flex-wrap gap-1">
+          {props.sizes.map((size) => {
+            return <Radio key={size.id} name="size" value={size.value} displayName={size.name} />;
+          })}
+        </fieldset>
+        <AddToCart selectedProduct={props.selectedProduct} />
+      </div>
+    </div>
   );
 }

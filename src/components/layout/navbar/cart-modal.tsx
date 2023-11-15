@@ -53,7 +53,7 @@ export function CartModal() {
               <p>{item.productId}</p>
               <p>{item.colorId}</p>
               <p>{item.sizeId}</p>
-              <RemoveFromCart productId={item.productId} />
+              <RemoveFromCart inventoryId={item.id} />
             </div>
           );
         })}

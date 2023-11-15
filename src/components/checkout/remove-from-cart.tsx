@@ -5,16 +5,16 @@ import { X } from 'lucide-react';
 import { useCart } from 'hooks/use-cart';
 
 type RemoveFromCartProps = {
-  productId: string;
+  inventoryId: string;
 };
 
 export function RemoveFromCart(props: RemoveFromCartProps) {
-  const { productId } = props;
+  const { inventoryId } = props;
   const cart = useCart();
 
   const removeFromCart = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
-    cart.removeItem(productId);
+    cart.removeItem(inventoryId);
   };
 
   return (

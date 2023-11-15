@@ -57,7 +57,7 @@ export async function getCategoryPage(props: { name: string; order?: 'asc' | 'de
 }
 
 export async function getProductPage(props: { name: string }) {
-  const product = await prisma.product.findFirstOrThrow({
+  return await prisma.product.findFirstOrThrow({
     where: {
       slug: {
         equals: props.name,
@@ -65,21 +65,11 @@ export async function getProductPage(props: { name: string }) {
       },
     },
     include: {
-      colors: true, // TODO why not cap
+      colors: true,
       sizes: true,
       Inventory: true,
     },
   });
-
-  return {
-    id: product.id,
-    name: product.name,
-    description: product.description,
-    price: product.price,
-    inventory: product.Inventory,
-    colors: product.colors,
-    sizes: product.sizes,
-  };
 }
 
 export async function getLatestProducts(props: { take: number }) {
