@@ -1,5 +1,7 @@
 'use client';
 
+import { toast } from 'react-hot-toast';
+
 import { Inventory } from '@prisma/client';
 import { useCart } from 'hooks/use-cart';
 
@@ -14,7 +16,13 @@ export function AddToCart(props: AddToCartProps) {
 
   const onClick = () => {
     if (selectedProduct) {
-      cart.addItem(selectedProduct);
+      if (selectedProduct.inventory < 0) {
+        toast('This product is out of inventory.');
+      } else {
+        cart.addItem(selectedProduct);
+      }
+    } else {
+      toast('Please finish selecting a product.');
     }
   };
 

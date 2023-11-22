@@ -18,12 +18,14 @@ type ProductPageProps = {
 };
 
 // TODO Use searchParams to scroll to relevant image
-// TODO Show inventory
+// TODO Mobile view broken
 export default async function ProductPage(props: ProductPageProps) {
-  const product = await getProductPage({ name: props.params.product });
   const { color: selectedColor, size: selectedSize } = props.searchParams as { [key: string]: string };
+  const product = await getProductPage({ name: props.params.product });
+
   const selectedColorId = product.colors.find((color) => color.value === selectedColor)?.id;
   const selectedSizeId = product.sizes.find((size) => size.value === selectedSize)?.id;
+
   const selectedProduct = product.Inventory.find(
     (inventory) => inventory.colorId === selectedColorId && inventory.sizeId === selectedSizeId
   );
@@ -66,19 +68,21 @@ function ProductSlider(props: ProductSliderProps) {
         <Price amount={String(props.price)} />
         <p>{props.description}</p>
 
-        <h3 className="text-md mb-2">Colors</h3>
-        <fieldset className="flex flex-wrap gap-1">
+        <h3 className="text-md mb-1">Colors</h3>
+        <fieldset className="mb-2 flex flex-wrap gap-1">
           {props.colors.map((color) => {
             return <Radio key={color.id} name="color" value={color.value} displayName={color.name} />;
           })}
         </fieldset>
 
-        <h3 className="text-md mb-2">Sizes</h3>
-        <fieldset className="flex flex-wrap gap-1">
+        <h3 className="text-md mb-1">Sizes</h3>
+        <fieldset className="mb-2 flex flex-wrap gap-1">
           {props.sizes.map((size) => {
             return <Radio key={size.id} name="size" value={size.value} displayName={size.name} />;
           })}
         </fieldset>
+
+        <h3 className="text-md mb-1">In Stock: {props.selectedProduct?.inventory}</h3>
         <AddToCart selectedProduct={props.selectedProduct} />
       </div>
     </div>
