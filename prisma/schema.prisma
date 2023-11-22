@@ -72,7 +72,7 @@ model Size {
 
 model Inventory {
   id        String   @id @default(uuid())
-  sku       String
+  sku       String // TODO Automate sku field generation. productName-colorName-sizeName
   productId String
   Product   Product  @relation(fields: [productId], references: [id])
   colorId   String
