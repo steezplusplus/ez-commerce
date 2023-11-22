@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 
+import { Inventory } from '@prisma/client';
 import { RemoveFromCart } from 'components/checkout/remove-from-cart';
 import { Modal } from 'components/ui/modal';
 import { useCart } from 'hooks/use-cart';
@@ -47,16 +48,7 @@ export function CartModal() {
         <span className="ml-2 text-sm font-medium dark:text-white">{cart.items.length}</span>
       </button>
       <Modal modalDialogRef={modaDialogRef} labelId={labelId} descriptionId={descriptionId} title="Cart">
-        {cart.items.map((item) => {
-          return (
-            <div key={`${item.productId}-${item.sizeId}-${item.colorId}`} className="border">
-              <p>{item.productId}</p>
-              <p>{item.colorId}</p>
-              <p>{item.sizeId}</p>
-              <RemoveFromCart inventoryId={item.id} />
-            </div>
-          );
-        })}
+        <CartGrid items={cart.items} />
         <Link
           href="/checkout"
           className="mt-4 flex w-full items-center justify-center rounded-md border border-neutral-200 px-2 py-1 dark:border-neutral-800"
@@ -67,5 +59,26 @@ export function CartModal() {
         </Link>
       </Modal>
     </>
+  );
+}
+
+type CartGridProps = {
+  items: Inventory[];
+};
+// TODO Get image from inventory?
+function CartGrid(props: CartGridProps) {
+  return (
+    <ul>
+      {props.items.map((item) => {
+        return (
+          <li key={`${item.productId}-${item.sizeId}-${item.colorId}`} className="border">
+            <p>{item.productId}</p>
+            <p>{item.colorId}</p>
+            <p>{item.sizeId}</p>
+            <RemoveFromCart inventoryId={item.id} />
+          </li>
+        );
+      })}
+    </ul>
   );
 }
