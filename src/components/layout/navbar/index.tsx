@@ -1,3 +1,4 @@
+import { ShoppingBag } from 'lucide-react';
 import Link from 'next/link';
 
 import { CircleLogo } from 'components/ui/circle-logo';
@@ -5,6 +6,7 @@ import { getStore } from 'lib/api';
 import { Search } from './search';
 import { SearchModal } from './search-modal';
 
+// TODO use cart in client component
 export async function Navbar() {
   const store = await getStore();
 
@@ -27,14 +29,13 @@ export async function Navbar() {
         </div>
 
         <div className="flex justify-end md:w-1/3">
-          placeholder
-          {/* <Link
+          <Link
             href="/checkout"
             className="flex items-center rounded-md border border-neutral-200 p-2 dark:border-neutral-800"
           >
             <ShoppingBag size="18" />
-            <span className="ml-2 text-sm font-medium dark:text-white">1</span>
-          </Link> */}
+            <span className="ml-2 text-sm font-medium dark:text-white">#</span>
+          </Link>
         </div>
       </div>
     </nav>
