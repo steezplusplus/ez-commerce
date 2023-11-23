@@ -12,7 +12,7 @@ export default async function Home() {
 
   return (
     <>
-      <Container>
+      <Container className="px-4 pb-4">
         <h2 className="my-3 pl-2 text-xl">Latest Arrivals</h2>
         <ul className="grid grid-cols-1 gap-4 px-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
           {latestProducts.map((product) => {
