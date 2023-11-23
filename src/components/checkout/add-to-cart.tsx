@@ -12,6 +12,7 @@ type AddToCartProps = {
   colorRequired: boolean;
   selectedColorName: string | undefined;
   selectedColorImage: string | undefined;
+  selectedColorImageAltText: string | undefined;
   selectedInventory: number | undefined;
   selectedInventoryId: string | undefined;
 };
@@ -25,6 +26,7 @@ export function AddToCart(props: AddToCartProps) {
     colorRequired,
     selectedColorName,
     selectedColorImage,
+    selectedColorImageAltText,
     selectedInventory,
     selectedInventoryId,
   } = props;
@@ -50,6 +52,7 @@ export function AddToCart(props: AddToCartProps) {
       size: selectedSizeName as string,
       color: selectedColorName as string,
       image: selectedColorImage as string,
+      altText: selectedColorImageAltText as string,
       price: selectedProductPrice as number,
     };
 

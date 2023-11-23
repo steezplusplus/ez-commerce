@@ -20,20 +20,13 @@ export function CartGrid() {
     return null;
   }
 
-  // TODO alt text from database, Link href
   return (
     <ul>
       {cart.items.map((item) => {
         return (
           <li key={item.id} className="flex border-b py-6 first:pt-0">
             <div className="relative h-24 w-24 overflow-hidden rounded-md sm:h-48 sm:w-48">
-              <Image
-                fill
-                src={item.image}
-                alt={`Image of ${item.name}`}
-                className="object-cover object-center"
-                sizes="30vw"
-              />
+              <Image fill src={item.image} alt={item.altText} className="object-cover object-center" sizes="30vw" />
             </div>
             <div className="relative ml-4 flex flex-1 flex-col justify-between sm:ml-6">
               <div className="absolute right-0 top-0 z-10">

@@ -75,6 +75,7 @@ export default async function ProductPage(props: ProductPageProps) {
               colorRequired={colorRequired}
               selectedColorName={selectedColor?.name}
               selectedColorImage={selectedColor?.image}
+              selectedColorImageAltText={selectedColor?.altText}
               selectedInventory={selectedInventory?.inventory}
               selectedInventoryId={selectedInventory?.id}
             />
