@@ -4,7 +4,6 @@ import { CartGrid } from 'components/checkout/cart-grid';
 import { Footer } from 'components/layout/footer';
 import { Container } from 'components/ui/container';
 
-// TODO Total price
 export default function CheckoutPage() {
   return (
     <>
