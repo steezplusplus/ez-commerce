@@ -20,6 +20,10 @@ export function CartGrid() {
     return null;
   }
 
+  if (cart.items.length === 0) {
+    return <h3>No items in your cart.</h3>;
+  }
+
   return (
     <ul>
       {cart.items.map((item) => {
