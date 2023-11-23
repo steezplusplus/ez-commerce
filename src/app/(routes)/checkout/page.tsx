@@ -2,6 +2,7 @@ import { Suspense } from 'react';
 
 import { CartGrid } from 'components/checkout/cart-grid';
 import { CartSummary } from 'components/checkout/cart-summary';
+import { CheckoutButton } from 'components/checkout/checkout-button';
 import { Footer } from 'components/layout/footer';
 import { Container } from 'components/ui/container';
 
@@ -13,7 +14,7 @@ export default function CheckoutPage() {
           <h2 className="text-4xl font-semibold">Checkout</h2>
           <CartGrid />
           <CartSummary />
-          <button className="w-full rounded-sm border p-2">Purchase</button>
+          <CheckoutButton />
         </div>
       </Container>
       <Suspense>
