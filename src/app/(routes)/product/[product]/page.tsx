@@ -5,6 +5,7 @@ import { AddToCart } from 'components/checkout/add-to-cart';
 import { Footer } from 'components/layout/footer';
 import { Gallery } from 'components/product/gallery';
 import { Radio } from 'components/product/radio';
+import { Container } from 'components/ui/container';
 import { Price } from 'components/ui/price';
 import { getProductPage } from 'lib/api';
 
@@ -44,8 +45,8 @@ export default async function ProductPage(props: ProductPageProps) {
 
   return (
     <>
-      <div className="mx-auto max-w-screen-2xl">
-        <div className="relative grid grid-cols-1 gap-4 px-4 md:grid-cols-2">
+      <Container className="px-4 pb-4">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
           <Gallery colors={product.colors} />
 
           <div>
@@ -81,8 +82,7 @@ export default async function ProductPage(props: ProductPageProps) {
             />
           </div>
         </div>
-      </div>
-
+      </Container>
       <Suspense>
         <Footer />
       </Suspense>
