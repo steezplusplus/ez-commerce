@@ -8,9 +8,9 @@ import { RemoveFromCart } from './remove-from-cart';
 // TODO Link href
 // TODO Image src
 export function CartGrid() {
+  const [isMounted, setIsMounted] = useState<boolean>(false);
   const cart = useCart();
 
-  const [isMounted, setIsMounted] = useState<boolean>(false);
   // Avoid hydration error from using localstorage from useCart()
   useEffect(() => {
     setIsMounted(true);
@@ -24,10 +24,12 @@ export function CartGrid() {
     <ul>
       {cart.items.map((item) => {
         return (
-          <li key={`${item.productId}-${item.sizeId}-${item.colorId}`} className="border">
-            <p>{item.productId}</p>
-            <p>{item.colorId}</p>
-            <p>{item.sizeId}</p>
+          <li key={item.id} className="border">
+            <p>{item.image}</p>
+            <p>{item.name}</p>
+            <p>{item.color}</p>
+            <p>{item.size}</p>
+            <p>{item.price}</p>
             <RemoveFromCart inventoryId={item.id} />
           </li>
         );

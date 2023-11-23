@@ -1,11 +1,19 @@
-import { Inventory } from '@prisma/client';
 import { toast } from 'react-hot-toast';
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 
+type CartItem = {
+  id: string;
+  name: string;
+  size: string;
+  color: string;
+  image: string;
+  price: number;
+};
+
 export interface CartStore {
-  items: Inventory[];
-  addItem: (data: Inventory) => void;
+  items: CartItem[];
+  addItem: (data: CartItem) => void;
   removeItem: (id: string) => void;
   removeAll: () => void;
 }
@@ -14,7 +22,7 @@ export const useCart = create(
   persist<CartStore>(
     (set, get) => ({
       items: [],
-      addItem: (data: Inventory) => {
+      addItem: (data: CartItem) => {
         const currentItems = get().items;
         const existingItem = currentItems.find((item) => item.id === data.id);
 

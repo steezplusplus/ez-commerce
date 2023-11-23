@@ -2,28 +2,58 @@
 
 import { toast } from 'react-hot-toast';
 
-import { Inventory } from '@prisma/client';
 import { useCart } from 'hooks/use-cart';
 
 type AddToCartProps = {
-  selectedProduct?: Inventory;
+  selectedProductName: string;
+  selectedProductPrice: number;
+  sizeRequired: boolean;
+  selectedSizeName: string | undefined;
+  colorRequired: boolean;
+  selectedColorName: string | undefined;
+  selectedColorImage: string | undefined;
+  selectedInventory: number | undefined;
+  selectedInventoryId: string | undefined;
 };
 
-// TODO check inventory
 export function AddToCart(props: AddToCartProps) {
-  const { selectedProduct } = props;
+  const {
+    selectedProductName,
+    selectedProductPrice,
+    sizeRequired,
+    selectedSizeName,
+    colorRequired,
+    selectedColorName,
+    selectedColorImage,
+    selectedInventory,
+    selectedInventoryId,
+  } = props;
+
   const cart = useCart();
 
   const onClick = () => {
-    if (selectedProduct) {
-      if (selectedProduct.inventory < 0) {
-        toast('This product is out of inventory.');
-      } else {
-        cart.addItem(selectedProduct);
-      }
-    } else {
-      toast('Please finish selecting a product.');
+    if (colorRequired && selectedColorName === undefined) {
+      return toast('Please select a color');
     }
+
+    if (sizeRequired && selectedSizeName === undefined) {
+      return toast('Please select a size');
+    }
+
+    if (!selectedInventory) {
+      return toast('This product is out of stock');
+    }
+
+    const product = {
+      id: selectedInventoryId as string,
+      name: selectedProductName as string,
+      size: selectedSizeName as string,
+      color: selectedColorName as string,
+      image: selectedColorImage as string,
+      price: selectedProductPrice as number,
+    };
+
+    cart.addItem(product);
   };
 
   return (
