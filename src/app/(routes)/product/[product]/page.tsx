@@ -39,7 +39,7 @@ export default async function ProductPage(props: ProductPageProps) {
     }
   }
 
-  const selectedInventory = product.Inventory.find(
+  const selectedInventory = product.inventory.find(
     (inventory) => inventory.colorId === selectedColor?.id && inventory.sizeId === selectedSize?.id
   );
 
