@@ -28,7 +28,6 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
     return <p>There are no products in this store.</p>;
   }
 
-  // TODO duplicate grid with category page
   return (
     <>
       {searchValue && (
@@ -36,27 +35,55 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
           Showing {products.length} {products.length > 1 ? 'results' : 'result'} for <b>&quot;{searchValue}&quot;</b>.
         </p>
       )}
-      <ul className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-        {products.map((product) => {
-          return (
-            <li key={product.id}>
-              <Link href={`/product/${product.slug}`} className="h-full w-full">
-                <div className="relative aspect-square rounded-md bg-gray-100">
-                  <Image
-                    fill
-                    alt={product.altText}
-                    src={product.image}
-                    className="aspect-square rounded-md object-cover"
-                    sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw"
-                  />
-                </div>
-              </Link>
-              <h2>{product.name}</h2>
-              <Price amount={String(product.price)} />
-            </li>
-          );
-        })}
-      </ul>
+      <ProductList products={products} />
     </>
+  );
+}
+
+type Product = {
+  id: string;
+  name: string;
+  slug: string;
+  price: number;
+  image: string;
+  altText: string;
+};
+
+type ProductListProps = {
+  products: Product[];
+};
+
+function ProductList(props: ProductListProps) {
+  const { products } = props;
+  return (
+    <ul className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+      {products.map((product, i) => {
+        return <ProductCard product={product} key={`${product.id}-${i}`} />;
+      })}
+    </ul>
+  );
+}
+
+type ProductCardProps = {
+  product: Product;
+};
+function ProductCard(props: ProductCardProps) {
+  const { product } = props;
+  return (
+    <li key={product.id}>
+      <Link href={`/product/${product.slug}`} className="h-full w-full">
+        <div className="relative aspect-square rounded-md bg-gray-100">
+          <Image
+            fill
+            alt={product.altText}
+            src={product.image}
+            className="aspect-square rounded-md object-cover"
+            sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw"
+          />
+        </div>
+      </Link>
+      <h2>{product.name}</h2>
+      <Price amount={String(product.price)} />
+    </li>
   );
 }
