@@ -1,4 +1,5 @@
 import { prisma } from './db';
+import { Product } from './types';
 
 export async function getStore() {
   return await prisma.store.findFirstOrThrow();
@@ -8,7 +9,7 @@ export async function getAllCategory() {
   return await prisma.category.findMany();
 }
 
-export async function getSearchPage(props: { name?: string; order?: 'asc' | 'desc' }) {
+export async function getSearchPage(props: { name?: string; order?: 'asc' | 'desc' }): Promise<Product[]> {
   const products = await prisma.inventory.findMany({
     include: {
       Color: true,
@@ -29,6 +30,7 @@ export async function getSearchPage(props: { name?: string; order?: 'asc' | 'des
       id: product.id,
       name: product.Product.name,
       slug: product.Product.slug,
+      handle: product.Color.value,
       price: product.Product.price,
       image: product.Color.image,
       altText: product.Color.altText,
@@ -36,7 +38,8 @@ export async function getSearchPage(props: { name?: string; order?: 'asc' | 'des
   });
 }
 
-export async function getCategoryPage(props: { name: string; order?: 'asc' | 'desc' }) {
+// TODO `where`
+export async function getCategoryPage(props: { name: string; order?: 'asc' | 'desc' }): Promise<Product[]> {
   const category = await prisma.inventory.findMany({
     include: {
       Color: true,
@@ -49,6 +52,7 @@ export async function getCategoryPage(props: { name: string; order?: 'asc' | 'de
       id: product.id,
       name: product.Product.name,
       slug: product.Product.slug,
+      handle: product.Color.value,
       price: product.Product.price,
       image: product.Color.image,
       altText: product.Color.altText,
@@ -72,7 +76,7 @@ export async function getProductPage(props: { name: string }) {
   });
 }
 
-export async function getLatestProducts(props: { take: number }) {
+export async function getLatestProducts(props: { take: number }): Promise<Product[]> {
   const inventory = await prisma.inventory.findMany({
     include: {
       Color: true,
@@ -88,9 +92,11 @@ export async function getLatestProducts(props: { take: number }) {
   return inventory.map((product) => {
     return {
       id: product.productId,
+      name: product.Product.name,
       slug: product.Product.slug,
-      image: product.Color.image,
       handle: product.Color.value,
+      price: product.Product.price,
+      image: product.Color.image,
       altText: product.Color.altText,
     };
   });
@@ -113,9 +119,11 @@ export async function getFeaturedProducts(props: { take: number }) {
   return inventory.map((product) => {
     return {
       id: product.productId,
+      name: product.Product.name,
       slug: product.Product.slug,
-      image: product.Color.image,
       handle: product.Color.value,
+      price: product.Product.price,
+      image: product.Color.image,
       altText: product.Color.altText,
     };
   });

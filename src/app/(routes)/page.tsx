@@ -1,11 +1,11 @@
-import Image from 'next/image';
-import Link from 'next/link';
 import { Suspense } from 'react';
 
 import { Footer } from 'components/layout/footer';
 import { Container } from 'components/ui/container';
+import { ProductList } from 'components/ui/product-list/product-list';
 import { getFeaturedProducts, getLatestProducts } from 'lib/api';
 
+// TODO duplicate key issue cause no SKU yet
 export default async function HomePage() {
   const latestProducts = await getLatestProducts({ take: 4 });
   const featuredProducts = await getFeaturedProducts({ take: 4 });
@@ -22,52 +22,6 @@ export default async function HomePage() {
         <Footer />
       </Suspense>
     </>
-  );
-}
-
-type Product = {
-  id: string;
-  slug: string;
-  image: string;
-  handle: string;
-  altText: string;
-};
-
-type ProductListProps = {
-  products: Product[];
-};
-
-// TODO Can generate non-unique key values in map
-function ProductList(props: ProductListProps) {
-  const { products } = props;
-  return (
-    <ul className="grid grid-cols-1 gap-4 px-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-      {products.map((product, i) => {
-        return <ProductCard product={product} key={`${product.id}-${i}`} />;
-      })}
-    </ul>
-  );
-}
-
-type ProductCardProps = {
-  product: Product;
-};
-function ProductCard(props: ProductCardProps) {
-  const { product } = props;
-  return (
-    <li key={product.id}>
-      <Link href={`/product/${product.slug}?color=${product.handle}`} className="h-full w-full">
-        <div className="relative aspect-square rounded-md bg-gray-100">
-          <Image
-            fill
-            alt={product.altText}
-            src={product.image}
-            className="aspect-square rounded-md object-cover"
-            sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-          />
-        </div>
-      </Link>
-    </li>
   );
 }
 
