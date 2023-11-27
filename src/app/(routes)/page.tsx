@@ -37,6 +37,7 @@ type ProductListProps = {
   products: Product[];
 };
 
+// TODO Can generate non-unique key values in map
 function ProductList(props: ProductListProps) {
   const { products } = props;
   return (
