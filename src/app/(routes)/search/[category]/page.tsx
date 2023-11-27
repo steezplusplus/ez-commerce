@@ -31,15 +31,17 @@ export default async function CategoryPage(props: CategoryPageProps) {
     <ul className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
       {products.map((product) => {
         return (
-          <li key={product.id} className="relative aspect-square">
+          <li key={product.id}>
             <Link href={`/product/${product.slug}`} className="h-full w-full">
-              <Image
-                fill
-                alt={product.altText}
-                src={product.image}
-                className="aspect-square rounded-md object-cover"
-                sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw"
-              />
+              <div className="relative aspect-square rounded-md bg-gray-100">
+                <Image
+                  fill
+                  alt={product.altText}
+                  src={product.image}
+                  className="aspect-square rounded-md object-cover"
+                  sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw"
+                />
+              </div>
             </Link>
             <h2>{product.name}</h2>
             <Price amount={String(product.price)} />
