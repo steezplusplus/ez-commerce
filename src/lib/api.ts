@@ -69,6 +69,7 @@ export async function getCategoryPage(props: { name: string; order?: 'asc' | 'de
   });
 }
 
+// TODO Can show duplicates for same colors diff sizes.
 export async function getLatestProducts(props: { take: number }): Promise<Product[]> {
   const inventory = await prisma.inventory.findMany({
     include: {
