@@ -38,12 +38,21 @@ export async function getSearchPage(props: { name?: string; order?: 'asc' | 'des
   });
 }
 
-// TODO `where`
 export async function getCategoryPage(props: { name: string; order?: 'asc' | 'desc' }): Promise<Product[]> {
   const category = await prisma.inventory.findMany({
     include: {
       Color: true,
       Product: true,
+    },
+    where: {
+      Product: {
+        Category: {
+          name: {
+            equals: props.name,
+            mode: 'insensitive',
+          },
+        },
+      },
     },
   });
 
@@ -57,22 +66,6 @@ export async function getCategoryPage(props: { name: string; order?: 'asc' | 'de
       image: product.Color.image,
       altText: product.Color.altText,
     };
-  });
-}
-
-export async function getProductPage(props: { name: string }) {
-  return await prisma.product.findFirstOrThrow({
-    where: {
-      slug: {
-        equals: props.name,
-        mode: 'insensitive',
-      },
-    },
-    include: {
-      colors: true,
-      sizes: true,
-      Inventory: true,
-    },
   });
 }
 
@@ -102,7 +95,7 @@ export async function getLatestProducts(props: { take: number }): Promise<Produc
   });
 }
 
-export async function getFeaturedProducts(props: { take: number }) {
+export async function getFeaturedProducts(props: { take: number }): Promise<Product[]> {
   const inventory = await prisma.inventory.findMany({
     include: {
       Color: true,
@@ -126,5 +119,21 @@ export async function getFeaturedProducts(props: { take: number }) {
       image: product.Color.image,
       altText: product.Color.altText,
     };
+  });
+}
+
+export async function getProductPage(props: { name: string }) {
+  return await prisma.product.findFirstOrThrow({
+    where: {
+      slug: {
+        equals: props.name,
+        mode: 'insensitive',
+      },
+    },
+    include: {
+      colors: true,
+      sizes: true,
+      Inventory: true,
+    },
   });
 }
