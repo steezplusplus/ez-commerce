@@ -1,6 +1,7 @@
-import { ProductList } from 'components/ui/product-list/product-list';
 import { getCategoryPage } from 'lib/api';
 import { sorting } from 'lib/constants';
+
+import { ProductList } from 'components/ui/product-list/product-list';
 
 type CategoryPageProps = {
   params: {
