@@ -321,7 +321,7 @@ async function main() {
       value: 'black',
       image: 'https://utfs.io/f/658ecb31-81fd-452d-b1df-cacd610314d9-m0j2va.jpeg',
       altText: 'An image of a plain black tee shirt.',
-      isFeatured: false,
+      isFeatured: true,
       productId: productTeeShirt.id,
     },
   });
@@ -358,7 +358,7 @@ async function main() {
     },
   });
 
-  const inventoryTeeShirt = await prisma.inventory.createMany({
+  await prisma.inventory.createMany({
     data: [
       {
         inventory: 100,
@@ -415,6 +415,93 @@ async function main() {
         productId: productTeeShirt.id,
         colorId: colorTeeShirtWhite.id,
         sizeId: sizeTeeShirtExtraLarge.id,
+      },
+    ],
+  });
+
+  // Tops - Tie-Dye T-Shirt
+  const productTieDyeTeeShirt = await prisma.product.create({
+    data: {
+      name: 'Tie-Dye T-shirt',
+      slug: 'tie-dye-t-shirt',
+      price: 20,
+      description: 'An ultimate blend of style and detail. Each tie-dye tee is made unique.',
+      categoryId: categoryTops.id,
+    },
+  });
+
+  const colorTieDyeTeeShirt = await prisma.color.create({
+    data: {
+      name: 'Tie-Dye',
+      value: 'tie-dye',
+      image: 'https://utfs.io/f/f78d04b9-0869-48bb-b9e8-874fb6f873b7-pruti1.jpeg',
+      altText: 'An image of a tie-dye tee shirt with a logo that says digital.',
+      isFeatured: true,
+      productId: productTieDyeTeeShirt.id,
+    },
+  });
+
+  const sizeTieDyeTeeShirtSmall = await prisma.size.create({
+    data: {
+      name: 'Small',
+      value: 'small',
+      productId: productTieDyeTeeShirt.id,
+    },
+  });
+
+  const sizeTieDyeTeeShirtMedium = await prisma.size.create({
+    data: {
+      name: 'Medium',
+      value: 'medium',
+      productId: productTieDyeTeeShirt.id,
+    },
+  });
+
+  const sizeTieDyeTeeShirtLarge = await prisma.size.create({
+    data: {
+      name: 'Large',
+      value: 'large',
+      productId: productTieDyeTeeShirt.id,
+    },
+  });
+
+  const sizeTieDyeTeeShirtExtraLarge = await prisma.size.create({
+    data: {
+      name: 'X-Large',
+      value: 'x-large',
+      productId: productTieDyeTeeShirt.id,
+    },
+  });
+
+  await prisma.inventory.createMany({
+    data: [
+      {
+        inventory: 100,
+        sku: 'tie-dye-tee-shirt-small',
+        productId: productTieDyeTeeShirt.id,
+        colorId: colorTieDyeTeeShirt.id,
+        sizeId: sizeTieDyeTeeShirtSmall.id,
+      },
+      {
+        inventory: 100,
+        sku: 'tie-dye-tee-shirt-medium',
+        productId: productTieDyeTeeShirt.id,
+        colorId: colorTieDyeTeeShirt.id,
+        sizeId: sizeTieDyeTeeShirtMedium.id,
+      },
+      {
+        inventory: 100,
+        sku: 'tie-dye-tee-shirt-large',
+        productId: productTieDyeTeeShirt.id,
+        colorId: colorTieDyeTeeShirt.id,
+        sizeId: sizeTieDyeTeeShirtLarge.id,
+      },
+      {
+        inventory: 100,
+        sku: 'tie-dye-tee-shirt-extra-large',
+        productId: productTieDyeTeeShirt.id,
+        colorId: colorTieDyeTeeShirt.id,
+        sizeId: sizeTieDyeTeeShirtExtraLarge.id,
       },
     ],
   });
