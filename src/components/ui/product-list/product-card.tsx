@@ -12,7 +12,7 @@ export function ProductCard(props: ProductCardProps) {
   return (
     <li key={product.id}>
       <Link href={`/product/${product.slug}?color=${product.handle}`} className="h-full w-full">
-        <div className="relative aspect-square rounded-md bg-gray-100">
+        <div className="relative aspect-square rounded-md bg-gray-100 dark:bg-gray-700">
           <Image
             fill
             alt={product.altText}
