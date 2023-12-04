@@ -463,6 +463,150 @@ async function main() {
       },
     ],
   });
+
+  // Headware
+  const categoryHeadware = await prisma.category.create({
+    data: {
+      name: 'Headware',
+      slug: 'headware',
+      storeId: store.id,
+    },
+  });
+
+  const productBaseballHat = await prisma.product.create({
+    data: {
+      name: 'Baseball Hat',
+      slug: 'baseball-hat',
+      description: 'Made from durable yet lightweight cotton. Caters to various head sizes and shapes.',
+      price: 50,
+      categoryId: categoryHeadware.id,
+    },
+  });
+
+  const colorBaseballHatWhite = await prisma.color.create({
+    data: {
+      name: 'White',
+      value: 'white',
+      image: 'https://utfs.io/f/831b3317-d7d3-46c2-8655-08e2781af040-rds3wy.jpeg',
+      altText: 'An image of a white hat that is embroidered with the word digital.',
+      isFeatured: false,
+      productId: productBaseballHat.id,
+    },
+  });
+
+  const colorBaseballHatBlack = await prisma.color.create({
+    data: {
+      name: 'Black',
+      value: 'black',
+      image: 'https://utfs.io/f/2a0e339b-265e-4519-b100-2c2d8bf05be7-m0iq6c.jpeg',
+      altText: 'An image of a black hat that is embroidered with the word digital.',
+      isFeatured: false,
+      productId: productBaseballHat.id,
+    },
+  });
+
+  const colorBaseballHatGreen = await prisma.color.create({
+    data: {
+      name: 'Green',
+      value: 'green',
+      image: 'https://utfs.io/f/d3dc985d-6118-4cf1-898e-b560f0360e6e-y5x62w.jpeg',
+      altText: 'An image of a green hat that is embroidered with the word digital.',
+      isFeatured: true,
+      productId: productBaseballHat.id,
+    },
+  });
+
+  const sizeBaseballHatSmall = await prisma.size.create({
+    data: {
+      name: 'Small (53 - 58 cm)',
+      value: 'small',
+      productId: productBaseballHat.id,
+    },
+  });
+
+  const sizeBaseballHatMedium = await prisma.size.create({
+    data: {
+      name: 'Medium (58 - 61 cm)',
+      value: 'medium',
+      productId: productBaseballHat.id,
+    },
+  });
+
+  const sizeBaseballHatLarge = await prisma.size.create({
+    data: {
+      name: 'Large (61 - 65 cm)',
+      value: 'large',
+      productId: productBaseballHat.id,
+    },
+  });
+
+  await prisma.inventory.createMany({
+    data: [
+      {
+        inventory: 100,
+        sku: 'baseball-cap-white-small',
+        productId: productBaseballHat.id,
+        colorId: colorBaseballHatWhite.id,
+        sizeId: sizeBaseballHatSmall.id,
+      },
+      {
+        inventory: 100,
+        sku: 'baseball-cap-white-medium',
+        productId: productBaseballHat.id,
+        colorId: colorBaseballHatWhite.id,
+        sizeId: sizeBaseballHatMedium.id,
+      },
+      {
+        inventory: 100,
+        sku: 'baseball-cap-white-large',
+        productId: productBaseballHat.id,
+        colorId: colorBaseballHatWhite.id,
+        sizeId: sizeBaseballHatLarge.id,
+      },
+      {
+        inventory: 100,
+        sku: 'baseball-cap-black-small',
+        productId: productBaseballHat.id,
+        colorId: colorBaseballHatBlack.id,
+        sizeId: sizeBaseballHatSmall.id,
+      },
+      {
+        inventory: 100,
+        sku: 'baseball-cap-black-medium',
+        productId: productBaseballHat.id,
+        colorId: colorBaseballHatBlack.id,
+        sizeId: sizeBaseballHatMedium.id,
+      },
+      {
+        inventory: 100,
+        sku: 'baseball-cap-black-large',
+        productId: productBaseballHat.id,
+        colorId: colorBaseballHatBlack.id,
+        sizeId: sizeBaseballHatLarge.id,
+      },
+      {
+        inventory: 100,
+        sku: 'baseball-cap-green-small',
+        productId: productBaseballHat.id,
+        colorId: colorBaseballHatGreen.id,
+        sizeId: sizeBaseballHatSmall.id,
+      },
+      {
+        inventory: 100,
+        sku: 'baseball-cap-green-medium',
+        productId: productBaseballHat.id,
+        colorId: colorBaseballHatGreen.id,
+        sizeId: sizeBaseballHatMedium.id,
+      },
+      {
+        inventory: 100,
+        sku: 'baseball-cap-green-large',
+        productId: productBaseballHat.id,
+        colorId: colorBaseballHatGreen.id,
+        sizeId: sizeBaseballHatLarge.id,
+      },
+    ],
+  });
 }
 
 main()
