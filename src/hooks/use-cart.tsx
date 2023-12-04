@@ -1,33 +1,47 @@
+import { toast } from 'react-hot-toast';
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 
-type Item = {
-  sizeId: string | null;
-  colorId: string | null;
-  productId: string;
+type CartItem = {
+  id: string;
+  name: string;
+  size: string;
+  color: string;
+  image: string;
+  altText: string;
+  price: number;
 };
 
 export interface CartStore {
-  items: Item[];
-  addItem: (productId: string) => void;
-  removeItem: (productId: string) => void;
+  items: CartItem[];
+  addItem: (data: CartItem) => void;
+  removeItem: (id: string) => void;
   removeAll: () => void;
 }
 
-// TODO finish cart after inventory.
 export const useCart = create(
   persist<CartStore>(
     (set, get) => ({
       items: [],
-      addItem: (productId: string) => {
-        // set({ items: [...get().items, TODO ] });
-        // toast.success('Added to cart.');
+      addItem: (data: CartItem) => {
+        const currentItems = get().items;
+        const existingItem = currentItems.find((item) => item.id === data.id);
+
+        if (existingItem) {
+          return toast('Item already in cart.');
+        }
+
+        set({ items: [...get().items, data] });
+        toast.success('Added to cart.');
       },
-      removeItem: (productId: string) => {
-        // set({ items: [...get().items.filter((currentItem) => currentItem.productId !== productId)] });
-        // toast.success('Removed from your cart.');
+      removeItem: (id: string) => {
+        set({ items: [...get().items.filter((item) => item.id !== id)] });
+        toast.success('Removed from your cart.');
       },
-      removeAll: () => set({ items: [] }),
+      removeAll: () => {
+        set({ items: [] });
+        toast.success('Emptied your cart.');
+      },
     }),
     {
       name: 'cart-storage',

@@ -1,8 +1,8 @@
 import Link from 'next/link';
 
+import { CheckoutLink } from 'components/checkout/checkout-link';
 import { CircleLogo } from 'components/ui/circle-logo';
 import { getStore } from 'lib/api';
-import { CartModal } from './cart-modal';
 import { Search } from './search';
 import { SearchModal } from './search-modal';
 
@@ -28,7 +28,7 @@ export async function Navbar() {
         </div>
 
         <div className="flex justify-end md:w-1/3">
-          <CartModal />
+          <CheckoutLink />
         </div>
       </div>
     </nav>

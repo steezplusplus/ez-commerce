@@ -14,57 +14,89 @@ datasource db {
 model Store {
   id         String     @id @default(uuid())
   name       String     @unique
-  createdAt  DateTime   @default(now())
-  updatedAt  DateTime   @updatedAt
   categories Category[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Category {
-  id        String    @id @default(uuid())
-  name      String    @unique
-  slug      String    @unique
-  storeId   String
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
-  Store     Store     @relation(fields: [storeId], references: [id])
-  products  Product[]
+  id   String @id @default(uuid())
+  name String @unique
+  slug String @unique
+
+  products Product[]
+
+  storeId String
+  store   Store  @relation(fields: [storeId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Product {
-  id          String   @id @default(uuid())
-  name        String   @unique
-  slug        String   @unique
+  id          String @id @default(uuid())
+  name        String @unique
+  slug        String @unique
   description String
-  price       Float
-  categoryId  String
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
-  Category    Category @relation(fields: [categoryId], references: [id])
-  colors      Color[]
-  sizes       Size[]
+  price       Int
+
+  colors    Color[]
+  sizes     Size[]
+  inventory Inventory[]
+
+  categoryId String
+  category   Category @relation(fields: [categoryId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Color {
-  id         String   @id @default(uuid())
+  id         String  @id @default(uuid())
   name       String
   value      String
   altText    String
-  image      String   @unique
-  isFeatured Boolean  @default(false)
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
-  Product    Product  @relation(fields: [productId], references: [id])
-  productId  String
+  image      String  @unique
+  isFeatured Boolean @default(false)
+
+  inventory Inventory[]
+
+  productId String
+  product   Product @relation(fields: [productId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Size {
-  id        String   @id @default(uuid())
-  name      String
-  value     String
+  id    String @id @default(uuid())
+  name  String
+  value String
+
+  productId String
+  product   Product @relation(fields: [productId], references: [id])
+
+  inventory Inventory[]
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  Product   Product  @relation(fields: [productId], references: [id])
-  productId String
 }
 
-// TODO model Inventory {}
+model Inventory {
+  id        String @id @default(uuid())
+  sku       String
+  inventory Int
+
+  productId String
+  product   Product @relation(fields: [productId], references: [id])
+
+  colorId String
+  color   Color  @relation(fields: [colorId], references: [id])
+
+  sizeId String
+  size   Size   @relation(fields: [sizeId], references: [id])
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

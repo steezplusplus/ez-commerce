@@ -1,20 +1,15 @@
 import Image from 'next/image';
 
+import { Color } from '@prisma/client';
+
 type GalleryProps = {
-  images: {
-    id: string;
-    src: string;
-    alt: string;
-    name: string;
-    value: string;
-  }[];
+  colors: Color[];
 };
 
-// TODO Alt text
 export function Gallery(props: GalleryProps) {
-  const { images } = props;
+  const { colors } = props;
 
-  if (images.length === 0) {
+  if (colors.length === 0) {
     return (
       <div className="flex aspect-square h-full max-h-[550px] w-full items-center justify-center overflow-hidden">
         <p>No images found for this product.</p>
@@ -24,12 +19,12 @@ export function Gallery(props: GalleryProps) {
 
   return (
     <div className="flex flex-col gap-y-4">
-      {images.map((image) => {
+      {colors.map((color) => {
         return (
-          <div key={image.id} className="relative aspect-square">
+          <div key={color.id} className="relative aspect-square">
             <Image
-              src={image.src}
-              alt={image.alt}
+              src={color.image}
+              alt={color.altText}
               fill
               className="aspect-square rounded-md object-cover"
               sizes="(min-width: 1024px) 66vw, 100vw"

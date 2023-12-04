@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import { Suspense } from 'react';
 
 import { Navbar } from 'components/layout/navbar';
 import { ThemeProvider } from 'providers/theme-provider';
@@ -16,14 +15,12 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning className={inter.className}>
+    <html lang="en" className={inter.className}>
       <body>
         <ThemeProvider>
           <ToastProvider />
           <Navbar />
-          <Suspense>
-            <main>{children}</main>
-          </Suspense>
+          <main>{children}</main>
         </ThemeProvider>
       </body>
     </html>
