@@ -290,6 +290,179 @@ async function main() {
       },
     ],
   });
+
+  // Socks
+  const categorySocks = await prisma.category.create({
+    data: {
+      name: 'Socks',
+      slug: 'socks',
+      storeId: store.id,
+    },
+  });
+
+  const productSocks = await prisma.product.create({
+    data: {
+      name: 'Socks',
+      slug: 'socks',
+      price: 15,
+      description: '',
+      categoryId: categorySocks.id,
+    },
+  });
+
+  const colorSocksBlack = await prisma.color.create({
+    data: {
+      name: 'Black',
+      value: 'black',
+      image: 'https://utfs.io/f/ac0edf5e-3a4f-4191-8d9c-8d165b410adb-b2m59b.jpeg',
+      altText: 'An image of black socks',
+      isFeatured: false,
+      productId: productSocks.id,
+    },
+  });
+
+  const colorSocksWhite = await prisma.color.create({
+    data: {
+      name: 'White',
+      value: 'white',
+      image: 'https://utfs.io/f/101eaff9-17da-4963-8e62-ee1379c5c4c7-x6mr91.jpeg',
+      altText: 'An image of white socks',
+      isFeatured: false,
+      productId: productSocks.id,
+    },
+  });
+
+  const colorSocksGray = await prisma.color.create({
+    data: {
+      name: 'Gray',
+      value: 'gray',
+      image: 'https://utfs.io/f/ef6f9c41-9675-46df-acfe-2fc639aadab7-4uybp.jpeg',
+      altText: 'An image of gray socks',
+      isFeatured: true,
+      productId: productSocks.id,
+    },
+  });
+
+  const socksSmall = await prisma.size.create({
+    data: {
+      name: 'Small (5-7)',
+      value: 'small',
+      productId: productSocks.id,
+    },
+  });
+
+  const socksLarge = await prisma.size.create({
+    data: {
+      name: 'Medium (7-9)',
+      value: 'medium',
+      productId: productSocks.id,
+    },
+  });
+
+  const socksMedium = await prisma.size.create({
+    data: {
+      name: 'Large (9-12)',
+      value: 'large',
+      productId: productSocks.id,
+    },
+  });
+
+  const socksExtraLarge = await prisma.size.create({
+    data: {
+      name: 'X-Large (12-15)',
+      value: 'x-large',
+      productId: productSocks.id,
+    },
+  });
+
+  await prisma.inventory.createMany({
+    data: [
+      {
+        inventory: 100,
+        sku: 'socks-black-small',
+        productId: productSocks.id,
+        colorId: colorSocksBlack.id,
+        sizeId: socksSmall.id,
+      },
+      {
+        inventory: 100,
+        sku: 'socks-black-medium',
+        productId: productSocks.id,
+        colorId: colorSocksBlack.id,
+        sizeId: socksMedium.id,
+      },
+      {
+        inventory: 100,
+        sku: 'socks-black-large',
+        productId: productSocks.id,
+        colorId: colorSocksBlack.id,
+        sizeId: socksLarge.id,
+      },
+      {
+        inventory: 100,
+        sku: 'socks-black-extra-large',
+        productId: productSocks.id,
+        colorId: colorSocksBlack.id,
+        sizeId: socksExtraLarge.id,
+      },
+      {
+        inventory: 100,
+        sku: 'socks-white-small',
+        productId: productSocks.id,
+        colorId: colorSocksWhite.id,
+        sizeId: socksSmall.id,
+      },
+      {
+        inventory: 100,
+        sku: 'socks-white-medium',
+        productId: productSocks.id,
+        colorId: colorSocksWhite.id,
+        sizeId: socksMedium.id,
+      },
+      {
+        inventory: 100,
+        sku: 'socks-white-large',
+        productId: productSocks.id,
+        colorId: colorSocksWhite.id,
+        sizeId: socksLarge.id,
+      },
+      {
+        inventory: 100,
+        sku: 'socks-white-extra-large',
+        productId: productSocks.id,
+        colorId: colorSocksWhite.id,
+        sizeId: socksExtraLarge.id,
+      },
+      {
+        inventory: 100,
+        sku: 'socks-gray-small',
+        productId: productSocks.id,
+        colorId: colorSocksGray.id,
+        sizeId: socksSmall.id,
+      },
+      {
+        inventory: 100,
+        sku: 'socks-gray-medium',
+        productId: productSocks.id,
+        colorId: colorSocksGray.id,
+        sizeId: socksMedium.id,
+      },
+      {
+        inventory: 100,
+        sku: 'socks-gray-large',
+        productId: productSocks.id,
+        colorId: colorSocksGray.id,
+        sizeId: socksLarge.id,
+      },
+      {
+        inventory: 100,
+        sku: 'socks-gray-extra-large',
+        productId: productSocks.id,
+        colorId: colorSocksGray.id,
+        sizeId: socksExtraLarge.id,
+      },
+    ],
+  });
 }
 
 main()
