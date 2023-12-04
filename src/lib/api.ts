@@ -25,17 +25,18 @@ export async function getSearchPage(props: { name?: string; order?: 'asc' | 'des
     },
   });
 
-  // TODO assertions that every product has an image
-  return products.map((product) => {
-    return {
-      id: product.id,
-      name: product.name,
-      slug: product.slug,
-      price: product.price,
-      handle: product.colors[0]?.value as string,
-      image: product.colors[0]?.image as string,
-      altText: product.colors[0]?.altText as string,
-    };
+  return products.flatMap((product) => {
+    return product.colors.map((color) => {
+      return {
+        id: color.id,
+        handle: color.value,
+        image: color.image,
+        altText: color.altText,
+        name: product.name,
+        slug: product.slug,
+        price: product.price,
+      };
+    });
   });
 }
 
@@ -59,17 +60,18 @@ export async function getCategoryPage(props: { name: string; order?: 'asc' | 'de
     },
   });
 
-  // TODO assertions that every product has an image
-  return category.products.map((product) => {
-    return {
-      id: product.id,
-      name: product.name,
-      slug: product.slug,
-      price: product.price,
-      handle: product.colors[0]?.value as string,
-      image: product.colors[0]?.image as string,
-      altText: product.colors[0]?.altText as string,
-    };
+  return category.products.flatMap((product) => {
+    return product.colors.map((color) => {
+      return {
+        id: color.id,
+        handle: color.value,
+        image: color.image,
+        altText: color.altText,
+        name: product.name,
+        slug: product.slug,
+        price: product.price,
+      };
+    });
   });
 }
 
