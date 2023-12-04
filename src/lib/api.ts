@@ -6,7 +6,7 @@ export async function getStore() {
   return await prisma.store.findFirstOrThrow();
 }
 
-export async function getAllCategory() {
+export async function getCategories() {
   return await prisma.category.findMany();
 }
 
