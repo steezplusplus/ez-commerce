@@ -5,7 +5,7 @@ import { Container } from 'components/ui/container';
 import { ProductList } from 'components/ui/product-list/product-list';
 import { getFeaturedProducts, getLatestProducts } from 'lib/api';
 
-// TODO duplicate key issue cause no SKU yet
+// TODO ProductList can cause duplicate key with these queries
 export default async function HomePage() {
   const latestProducts = await getLatestProducts({ take: 4 });
   const featuredProducts = await getFeaturedProducts({ take: 4 });
