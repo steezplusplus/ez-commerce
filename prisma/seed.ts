@@ -688,6 +688,7 @@ async function main() {
     },
   });
 
+  // Headware - Baseball Cap
   const productBaseballHat = await prisma.product.create({
     data: {
       name: 'Baseball Hat',
@@ -823,7 +824,109 @@ async function main() {
     ],
   });
 
-  //
+  // Headware - Beanie
+  const productBeanie = await prisma.product.create({
+    data: {
+      name: 'Beanie',
+      slug: 'beanie',
+      description: 'Embrace warmth and style with our cozy Beanie. Crafted from soft knit fabric.',
+      price: 45,
+      categoryId: categoryHeadware.id,
+    },
+  });
+
+  const colorBeanieBlack = await prisma.color.create({
+    data: {
+      name: 'Black',
+      value: 'black',
+      image: 'https://utfs.io/f/c4be5481-1c42-4661-906f-b436152f9e92-3p70be.jpeg',
+      altText: 'An image of a black beanie that is embroidered with the word digital.',
+      isFeatured: false,
+      productId: productBeanie.id,
+    },
+  });
+
+  const colorBeanieGreen = await prisma.color.create({
+    data: {
+      name: 'Green',
+      value: 'green',
+      image: 'https://utfs.io/f/0daf3012-0965-4054-af61-9fd06fbd1715-86tc8a.jpeg',
+      altText: 'An image of a green beanie that is embroidered with the word digital.',
+      isFeatured: true,
+      productId: productBeanie.id,
+    },
+  });
+
+  const sizeBeanieSmall = await prisma.size.create({
+    data: {
+      name: 'Small (53 - 58 cm)',
+      value: 'small',
+      productId: productBeanie.id,
+    },
+  });
+
+  const sizeBeanieMedium = await prisma.size.create({
+    data: {
+      name: 'Medium (58 - 61 cm)',
+      value: 'medium',
+      productId: productBeanie.id,
+    },
+  });
+
+  const sizeBeanieLarge = await prisma.size.create({
+    data: {
+      name: 'Large (61 - 65 cm)',
+      value: 'large',
+      productId: productBeanie.id,
+    },
+  });
+
+  await prisma.inventory.createMany({
+    data: [
+      {
+        inventory: 100,
+        sku: 'beanie-black-small',
+        productId: productBeanie.id,
+        colorId: colorBeanieBlack.id,
+        sizeId: sizeBeanieSmall.id,
+      },
+      {
+        inventory: 100,
+        sku: 'beanie-black-medium',
+        productId: productBeanie.id,
+        colorId: colorBeanieBlack.id,
+        sizeId: sizeBeanieMedium.id,
+      },
+      {
+        inventory: 100,
+        sku: 'beanie-black-large',
+        productId: productBeanie.id,
+        colorId: colorBeanieBlack.id,
+        sizeId: sizeBeanieLarge.id,
+      },
+      {
+        inventory: 100,
+        sku: 'beanie-green-small',
+        productId: productBeanie.id,
+        colorId: colorBeanieGreen.id,
+        sizeId: sizeBeanieSmall.id,
+      },
+      {
+        inventory: 100,
+        sku: 'beanie-green-medium',
+        productId: productBeanie.id,
+        colorId: colorBeanieGreen.id,
+        sizeId: sizeBeanieMedium.id,
+      },
+      {
+        inventory: 100,
+        sku: 'beanie-green-large',
+        productId: productBeanie.id,
+        colorId: colorBeanieGreen.id,
+        sizeId: sizeBeanieLarge.id,
+      },
+    ],
+  });
 }
 
 main()
