@@ -92,6 +92,7 @@ async function main() {
     },
   });
 
+  // Tops - Hoodie
   const productHoodie = await prisma.product.create({
     data: {
       name: 'Hoodie',
@@ -287,6 +288,133 @@ async function main() {
         productId: productHoodie.id,
         colorId: colorHoodieOrange.id,
         sizeId: sizeHoodieLarge.id,
+      },
+    ],
+  });
+
+  // Tops - T-shirts
+  const productTeeShirt = await prisma.product.create({
+    data: {
+      name: 'T-shirt',
+      slug: 't-shirt',
+      price: 15,
+      description:
+        'Back to basics with this soft and breathable cotton tee. A timeless essential, perfect for everyday wear.',
+      categoryId: categoryTops.id,
+    },
+  });
+
+  const colorTeeShirtWhite = await prisma.color.create({
+    data: {
+      name: 'White',
+      value: 'white',
+      image: 'https://utfs.io/f/0b4b9e41-2cae-435c-9aab-b6718f1b0345-rdrr80.jpeg',
+      altText: 'An image of a plain white tee shirt.',
+      isFeatured: false,
+      productId: productTeeShirt.id,
+    },
+  });
+
+  const colorTeeShirtBlack = await prisma.color.create({
+    data: {
+      name: 'Black',
+      value: 'black',
+      image: 'https://utfs.io/f/658ecb31-81fd-452d-b1df-cacd610314d9-m0j2va.jpeg',
+      altText: 'An image of a plain black tee shirt.',
+      isFeatured: false,
+      productId: productTeeShirt.id,
+    },
+  });
+
+  const sizeTeeShirtSmall = await prisma.size.create({
+    data: {
+      name: 'Small',
+      value: 'small',
+      productId: productTeeShirt.id,
+    },
+  });
+
+  const sizeTeeShirtMedium = await prisma.size.create({
+    data: {
+      name: 'Medium',
+      value: 'medium',
+      productId: productTeeShirt.id,
+    },
+  });
+
+  const sizeTeeShirtLarge = await prisma.size.create({
+    data: {
+      name: 'Large',
+      value: 'large',
+      productId: productTeeShirt.id,
+    },
+  });
+
+  const sizeTeeShirtExtraLarge = await prisma.size.create({
+    data: {
+      name: 'X-Large',
+      value: 'x-large',
+      productId: productTeeShirt.id,
+    },
+  });
+
+  const inventoryTeeShirt = await prisma.inventory.createMany({
+    data: [
+      {
+        inventory: 100,
+        sku: 'tee-shirt-black-small',
+        productId: productTeeShirt.id,
+        colorId: colorTeeShirtBlack.id,
+        sizeId: sizeTeeShirtSmall.id,
+      },
+      {
+        inventory: 100,
+        sku: 'tee-shirt-black-medium',
+        productId: productTeeShirt.id,
+        colorId: colorTeeShirtBlack.id,
+        sizeId: sizeTeeShirtMedium.id,
+      },
+      {
+        inventory: 100,
+        sku: 'tee-shirt-black-large',
+        productId: productTeeShirt.id,
+        colorId: colorTeeShirtBlack.id,
+        sizeId: sizeTeeShirtLarge.id,
+      },
+      {
+        inventory: 100,
+        sku: 'tee-shirt-black-extra-large',
+        productId: productTeeShirt.id,
+        colorId: colorTeeShirtBlack.id,
+        sizeId: sizeTeeShirtExtraLarge.id,
+      },
+      {
+        inventory: 100,
+        sku: 'tee-shirt-white-small',
+        productId: productTeeShirt.id,
+        colorId: colorTeeShirtWhite.id,
+        sizeId: sizeTeeShirtSmall.id,
+      },
+      {
+        inventory: 100,
+        sku: 'tee-shirt-white-medium',
+        productId: productTeeShirt.id,
+        colorId: colorTeeShirtWhite.id,
+        sizeId: sizeTeeShirtMedium.id,
+      },
+      {
+        inventory: 100,
+        sku: 'tee-shirt-white-large',
+        productId: productTeeShirt.id,
+        colorId: colorTeeShirtWhite.id,
+        sizeId: sizeTeeShirtLarge.id,
+      },
+      {
+        inventory: 100,
+        sku: 'tee-shirt-white-extra-large',
+        productId: productTeeShirt.id,
+        colorId: colorTeeShirtWhite.id,
+        sizeId: sizeTeeShirtExtraLarge.id,
       },
     ],
   });
@@ -607,6 +735,8 @@ async function main() {
       },
     ],
   });
+
+  //
 }
 
 main()
