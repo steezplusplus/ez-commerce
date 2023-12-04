@@ -141,7 +141,7 @@ async function main() {
       value: 'green',
       image: 'https://utfs.io/f/78421ffa-7daa-43f9-861f-b9f33c6289e7-56sxj2.jpeg',
       altText: 'An image of a green hoodie with a logo that says digital',
-      isFeatured: false,
+      isFeatured: true,
       productId: productHoodie.id,
     },
   });
