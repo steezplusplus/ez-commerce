@@ -1,3 +1,4 @@
+import { Category } from '@prisma/client';
 import { prisma } from './db';
 import { Product } from './types';
 
@@ -7,6 +8,17 @@ export async function getStore() {
 
 export async function getAllCategory() {
   return await prisma.category.findMany();
+}
+
+export async function getCategory(props: { name: string }): Promise<Category> {
+  return await prisma.category.findFirstOrThrow({
+    where: {
+      name: {
+        contains: props.name,
+        mode: 'insensitive',
+      },
+    },
+  });
 }
 
 export async function getSearchPage(props: { name?: string; order?: 'asc' | 'desc' }): Promise<Product[]> {
