@@ -14,7 +14,7 @@ export default function SearchLayout(props: SearchLayoutProps) {
   const { children } = props;
 
   return (
-    <Suspense>
+    <>
       <Container className="flex flex-col gap-8 px-4 pb-4 md:flex-row">
         <div className="order-first w-full flex-none md:max-w-[9rem]">
           <Categories title="Categories" />
@@ -24,7 +24,9 @@ export default function SearchLayout(props: SearchLayoutProps) {
           <Filter list={sorting} title="Sort by" />
         </div>
       </Container>
-      <Footer />
-    </Suspense>
+      <Suspense>
+        <Footer />
+      </Suspense>
+    </>
   );
 }

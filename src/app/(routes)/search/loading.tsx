@@ -9,6 +9,10 @@ export default function Loading() {
       <ProductCardLoading />
       <ProductCardLoading />
       <ProductCardLoading />
+      <ProductCardLoading />
+      <ProductCardLoading />
+      <ProductCardLoading />
+      <ProductCardLoading />
     </ul>
   );
 }
@@ -16,15 +20,12 @@ export default function Loading() {
 function ProductCardLoading() {
   return (
     <li>
-      <div className="h-full w-full">
-        <div className="relative aspect-square rounded-md bg-gray-100 dark:bg-gray-700">
-          <div className="aspect-square rounded-md object-cover">
-            <div className="flex h-full items-center justify-center">
-              <p className="text-sm">Loading...</p>
-            </div>
-          </div>
-        </div>
-      </div>
+      {/* Product Image */}
+      <div className="aspect-square animate-pulse rounded-md bg-gray-100 dark:bg-gray-700" />
+      {/* Product Name */}
+      <div className="mt-1 h-6 w-full animate-pulse rounded-md bg-gray-100 dark:bg-gray-700" />
+      {/* Product Price */}
+      <div className="mt-1 h-4 w-full animate-pulse rounded-md bg-gray-100 dark:bg-gray-700" />
     </li>
   );
 }

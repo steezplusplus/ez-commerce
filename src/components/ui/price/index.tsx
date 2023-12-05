@@ -15,7 +15,7 @@ export function Price(props: PriceProps) {
   }, []);
 
   if (!isMounted) {
-    return <p>Loading...</p>;
+    return <LoadingPrice />;
   }
 
   return (
@@ -28,4 +28,8 @@ export function Price(props: PriceProps) {
       <span>{` ${currencyCode}`}</span>
     </p>
   );
+}
+
+function LoadingPrice() {
+  return <div className="mt-1 h-4 w-full animate-pulse rounded-md bg-gray-100 dark:bg-gray-700" />;
 }
