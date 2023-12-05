@@ -1,6 +1,6 @@
 'use client';
 
-import { ShoppingBag } from 'lucide-react';
+import { Loader, ShoppingBag } from 'lucide-react';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
@@ -16,7 +16,12 @@ export function CheckoutLink() {
   }, []);
 
   if (!isMounted) {
-    return null;
+    return (
+      <span className="flex items-center rounded-md border border-neutral-200 p-2 dark:border-neutral-800">
+        <ShoppingBag size="18" />
+        <Loader className="ml-2 animate-pulse" size="18" />
+      </span>
+    );
   }
 
   return (
