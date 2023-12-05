@@ -87,31 +87,6 @@ export async function getCategoryPage(props: { name: string; order?: 'asc' | 'de
   });
 }
 
-export async function getLatestProducts(props: { take: number }): Promise<Product[]> {
-  const products = await prisma.product.findMany({
-    include: {
-      colors: true,
-    },
-    orderBy: {
-      createdAt: 'desc',
-    },
-    take: props.take,
-  });
-
-  // TODO assertions that every product has an image
-  return products.map((product) => {
-    return {
-      id: product.id,
-      name: product.name,
-      slug: product.slug,
-      price: product.price,
-      handle: product.colors[0]?.value as string,
-      image: product.colors[0]?.image as string,
-      altText: product.colors[0]?.altText as string,
-    };
-  });
-}
-
 export async function getFeaturedProducts(props: { take: number }): Promise<Product[]> {
   // TODO Not every product has a featured color
   const products = await prisma.product.findMany({
