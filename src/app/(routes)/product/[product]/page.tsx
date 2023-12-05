@@ -22,7 +22,6 @@ type ProductPageProps = {
 export async function generateMetadata({ params }: { params: { product: string } }): Promise<Metadata> {
   const product = await getProductPage({ name: params.product });
 
-  // TODO Assert image exists
   return {
     title: product.name,
     description: product.description,
