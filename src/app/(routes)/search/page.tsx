@@ -15,8 +15,9 @@ type SearchPageProps = {
 
 export default async function SearchPage({ searchParams }: SearchPageProps) {
   const { q: searchValue, sort } = searchParams as { [key: string]: string };
-  const sortKey = sorting.find((item) => item.slug === sort);
-  const products = await getSearchPage({ name: searchValue, order: sortKey?.order });
+
+  const sortItem = sorting.find((item) => item.slug === sort);
+  const products = await getSearchPage({ name: searchValue, sortKey: sortItem?.sortKey, order: sortItem?.order });
 
   if (products.length === 0) {
     if (searchValue) {

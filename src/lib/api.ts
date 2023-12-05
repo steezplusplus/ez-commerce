@@ -21,7 +21,11 @@ export async function getCategory(props: { name: string }): Promise<Category> {
   });
 }
 
-export async function getSearchPage(props: { name?: string; order?: 'asc' | 'desc' }): Promise<Product[]> {
+export async function getSearchPage(props: {
+  name?: string;
+  sortKey?: string;
+  order?: 'asc' | 'desc';
+}): Promise<Product[]> {
   const products = await prisma.product.findMany({
     include: {
       colors: true,
@@ -33,7 +37,8 @@ export async function getSearchPage(props: { name?: string; order?: 'asc' | 'des
       },
     },
     orderBy: {
-      price: props.order,
+      price: props.sortKey === 'PRICE' ? props.order : undefined,
+      createdAt: props.sortKey === 'RELEVANCE' ? props.order : undefined,
     },
   });
 
@@ -52,12 +57,13 @@ export async function getSearchPage(props: { name?: string; order?: 'asc' | 'des
   });
 }
 
-export async function getCategoryPage(props: { name: string; order?: 'asc' | 'desc' }) {
+export async function getCategoryPage(props: { name?: string; sortKey?: string; order?: 'asc' | 'desc' }) {
   const category = await prisma.category.findFirstOrThrow({
     include: {
       products: {
         orderBy: {
-          price: props.order,
+          price: props.sortKey === 'PRICE' ? props.order : undefined,
+          createdAt: props.sortKey === 'RELEVANCE' ? props.order : undefined,
         },
         include: {
           colors: true,
