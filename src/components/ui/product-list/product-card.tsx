@@ -26,9 +26,9 @@ export function ProductCard(props: ProductCardProps) {
         {/* Info */}
         <div>
           <p className="text-lg font-semibold">{product.name}</p>
-          <p className="text-sm text-gray-500">
+          <span className="text-sm text-gray-500">
             <Price amount={String(product.price)} />
-          </p>
+          </span>
         </div>
       </Link>
     </li>
