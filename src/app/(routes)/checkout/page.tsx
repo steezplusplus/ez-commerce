@@ -6,6 +6,10 @@ import { CheckoutButton } from 'components/checkout/checkout-button';
 import { Footer } from 'components/layout/footer';
 import { Container } from 'components/ui/container';
 
+export const metadata = {
+  title: 'Checkout',
+};
+
 export default function CheckoutPage() {
   return (
     <>

@@ -1,3 +1,4 @@
+import { Category } from '@prisma/client';
 import { prisma } from './db';
 import { Product } from './types';
 
@@ -5,11 +6,26 @@ export async function getStore() {
   return await prisma.store.findFirstOrThrow();
 }
 
-export async function getAllCategory() {
+export async function getCategories() {
   return await prisma.category.findMany();
 }
 
-export async function getSearchPage(props: { name?: string; order?: 'asc' | 'desc' }): Promise<Product[]> {
+export async function getCategory(props: { name: string }): Promise<Category> {
+  return await prisma.category.findFirstOrThrow({
+    where: {
+      name: {
+        contains: props.name,
+        mode: 'insensitive',
+      },
+    },
+  });
+}
+
+export async function getSearchPage(props: {
+  name?: string;
+  sortKey?: string;
+  order?: 'asc' | 'desc';
+}): Promise<Product[]> {
   const products = await prisma.product.findMany({
     include: {
       colors: true,
@@ -21,7 +37,8 @@ export async function getSearchPage(props: { name?: string; order?: 'asc' | 'des
       },
     },
     orderBy: {
-      price: props.order,
+      price: props.sortKey === 'PRICE' ? props.order : undefined,
+      createdAt: props.sortKey === 'RELEVANCE' ? props.order : undefined,
     },
   });
 
@@ -40,12 +57,13 @@ export async function getSearchPage(props: { name?: string; order?: 'asc' | 'des
   });
 }
 
-export async function getCategoryPage(props: { name: string; order?: 'asc' | 'desc' }) {
+export async function getCategoryPage(props: { name?: string; sortKey?: string; order?: 'asc' | 'desc' }) {
   const category = await prisma.category.findFirstOrThrow({
     include: {
       products: {
         orderBy: {
-          price: props.order,
+          price: props.sortKey === 'PRICE' ? props.order : undefined,
+          createdAt: props.sortKey === 'RELEVANCE' ? props.order : undefined,
         },
         include: {
           colors: true,
@@ -75,34 +93,15 @@ export async function getCategoryPage(props: { name: string; order?: 'asc' | 'de
   });
 }
 
-export async function getLatestProducts(props: { take: number }): Promise<Product[]> {
-  const products = await prisma.product.findMany({
-    include: {
-      colors: true,
-    },
-    orderBy: {
-      createdAt: 'desc',
-    },
-    take: props.take,
-  });
-
-  // TODO assertions that every product has an image
-  return products.map((product) => {
-    return {
-      id: product.id,
-      name: product.name,
-      slug: product.slug,
-      price: product.price,
-      handle: product.colors[0]?.value as string,
-      image: product.colors[0]?.image as string,
-      altText: product.colors[0]?.altText as string,
-    };
-  });
-}
-
 export async function getFeaturedProducts(props: { take: number }): Promise<Product[]> {
-  // TODO Not every product has a featured color
   const products = await prisma.product.findMany({
+    where: {
+      colors: {
+        some: {
+          isFeatured: true,
+        },
+      },
+    },
     include: {
       colors: {
         where: {
@@ -113,17 +112,18 @@ export async function getFeaturedProducts(props: { take: number }): Promise<Prod
     take: props.take,
   });
 
-  // TODO assertions that every product has an image
-  return products.map((product) => {
-    return {
-      id: product.id,
-      name: product.name,
-      slug: product.slug,
-      price: product.price,
-      handle: product.colors[0]?.value as string,
-      image: product.colors[0]?.image as string,
-      altText: product.colors[0]?.altText as string,
-    };
+  return products.flatMap((product) => {
+    return product.colors.map((color) => {
+      return {
+        id: color.id,
+        handle: color.value,
+        image: color.image,
+        altText: color.altText,
+        name: product.name,
+        slug: product.slug,
+        price: product.price,
+      };
+    });
   });
 }
 

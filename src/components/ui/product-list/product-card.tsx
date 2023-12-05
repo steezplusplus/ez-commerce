@@ -12,7 +12,7 @@ export function ProductCard(props: ProductCardProps) {
   return (
     <li key={product.id}>
       <Link href={`/product/${product.slug}?color=${product.handle}`} className="h-full w-full">
-        <div className="relative aspect-square rounded-md bg-gray-100">
+        <div className="relative aspect-square rounded-md bg-gray-100 dark:bg-gray-700">
           <Image
             fill
             alt={product.altText}
@@ -21,6 +21,7 @@ export function ProductCard(props: ProductCardProps) {
             sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
           />
         </div>
+        <p>{product.price}</p>
       </Link>
     </li>
   );

@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 
-import { getAllCategory } from 'lib/api';
+import { getCategories } from 'lib/api';
 import { CategoriesItem, DefaultCategoryItem } from './categories-item';
 import { CategoriesSelect } from './categories-select';
 
@@ -9,7 +9,7 @@ type CategoriesProps = {
 };
 
 export async function Categories(props: CategoriesProps) {
-  const categories = await getAllCategory();
+  const categories = await getCategories();
   const { title } = props;
 
   return (

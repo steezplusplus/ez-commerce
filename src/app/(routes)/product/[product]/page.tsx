@@ -8,6 +8,7 @@ import { Radio } from 'components/product/radio';
 import { Container } from 'components/ui/container';
 import { Price } from 'components/ui/price';
 import { getProductPage } from 'lib/api';
+import { Metadata } from 'next';
 
 type ProductPageProps = {
   params: {
@@ -17,6 +18,23 @@ type ProductPageProps = {
     [key: string]: string | string[] | undefined;
   };
 };
+
+export async function generateMetadata({ params }: { params: { product: string } }): Promise<Metadata> {
+  const product = await getProductPage({ name: params.product });
+
+  return {
+    title: product.name,
+    description: product.description,
+    openGraph: {
+      images: [
+        {
+          url: product.colors[0]?.image as string,
+          alt: product.colors[0]?.altText as string,
+        },
+      ],
+    },
+  };
+}
 
 export default async function ProductPage(props: ProductPageProps) {
   const { color: selectedColorValue, size: selectedSizeValue } = props.searchParams as { [key: string]: string };

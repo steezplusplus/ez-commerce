@@ -1,7 +1,8 @@
-import { getCategoryPage } from 'lib/api';
-import { sorting } from 'lib/constants';
+import { Metadata } from 'next';
 
 import { ProductList } from 'components/ui/product-list/product-list';
+import { getCategory, getCategoryPage } from 'lib/api';
+import { sorting } from 'lib/constants';
 
 type CategoryPageProps = {
   params: {
@@ -12,14 +13,20 @@ type CategoryPageProps = {
   };
 };
 
-// TODO generate metadata
+export async function generateMetadata({ params }: { params: { category: string } }): Promise<Metadata> {
+  const category = await getCategory({ name: params.category });
+  return {
+    title: category.name,
+  };
+}
+
 export default async function CategoryPage(props: CategoryPageProps) {
   const { params, searchParams } = props;
 
   const { sort } = searchParams as { [key: string]: string };
-  const sortKey = sorting.find((item) => item.slug === sort);
+  const sortItem = sorting.find((item) => item.slug === sort);
 
-  const products = await getCategoryPage({ name: params.category, order: sortKey?.order });
+  const products = await getCategoryPage({ name: params.category, sortKey: sortItem?.sortKey, order: sortItem?.order });
 
   return <>{products.length === 0 ? <NoResults /> : <ProductList products={products} />}</>;
 }

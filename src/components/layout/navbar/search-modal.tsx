@@ -7,8 +7,7 @@ import { Search } from './search';
 
 export function SearchModal() {
   const modaDialogRef = useRef<HTMLDialogElement>(null);
-  const labelId = 'mobile-search-label'; // TODO
-  const descriptionId = 'mobile-search-description'; // TODO
+  const labelId = 'mobile-search-label';
 
   const showModalDialog = () => {
     if (modaDialogRef.current) {
@@ -34,12 +33,13 @@ export function SearchModal() {
         onKeyDown={(e) => e.key === 'Enter' && closeModalDialog}
         ref={modaDialogRef}
         aria-labelledby={labelId}
-        aria-describedby={descriptionId}
         autoFocus
         className="rounded-lg border border-neutral-200 p-2 dark:border-neutral-800"
       >
         <div className="mb-2 flex items-center justify-between">
-          <h3 className="text-lg">Search products</h3>
+          <h3 id={labelId} className="text-lg">
+            Search products
+          </h3>
           <button
             onClick={closeModalDialog}
             className="rounded-md border border-neutral-200 p-1 dark:border-neutral-800"

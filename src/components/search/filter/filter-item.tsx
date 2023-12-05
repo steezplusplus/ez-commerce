@@ -10,7 +10,6 @@ type FilterItemProps = {
   item: SortFilterItem;
 };
 
-// TODO aria current!
 export function FilterItem(props: FilterItemProps) {
   const { item } = props;
   const pathname = usePathname();

@@ -8,9 +8,40 @@ import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
 
+const { META_NAME, META_DESCRIPTION } = process.env;
+const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL
+  ? `https://${process.env.NEXT_PUBLIC_VERCEL_URL}`
+  : 'http://localhost:3000';
+
 export const metadata: Metadata = {
-  title: 'Digital Commerce',
-  description: 'An open source digital commerce platform. Shop clothing, accessories and more.',
+  metadataBase: new URL(baseUrl),
+  title: {
+    default: META_NAME!,
+    template: `%s | ${META_NAME}`,
+  },
+  description: META_DESCRIPTION,
+  openGraph: {
+    title: META_NAME,
+    siteName: META_NAME,
+    description: META_DESCRIPTION,
+    url: baseUrl,
+    images: [
+      {
+        url: './logo.jpg',
+        width: 800,
+        height: 600,
+        alt: 'Image of neon light tubes',
+      },
+      {
+        url: './logo.jpg',
+        width: 1800,
+        height: 1600,
+        alt: 'Image of neon light tubes',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
 };
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
