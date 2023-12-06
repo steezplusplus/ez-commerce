@@ -65,9 +65,13 @@ export default async function ProductPage(props: ProductPageProps) {
     <>
       <Container className="px-4 pb-4">
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-          <Gallery colors={product.colors} />
-
-          <div>
+          <div
+            className="
+              bottom-0 flex flex-col
+              justify-center self-start
+              md:sticky md:top-10 md:aspect-square
+            "
+          >
             <h1 className="mb-2 text-5xl font-medium">{product.name}</h1>
             <Price amount={String(product.price)} />
             <p>{product.description}</p>
@@ -99,6 +103,7 @@ export default async function ProductPage(props: ProductPageProps) {
               selectedInventoryId={selectedInventory?.id}
             />
           </div>
+          <Gallery colors={product.colors} />
         </div>
       </Container>
       <Suspense>
