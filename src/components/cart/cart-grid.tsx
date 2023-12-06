@@ -29,23 +29,18 @@ export function CartGrid() {
       {cart.items.map((item) => {
         return (
           <li key={item.id} className="flex border-b py-6 first:pt-0">
+            {/* Image */}
             <div className="relative h-24 w-24 overflow-hidden rounded-md sm:h-48 sm:w-48">
               <Image fill src={item.image} alt={item.altText} className="object-cover object-center" sizes="30vw" />
             </div>
-            <div className="relative ml-4 flex flex-1 flex-col justify-between sm:ml-6">
-              <div className="absolute right-0 top-0 z-10">
+            {/* Info */}
+            <div className="ml-4 flex flex-1 flex-col sm:ml-6">
+              <div className="flex justify-between">
+                <p className="text-lg font-semibold">{item.name}</p>
                 <RemoveFromCart inventoryId={item.id} />
               </div>
-              <div className="relative pr-9 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:pr-0">
-                <div className="flex justify-between">
-                  <p className=" text-lg font-semibold">{item.name}</p>
-                </div>
-
-                <div className="mt-1 flex text-sm">
-                  <p>{item.color}</p>
-                </div>
-                <Price amount={String(item.price)} />
-              </div>
+              <p>{item.color}</p>
+              <Price amount={String(item.price)} />
             </div>
           </li>
         );
