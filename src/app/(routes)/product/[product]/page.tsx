@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 
 import { Color, Size } from '@prisma/client';
-import { AddToCart } from 'components/checkout/add-to-cart';
+import { AddToCart } from 'components/cart/add-to-cart';
 import { Footer } from 'components/layout/footer';
 import { Gallery } from 'components/product/gallery';
 import { Radio } from 'components/product/radio';

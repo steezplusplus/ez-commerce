@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 
-import { CartGrid } from 'components/checkout/cart-grid';
-import { CartSummary } from 'components/checkout/cart-summary';
+import { CartGrid } from 'components/cart/cart-grid';
+import { CartSummary } from 'components/cart/cart-summary';
 import { CheckoutButton } from 'components/checkout/checkout-button';
 import { Footer } from 'components/layout/footer';
 import { Container } from 'components/ui/container';
