@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 
-import { ProductList } from 'components/ui/product-list/product-list';
+import { SearchList } from 'components/search/search-list';
 import { getCategory, getCategoryPage } from 'lib/api';
 import { sorting } from 'lib/constants';
 
@@ -28,7 +28,7 @@ export default async function CategoryPage(props: CategoryPageProps) {
 
   const products = await getCategoryPage({ name: params.category, sortKey: sortItem?.sortKey, order: sortItem?.order });
 
-  return <>{products.length === 0 ? <NoResults /> : <ProductList products={products} />}</>;
+  return <>{products.length === 0 ? <NoResults /> : <SearchList products={products} />}</>;
 }
 
 function NoResults() {

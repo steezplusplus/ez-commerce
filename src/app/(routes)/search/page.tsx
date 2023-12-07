@@ -1,4 +1,4 @@
-import { ProductList } from 'components/ui/product-list/product-list';
+import { SearchList } from 'components/search/search-list';
 import { getSearchPage } from 'lib/api';
 import { sorting } from 'lib/constants';
 
@@ -33,7 +33,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
           Showing {products.length} {products.length > 1 ? 'results' : 'result'} for <b>&quot;{searchValue}&quot;</b>.
         </p>
       )}
-      <ProductList products={products} />
+      <SearchList products={products} />
     </>
   );
 }
