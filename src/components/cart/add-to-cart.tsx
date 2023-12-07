@@ -2,61 +2,47 @@
 
 import { toast } from 'react-hot-toast';
 
+import { Color, Inventory, Product, Size } from '@prisma/client';
 import { useCart } from 'hooks/use-cart';
 
 type AddToCartProps = {
-  selectedProductName: string;
-  selectedProductPrice: number;
+  product: Product;
+  color?: Color;
+  size?: Size;
+  inventory?: Inventory;
   sizeRequired: boolean;
-  selectedSizeName: string | undefined;
   colorRequired: boolean;
-  selectedColorName: string | undefined;
-  selectedColorImage: string | undefined;
-  selectedColorImageAltText: string | undefined;
-  selectedInventory: number | undefined;
-  selectedInventoryId: string | undefined;
 };
 
 export function AddToCart(props: AddToCartProps) {
-  const {
-    selectedProductName,
-    selectedProductPrice,
-    sizeRequired,
-    selectedSizeName,
-    colorRequired,
-    selectedColorName,
-    selectedColorImage,
-    selectedColorImageAltText,
-    selectedInventory,
-    selectedInventoryId,
-  } = props;
+  const { product, color, size, inventory, sizeRequired, colorRequired } = props;
 
   const cart = useCart();
 
   const onClick = () => {
-    if (colorRequired && selectedColorName === undefined) {
+    if (colorRequired && color === undefined) {
       return toast.error('Please select a color');
     }
 
-    if (sizeRequired && selectedSizeName === undefined) {
+    if (sizeRequired && size === undefined) {
       return toast.error('Please select a size');
     }
 
-    if (!selectedInventory) {
+    if (!inventory || !inventory.inventory) {
       return toast.error('This product is out of stock');
     }
 
-    const product = {
-      id: selectedInventoryId as string,
-      name: selectedProductName as string,
-      size: selectedSizeName as string,
-      color: selectedColorName as string,
-      image: selectedColorImage as string,
-      altText: selectedColorImageAltText as string,
-      price: selectedProductPrice as number,
+    const cartItem = {
+      id: inventory?.id as string,
+      name: product?.name as string,
+      size: size?.name as string,
+      color: color?.name as string,
+      image: color?.image as string,
+      altText: color?.altText as string,
+      price: product?.price as number,
     };
 
-    cart.addItem(product);
+    cart.addItem(cartItem);
   };
 
   return (
