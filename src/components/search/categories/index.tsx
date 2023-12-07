@@ -14,7 +14,7 @@ export async function Categories(props: CategoriesProps) {
 
   return (
     <Suspense>
-      <nav>
+      <nav className="md:sticky md:top-10">
         <h3 className="mb-1 text-sm">{title}</h3>
         <div className="hidden md:block">
           <ul>

@@ -10,7 +10,7 @@ type FilterProps = {
 export async function Filter(props: FilterProps) {
   const { list, title } = props;
   return (
-    <nav>
+    <nav className="md:sticky md:top-10">
       <h3 className="mb-1 text-sm">{title}</h3>
       <div className="hidden md:block">
         <ul>
