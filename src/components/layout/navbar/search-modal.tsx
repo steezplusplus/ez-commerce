@@ -23,10 +23,7 @@ export function SearchModal() {
 
   return (
     <>
-      <button
-        onClick={showModalDialog}
-        className="mr-2 rounded-md border border-neutral-200 p-2 dark:border-neutral-800"
-      >
+      <button onClick={showModalDialog} className="rounded-md border border-neutral-200 p-2 dark:border-neutral-800">
         <SearchIcon size="18" />
       </button>
       <dialog

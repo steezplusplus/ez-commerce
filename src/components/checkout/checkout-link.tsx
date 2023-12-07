@@ -19,7 +19,7 @@ export function CheckoutLink() {
     return (
       <span className="flex items-center rounded-md border border-neutral-200 p-2 dark:border-neutral-800">
         <ShoppingBag size="18" />
-        <Loader className="ml-2 animate-pulse" size="18" />
+        <Loader className="ml-2 animate-pulse" size="8" />
       </span>
     );
   }
@@ -30,7 +30,7 @@ export function CheckoutLink() {
       className="flex items-center rounded-md border border-neutral-200 p-2 dark:border-neutral-800"
     >
       <ShoppingBag size="18" />
-      <span className="ml-2 text-sm font-medium dark:text-white">{cart.items.length}</span>
+      <span className="ml-2 text-xs font-medium dark:text-white">{cart.items.length}</span>
     </Link>
   );
 }
