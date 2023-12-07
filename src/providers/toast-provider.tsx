@@ -15,7 +15,3 @@ export function ToastProvider() {
     />
   );
 }
-
-export function SuccessToast() {
-  return <div>Test</div>;
-}

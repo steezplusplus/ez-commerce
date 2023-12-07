@@ -22,7 +22,7 @@ export function CheckoutButton() {
     if (cart.items.length > 0) {
       toast.success('Thanks for checking out my demo.');
     } else {
-      toast('You have to add items to your cart first.');
+      toast.error('Your cart is empty.');
     }
   };
 

@@ -35,15 +35,15 @@ export function AddToCart(props: AddToCartProps) {
 
   const onClick = () => {
     if (colorRequired && selectedColorName === undefined) {
-      return toast('Please select a color');
+      return toast.error('Please select a color');
     }
 
     if (sizeRequired && selectedSizeName === undefined) {
-      return toast('Please select a size');
+      return toast.error('Please select a size');
     }
 
     if (!selectedInventory) {
-      return toast('This product is out of stock');
+      return toast.error('This product is out of stock');
     }
 
     const product = {
