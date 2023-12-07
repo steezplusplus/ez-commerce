@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 
-import { ProductList } from 'components/ui/product-list/product-list';
+import { SearchList } from 'components/search/search-list';
 import { getCategory, getCategoryPage } from 'lib/api';
 import { sorting } from 'lib/constants';
 
@@ -24,17 +24,25 @@ export default async function CategoryPage(props: CategoryPageProps) {
   const { params, searchParams } = props;
 
   const { sort } = searchParams as { [key: string]: string };
-  const sortItem = sorting.find((item) => item.slug === sort);
+  const selectedSort = sorting.find((item) => item.slug === sort);
 
-  const products = await getCategoryPage({ name: params.category, sortKey: sortItem?.sortKey, order: sortItem?.order });
+  const products = await getCategoryPage({
+    name: params.category,
+    sortKey: selectedSort?.sortKey,
+    order: selectedSort?.order,
+  });
 
-  return <>{products.length === 0 ? <NoResults /> : <ProductList products={products} />}</>;
+  if (products.length === 0) {
+    return <NoResults />;
+  }
+
+  return <SearchList products={products} />;
 }
 
 function NoResults() {
   return (
     <div className="flex h-full w-full items-center justify-center">
-      <p className="text-neutral-500">No products found in this category.</p>
+      <p className="text-neutral-300">No products found in this category.</p>
     </div>
   );
 }

@@ -927,6 +927,15 @@ async function main() {
       },
     ],
   });
+
+  // Sale
+  await prisma.category.create({
+    data: {
+      name: 'Sale',
+      slug: 'sale',
+      storeId: store.id,
+    },
+  });
 }
 
 main()

@@ -40,6 +40,7 @@ export function CartGrid() {
                 <RemoveFromCart inventoryId={item.id} />
               </div>
               <p>{item.color}</p>
+              <p>{item.size}</p>
               <Price amount={String(item.price)} />
             </div>
           </li>
