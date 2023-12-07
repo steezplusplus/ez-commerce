@@ -928,11 +928,11 @@ async function main() {
     ],
   });
 
-  // Empty category for testing
+  // Sale
   await prisma.category.create({
     data: {
-      name: 'Empty Category',
-      slug: 'empty-category',
+      name: 'Sale',
+      slug: 'sale',
       storeId: store.id,
     },
   });
