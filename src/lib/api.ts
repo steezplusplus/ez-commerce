@@ -13,8 +13,8 @@ export async function getCategories() {
 export async function getCategory(props: { name: string }): Promise<Category> {
   return await prisma.category.findFirstOrThrow({
     where: {
-      name: {
-        contains: props.name,
+      slug: {
+        equals: props.name,
         mode: 'insensitive',
       },
     },
@@ -71,7 +71,7 @@ export async function getCategoryPage(props: { name?: string; sortKey?: string; 
       },
     },
     where: {
-      name: {
+      slug: {
         equals: props.name,
         mode: 'insensitive',
       },
