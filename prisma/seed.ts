@@ -927,6 +927,15 @@ async function main() {
       },
     ],
   });
+
+  // Empty category for testing
+  await prisma.category.create({
+    data: {
+      name: 'Empty Category',
+      slug: 'empty-category',
+      storeId: store.id,
+    },
+  });
 }
 
 main()
