@@ -25,11 +25,7 @@ function SearchCard({ product }: { product: Product }) {
   const href = `/product/${slug}?color=${handle}`;
 
   return (
-    <li key={id} className="group relative p-1">
-      <span className="absolute left-0 top-0 h-0 w-0 border-t-2 border-teal-300 transition-all duration-500 group-hover:w-full dark:border-pink-500" />
-      <span className="absolute right-0 top-0 h-0 w-0 border-r-2 border-teal-300 transition-all duration-500 group-hover:h-full dark:border-pink-500" />
-      <span className="absolute bottom-0 right-0 h-0 w-0 border-b-2 border-teal-300 transition-all duration-500 group-hover:w-full dark:border-pink-500" />
-      <span className="absolute bottom-0 left-0 h-0 w-0 border-l-2 border-teal-300 transition-all duration-500 group-hover:h-full dark:border-pink-500" />
+    <li key={id} className="group">
       <Link href={href} className="h-full w-full">
         <SearchCardImage altText={altText} image={image} />
         <SearchCardInfo name={name} price={price} />
@@ -60,7 +56,7 @@ function SearchCardImage({ image, altText }: { image: string; altText: string })
 function SearchCardInfo({ name, price }: { name: string; price: number }) {
   return (
     <div>
-      <p className="text-lg font-semibold">{name}</p>
+      <p className="text-lg font-semibold group-hover:underline">{name}</p>
       <span className="text-sm text-gray-500">
         <Price amount={String(price)} />
       </span>
