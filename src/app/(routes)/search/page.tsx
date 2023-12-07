@@ -1,6 +1,7 @@
 import { SearchList } from 'components/search/search-list';
 import { getSearchPage } from 'lib/api';
 import { sorting } from 'lib/constants';
+import { Product } from 'lib/types';
 
 export const metadata = {
   title: 'Search',
@@ -16,24 +17,40 @@ type SearchPageProps = {
 export default async function SearchPage({ searchParams }: SearchPageProps) {
   const { q: searchValue, sort } = searchParams as { [key: string]: string };
 
-  const sortItem = sorting.find((item) => item.slug === sort);
-  const products = await getSearchPage({ name: searchValue, sortKey: sortItem?.sortKey, order: sortItem?.order });
+  const selectedSort = sorting.find((item) => item.slug === sort);
+
+  const products = await getSearchPage({
+    name: searchValue,
+    sortKey: selectedSort?.sortKey,
+    order: selectedSort?.order,
+  });
 
   if (products.length === 0) {
-    if (searchValue) {
-      return <p>There are no listings for your search {searchValue && <b>&quot;{searchValue}&quot;</b>}.</p>;
+    if (searchValue !== undefined) {
+      return (
+        <p className="text-neutral-300">
+          There are no listings for your search {searchValue && <b>&quot;{searchValue}&quot;</b>}.
+        </p>
+      );
+    } else {
+      return <p className="text-neutral-300">This store has ran out of products.</p>;
     }
-    return <p>There are no products in this store.</p>;
   }
 
   return (
     <>
-      {searchValue && (
-        <p className="mb-3">
-          Showing {products.length} {products.length > 1 ? 'results' : 'result'} for <b>&quot;{searchValue}&quot;</b>.
-        </p>
-      )}
+      <SearchResultsText products={products} searchValue={searchValue} />
       <SearchList products={products} />
     </>
   );
+}
+
+function SearchResultsText({ products, searchValue }: { products: Product[]; searchValue?: string }) {
+  if (searchValue !== undefined) {
+    return (
+      <p className="mb-3 text-neutral-300">
+        Showing {products.length} {products.length > 1 ? 'results' : 'result'} for <b>&quot;{searchValue}&quot;</b>.
+      </p>
+    );
+  }
 }
