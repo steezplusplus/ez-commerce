@@ -1,5 +1,6 @@
 'use client';
 
+import { Loader } from 'lucide-react';
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
 
@@ -12,7 +13,14 @@ export function ThemeSelect() {
   }, [theme]);
 
   if (!mounted) {
-    return null;
+    return (
+      <div>
+        <div className="mb-1 h-5 w-1/2 animate-pulse rounded-md bg-gray-100 dark:bg-gray-700" />
+        <div className="rounded-md border border-slate-400 px-8 py-3">
+          <Loader className="animate-pulse" size="12" />
+        </div>
+      </div>
+    );
   }
 
   return (
