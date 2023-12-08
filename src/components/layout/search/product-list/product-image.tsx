@@ -7,7 +7,7 @@ import Image from 'next/image';
 import { IconButton } from 'components/ui/icon-button';
 import { usePreviewModal } from 'hooks/use-preview-modal';
 
-export function SearchCardImage({ image, altText }: { image: string; altText: string }) {
+export function ProductImage({ image, altText }: { image: string; altText: string }) {
   const previewModal = usePreviewModal();
   // const cart = useCart();
 

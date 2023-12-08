@@ -1,7 +1,7 @@
 import { Product } from 'lib/types';
-import { SearchCard } from './search-card';
+import { ProductCard } from './search-card';
 
-export function SearchList({ products }: { products: Product[] }) {
+export function ProductList({ products }: { products: Product[] }) {
   return (
     <ul
       className="
@@ -10,7 +10,7 @@ export function SearchList({ products }: { products: Product[] }) {
       "
     >
       {products.map((product) => (
-        <SearchCard product={product} key={product.id} />
+        <ProductCard product={product} key={product.id} />
       ))}
     </ul>
   );

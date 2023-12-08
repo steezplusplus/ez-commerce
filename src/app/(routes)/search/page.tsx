@@ -1,4 +1,4 @@
-import { SearchList } from 'components/ui/grid/search-list';
+import { ProductList } from 'components/layout/search/product-list';
 import { getSearchPage } from 'lib/api';
 import { sorting } from 'lib/constants';
 import { Product } from 'lib/types';
@@ -40,7 +40,7 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
   return (
     <>
       <SearchResultsText products={products} searchValue={searchValue} />
-      <SearchList products={products} />
+      <ProductList products={products} />
     </>
   );
 }
