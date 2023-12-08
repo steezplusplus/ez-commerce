@@ -29,7 +29,7 @@ export function Modal(props: ModalProps) {
               leaveTo="opacity-0 scale-95"
             >
               <Dialog.Panel className="w-full max-w-3xl overflow-hidden rounded-lg text-left align-middle">
-                <div className="relative flex w-full items-center overflow-hidden bg-white px-4 pb-8 pt-14 shadow-2xl sm:px-6 sm:pt-8 md:p-6 lg:p-8">
+                <div className="relative flex w-full items-center overflow-hidden bg-neutral-100 px-4 pb-8 pt-14 shadow-2xl dark:bg-neutral-800 sm:px-6 sm:pt-8 md:p-6 lg:p-8">
                   <div className="absolute right-4 top-4">
                     <button onClick={onClose}>
                       <X />
