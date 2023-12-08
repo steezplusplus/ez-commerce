@@ -17,7 +17,7 @@ export function CartGrid() {
   }, []);
 
   if (!isMounted) {
-    return null;
+    return <LoadingCartGrid />;
   }
 
   if (cart.items.length === 0) {
@@ -47,5 +47,38 @@ export function CartGrid() {
         );
       })}
     </ul>
+  );
+}
+
+function LoadingCartGrid() {
+  return (
+    <ul>
+      <LoadingCartItem />
+      <LoadingCartItem />
+    </ul>
+  );
+}
+
+function LoadingCartItem() {
+  return (
+    <li className="flex border-b py-6 first:pt-0">
+      {/* Image */}
+      <div className="h-24 w-24 animate-pulse rounded-md bg-gray-100 dark:bg-gray-700 sm:h-48 sm:w-48" />
+      {/* Info */}
+      <div className="ml-4 flex flex-1 flex-col space-y-1 sm:ml-6">
+        <div className="flex justify-between">
+          {/* Name */}
+          <div className="h-6 w-3/4 animate-pulse rounded-md bg-gray-100 dark:bg-gray-700" />
+          {/* X Ixon */}
+          <div className="h-[10px] w-[10px] animate-pulse rounded bg-gray-100 dark:bg-gray-700" />
+        </div>
+        {/* Color */}
+        <div className="h-5 w-1/2 animate-pulse rounded-md bg-gray-100 dark:bg-gray-700" />
+        {/* Size */}
+        <div className="h-5 w-1/2 animate-pulse rounded-md bg-gray-100 dark:bg-gray-700" />
+        {/* Price */}
+        <div className="mt-1 h-4 w-full animate-pulse rounded-md bg-gray-100 dark:bg-gray-700" />
+      </div>
+    </li>
   );
 }
