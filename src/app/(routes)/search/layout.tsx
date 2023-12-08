@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 
-import { Footer } from 'components/layout/footer';
+import { Footer } from 'components/footer';
 import { Categories } from 'components/search/categories';
 import { Filter } from 'components/search/filter';
 import { Container } from 'components/ui/container';

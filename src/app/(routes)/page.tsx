@@ -1,6 +1,6 @@
 import { Suspense } from 'react';
 
-import { Footer } from 'components/layout/footer';
+import { Footer } from 'components/footer';
 import { Container } from 'components/ui/container';
 
 export default async function HomePage() {
