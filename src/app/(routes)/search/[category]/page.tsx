@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 
-import { SearchList } from 'components/ui/search-list';
+import { SearchList } from 'components/ui/grid/search-list';
 import { getCategory, getCategoryPage } from 'lib/api';
 import { sorting } from 'lib/constants';
 

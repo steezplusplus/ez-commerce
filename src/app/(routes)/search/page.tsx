@@ -1,4 +1,4 @@
-import { SearchList } from 'components/ui/search-list';
+import { SearchList } from 'components/ui/grid/search-list';
 import { getSearchPage } from 'lib/api';
 import { sorting } from 'lib/constants';
 import { Product } from 'lib/types';
