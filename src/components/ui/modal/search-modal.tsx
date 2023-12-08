@@ -1,8 +1,9 @@
 'use client';
 
+import { SearchIcon } from 'lucide-react';
+
 import { Search } from 'components/layout/navbar/search';
 import { useSearchModal } from 'hooks/use-search-modal';
-import { SearchIcon } from 'lucide-react';
 import { Modal } from './index';
 
 export function SearchModalDisclosure() {
@@ -30,8 +31,10 @@ export function SearchModal() {
 
   return (
     <Modal open={searchModal.isOpen} onClose={searchModal.onClose}>
-      <h3 className="mb-2 text-lg">Search products</h3>
-      <Search />
+      <div className="flex w-full flex-col justify-center">
+        <h3 className="mb-2 text-lg">Search products</h3>
+        <Search onSearch={searchModal.onClose} />
+      </div>
     </Modal>
   );
 }

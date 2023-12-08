@@ -7,7 +7,12 @@ import { createUrl } from 'lib/utils';
 
 const searchId = 'search-id';
 
-export function Search() {
+type SearchProps = {
+  onSearch?: () => void;
+};
+
+export function Search(props: SearchProps) {
+  const { onSearch } = props;
   const router = useRouter();
   const params = useSearchParams();
 
@@ -25,6 +30,10 @@ export function Search() {
     }
 
     router.push(createUrl('/search', newParams));
+
+    if (onSearch) {
+      onSearch();
+    }
   };
 
   return (
