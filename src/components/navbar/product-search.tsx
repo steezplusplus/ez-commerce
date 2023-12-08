@@ -8,11 +8,11 @@ import { createUrl } from 'lib/utils';
 const searchId = 'search-id';
 
 type SearchProps = {
-  onSearch?: () => void;
+  callback?: () => void;
 };
 
-export function Search(props: SearchProps) {
-  const { onSearch } = props;
+export function ProductSearch(props: SearchProps) {
+  const { callback } = props;
   const router = useRouter();
   const params = useSearchParams();
 
@@ -31,8 +31,8 @@ export function Search(props: SearchProps) {
 
     router.push(createUrl('/search', newParams));
 
-    if (onSearch) {
-      onSearch();
+    if (callback) {
+      callback();
     }
   };
 
