@@ -28,7 +28,7 @@ export const useCart = create(
         const existingItem = currentItems.find((item) => item.id === data.id);
 
         if (existingItem) {
-          return toast('Item already in cart.');
+          return toast.error('Item already in cart.');
         }
 
         set({ items: [...get().items, data] });
