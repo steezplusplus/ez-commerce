@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 import { CircleLogo } from 'components/ui/circle-logo';
 
-export function LinkLogo({ storeName }: { storeName: string }) {
+export function NavLogo({ storeName }: { storeName: string }) {
   const href = '/';
   return (
     <Link href={href} className="mr-2 flex w-full items-center justify-center md:w-auto">

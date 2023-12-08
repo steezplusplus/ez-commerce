@@ -1,6 +1,6 @@
 import { getStore } from 'lib/api';
 import { LinkCheckout } from './link-checkout';
-import { LinkLogo } from './link-logo';
+import { NavLogo } from './nav-logo';
 import { ProductSearch } from './product-search';
 import { SearchModalDisclosure } from './search-modal-disclosure';
 
@@ -17,7 +17,7 @@ export async function Navbar() {
       <div className="flex w-full items-center">
         {/* Logo */}
         <div className="flex w-full md:w-1/3">
-          <LinkLogo storeName={store.name} />
+          <NavLogo storeName={store.name} />
         </div>
 
         {/* Desktop & Laptop search */}
