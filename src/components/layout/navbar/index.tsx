@@ -2,9 +2,9 @@ import Link from 'next/link';
 
 import { CheckoutLink } from 'components/checkout/checkout-link';
 import { CircleLogo } from 'components/ui/circle-logo';
+import { SearchModalDisclosure } from 'components/ui/modal/search-modal';
 import { getStore } from 'lib/api';
 import { Search } from './search';
-import { SearchModal } from './search-modal';
 
 export async function Navbar() {
   const store = await getStore();
@@ -12,7 +12,7 @@ export async function Navbar() {
   return (
     <nav className="flex w-full items-center justify-between p-4">
       <div className="flex flex-none md:hidden">
-        <SearchModal />
+        <SearchModalDisclosure />
       </div>
 
       <div className="flex w-full items-center">

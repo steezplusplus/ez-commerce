@@ -7,12 +7,7 @@ import { createUrl } from 'lib/utils';
 
 const searchId = 'search-id';
 
-type SearchProps = {
-  dialogRef?: React.RefObject<HTMLDialogElement>;
-};
-
-export function Search(props: SearchProps) {
-  const { dialogRef } = props;
+export function Search() {
   const router = useRouter();
   const params = useSearchParams();
 
@@ -30,10 +25,6 @@ export function Search(props: SearchProps) {
     }
 
     router.push(createUrl('/search', newParams));
-
-    if (dialogRef?.current) {
-      dialogRef?.current.close();
-    }
   };
 
   return (
