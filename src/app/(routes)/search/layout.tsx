@@ -1,5 +1,5 @@
-import { Categories } from 'components/search/categories';
-import { Filter } from 'components/search/filter';
+import { Categories } from 'components/layout/search/categories';
+import { Filter } from 'components/layout/search/filter';
 import { Container } from 'components/ui/container';
 import { sorting } from 'lib/constants';
 

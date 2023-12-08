@@ -1,6 +1,6 @@
 'use client';
 
-import { ProductSearch } from 'components/navbar/product-search';
+import { ProductSearch } from 'components/layout/navbar/product-search';
 import { useSearchModal } from 'hooks/use-search-modal';
 import { Modal } from './index';
 

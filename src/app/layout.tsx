@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { Suspense } from 'react';
 
-import { Footer } from 'components/footer';
-import { Navbar } from 'components/navbar';
+import { Footer } from 'components/layout/footer';
+import { Navbar } from 'components/layout/navbar';
 import { ModalProvider } from 'providers/modal-provider';
 import { ThemeProvider } from 'providers/theme-provider';
 import { ToastProvider } from 'providers/toast-provider';
