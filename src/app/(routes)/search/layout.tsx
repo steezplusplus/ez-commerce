@@ -1,6 +1,6 @@
-import { Suspense } from 'react';
+// import { Suspense } from 'react';
 
-import { Footer } from 'components/footer';
+// import { Footer } from 'components/footer';
 import { Categories } from 'components/search/categories';
 import { Filter } from 'components/search/filter';
 import { Container } from 'components/ui/container';
@@ -24,9 +24,9 @@ export default function SearchLayout(props: SearchLayoutProps) {
           <Filter list={sorting} title="Sort by" />
         </div>
       </Container>
-      <Suspense>
+      {/* <Suspense>
         <Footer />
-      </Suspense>
+      </Suspense> */}
     </>
   );
 }

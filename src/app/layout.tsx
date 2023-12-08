@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import { Suspense } from 'react';
 
+import { Footer } from 'components/footer';
 import { Navbar } from 'components/navbar';
 import { ModalProvider } from 'providers/modal-provider';
 import { ThemeProvider } from 'providers/theme-provider';
@@ -54,6 +56,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           <ToastProvider />
           <Navbar />
           <main>{children}</main>
+          <Suspense>
+            <Footer />
+          </Suspense>
         </ThemeProvider>
       </body>
     </html>

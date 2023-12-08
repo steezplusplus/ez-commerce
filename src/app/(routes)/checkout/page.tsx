@@ -1,9 +1,9 @@
-import { Suspense } from 'react';
+// import { Suspense } from 'react';
 
 import { CartGrid } from 'components/cart/cart-grid';
 import { CartSummary } from 'components/cart/cart-summary';
 import { CheckoutButton } from 'components/checkout/checkout-button';
-import { Footer } from 'components/footer';
+// import { Footer } from 'components/footer';
 import { Container } from 'components/ui/container';
 import { AlertTriangle } from 'lucide-react';
 
@@ -26,9 +26,9 @@ export default function CheckoutPage() {
           <CheckoutButton />
         </div>
       </Container>
-      <Suspense>
+      {/* <Suspense>
         <Footer />
-      </Suspense>
+      </Suspense> */}
     </>
   );
 }

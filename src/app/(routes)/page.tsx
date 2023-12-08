@@ -1,6 +1,6 @@
-import { Suspense } from 'react';
+// import { Suspense } from 'react';
 
-import { Footer } from 'components/footer';
+// import { Footer } from 'components/footer';
 import { Container } from 'components/ui/container';
 
 export default async function HomePage() {
@@ -9,9 +9,9 @@ export default async function HomePage() {
       <Container className="px-4 pb-4">
         <p>Todo homepage</p>
       </Container>
-      <Suspense>
+      {/* <Suspense>
         <Footer />
-      </Suspense>
+      </Suspense> */}
     </>
   );
 }

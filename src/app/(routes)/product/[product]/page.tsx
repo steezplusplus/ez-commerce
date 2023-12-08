@@ -1,6 +1,6 @@
-import { Suspense } from 'react';
+// import { Suspense } from 'react';
 
-import { Footer } from 'components/footer';
+// import { Footer } from 'components/footer';
 import { ProductForm } from 'components/product/form';
 import { Gallery } from 'components/product/gallery';
 import { Container } from 'components/ui/container';
@@ -53,9 +53,9 @@ export default async function ProductPage(props: ProductPageProps) {
           <Gallery colors={product.colors} />
         </div>
       </Container>
-      <Suspense>
+      {/* <Suspense>
         <Footer />
-      </Suspense>
+      </Suspense> */}
     </>
   );
 }
