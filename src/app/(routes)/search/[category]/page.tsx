@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 
-import { SearchList } from 'components/search/search-list';
+import { SearchList } from 'components/ui/search-list';
 import { getCategory, getCategoryPage } from 'lib/api';
 import { sorting } from 'lib/constants';
 
