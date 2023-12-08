@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 
 import { Navbar } from 'components/layout/navbar';
+import { ModalProvider } from 'providers/modal-provider';
 import { ThemeProvider } from 'providers/theme-provider';
 import { ToastProvider } from 'providers/toast-provider';
 import './globals.css';
@@ -49,6 +50,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     <html lang="en" className={inter.className}>
       <body>
         <ThemeProvider>
+          <ModalProvider />
           <ToastProvider />
           <Navbar />
           <main>{children}</main>
