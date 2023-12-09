@@ -1,20 +1,19 @@
 import Link from 'next/link';
 
 import { GridItem } from 'components/ui/grid';
-import { Product } from 'lib/types';
+import { ProductWithColor } from 'lib/api';
 import { ProductImage } from './product-image';
 import { ProductInfo } from './product-info';
 
-export function ProductCard({ product }: { product: Product }) {
-  const { id, name, slug, handle, image, altText, price } = product;
-
-  const href = `/product/${slug}?color=${handle}`;
+// TODO Handle products without colors (no images)
+export function ProductCard({ product }: { product: ProductWithColor }) {
+  const href = `/product/${product.name}?color=${product.colors[0]?.value}`;
 
   return (
-    <GridItem key={id} className="group/card">
+    <GridItem key={product.id} className="group/card">
       <Link href={href} className="h-full w-full">
-        <ProductImage altText={altText} image={image} />
-        <ProductInfo name={name} price={price} />
+        <ProductImage altText={product.colors[0]?.altText || ''} image={product.colors[0]?.image || ''} />
+        <ProductInfo name={product.name} price={product.price} />
       </Link>
     </GridItem>
   );
