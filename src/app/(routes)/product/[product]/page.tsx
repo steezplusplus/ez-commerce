@@ -30,6 +30,7 @@ export async function generateMetadata({ params }: { params: { product: string }
   };
 }
 
+// TODO Use Grid, GridItem
 export default async function ProductPage(props: ProductPageProps) {
   const { color: selectedColor, size: selectedSize } = props.searchParams as { [key: string]: string };
   const product = await getProductPage({ name: props.params.product });
