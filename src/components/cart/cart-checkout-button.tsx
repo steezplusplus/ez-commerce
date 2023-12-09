@@ -6,7 +6,7 @@ import { toast } from 'react-hot-toast';
 import { Button } from 'components/ui/button';
 import { useCart } from 'hooks/use-cart';
 
-export function CheckoutButton() {
+export function CartCheckoutButton() {
   const [isMounted, setIsMounted] = useState<boolean>(false);
   const cart = useCart();
 
