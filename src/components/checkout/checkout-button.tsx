@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
 
+import { Button } from 'components/ui/button';
 import { useCart } from 'hooks/use-cart';
 
 export function CheckoutButton() {
@@ -27,8 +28,8 @@ export function CheckoutButton() {
   };
 
   return (
-    <button onClick={handleCheckout} className="w-full rounded-sm border p-2">
+    <Button onClick={handleCheckout} className="w-full text-xl">
       Purchase
-    </button>
+    </Button>
   );
 }

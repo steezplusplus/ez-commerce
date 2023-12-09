@@ -12,7 +12,15 @@ export function ProductModalDisclosure() {
   };
 
   return (
-    <Button className="w-full hover:underline" onClick={onPreview}>
+    <Button
+      className="
+        w-full 
+        bg-neutral-100 text-neutral-600
+        hover:underline hover:opacity-75
+        dark:bg-neutral-800 dark:text-neutral-200 
+      "
+      onClick={onPreview}
+    >
       Quick Shop
     </Button>
   );
