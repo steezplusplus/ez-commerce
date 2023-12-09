@@ -1,17 +1,13 @@
+import { Grid } from 'components/ui/grid';
 import { Product } from 'lib/types';
-import { ProductCard } from './search-card';
+import { ProductCard } from './product-card';
 
 export function ProductList({ products }: { products: Product[] }) {
   return (
-    <ul
-      className="
-        grid grid-cols-1 gap-4
-        sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4
-      "
-    >
+    <Grid className="grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
       {products.map((product) => (
         <ProductCard product={product} key={product.id} />
       ))}
-    </ul>
+    </Grid>
   );
 }
