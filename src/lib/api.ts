@@ -43,9 +43,13 @@ export async function getSearchPage(props: {
   });
 }
 
-// TODO Add explicit return type
-export async function getCategoryPage(props: { name?: string; sortKey?: string; order?: 'asc' | 'desc' }) {
-  const category = await prisma.category.findFirstOrThrow({
+type CategoryWithProduct = Category & { products: ProductWithColor[] };
+export async function getCategoryPage(props: {
+  name?: string;
+  sortKey?: string;
+  order?: 'asc' | 'desc';
+}): Promise<CategoryWithProduct> {
+  return await prisma.category.findFirstOrThrow({
     include: {
       products: {
         orderBy: {
@@ -63,20 +67,6 @@ export async function getCategoryPage(props: { name?: string; sortKey?: string; 
         mode: 'insensitive',
       },
     },
-  });
-
-  return category.products.flatMap((product) => {
-    return product.colors.map((color) => {
-      return {
-        id: color.id,
-        handle: color.value,
-        image: color.image,
-        altText: color.altText,
-        name: product.name,
-        slug: product.slug,
-        price: product.price,
-      };
-    });
   });
 }
 
