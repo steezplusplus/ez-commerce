@@ -3,6 +3,7 @@
 import { toast } from 'react-hot-toast';
 
 import { Color, Inventory, Product, Size } from '@prisma/client';
+import { Button } from 'components/ui/button';
 import { useCart } from 'hooks/use-cart';
 
 type AddToCartProps = {
@@ -20,6 +21,7 @@ export function AddToCart(props: AddToCartProps) {
   const cart = useCart();
 
   const onClick = () => {
+    // Validations
     if (colorRequired && color === undefined) {
       return toast.error('Please select a color');
     }
@@ -32,6 +34,7 @@ export function AddToCart(props: AddToCartProps) {
       return toast.error('This product is out of stock');
     }
 
+    // Cart item template
     const cartItem = {
       id: inventory?.id as string,
       name: product?.name as string,
@@ -45,9 +48,5 @@ export function AddToCart(props: AddToCartProps) {
     cart.addItem(cartItem);
   };
 
-  return (
-    <button className="w-full rounded border px-2 py-1" onClick={onClick}>
-      Add to cart
-    </button>
-  );
+  return <Button onClick={onClick}>Add to cart</Button>;
 }

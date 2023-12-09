@@ -1,27 +1,38 @@
-type ButtonProps = {
-  onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  children: React.ReactNode;
-  disabled?: boolean;
-  className?: string;
-};
+import { forwardRef } from 'react';
 
-export function Button(props: ButtonProps) {
-  return (
-    <button
-      onClick={props.onClick}
-      disabled={props.disabled}
-      className={`
+export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
+
+export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  ({ className, children, disabled, type = 'button', ...props }, ref) => {
+    return (
+      <button
+        className={`
           disabled:cursor-opacity-50
           w-auto
+          rounded-md
+          border
           bg-neutral-100
           px-2
           py-1
+          text-sm
+          tracking-widest
+          text-neutral-500
+          transition
+          hover:opacity-75
           disabled:cursor-not-allowed
-          dark:bg-neutral-800
-          ${props.className}
+          dark:border-neutral-800
+          dark:bg-neutral-900
+          dark:text-neutral-400
+          ${className}
         `}
-    >
-      {props.children}
-    </button>
-  );
-}
+        ref={ref}
+        disabled={disabled}
+        {...props}
+      >
+        {children}
+      </button>
+    );
+  }
+);
+
+Button.displayName = 'Button';
