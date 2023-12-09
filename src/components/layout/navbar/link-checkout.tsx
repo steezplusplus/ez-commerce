@@ -17,7 +17,7 @@ export function LinkCheckout() {
 
   if (!isMounted) {
     return (
-      <span className="flex items-center rounded-md border border-neutral-200 p-2 dark:border-neutral-800">
+      <span className="flex items-center rounded-md border p-2">
         <ShoppingBag size="18" />
         <Loader className="ml-2 animate-pulse" size="8" />
       </span>
@@ -25,10 +25,7 @@ export function LinkCheckout() {
   }
 
   return (
-    <Link
-      href="/checkout"
-      className="flex items-center rounded-md border border-neutral-200 p-2 dark:border-neutral-800"
-    >
+    <Link href="/checkout" className="flex items-center rounded-md border p-2">
       <ShoppingBag size="18" />
       <span className="ml-2 text-xs font-medium dark:text-white">{cart.items.length}</span>
     </Link>

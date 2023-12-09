@@ -11,7 +11,6 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           w-auto
           rounded-md
           border
-          border-neutral-200
           px-2
           py-1
           text-sm
@@ -19,7 +18,6 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
           transition
           hover:opacity-75
           disabled:cursor-not-allowed
-          dark:border-neutral-800
           ${className}
         `}
         ref={ref}

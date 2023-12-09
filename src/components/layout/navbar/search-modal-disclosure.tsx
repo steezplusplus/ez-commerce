@@ -14,7 +14,7 @@ export function SearchModalDisclosure() {
   };
 
   return (
-    <Button onClick={onMobileSearch} className="px-2">
+    <Button onClick={onMobileSearch} className="px-2 py-2">
       <SearchIcon size="18" />
     </Button>
   );
