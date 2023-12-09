@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 
-import { SearchList } from 'components/search/search-list';
+import { ProductList } from 'components/layout/search/product-list';
 import { getCategory, getCategoryPage } from 'lib/api';
 import { sorting } from 'lib/constants';
 
@@ -36,7 +36,7 @@ export default async function CategoryPage(props: CategoryPageProps) {
     return <NoResults />;
   }
 
-  return <SearchList products={products} />;
+  return <ProductList products={products} />;
 }
 
 function NoResults() {

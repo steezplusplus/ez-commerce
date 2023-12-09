@@ -11,13 +11,14 @@ export function CartSummary() {
   }, 0);
 
   return (
-    <div className="rounded-lg border px-4 py-6 sm:p-6 lg:col-span-5 lg:mt-0 lg:p-8">
-      <h2 className="text-lg font-medium">Order summary</h2>
-      <div className="mt-6 space-y-4">
-        <div className="border-t border-gray-200 pt-4">
-          <div className="text-base font-medium">Order total</div>
+    <div className="rounded-md border px-4 py-6 sm:p-6">
+      <h2 className="mb-6 text-lg font-medium">Order summary</h2>
+
+      <div className="border-t pt-4">
+        <div className="mb-1 font-medium">Order total</div>
+        <h3 className="text-lg font-medium">
           <Price amount={String(totalPrice)} />
-        </div>
+        </h3>
       </div>
     </div>
   );

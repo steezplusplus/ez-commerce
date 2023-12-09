@@ -2,6 +2,7 @@
 
 import { X } from 'lucide-react';
 
+import { Button } from 'components/ui/button';
 import { useCart } from 'hooks/use-cart';
 
 type RemoveFromCartProps = {
@@ -18,8 +19,8 @@ export function RemoveFromCart(props: RemoveFromCartProps) {
   };
 
   return (
-    <button onClick={(e) => removeFromCart(e)}>
+    <Button className="px-1 py-1" onClick={(e) => removeFromCart(e)}>
       <X size="18" />
-    </button>
+    </Button>
   );
 }

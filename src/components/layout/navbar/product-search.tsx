@@ -8,11 +8,11 @@ import { createUrl } from 'lib/utils';
 const searchId = 'search-id';
 
 type SearchProps = {
-  onSearch?: () => void;
+  callback?: () => void;
 };
 
-export function Search(props: SearchProps) {
-  const { onSearch } = props;
+export function ProductSearch(props: SearchProps) {
+  const { callback } = props;
   const router = useRouter();
   const params = useSearchParams();
 
@@ -31,8 +31,8 @@ export function Search(props: SearchProps) {
 
     router.push(createUrl('/search', newParams));
 
-    if (onSearch) {
-      onSearch();
+    if (callback) {
+      callback();
     }
   };
 
@@ -49,7 +49,7 @@ export function Search(props: SearchProps) {
         id={searchId}
         autoComplete="off"
         defaultValue={params?.get('q') || ''}
-        className="w-full rounded-lg border border-neutral-200 bg-white py-2 pl-8 pr-4 text-sm dark:border-neutral-800 dark:bg-transparent"
+        className="w-full rounded-lg border bg-white py-2 pl-8 pr-4 text-sm dark:bg-transparent"
       />
       <SearchIcon size="16" color="gray" className="absolute left-2 top-3" />
     </form>

@@ -1,6 +1,3 @@
-import { Suspense } from 'react';
-
-import { Footer } from 'components/layout/footer';
 import { ProductForm } from 'components/product/form';
 import { Gallery } from 'components/product/gallery';
 import { Container } from 'components/ui/container';
@@ -38,24 +35,19 @@ export default async function ProductPage(props: ProductPageProps) {
   const product = await getProductPage({ name: props.params.product });
 
   return (
-    <>
-      <Container className="px-4 pb-4">
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-          <div
-            className="
+    <Container className="px-4 pb-4">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+        <div
+          className="
               bottom-0 flex flex-col
               justify-center self-start
               md:sticky md:top-10 md:aspect-square
             "
-          >
-            <ProductForm product={product} selectedColor={selectedColor} selectedSize={selectedSize} />
-          </div>
-          <Gallery colors={product.colors} />
+        >
+          <ProductForm product={product} selectedColor={selectedColor} selectedSize={selectedSize} />
         </div>
-      </Container>
-      <Suspense>
-        <Footer />
-      </Suspense>
-    </>
+        <Gallery colors={product.colors} />
+      </div>
+    </Container>
   );
 }

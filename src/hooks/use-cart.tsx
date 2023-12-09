@@ -2,7 +2,7 @@ import { toast } from 'react-hot-toast';
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 
-type CartItem = {
+export type CartItem = {
   id: string;
   name: string;
   size: string;

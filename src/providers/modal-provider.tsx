@@ -2,8 +2,8 @@
 
 import { useEffect, useState } from 'react';
 
-import { PreviewModal } from 'components/ui/modal/preview-modal';
-import { SearchModal } from 'components/ui/modal/search-modal';
+import { SearchModal } from 'components/layout/navbar/search-modal';
+import { ProductModal } from 'components/layout/search/product-list/product-modal';
 
 export function ModalProvider() {
   const [isMounted, setIsMounted] = useState(false);
@@ -18,7 +18,7 @@ export function ModalProvider() {
 
   return (
     <>
-      <PreviewModal />
+      <ProductModal />
       <SearchModal />
     </>
   );
