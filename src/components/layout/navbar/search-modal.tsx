@@ -1,8 +1,8 @@
 'use client';
 
 import { ProductSearch } from 'components/layout/navbar/product-search';
+import { Modal } from 'components/ui/modal';
 import { useSearchModal } from 'hooks/use-search-modal';
-import { Modal } from './index';
 
 export function SearchModal() {
   const searchModal = useSearchModal();
