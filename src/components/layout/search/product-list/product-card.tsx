@@ -11,7 +11,7 @@ export function ProductCard({ product }: { product: Product }) {
   const href = `/product/${slug}?color=${handle}`;
 
   return (
-    <GridItem key={id} className="group">
+    <GridItem key={id} className="group/card">
       <Link href={href} className="h-full w-full">
         <ProductImage altText={altText} image={image} />
         <ProductInfo name={name} price={price} />

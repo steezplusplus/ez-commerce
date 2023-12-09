@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 
-import { PreviewModal } from 'components/ui/modal/preview-modal';
+import { ProductModal } from 'components/layout/search/product-list/product-modal';
 import { SearchModal } from 'components/ui/modal/search-modal';
 
 export function ModalProvider() {
@@ -18,7 +18,7 @@ export function ModalProvider() {
 
   return (
     <>
-      <PreviewModal />
+      <ProductModal />
       <SearchModal />
     </>
   );

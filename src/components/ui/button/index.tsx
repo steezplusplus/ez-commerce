@@ -1,27 +1,25 @@
 type ButtonProps = {
-  className: string;
+  onClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
   children: React.ReactNode;
-  disabled: boolean;
+  disabled?: boolean;
+  className?: string;
 };
 
 export function Button(props: ButtonProps) {
   return (
     <button
+      onClick={props.onClick}
+      disabled={props.disabled}
       className={`
           disabled:cursor-opacity-50
           w-auto
-          rounded-full
-          border-transparent
-          bg-black
-          px-4
-          py-2
-          font-semibold
-          transition
-          hover:opacity-75
+          bg-neutral-100
+          px-2
+          py-1
           disabled:cursor-not-allowed
+          dark:bg-neutral-800
           ${props.className}
         `}
-      disabled={props.disabled}
     >
       {props.children}
     </button>
