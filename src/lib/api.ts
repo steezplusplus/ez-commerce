@@ -1,4 +1,4 @@
-import { Category, Color, Product, Store } from '@prisma/client';
+import { Category, Color, Inventory, Product, Size, Store } from '@prisma/client';
 import { prisma } from './db';
 
 export async function getStore(): Promise<Store> {
@@ -70,8 +70,8 @@ export async function getCategoryPage(props: {
   });
 }
 
-// TODO Add explicit return type
-export async function getProductPage(props: { name: string }) {
+type FullProduct = Product & { colors: Color[]; sizes: Size[]; inventory: Inventory[] };
+export async function getProductPage(props: { name: string }): Promise<FullProduct> {
   return await prisma.product.findFirstOrThrow({
     where: {
       slug: {
