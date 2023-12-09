@@ -1,6 +1,6 @@
 import { CartCheckoutButton } from 'components/cart/cart-checkout-button';
 import { CartList } from 'components/cart/cart-list';
-import { CartSummary } from 'components/cart/cart-summary'; // TODO Replace
+import { CartSummary } from 'components/cart/cart-summary';
 import { Container } from 'components/ui/container';
 
 export const metadata = {
