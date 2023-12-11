@@ -26,17 +26,17 @@ export default async function CategoryPage(props: CategoryPageProps) {
   const { sort } = searchParams as { [key: string]: string };
   const selectedSort = sorting.find((item) => item.slug === sort);
 
-  const products = await getCategoryPage({
+  const category = await getCategoryPage({
     name: params.category,
     sortKey: selectedSort?.sortKey,
     order: selectedSort?.order,
   });
 
-  if (products.length === 0) {
+  if (category.products.length === 0) {
     return <NoResults />;
   }
 
-  return <ProductList products={products} />;
+  return <ProductList products={category.products} />;
 }
 
 function NoResults() {

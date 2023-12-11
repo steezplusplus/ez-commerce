@@ -1,7 +1,6 @@
 import { ProductList } from 'components/layout/search/product-list';
 import { getSearchPage } from 'lib/api';
 import { sorting } from 'lib/constants';
-import { Product } from 'lib/types';
 
 export const metadata = {
   title: 'Search',
@@ -39,17 +38,17 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
 
   return (
     <>
-      <SearchResultsText products={products} searchValue={searchValue} />
+      <SearchResultsText numResults={products.length} searchValue={searchValue} />
       <ProductList products={products} />
     </>
   );
 }
 
-function SearchResultsText({ products, searchValue }: { products: Product[]; searchValue?: string }) {
+function SearchResultsText({ numResults, searchValue }: { numResults: number; searchValue?: string }) {
   if (searchValue !== undefined) {
     return (
       <p className="mb-3 text-neutral-300">
-        Showing {products.length} {products.length > 1 ? 'results' : 'result'} for <b>&quot;{searchValue}&quot;</b>.
+        Showing {numResults} {numResults > 1 ? 'results' : 'result'} for <b>&quot;{searchValue}&quot;</b>.
       </p>
     );
   }
