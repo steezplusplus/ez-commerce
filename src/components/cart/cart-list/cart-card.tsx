@@ -4,7 +4,6 @@ import { CartItem } from 'hooks/use-cart';
 import { CartImage } from './cart-image';
 import { CartInfo } from './cart-info';
 
-// TODO Add slug to CartItem so I can link back to the product
 export function CartCard({ cartItem }: { cartItem: CartItem }) {
   return (
     <li className="flex aspect-auto">
