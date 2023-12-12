@@ -14,7 +14,7 @@ export function CartSummary() {
   return (
     <div
       className="
-        rounded-lg border bg-gray-50 px-4 py-6 sm:p-6 md:sticky md:top-10 lg:col-span-5
+        rounded-lg border px-4 py-6 sm:p-6 md:sticky md:top-10 lg:col-span-5
         lg:mt-0 lg:p-8
       "
     >
