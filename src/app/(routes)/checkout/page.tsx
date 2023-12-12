@@ -9,10 +9,12 @@ export const metadata = {
 
 export default function CheckoutPage() {
   return (
-    <Container className="space-y-4 px-4 pb-4">
+    <Container className="px-4 pb-4">
       <h2 className="mb-4 text-4xl font-semibold">Checkout</h2>
-      <CartList />
-      <CartSummary />
+      <div className="lg:grid lg:grid-cols-12 lg:items-start lg:gap-x-12">
+        <CartList />
+        <CartSummary />
+      </div>
       <CartCheckoutButton />
     </Container>
   );

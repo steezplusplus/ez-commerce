@@ -4,7 +4,7 @@ import { RemoveFromCart } from '../remove-from-cart';
 
 export function CartInfo({ cartItem }: { cartItem: CartItem }) {
   return (
-    <div className="ml-4 flex flex-1 flex-col sm:ml-6">
+    <div className="flex flex-1 flex-col justify-between">
       <div className="flex justify-between">
         <h3 className="text-lg font-semibold">{cartItem.name}</h3>
         <RemoveFromCart inventoryId={cartItem.id} />

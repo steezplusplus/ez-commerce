@@ -5,9 +5,11 @@ import { CartImage } from './cart-image';
 import { CartInfo } from './cart-info';
 
 export function CartCard({ cartItem }: { cartItem: CartItem }) {
+  const href = `/product/${cartItem.slug}?color=${cartItem.colorValue}&size=${cartItem.sizeValue}`;
+
   return (
-    <li className="flex aspect-auto">
-      <Link href={`/product/${cartItem.slug}?color=${cartItem.colorValue}&size=${cartItem.sizeValue}`}>
+    <li className="flex border-b py-6 first:pt-0">
+      <Link href={href}>
         <CartImage src={cartItem.image} alt={cartItem.altText} />
       </Link>
       <CartInfo cartItem={cartItem} />

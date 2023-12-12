@@ -1,7 +1,6 @@
 'use client';
 
 // import { RemoveFromCart } from 'components/cart/remove-from-cart';
-import { Grid } from 'components/ui/grid';
 import { CartItem, useCart } from 'hooks/use-cart';
 import { useEffect, useState } from 'react';
 import { CartCard } from './cart-card';
@@ -22,14 +21,18 @@ export function CartList() {
   }
 
   if (cart.items.length === 0) {
-    return <p>No items added to cart.</p>;
+    return (
+      <div className="mb-4 lg:col-span-7">
+        <p>No items added to cart.</p>
+      </div>
+    );
   }
 
   return (
-    <Grid className="grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+    <ul className="mb-4 lg:col-span-7">
       {cart.items.map((cartItem: CartItem) => (
         <CartCard key={cartItem.id} cartItem={cartItem} />
       ))}
-    </Grid>
+    </ul>
   );
 }
