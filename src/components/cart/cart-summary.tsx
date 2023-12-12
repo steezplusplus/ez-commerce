@@ -2,6 +2,7 @@
 
 import { Price } from 'components/ui/price';
 import { useCart } from 'hooks/use-cart';
+import { CartCheckoutButton } from './cart-checkout-button';
 
 export function CartSummary() {
   const cart = useCart();
@@ -18,12 +19,13 @@ export function CartSummary() {
       "
     >
       <h2 className="mb-6 text-lg font-medium">Order summary</h2>
-      <div className="border-t pt-4">
+      <div className="border-t py-4">
         <div className="mb-1 font-medium">Order total</div>
         <h3 className="text-lg font-medium">
           <Price amount={String(totalPrice)} />
         </h3>
       </div>
+      <CartCheckoutButton />
     </div>
   );
 }
