@@ -17,3 +17,22 @@ export function CartInfo({ cartItem }: { cartItem: CartItem }) {
     </div>
   );
 }
+
+export function LoadingCartInfo() {
+  return (
+    <div className="flex w-full flex-col">
+      <div className="mb-1 flex justify-between">
+        {/* Product name */}
+        <div className="h-7 w-1/2 animate-pulse rounded-md bg-gray-100 dark:bg-gray-700" />
+        {/* Remove product button */}
+        <div className="h-7 w-7 animate-pulse rounded-md bg-gray-100 dark:bg-gray-700" />
+      </div>
+      {/* Price */}
+      <div className="mb-1 h-6 w-full animate-pulse rounded-md bg-gray-100 dark:bg-gray-700" />
+      {/* Color */}
+      <div className="mb-1 h-5 w-1/2 animate-pulse rounded-md bg-gray-100 dark:bg-gray-700" />
+      {/* Size */}
+      <div className="mb-1 h-5 w-1/2 animate-pulse rounded-md bg-gray-100 dark:bg-gray-700" />
+    </div>
+  );
+}

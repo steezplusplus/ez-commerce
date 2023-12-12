@@ -3,7 +3,7 @@
 // import { RemoveFromCart } from 'components/cart/remove-from-cart';
 import { CartItem, useCart } from 'hooks/use-cart';
 import { useEffect, useState } from 'react';
-import { CartCard } from './cart-card';
+import { CartCard, LoadingCartCard } from './cart-card';
 
 export function CartList() {
   const [isMounted, setIsMounted] = useState<boolean>(false);
@@ -15,21 +15,27 @@ export function CartList() {
     setIsMounted(true);
   }, []);
 
-  // TODO Loading ui to avoid CLS.
   if (!isMounted) {
-    return null;
+    return (
+      <ul className="lg:col-span-7">
+        <LoadingCartCard />
+        <LoadingCartCard />
+      </ul>
+    );
   }
 
   if (cart.items.length === 0) {
     return (
-      <div className="mb-4 lg:col-span-7">
-        <p>No items added to cart.</p>
-      </div>
+      <ul className="flex h-full items-center justify-center rounded-md border lg:col-span-7">
+        <li>
+          <h3 className="text-lg">No items added to cart.</h3>
+        </li>
+      </ul>
     );
   }
 
   return (
-    <ul className="mb-4 lg:col-span-7">
+    <ul className="lg:col-span-7">
       {cart.items.map((cartItem: CartItem) => (
         <CartCard key={cartItem.id} cartItem={cartItem} />
       ))}
