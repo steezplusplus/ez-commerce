@@ -15,6 +15,7 @@ type AddToCartProps = {
   colorRequired: boolean;
 };
 
+// add slug to cartitmem
 export function AddToCart(props: AddToCartProps) {
   const { product, color, size, inventory, sizeRequired, colorRequired } = props;
 
@@ -36,10 +37,13 @@ export function AddToCart(props: AddToCartProps) {
 
     // Cart item template
     const cartItem = {
-      id: inventory?.id as string,
-      name: product?.name as string,
+      id: inventory.id,
+      name: product.name,
+      slug: product.slug,
       size: size?.name as string,
+      sizeValue: size?.value as string,
       color: color?.name as string,
+      colorValue: color?.value as string,
       image: color?.image as string,
       altText: color?.altText as string,
       price: product?.price as number,

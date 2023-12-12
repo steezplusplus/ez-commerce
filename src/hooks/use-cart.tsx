@@ -5,8 +5,11 @@ import { createJSONStorage, persist } from 'zustand/middleware';
 export type CartItem = {
   id: string;
   name: string;
+  slug: string;
   size: string;
+  sizeValue: string; // TODO SHould this be named sizeSlug? Rename db col to slug? Same for colorValue -> colorSlug.
   color: string;
+  colorValue: string;
   image: string;
   altText: string;
   price: number;
