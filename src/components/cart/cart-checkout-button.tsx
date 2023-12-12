@@ -15,6 +15,7 @@ export function CartCheckoutButton() {
     setIsMounted(true);
   }, []);
 
+  // TODO Avoid CLS
   if (!isMounted) {
     return null;
   }
