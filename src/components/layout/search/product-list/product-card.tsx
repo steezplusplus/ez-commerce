@@ -7,7 +7,7 @@ import { ProductInfo } from './product-info';
 
 // TODO Handle products without colors (no images)
 export function ProductCard({ product }: { product: ProductWithColor }) {
-  const href = `/product/${product.name}?color=${product.colors[0]?.value}`;
+  const href = `/product/${product.slug}`;
 
   return (
     <GridItem key={product.id} className="group/card">
