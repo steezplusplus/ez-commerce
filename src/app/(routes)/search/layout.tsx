@@ -15,7 +15,7 @@ export default function SearchLayout(props: SearchLayoutProps) {
       <div className="order-first w-full flex-none md:max-w-[9rem]">
         <Categories title="Categories" />
       </div>
-      <div className="order-last min-h-screen w-full md:order-none">{children}</div>
+      <div className="order-last w-full md:order-none">{children}</div>
       <div className="order-none flex-none md:order-last md:w-[9rem]">
         <Filter list={sorting} title="Sort by" />
       </div>
