@@ -1,6 +1,6 @@
+import { RemoveFromCart } from 'components/cart/remove-from-cart';
 import { Price } from 'components/ui/price';
 import { CartItem } from 'hooks/use-cart';
-import { RemoveFromCart } from '../remove-from-cart';
 
 export function CartInfo({ cartItem }: { cartItem: CartItem }) {
   return (

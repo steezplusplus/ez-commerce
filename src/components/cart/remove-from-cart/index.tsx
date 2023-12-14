@@ -8,11 +8,11 @@ type RemoveFromCartProps = {
   inventoryId: string;
 };
 
-export function RemoveFromCart(props: RemoveFromCartProps) {
-  const { inventoryId } = props;
+// TODO Not mounted loading UI belongs here?
+export function RemoveFromCart({ inventoryId }: RemoveFromCartProps) {
   const cart = useCart();
 
-  const removeFromCart = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const removeProduct = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
     cart.removeItem(inventoryId);
   };
@@ -32,7 +32,7 @@ export function RemoveFromCart(props: RemoveFromCartProps) {
         hover:opacity-75
         disabled:cursor-not-allowed
       "
-      onClick={(e) => removeFromCart(e)}
+      onClick={removeProduct}
     >
       <X size="18" />
     </button>

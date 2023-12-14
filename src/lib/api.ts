@@ -70,7 +70,7 @@ export async function getCategoryPage(props: {
   });
 }
 
-type FullProduct = Product & { colors: Color[]; sizes: Size[]; inventory: Inventory[] };
+export type FullProduct = Product & { colors: Color[]; sizes: Size[]; inventory: Inventory[] };
 export async function getProductPage(props: { name: string }): Promise<FullProduct> {
   return await prisma.product.findFirstOrThrow({
     where: {

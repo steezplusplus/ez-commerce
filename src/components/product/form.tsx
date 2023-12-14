@@ -23,14 +23,7 @@ export function ProductForm({
       <p>{product.description}</p>
       <ColorSelection colors={product.colors} />
       <SizeSelection sizes={product.sizes} />
-      <AddToCart
-        product={product}
-        size={newSize}
-        color={newColor}
-        inventory={newInventory}
-        sizeRequired={product.sizes.length > 0}
-        colorRequired={product.colors.length > 0}
-      />
+      <AddToCart product={product} selectedSize={newSize} selectedColor={newColor} />
     </>
   );
 }
