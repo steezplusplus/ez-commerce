@@ -6,7 +6,8 @@ import { useEffect, useState } from 'react';
 
 import { useCart } from 'hooks/use-cart';
 
-export function LinkCheckout() {
+// TODO Use the other loading animation
+export function CheckoutLink() {
   const cart = useCart();
 
   const [isMounted, setIsMounted] = useState<boolean>(false);
