@@ -1,19 +1,19 @@
 import { RemoveFromCart } from 'components/cart/remove-from-cart';
 import { Price } from 'components/ui/price';
-import { CartItem } from 'hooks/use-cart';
+import { CartProduct } from 'hooks/use-cart';
 
-export function CartInfo({ cartItem }: { cartItem: CartItem }) {
+export function CartInfo({ cartProduct }: { cartProduct: CartProduct }) {
   return (
     <div className="flex w-full flex-col">
       <div className="flex justify-between">
-        <h3 className="text-lg font-semibold">{cartItem.name}</h3>
-        <RemoveFromCart inventoryId={cartItem.id} />
+        <h3 className="text-lg font-semibold">{cartProduct.productName}</h3>
+        <RemoveFromCart inventoryId={cartProduct.inventoryId} />
       </div>
       <h4 className="text-md mb-1">
-        <Price amount={String(cartItem.price)} />
+        <Price amount={String(cartProduct.productPrice)} />
       </h4>
-      <h4 className="mb-1 text-sm">{cartItem.color}</h4>
-      <h4 className="text-sm">{cartItem.size}</h4>
+      <h4 className="mb-1 text-sm">{cartProduct.colorName}</h4>
+      <h4 className="text-sm">{cartProduct.sizeName}</h4>
     </div>
   );
 }

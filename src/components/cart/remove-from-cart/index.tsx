@@ -14,7 +14,7 @@ export function RemoveFromCart({ inventoryId }: RemoveFromCartProps) {
 
   const removeProduct = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     e.preventDefault();
-    cart.removeItem(inventoryId);
+    cart.removeProduct(inventoryId);
   };
 
   return (

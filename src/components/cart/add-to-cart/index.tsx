@@ -3,7 +3,7 @@
 import { toast } from 'react-hot-toast';
 
 import { Color, Inventory, Size } from '@prisma/client';
-import { CartItem, useCart } from 'hooks/use-cart';
+import { CartProduct, useCart } from 'hooks/use-cart';
 import { FullProduct } from 'lib/api';
 
 type AddToCartProps = {
@@ -22,31 +22,34 @@ export function AddToCart(props: AddToCartProps) {
 
   const validateCart = () => {
     if (isColorRequired && !props.selectedColor) {
-      return toast.error('A color is required but has not been selected. Please select a color to continue.');
+      return toast.error('A color is required but has not been selected.');
     }
 
     if (isSizeRequired && !props.selectedSize) {
-      return toast.error('A size is required but has not been selected. Please select a size to continue.');
+      return toast.error('A size is required but has not been selected.');
     }
 
     if (props.selectedInventory === undefined || props.selectedInventory.inventory === 0) {
       return toast.error('This product is temporarily out of stock');
     }
 
-    const cartItem: CartItem = {
-      id: props.selectedInventory.id,
-      name: props.product.name,
-      slug: props.product.slug,
-      price: props.product.price,
-      size: props.selectedSize?.name,
-      sizeValue: props.selectedSize?.value,
-      color: props.selectedColor?.name,
+    const cartItem: CartProduct = {
+      inventoryId: props.selectedInventory.id,
+      productId: props.product.id,
+      productName: props.product.name,
+      productSlug: props.product.slug,
+      productPrice: props.product.price,
+      colorId: props.selectedColor?.id,
+      colorName: props.selectedColor?.name,
       colorValue: props.selectedColor?.value,
-      image: props.selectedColor?.image,
-      altText: props.selectedColor?.altText,
+      colorImage: props.selectedColor?.image,
+      colorAltText: props.selectedColor?.altText,
+      sizeId: props.selectedSize?.id,
+      sizeName: props.selectedSize?.name,
+      sizeValue: props.selectedSize?.value,
     };
 
-    cart.addItem(cartItem);
+    cart.addProduct(cartItem);
   };
 
   return (

@@ -28,7 +28,7 @@ export function CheckoutLink() {
   return (
     <Link href="/checkout" className="flex items-center rounded-md border p-2">
       <ShoppingBag size="18" />
-      <span className="ml-2 text-xs font-medium dark:text-white">{cart.items.length}</span>
+      <span className="ml-2 text-xs font-medium dark:text-white">{cart.products.length}</span>
     </Link>
   );
 }

@@ -9,8 +9,8 @@ import { CartCheckoutButton } from '../cart-checkout-button';
 export function CartSummary() {
   const cart = useCart();
 
-  const totalPrice = cart.items.reduce((sum, item) => {
-    return (sum += Number(item.price));
+  const totalPrice = cart.products.reduce((sum, product) => {
+    return (sum += Number(product.productPrice));
   }, 0);
 
   return (

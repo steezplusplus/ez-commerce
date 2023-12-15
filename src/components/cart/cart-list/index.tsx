@@ -1,7 +1,6 @@
 'use client';
 
-// import { RemoveFromCart } from 'components/cart/remove-from-cart';
-import { CartItem, useCart } from 'hooks/use-cart';
+import { useCart } from 'hooks/use-cart';
 import { useEffect, useState } from 'react';
 import { CartCard, LoadingCartCard } from './cart-card';
 
@@ -24,7 +23,7 @@ export function CartList() {
     );
   }
 
-  if (cart.items.length === 0) {
+  if (cart.products.length === 0) {
     return (
       <ul className="flex h-full items-center justify-center rounded-md border lg:col-span-7">
         <li>
@@ -36,8 +35,8 @@ export function CartList() {
 
   return (
     <ul className="lg:col-span-7">
-      {cart.items.map((cartItem: CartItem) => (
-        <CartCard key={cartItem.id} cartItem={cartItem} />
+      {cart.products.map((cartProduct) => (
+        <CartCard key={cartProduct.inventoryId} cartProduct={cartProduct} />
       ))}
     </ul>
   );

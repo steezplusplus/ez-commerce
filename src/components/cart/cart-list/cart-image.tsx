@@ -1,9 +1,10 @@
 import Image from 'next/image';
 
-export function CartImage({ src, alt }: { src: string; alt: string }) {
+// TODO Handle no image instead of passing empty strings to <Image /> props.
+export function CartImage({ src, alt }: { src?: string; alt?: string }) {
   return (
     <div className="relative mr-2 h-24 w-24 overflow-hidden rounded-md sm:h-48 sm:w-48">
-      <Image fill src={src} alt={alt} className="object-cover object-center" sizes="30vw" />
+      <Image fill src={src || ''} alt={alt || ''} className="object-cover object-center" sizes="30vw" />
     </div>
   );
 }
