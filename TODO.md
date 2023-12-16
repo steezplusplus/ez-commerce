@@ -39,6 +39,7 @@
 ## Consistency
 
 - Inconsistent usage of Grid, GridItem.
+- Inconsistent usage of Button
 
 ## Cart components
 
