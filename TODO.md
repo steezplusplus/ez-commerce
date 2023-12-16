@@ -24,10 +24,10 @@
 - Scroll to selected product
 - Cleanup ProductForm
   - Should have a border or something, should look like CartSummary.
+- Loading UI (loading.tsx?)
 
 ## Checkout page
 
-- Loading UI
 - On clicking checkout, route to new page to thank the customer, then redirect to the homepage after timeout.
 - Innapropriate usage of heading elements
 
@@ -41,7 +41,7 @@
 
 ## Consistency
 
-- Inconsistent usage of Grid, GridItem.
+- Inconsistent usage of Grid, GridItem. This has hardcoded aspect square, only useful for product images...?
 - Inconsistent usage of Button
 - Inconsistent loading UI. Using both spinner and animate-pulse. Stick to animate-pulse
 - Put all providers into a RootProvider component.
@@ -71,3 +71,10 @@
   - "Made with..."
     - Vercel, NextJs, Tailwind.
   - Stuff good for SEO.
+
+# Toasts
+
+- Attach to relevant objects
+  - ex. Error points to place to fix error
+  - ex. successful add to cart points to cart link
+- Show product name, color and size when successfully added or removed product
