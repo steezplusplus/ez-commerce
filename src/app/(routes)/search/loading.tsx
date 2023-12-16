@@ -25,7 +25,7 @@ function ProductCardLoading() {
       {/* Product Name */}
       <div className="mt-1 h-6 w-full animate-pulse rounded-md bg-gray-100 dark:bg-gray-700" />
       {/* Product Price */}
-      <div className="mt-1 h-4 w-full animate-pulse rounded-md bg-gray-100 dark:bg-gray-700" />
+      <div className="mt-1 h-5 w-full animate-pulse rounded-md bg-gray-100 dark:bg-gray-700" />
     </li>
   );
 }

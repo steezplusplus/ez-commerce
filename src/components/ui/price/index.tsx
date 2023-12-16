@@ -31,5 +31,5 @@ export function Price(props: PriceProps) {
 }
 
 function LoadingPrice() {
-  return <div className="mt-1 h-4 w-full animate-pulse rounded-md bg-gray-100 dark:bg-gray-700" />;
+  return <div className="h-5 w-full animate-pulse rounded-md bg-gray-100 dark:bg-gray-700" />;
 }
