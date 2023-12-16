@@ -8,7 +8,6 @@ type RemoveFromCartProps = {
   inventoryId: string;
 };
 
-// TODO Not mounted loading UI belongs here?
 export function RemoveFromCart({ inventoryId }: RemoveFromCartProps) {
   const cart = useCart();
 

@@ -4,8 +4,6 @@ import { Price } from 'components/ui/price';
 import { useCart } from 'hooks/use-cart';
 import { CartCheckoutButton } from '../cart-checkout-button';
 
-// TODO Redo component architecture. The only part of this that needs the cart is the <Price> cmomponent.?
-// TODO Not mounted logic missing. See the loding ui in browser, see its wgon. Price and Checkout butotn share the same loading square
 export function CartSummary() {
   const cart = useCart();
 

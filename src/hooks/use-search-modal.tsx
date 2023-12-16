@@ -1,6 +1,5 @@
 import { create } from 'zustand';
 
-// TODO Replace `any`
 interface SearchModalStore {
   isOpen: boolean;
   data?: any;

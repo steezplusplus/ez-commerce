@@ -8,7 +8,7 @@ export function ProductModalDisclosure() {
 
   const onPreview = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    productModal.onOpen([]); // TODO Pass product data to the modal.
+    productModal.onOpen([]);
   };
 
   return (

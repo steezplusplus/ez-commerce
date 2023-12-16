@@ -13,7 +13,6 @@ type AddToCartProps = {
   selectedInventory?: Inventory;
 };
 
-// TODO Missing loading
 export function AddToCart(props: AddToCartProps) {
   const cart = useCart();
 

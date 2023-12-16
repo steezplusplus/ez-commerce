@@ -6,7 +6,6 @@ import { useEffect, useState } from 'react';
 
 import { useCart } from 'hooks/use-cart';
 
-// TODO Use the other loading animation
 export function CheckoutLink() {
   const cart = useCart();
 

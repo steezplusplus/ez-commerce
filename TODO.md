@@ -1,6 +1,4 @@
-# TODO LIST
-
-## HIGH PRIORITY
+# HIGH PRIORITY
 
 - Border colors. Ensure contrast ratio passes for all different themes.
 - Font sizes.
@@ -21,7 +19,7 @@
 
 - Refactor database columns Color.value -> Color.slug, Size.value -> Size.slug. Update downstream typings.
 
-## LOW PRIORITY
+# LOW PRIORITY
 
 - Product page fully incomplete
   - Sroll to product based on color selection via URL
@@ -32,8 +30,9 @@
 - Footer should have more information and links for good SEO.
 - Utilize `default export` as NextJS recommends.
 - Inconsistent loading UI. Using both spinner and animate-pulse.
+- <Price /> loading placeholder height depends on parents font size, CLS issues if is not `text-sm`.
 
-## Finalizations
+# Finalizations
 
 - Manual A11y testing.
 - Dependabot
@@ -41,7 +40,7 @@
 - Setup Coveralls to track code coverage.
 - Create GitHub Action to run unit tests, block merging to main.
 
-## Stretches
+# Stretches
 
 - Create Order model. After checkout, route to a new page that shows the user their order. Thank them, and re-direct to the homepage.
 - Sort products by available colors on the search and category page.

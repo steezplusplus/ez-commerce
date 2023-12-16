@@ -10,7 +10,7 @@ export function SearchModalDisclosure() {
 
   const onMobileSearch = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    searchModal.onOpen([]); // TODO Pass data to modal.
+    searchModal.onOpen([]);
   };
 
   return (

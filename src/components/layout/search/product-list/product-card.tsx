@@ -5,7 +5,6 @@ import { ProductWithColor } from 'lib/api';
 import { ProductImage } from './product-image';
 import { ProductInfo } from './product-info';
 
-// TODO Handle products without colors (no images)
 export function ProductCard({ product }: { product: ProductWithColor }) {
   const href = `/product/${product.slug}`;
 

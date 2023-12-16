@@ -4,7 +4,6 @@ import { CartProduct } from 'hooks/use-cart';
 import { CartImage, LoadingCartImage } from './cart-image';
 import { CartInfo, LoadingCartInfo } from './cart-info';
 
-// TODO Doesnt show indication of link back to product page
 export function CartCard({ cartProduct }: { cartProduct: CartProduct }) {
   const href = `/product/${cartProduct.productSlug}?color=${cartProduct.colorValue}&size=${cartProduct.sizeValue}`;
 
