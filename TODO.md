@@ -40,6 +40,7 @@
 
 - Inconsistent usage of Grid, GridItem.
 - Inconsistent usage of Button
+- Inconsistent loading UI. Using both spinner and animate-pulse. Stick to animate-pulse
 
 ## Cart components
 
