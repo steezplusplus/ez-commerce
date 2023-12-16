@@ -1,5 +1,5 @@
+import { CheckoutLink } from 'components/cart/checkout-link';
 import { getStore } from 'lib/api';
-import { LinkCheckout } from './link-checkout';
 import { NavLogo } from './nav-logo';
 import { ProductSearch } from './product-search';
 import { SearchModalDisclosure } from './search-modal-disclosure';
@@ -27,7 +27,7 @@ export async function Navbar() {
 
         {/* Checkout Link */}
         <div className="flex justify-end md:w-1/3">
-          <LinkCheckout />
+          <CheckoutLink />
         </div>
       </div>
     </nav>

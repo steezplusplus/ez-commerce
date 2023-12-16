@@ -55,7 +55,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
           <ModalProvider />
           <ToastProvider />
           <Navbar />
-          <main>{children}</main>
+          <main className="min-h-[calc(100vh-80px)]">{children}</main>
           <Suspense>
             <Footer />
           </Suspense>

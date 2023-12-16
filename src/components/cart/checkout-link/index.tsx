@@ -6,7 +6,8 @@ import { useEffect, useState } from 'react';
 
 import { useCart } from 'hooks/use-cart';
 
-export function LinkCheckout() {
+// TODO Use the other loading animation
+export function CheckoutLink() {
   const cart = useCart();
 
   const [isMounted, setIsMounted] = useState<boolean>(false);
@@ -27,7 +28,7 @@ export function LinkCheckout() {
   return (
     <Link href="/checkout" className="flex items-center rounded-md border p-2">
       <ShoppingBag size="18" />
-      <span className="ml-2 text-xs font-medium dark:text-white">{cart.items.length}</span>
+      <span className="ml-2 text-xs font-medium dark:text-white">{cart.products.length}</span>
     </Link>
   );
 }

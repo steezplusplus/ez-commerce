@@ -4,8 +4,6 @@ import { Dialog, Transition } from '@headlessui/react';
 import { X } from 'lucide-react';
 import { Fragment } from 'react';
 
-import { Button } from 'components/ui/button';
-
 type ModalProps = {
   open: boolean;
   onClose: () => void;
@@ -33,9 +31,24 @@ export function Modal(props: ModalProps) {
               <Dialog.Panel className="w-full max-w-3xl overflow-hidden rounded-lg text-left align-middle">
                 <div className="relative flex w-full items-center overflow-hidden bg-neutral-50 px-4 pb-8 pt-14 shadow-2xl dark:bg-neutral-900 sm:px-6 sm:pt-8 md:p-6 lg:p-8">
                   <div className="absolute right-4 top-4">
-                    <Button className="px-1 py-1" onClick={onClose}>
+                    <button
+                      className="
+                        disabled:cursor-opacity-50 
+                        w-auto
+                        rounded-md
+                        border
+                        px-1
+                        py-1
+                        text-sm
+                        tracking-widest
+                        transition
+                        hover:opacity-75
+                        disabled:cursor-not-allowed
+                      "
+                      onClick={onClose}
+                    >
                       <X size={16} />
-                    </Button>
+                    </button>
                   </div>
                   {children}
                 </div>

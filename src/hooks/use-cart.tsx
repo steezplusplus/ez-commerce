@@ -2,44 +2,54 @@ import { toast } from 'react-hot-toast';
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 
-export type CartItem = {
-  id: string;
-  name: string;
-  size: string;
-  color: string;
-  image: string;
-  altText: string;
-  price: number;
+/*
+ * Inventory and product always exist.
+ * Color and Size may not exist depending on the product.
+ */
+export type CartProduct = {
+  inventoryId: string;
+  productId: string;
+  productName: string;
+  productSlug: string;
+  productPrice: number;
+  colorId?: string;
+  colorName?: string;
+  colorValue?: string;
+  colorImage?: string;
+  colorAltText?: string;
+  sizeId?: string;
+  sizeName?: string;
+  sizeValue?: string;
 };
 
 export interface CartStore {
-  items: CartItem[];
-  addItem: (data: CartItem) => void;
-  removeItem: (id: string) => void;
+  products: CartProduct[];
+  addProduct: (cartProduct: CartProduct) => void;
+  removeProduct: (inventoryId: string) => void;
   removeAll: () => void;
 }
 
 export const useCart = create(
   persist<CartStore>(
     (set, get) => ({
-      items: [],
-      addItem: (data: CartItem) => {
-        const currentItems = get().items;
-        const existingItem = currentItems.find((item) => item.id === data.id);
+      products: [],
+      addProduct: (cartProduct: CartProduct) => {
+        const currentProducts = get().products;
+        const existingProduct = currentProducts.find((product) => product.inventoryId === cartProduct.inventoryId);
 
-        if (existingItem) {
+        if (existingProduct) {
           return toast.error('Item already in cart.');
         }
 
-        set({ items: [...get().items, data] });
+        set({ products: [...get().products, cartProduct] });
         toast.success('Added to cart.');
       },
-      removeItem: (id: string) => {
-        set({ items: [...get().items.filter((item) => item.id !== id)] });
+      removeProduct: (inventoryId: string) => {
+        set({ products: [...get().products.filter((product) => product.inventoryId !== inventoryId)] });
         toast.success('Removed from your cart.');
       },
       removeAll: () => {
-        set({ items: [] });
+        set({ products: [] });
         toast.success('Emptied your cart.');
       },
     }),

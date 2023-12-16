@@ -14,7 +14,7 @@ type ProductPageProps = {
 };
 
 export async function generateMetadata({ params }: { params: { product: string } }): Promise<Metadata> {
-  const product = await getProductPage({ name: params.product }); // TODO Just create a getProduct. Overfetching? or is this cacheing.
+  const product = await getProductPage({ name: params.product });
 
   return {
     title: product.name,
@@ -40,10 +40,10 @@ export default async function ProductPage(props: ProductPageProps) {
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
         <div
           className="
-              bottom-0 flex flex-col
-              justify-center self-start
-              md:sticky md:top-10 md:aspect-square
-            "
+            bottom-0 flex flex-col
+            justify-center self-start
+            md:sticky md:top-10 md:aspect-square
+          "
         >
           <ProductForm product={product} selectedColor={selectedColor} selectedSize={selectedSize} />
         </div>

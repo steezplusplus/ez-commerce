@@ -1,17 +1,28 @@
 import Link from 'next/link';
 
-import { CartItem } from 'hooks/use-cart';
-import { CartImage } from './cart-image';
-import { CartInfo } from './cart-info';
+import { CartProduct } from 'hooks/use-cart';
+import { CartImage, LoadingCartImage } from './cart-image';
+import { CartInfo, LoadingCartInfo } from './cart-info';
 
-// TODO Add slug to CartItem so I can link back to the product
-export function CartCard({ cartItem }: { cartItem: CartItem }) {
+// TODO Doesnt show indication of link back to product page
+export function CartCard({ cartProduct }: { cartProduct: CartProduct }) {
+  const href = `/product/${cartProduct.productSlug}?color=${cartProduct.colorValue}&size=${cartProduct.sizeValue}`;
+
   return (
-    <li className="flex aspect-auto">
-      <Link href={`/`}>
-        <CartImage src={cartItem.image} alt={cartItem.altText} />
+    <li className="flex border-b py-6 first:pt-0">
+      <Link href={href}>
+        <CartImage src={cartProduct.colorImage} alt={cartProduct.colorAltText} />
       </Link>
-      <CartInfo cartItem={cartItem} />
+      <CartInfo cartProduct={cartProduct} />
+    </li>
+  );
+}
+
+export function LoadingCartCard() {
+  return (
+    <li className="flex border-b py-6 first:pt-0">
+      <LoadingCartImage />
+      <LoadingCartInfo />
     </li>
   );
 }

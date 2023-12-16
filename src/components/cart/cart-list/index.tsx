@@ -1,12 +1,11 @@
 'use client';
 
-// import { RemoveFromCart } from 'components/cart/remove-from-cart';
-import { Grid } from 'components/ui/grid';
-import { CartItem, useCart } from 'hooks/use-cart';
+import { useCart } from 'hooks/use-cart';
 import { useEffect, useState } from 'react';
-import { CartCard } from './cart-card';
+import { CartCard, LoadingCartCard } from './cart-card';
 
 export function CartList() {
+  // TODO Move cart down...?
   const [isMounted, setIsMounted] = useState<boolean>(false);
 
   const cart = useCart();
@@ -16,20 +15,30 @@ export function CartList() {
     setIsMounted(true);
   }, []);
 
-  // TODO Loading ui to avoid CLS.
   if (!isMounted) {
-    return null;
+    return (
+      <ul className="lg:col-span-7">
+        <LoadingCartCard />
+        <LoadingCartCard />
+      </ul>
+    );
   }
 
-  if (cart.items.length === 0) {
-    return <p>No items added to cart.</p>;
+  if (cart.products.length === 0) {
+    return (
+      <ul className="flex h-full items-center justify-center rounded-md border lg:col-span-7">
+        <li>
+          <h3 className="text-lg">No items added to cart.</h3>
+        </li>
+      </ul>
+    );
   }
 
   return (
-    <Grid className="grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
-      {cart.items.map((cartItem: CartItem) => (
-        <CartCard key={cartItem.id} cartItem={cartItem} />
+    <ul className="lg:col-span-7">
+      {cart.products.map((cartProduct) => (
+        <CartCard key={cartProduct.inventoryId} cartProduct={cartProduct} />
       ))}
-    </Grid>
+    </ul>
   );
 }
