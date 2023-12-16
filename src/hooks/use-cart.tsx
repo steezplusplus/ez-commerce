@@ -38,7 +38,7 @@ export const useCart = create(
         const existingProduct = currentProducts.find((product) => product.inventoryId === cartProduct.inventoryId);
 
         if (existingProduct) {
-          return toast.error('Item already in cart.');
+          return toast.error('This product is already in your cart.');
         }
 
         set({ products: [...get().products, cartProduct] });
