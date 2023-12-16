@@ -25,6 +25,19 @@ export default async function HomePage() {
         <p className="text-sm">p text-sm</p>
         <p className="text-xs">p text-xs</p>
       </div>
+
+      <h2 className="mb-1 text-xl underline">External link themes</h2>
+      <div className="mb-4">
+        <a
+          href="#"
+          className="
+            text-blue-600 visited:text-purple-600 hover:text-blue-800 visited:hover:text-purple-800 
+            dark:text-gray-300 dark:visited:text-purple-400 dark:hover:text-white
+          "
+        >
+          This is a link
+        </a>
+      </div>
     </Container>
   );
 }
