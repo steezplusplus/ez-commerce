@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { CartCard, LoadingCartCard } from './cart-card';
 
 export function CartList() {
+  // TODO Move cart down...?
   const [isMounted, setIsMounted] = useState<boolean>(false);
 
   const cart = useCart();
