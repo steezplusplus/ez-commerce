@@ -1,73 +1,48 @@
 # TODO LIST
 
-## Testing
+## HIGH PRIORITY
 
+- Border colors. Ensure contrast ratio passes for all different themes.
+- Font sizes.
+- Heading elements.
+- Toasts should show the product name, color and size when added to or removed from cart.
+
+- Modal
+
+  - Should accept header prop
+
+- Product Modal
+
+  - Update useProduct API to accept type `ProductWithColor` from API.
+  - Pass product data from search page to the ProductModal.
+  - Display the product name, description images, sizes, colors, and allow add to cart.
+
+- Search Modal....
+
+- Refactor database columns Color.value -> Color.slug, Size.value -> Size.slug. Update downstream typings.
+
+## LOW PRIORITY
+
+- Product page fully incomplete
+  - Sroll to product based on color selection via URL
+  - loading.tsx
+- Show "No image" for products without colors. Currently all products have images, so it won't happen currently but its not safe.
+- Put all providers into a RootProvider component.
+- Homepage fully incomplete
+- Footer should have more information and links for good SEO.
+- Utilize `default export` as NextJS recommends.
+- Inconsistent loading UI. Using both spinner and animate-pulse.
+
+## Finalizations
+
+- Manual A11y testing.
+- Dependabot
 - Unit test all user interactions with react testing library and jest.
 - Setup Coveralls to track code coverage.
 - Create GitHub Action to run unit tests, block merging to main.
 
-## Homepage
+## Stretches
 
-- Finish design
-
-## Search Page
-
-- Sort by color
-- Preview Modal
-
-## Category Page
-
-- None?
-
-## Product page
-
-- Scroll to selected product
-- Cleanup ProductForm
-  - Should have a border or something, should look like CartSummary.
-
-## Checkout page
-
-- Loading UI
-- On clicking checkout, route to new page to thank the customer, then redirect to the homepage after timeout.
-- Innapropriate usage of heading elements
-
-## Mobile
-
-- Search Modal
-
-## CI/CD Pipelines
-
-- Dependabot
-
-## Consistency
-
-- Inconsistent usage of Grid, GridItem.
-- Inconsistent usage of Button
-- Inconsistent loading UI. Using both spinner and animate-pulse. Stick to animate-pulse
-- Put all providers into a RootProvider component.
-- Border colors. Ensure contrast ratio passes for all different themes.
-- Passing styles to the <Container> component.
-- Utilize `default export` as NextJS recommends.
-
-## Cart components
-
-- All these should check if mounted then return jsx from the server if not. Move loading states down I think?
-
-## Images
-
-- Test what happens when there is no color or no size for product
-- I know that I dont have fallback `src` attributes for <Image />
-
-## Database
-
-- Rename Color.value -> Color.slug
-- Rename Size.value -> Size.slug
-
-## Footer
-
-- Add more information to the footer:
-  - Copyright
-  - Link to my twitter
-  - "Made with..."
-    - Vercel, NextJs, Tailwind.
-  - Stuff good for SEO.
+- Create Order model. After checkout, route to a new page that shows the user their order. Thank them, and re-direct to the homepage.
+- Sort products by available colors on the search and category page.
+- Toasts should be floated to their relevant objects.

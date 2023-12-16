@@ -1,4 +1,5 @@
 'use client';
+
 import { useEffect, useState } from 'react';
 
 type PriceProps = {
@@ -30,6 +31,7 @@ export function Price(props: PriceProps) {
   );
 }
 
+// TODO The height that the loading placeholder should be varies depending on the parents font size. This causes CLS issues if the font size of the price is not `text-sm`.
 function LoadingPrice() {
-  return <div className="mt-1 h-4 w-full animate-pulse rounded-md bg-gray-100 dark:bg-gray-700" />;
+  return <div className="h-5 w-full animate-pulse rounded-md bg-gray-100 dark:bg-gray-700" />;
 }

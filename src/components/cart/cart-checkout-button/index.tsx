@@ -15,9 +15,19 @@ export function CartCheckoutButton() {
     setIsMounted(true);
   }, []);
 
-  // TODO Avoid CLS. Missing loading ui.
   if (!isMounted) {
-    return null;
+    return (
+      <div
+        className="
+          h-[34px]
+          w-full
+          animate-pulse
+          rounded-md
+          bg-gray-100
+          dark:bg-gray-700
+        "
+      />
+    );
   }
 
   const handleCheckout = () => {
