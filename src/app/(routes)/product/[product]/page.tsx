@@ -14,7 +14,7 @@ type ProductPageProps = {
 };
 
 export async function generateMetadata({ params }: { params: { product: string } }): Promise<Metadata> {
-  const product = await getProductPage({ name: params.product }); // TODO Just create a getProduct. Overfetching? or is this cacheing.
+  const product = await getProductPage({ name: params.product });
 
   return {
     title: product.name,
