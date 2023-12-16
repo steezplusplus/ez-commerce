@@ -16,8 +16,8 @@ export function CartSummary() {
   return (
     <div
       className="
-        rounded-lg border px-4 py-6 sm:p-6 md:sticky md:top-10 lg:col-span-5
-        lg:mt-0 lg:p-8
+        mt-6 rounded-lg border px-4 py-6 sm:p-6 md:sticky md:top-10
+        lg:col-span-5 lg:mt-0 lg:p-8
       "
     >
       <h2 className="mb-6 text-lg font-medium">Order summary</h2>

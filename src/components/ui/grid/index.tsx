@@ -8,7 +8,7 @@ export function Grid(props: React.ComponentProps<'ul'>) {
 
 export function GridItem(props: React.ComponentProps<'li'>) {
   return (
-    <li {...props} className={`aspect-square transition-opacity ${props.className}`}>
+    <li {...props} className={`aspect-square ${props.className}`}>
       {props.children}
     </li>
   );

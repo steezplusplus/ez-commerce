@@ -1,8 +1,9 @@
+import { Metadata } from 'next';
+
 import { ProductForm } from 'components/product/form';
 import { Gallery } from 'components/product/gallery';
 import { Container } from 'components/ui/container';
 import { getProductPage } from 'lib/api';
-import { Metadata } from 'next';
 
 type ProductPageProps = {
   params: {
