@@ -49,3 +49,8 @@
 
 - Test what happens when there is no color or no size for product
 - I know that I dont have fallback `src` attributes for <Image />
+
+## Database
+
+- Rename Color.value -> Color.slug
+- Rename Size.value -> Size.slug
