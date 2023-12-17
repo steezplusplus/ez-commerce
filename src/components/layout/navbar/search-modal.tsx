@@ -13,9 +13,8 @@ export function SearchModal() {
   }
 
   return (
-    <Modal open={searchModal.isOpen} onClose={searchModal.onClose}>
+    <Modal open={searchModal.isOpen} onClose={searchModal.onClose} title="Search products">
       <div className="flex w-full flex-col justify-center">
-        <h3 className="mb-2 text-lg">Search products</h3>
         <ProductSearch callback={searchModal.onClose} />
       </div>
     </Modal>

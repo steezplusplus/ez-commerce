@@ -12,7 +12,7 @@ export function ProductModal() {
   }
 
   return (
-    <Modal open={productModal.isOpen} onClose={productModal.onClose}>
+    <Modal open={productModal.isOpen} onClose={productModal.onClose} title="Product name">
       <div className="grid w-full grid-cols-1 items-start gap-x-6 gap-y-8 sm:grid-cols-12 lg:gap-x-8">
         <div className="sm:col-span-4 lg:col-span-5">
           <p>images</p>
