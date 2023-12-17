@@ -1,23 +1,11 @@
 # HIGH PRIORITY
 
 - Toasts should show the product name, color and size when added to or removed from cart.
-
-- Modal
-
-  - Should accept header prop
-
-- Product Modal
-
-  - Update useProduct API to accept type `ProductWithColor` from API.
-  - Pass product data from search page to the ProductModal.
-  - Display the product name, description images, sizes, colors, and allow add to cart.
-
-- Search Modal....
-
 - Refactor database columns Color.value -> Color.slug, Size.value -> Size.slug. Update downstream typings.
 
 # LOW PRIORITY
 
+- Tab, TabGroup lacks accessability via keyboard navigation.
 - Product page fully incomplete
   - Sroll to product based on color selection via URL
   - loading.tsx
