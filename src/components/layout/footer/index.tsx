@@ -17,7 +17,7 @@ export async function Footer() {
         border-t 
         border-neutral-200
         p-4
-      dark:border-neutral-800
+        dark:border-neutral-800
         md:flex-row md:gap-12
       "
     >
