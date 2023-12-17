@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 
 import { Tab } from '@headlessui/react';
 import { Color } from '@prisma/client';
@@ -11,7 +12,6 @@ import { useProductModal } from 'hooks/use-product-modal';
 export function ProductModal() {
   const productModal = useProductModal();
   const productData = productModal.product;
-  const colors = productData?.colors;
 
   if (!productData) {
     return null;
@@ -29,6 +29,26 @@ export function ProductModal() {
           <h4>
             <Price amount={String(productData.price)} />
           </h4>
+          <Link
+            className="
+              flex
+              items-center 
+              justify-center
+              rounded-md
+              border
+              border-neutral-200
+              bg-white
+              p-2
+              transition
+              hover:opacity-75
+              dark:border-neutral-800
+              dark:bg-transparent
+            "
+            href={`/product/${productData.slug}`}
+            onClick={() => productModal.onClose()}
+          >
+            Go to product page
+          </Link>
         </div>
       </div>
     </Modal>
