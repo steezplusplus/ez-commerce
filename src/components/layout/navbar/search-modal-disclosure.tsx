@@ -2,7 +2,6 @@
 
 import { SearchIcon } from 'lucide-react';
 
-import { Button } from 'components/ui/button';
 import { useSearchModal } from 'hooks/use-search-modal';
 
 export function SearchModalDisclosure() {
@@ -14,8 +13,20 @@ export function SearchModalDisclosure() {
   };
 
   return (
-    <Button onClick={onMobileSearch} className="px-2 py-2">
+    <button
+      onClick={onMobileSearch}
+      className="
+        rounded-md
+        border
+        border-neutral-200
+        bg-white
+        px-2
+        py-2
+        dark:border-neutral-800
+        dark:bg-transparent
+      "
+    >
       <SearchIcon size="18" />
-    </Button>
+    </button>
   );
 }

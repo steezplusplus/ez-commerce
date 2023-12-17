@@ -1,8 +1,5 @@
 # HIGH PRIORITY
 
-- Border colors. Ensure contrast ratio passes for all different themes.
-- Font sizes.
-- Heading elements.
 - Toasts should show the product name, color and size when added to or removed from cart.
 
 - Modal

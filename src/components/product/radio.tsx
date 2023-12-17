@@ -24,7 +24,21 @@ export function Radio(props: RadioProps) {
   const isChecked = searchParams.get(props.name) === props.value;
 
   return (
-    <label className="mr-1 flex justify-center rounded border px-2 py-1">
+    <label
+      className="
+        flex
+        items-center
+        justify-center
+        rounded-md
+        border
+        border-neutral-200
+        bg-white
+        px-2
+        py-1
+        dark:border-neutral-800
+        dark:bg-transparent
+      "
+    >
       {props.displayName}
       <input
         name={props.name}

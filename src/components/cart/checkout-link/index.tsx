@@ -17,7 +17,7 @@ export function CheckoutLink() {
 
   if (!isMounted) {
     return (
-      <span className="flex items-center rounded-md border p-2">
+      <span className="flex items-center rounded-md border border-neutral-200 bg-white p-2 dark:border-neutral-800 dark:bg-transparent">
         <ShoppingBag size="18" />
         <Loader className="ml-2 animate-pulse" size="8" />
       </span>
@@ -25,7 +25,21 @@ export function CheckoutLink() {
   }
 
   return (
-    <Link href="/checkout" className="flex items-center rounded-md border p-2">
+    <Link
+      href="/checkout"
+      className="
+        flex
+        items-center
+        rounded-md
+        border
+        border-neutral-200
+        bg-white
+        p-2
+        transition
+        hover:opacity-75
+        dark:border-neutral-800
+        dark:bg-transparent"
+    >
       <ShoppingBag size="18" />
       <span className="ml-2 text-xs font-medium dark:text-white">{cart.products.length}</span>
     </Link>

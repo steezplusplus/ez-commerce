@@ -19,17 +19,16 @@ export function RemoveFromCart({ inventoryId }: RemoveFromCartProps) {
   return (
     <button
       className="
-        disabled:cursor-opacity-50 
         w-auto
         rounded-md
         border
-        px-1
-        py-1
-        text-sm
-        tracking-widest
+        border-neutral-200
+        bg-white
+        p-1
         transition
         hover:opacity-75
-        disabled:cursor-not-allowed
+        dark:border-neutral-800
+        dark:bg-transparent
       "
       onClick={removeProduct}
     >

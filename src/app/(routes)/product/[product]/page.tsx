@@ -40,9 +40,14 @@ export default async function ProductPage(props: ProductPageProps) {
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
         <div
           className="
-            bottom-0 flex flex-col
-            justify-center self-start
-            md:sticky md:top-10 md:aspect-square
+            bottom-0
+            flex
+            flex-col
+            justify-center
+            self-start
+            md:sticky
+            md:top-10
+            md:aspect-square
           "
         >
           <ProductForm product={product} selectedColor={selectedColor} selectedSize={selectedSize} />

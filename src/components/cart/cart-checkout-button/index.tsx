@@ -34,6 +34,7 @@ export function CartCheckoutButton() {
     if (!cart.products.length) {
       return toast.error('There are no products in your cart. Add products to your cart to continue.');
     }
+    cart.removeAll();
     return toast.success('Thanks for checking out my demo.');
   };
 

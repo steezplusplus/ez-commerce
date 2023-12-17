@@ -49,7 +49,19 @@ export function ProductSearch(props: SearchProps) {
         id={searchId}
         autoComplete="off"
         defaultValue={params?.get('q') || ''}
-        className="w-full rounded-lg border bg-white py-2 pl-8 pr-4 text-sm dark:bg-transparent"
+        className="
+          w-full
+          rounded-lg
+          border
+          border-neutral-200
+          bg-white
+          py-2
+          pl-8
+          pr-4
+          text-sm
+          dark:border-neutral-800
+          dark:bg-transparent
+        "
       />
       <SearchIcon size="16" color="gray" className="absolute left-2 top-3" />
     </form>

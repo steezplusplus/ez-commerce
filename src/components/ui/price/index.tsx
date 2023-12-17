@@ -20,14 +20,14 @@ export function Price(props: PriceProps) {
   }
 
   return (
-    <p>
+    <>
       {`${new Intl.NumberFormat(undefined, {
         style: 'currency',
         currency: currencyCode,
         currencyDisplay: 'narrowSymbol',
       }).format(parseFloat(amount))}`}
       <span>{` ${currencyCode}`}</span>
-    </p>
+    </>
   );
 }
 
