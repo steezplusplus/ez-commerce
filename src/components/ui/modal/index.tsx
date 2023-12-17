@@ -52,7 +52,6 @@ export function Modal(props: ModalProps) {
                   className="
                     relative
                     w-full
-                    items-center
                     overflow-hidden
                     bg-neutral-50
                     px-4

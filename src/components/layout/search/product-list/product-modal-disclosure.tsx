@@ -2,13 +2,14 @@
 
 import { Button } from 'components/ui/button';
 import { useProductModal } from 'hooks/use-product-modal';
+import { ProductWithColor } from 'lib/api';
 
-export function ProductModalDisclosure() {
+export function ProductModalDisclosure({ product }: { product: ProductWithColor }) {
   const productModal = useProductModal();
 
   const onPreview = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    productModal.onOpen([]);
+    productModal.onOpen(product);
   };
 
   return (

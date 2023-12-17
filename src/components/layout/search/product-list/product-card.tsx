@@ -11,7 +11,7 @@ export function ProductCard({ product }: { product: ProductWithColor }) {
   return (
     <GridItem key={product.id} className="group/card">
       <Link href={href} className="h-full w-full">
-        <ProductImage altText={product.colors[0]?.altText || ''} image={product.colors[0]?.image || ''} />
+        <ProductImage product={product} />
         <ProductInfo name={product.name} price={product.price} />
       </Link>
     </GridItem>
