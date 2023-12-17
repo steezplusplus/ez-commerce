@@ -59,7 +59,7 @@ export function ProductSearch(props: SearchProps) {
           pl-8
           pr-4
           text-sm
-        dark:border-neutral-800
+          dark:border-neutral-800
           dark:bg-transparent
         "
       />
