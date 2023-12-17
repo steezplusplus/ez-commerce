@@ -66,7 +66,6 @@ export function AddToCart(props: AddToCartProps) {
         tracking-widest
         transition
         hover:opacity-75
-        disabled:cursor-not-allowed
         dark:border-neutral-800
         dark:bg-transparent
       "
