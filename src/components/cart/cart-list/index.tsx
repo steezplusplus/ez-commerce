@@ -25,7 +25,7 @@ export function CartList() {
 
   if (cart.products.length === 0) {
     return (
-      <ul className="flex h-full items-center justify-center rounded-md border lg:col-span-7">
+      <ul className="flex h-full items-center justify-center rounded-md border border-neutral-200 dark:border-neutral-800 lg:col-span-7">
         <li>
           <h3 className="text-lg">No items added to cart.</h3>
         </li>
