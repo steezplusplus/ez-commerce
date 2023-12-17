@@ -11,9 +11,14 @@ export async function Footer() {
   return (
     <footer
       className="
-        flex flex-col gap-6 border-t 
-        border-neutral-200 p-4
-        dark:border-neutral-700 md:flex-row md:gap-12
+        flex
+        flex-col
+        gap-6
+        border-t 
+        border-neutral-200
+        p-4
+      dark:border-neutral-800
+        md:flex-row md:gap-12
       "
     >
       <FooterLogo storeName={store.name} />

@@ -59,13 +59,17 @@ export function AddToCart(props: AddToCartProps) {
         w-auto
         rounded-md
         border
+        border-neutral-200
+        bg-white
         px-2
         py-1
-        text-sm
+        text-lg
         tracking-widest
         transition
         hover:opacity-75
         disabled:cursor-not-allowed
+        dark:border-neutral-800
+        dark:bg-transparent
       "
     >
       Add To Cart
