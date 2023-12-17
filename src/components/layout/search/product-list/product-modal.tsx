@@ -15,7 +15,7 @@ export function ProductModal() {
   }
 
   return (
-    <Modal open={productModal.isOpen} onClose={productModal.onClose} title="Product name">
+    <Modal open={productModal.isOpen} onClose={productModal.onClose} title={productData.name}>
       <div className="grid w-full grid-cols-1 items-start gap-x-6 gap-y-8 sm:grid-cols-12 lg:gap-x-8">
         <div className="sm:col-span-4 lg:col-span-5">
           {colors?.map((color) => {
@@ -27,8 +27,7 @@ export function ProductModal() {
           })}
         </div>
 
-        <div className="sm:col-span-8 lg:col-span-7">
-          <h4>{productData.name}</h4>
+        <div className="space-y-4 sm:col-span-8 lg:col-span-7">
           <h4>{productData.description}</h4>
           <h4>
             <Price amount={String(productData.price)} />
