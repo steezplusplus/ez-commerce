@@ -26,10 +26,11 @@ export function Radio(props: RadioProps) {
   return (
     <label
       className="
-        mr-1
         flex
+        items-center
         justify-center
-        rounded border
+        rounded-md
+        border
         border-neutral-200
         bg-white
         px-2

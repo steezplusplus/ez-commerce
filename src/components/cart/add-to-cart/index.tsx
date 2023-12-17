@@ -55,8 +55,7 @@ export function AddToCart(props: AddToCartProps) {
     <button
       onClick={validateCart}
       className="
-        disabled:cursor-opacity-50
-        w-auto
+        w-full
         rounded-md
         border
         border-neutral-200
