@@ -1,7 +1,5 @@
 # HIGH PRIORITY
 
-- Font sizes.
-- Heading elements.
 - Toasts should show the product name, color and size when added to or removed from cart.
 
 - Modal

@@ -29,7 +29,7 @@ export function ProductForm({
         dark:bg-transparent
       "
     >
-      <h1
+      <h2
         className="
           mb-3
           border-b
@@ -41,12 +41,12 @@ export function ProductForm({
         "
       >
         {product.name}
-      </h1>
+      </h2>
       <ColorSelection colors={product.colors} />
       <SizeSelection sizes={product.sizes} />
-      <span className="text-sm text-gray-500">
+      <h4 className="text-sm text-gray-500">
         <Price amount={String(product.price)} />
-      </span>
+      </h4>
       <p className="mb-4 mt-2">{product.description}</p>
       <AddToCart product={product} selectedSize={newSize} selectedColor={newColor} selectedInventory={newInventory} />
     </div>
@@ -56,7 +56,7 @@ export function ProductForm({
 function ColorSelection({ colors }: { colors: Color[] }) {
   return (
     <>
-      <h2 className="mb-1 text-lg">Colors</h2>
+      <h3 className="mb-1 text-lg">Colors</h3>
       <fieldset className="mb-2 flex flex-wrap gap-1 text-sm">
         {colors.map((color) => {
           return <Radio key={color.id} name="color" value={color.value} displayName={color.name} />;
@@ -69,7 +69,7 @@ function ColorSelection({ colors }: { colors: Color[] }) {
 function SizeSelection({ sizes }: { sizes: Size[] }) {
   return (
     <>
-      <h2 className="mb-1 text-lg">Sizes</h2>
+      <h3 className="mb-1 text-lg">Sizes</h3>
       <fieldset className="mb-2 flex flex-wrap gap-1 text-sm">
         {sizes.map((size) => {
           return <Radio key={size.id} name="size" value={size.value} displayName={size.name} />;

@@ -31,10 +31,10 @@ export function CartSummary() {
     >
       <h2 className="mb-6 text-lg font-medium">Order summary</h2>
       <div className="border-t border-neutral-200 py-4 dark:border-neutral-800">
-        <div className="mb-1 font-medium">Order total</div>
-        <h3 className="text-lg font-medium">
+        <h3 className="mb-1 font-medium">Order total</h3>
+        <h4 className="text-lg font-medium">
           <Price amount={String(totalPrice)} />
-        </h3>
+        </h4>
       </div>
       <CartCheckoutButton />
     </div>
