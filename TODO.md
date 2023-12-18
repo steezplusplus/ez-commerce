@@ -39,6 +39,10 @@
 - Setup Coveralls to track code coverage.
 - Create GitHub Action to run unit tests, block merging to main.
 
+- Remake ThemeSelect with HeadlessUI ListBox
+- Remake Product Form Radio with HeadlessUI RadioGroup
+- Remake ReactHotToast with HeadlessUI Popover
+
 # Stretches
 
 - Create Order model. After checkout, route to a new page that shows the user their order. Thank them, and re-direct to the homepage.
