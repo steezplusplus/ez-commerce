@@ -5,6 +5,8 @@
 
 # LOW PRIORITY
 
+- Cleanup metadata in root layout
+
 - Create better testing data in the seed:
 
   - Product with color and no size
