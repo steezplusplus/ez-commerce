@@ -5,11 +5,24 @@
 
 # LOW PRIORITY
 
-- Tab, TabGroup lacks accessability via keyboard navigation.
+- Create better testing data in the seed:
+
+  - Product with color and no size
+  - Product with size and no color
+  - Product with no size or color
+
+- DB Schema has weird unique constraints. Look into proper uniqueness.
+
+- Tab, TabGroup
+
+  - lacks accessability via keyboard navigation.
+  - Should be its own component for Gallery
+  - Does not show on mobile
+
 - Product page fully incomplete
   - Sroll to product based on color selection via URL
   - loading.tsx
-- Show "No image" for products without colors. Currently all products have images, so it won't happen currently but its not safe.
+- Handle scenario where a product exists with no Color. Show "no images for this product" in UI.
 - Put all providers into a RootProvider component.
 - Homepage fully incomplete
 - Footer should have more information and links for good SEO.
