@@ -1,27 +1,28 @@
 # HIGH PRIORITY
 
 - Toasts should show the product name, color and size when added to or removed from cart.
-
-- Modal
-
-  - Should accept header prop
-
-- Product Modal
-
-  - Update useProduct API to accept type `ProductWithColor` from API.
-  - Pass product data from search page to the ProductModal.
-  - Display the product name, description images, sizes, colors, and allow add to cart.
-
-- Search Modal....
-
 - Refactor database columns Color.value -> Color.slug, Size.value -> Size.slug. Update downstream typings.
 
 # LOW PRIORITY
 
+- Create better testing data in the seed:
+
+  - Product with color and no size
+  - Product with size and no color
+  - Product with no size or color
+
+- DB Schema has weird unique constraints. Look into proper uniqueness.
+
+- Tab, TabGroup
+
+  - lacks accessability via keyboard navigation.
+  - Should be its own component for Gallery
+  - Does not show on mobile
+
 - Product page fully incomplete
   - Sroll to product based on color selection via URL
   - loading.tsx
-- Show "No image" for products without colors. Currently all products have images, so it won't happen currently but its not safe.
+- Handle scenario where a product exists with no Color. Show "no images for this product" in UI.
 - Put all providers into a RootProvider component.
 - Homepage fully incomplete
 - Footer should have more information and links for good SEO.

@@ -38,7 +38,8 @@ export function CheckoutLink() {
         transition
         hover:opacity-75
         dark:border-neutral-800
-        dark:bg-transparent"
+        dark:bg-transparent
+      "
     >
       <ShoppingBag size="18" />
       <span className="ml-2 text-xs font-medium dark:text-white">{cart.products.length}</span>
