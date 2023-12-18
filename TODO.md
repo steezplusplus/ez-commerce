@@ -23,7 +23,6 @@
   - Sroll to product based on color selection via URL
   - loading.tsx
 - Handle scenario where a product exists with no Color. Show "no images for this product" in UI.
-- Put all providers into a RootProvider component.
 - Homepage fully incomplete
 - Footer should have more information and links for good SEO.
 - Utilize `default export` as NextJS recommends.
