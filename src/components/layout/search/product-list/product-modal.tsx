@@ -8,7 +8,6 @@ import { Price } from 'components/ui/price';
 import { useProductModal } from 'hooks/use-product-modal';
 import { ProductWithColor } from 'lib/api';
 
-// TODO place of link. Styling of price. Make second col its own component.
 export function ProductModal() {
   const productModal = useProductModal();
   const productData = productModal.product;
@@ -27,6 +26,7 @@ export function ProductModal() {
           <ProductModalInfo product={productData} onClose={productModal.onClose} />
         </div>
       </div>
+      <ProductModalLink slug={productData.slug} onClose={productModal.onClose} />
     </Modal>
   );
 }
@@ -38,26 +38,35 @@ function ProductModalInfo({ product, onClose }: { product: ProductWithColor; onC
       <h4>
         <Price amount={String(product.price)} />
       </h4>
-      <Link
-        className=" 
-          flex
-          items-center
-          justify-center
-          rounded-md
-          border
-          border-neutral-200
-          bg-white
-          p-2
-          transition
-          hover:opacity-75
-          dark:border-neutral-800
-          dark:bg-transparent
-        "
-        href={`/product/${product.slug}`}
-        onClick={() => onClose()}
-      >
-        Go to product page
-      </Link>
     </div>
+  );
+}
+
+function ProductModalLink({ slug, onClose }: { slug: string; onClose: () => void }) {
+  return (
+    <Link
+      className=" 
+        mt-4
+        flex
+        w-full
+        justify-center
+        rounded-md
+        border
+        bg-neutral-900
+        px-2
+        py-1
+        text-sm
+        tracking-widest
+        text-white
+        transition
+        hover:opacity-75
+        dark:bg-neutral-50
+        dark:text-black
+      "
+      href={`/product/${slug}`}
+      onClick={() => onClose()}
+    >
+      Go to product page
+    </Link>
   );
 }

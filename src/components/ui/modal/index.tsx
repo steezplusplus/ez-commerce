@@ -1,7 +1,6 @@
 'use client';
 
 import { Dialog, Transition } from '@headlessui/react';
-import { X } from 'lucide-react';
 import { Fragment } from 'react';
 
 type ModalProps = {
@@ -15,20 +14,23 @@ export function Modal(props: ModalProps) {
   const { title, open, onClose, children } = props;
 
   return (
-    <Transition show={open} appear as={Fragment}>
+    <Transition appear show={open} as={Fragment}>
       <Dialog as="div" className="relative z-10" onClose={onClose}>
-        <div className="fixed inset-0 bg-black bg-opacity-50" />
+        <Transition.Child
+          as={Fragment}
+          enter="ease-out duration-300"
+          enterFrom="opacity-0"
+          enterTo="opacity-100"
+          leave="ease-in duration-200"
+          leaveFrom="opacity-100"
+          leaveTo="opacity-0"
+        >
+          {/* Backdrop */}
+          <div className="fixed inset-0 bg-black/25 dark:bg-white/25" />
+        </Transition.Child>
+
         <div className="fixed inset-0 overflow-y-auto">
-          <div
-            className="
-              flex
-              min-h-full
-              items-center
-              justify-center
-              p-4
-              text-center
-            "
-          >
+          <div className="flex min-h-full items-center justify-center p-4 text-center">
             <Transition.Child
               as={Fragment}
               enter="ease-out duration-300"
@@ -38,37 +40,29 @@ export function Modal(props: ModalProps) {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel
-                className="
-                  w-full
-                  max-w-3xl
-                  overflow-hidden
-                  rounded-lg
-                  text-left
-                  align-middle
-                "
-              >
-                <div
-                  className="
-                    relative
-                    w-full
-                    overflow-hidden
-                    bg-neutral-50
-                    px-4
-                    pb-8
-                    pt-8
-                    shadow-2xl
-                    dark:bg-neutral-900
-                    sm:px-6                    
-                    md:p-6
-                    lg:p-8
-                  "
-                >
-                  <div className="mb-4 flex items-center">
-                    <h2 className="text-4xl font-semibold">{title}</h2>
-                    <ModalCloseButton handleClose={onClose} />
-                  </div>
-                  {children}
+              {/* Modal */}
+              <Dialog.Panel className="w-full max-w-3xl transform overflow-hidden rounded-md bg-neutral-50 p-6 text-left align-middle shadow-xl transition-all dark:bg-neutral-900">
+                <Dialog.Title as="h3" className="text-lg font-medium leading-6">
+                  {title}
+                </Dialog.Title>
+                <div className="mt-2">{children}</div>
+                <div className="mt-4">
+                  <button
+                    className={`
+                      w-full
+                      rounded-md
+                      border
+                      px-2
+                      py-1
+                      text-sm
+                      tracking-widest
+                      transition
+                      hover:opacity-75
+                    `}
+                    onClick={onClose}
+                  >
+                    Close
+                  </button>
                 </div>
               </Dialog.Panel>
             </Transition.Child>
@@ -76,26 +70,5 @@ export function Modal(props: ModalProps) {
         </div>
       </Dialog>
     </Transition>
-  );
-}
-
-function ModalCloseButton({ handleClose }: { handleClose: () => void }) {
-  return (
-    <button
-      className="
-        ml-auto
-        rounded-md
-        border
-        border-neutral-200
-        px-1
-        py-1
-        transition
-        hover:opacity-75
-        dark:border-neutral-800
-      "
-      onClick={handleClose}
-    >
-      <X size={16} />
-    </button>
   );
 }
