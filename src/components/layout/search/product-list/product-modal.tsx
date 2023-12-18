@@ -32,7 +32,7 @@ export function ProductModal() {
           <Link
             className="
               flex
-              items-center 
+              items-center
               justify-center
               rounded-md
               border
@@ -99,7 +99,7 @@ type GalleryTabProps = {
 function GalleryTab(props: GalleryTabProps) {
   const { image, name } = props;
   return (
-    <Tab className="relative flex aspect-square cursor-pointer items-center justify-center rounded-md bg-white">
+    <Tab className="relative flex aspect-square cursor-pointer items-center justify-center rounded-md bg-gray-100 dark:bg-gray-700">
       {({ selected }) => (
         <div>
           <span className="absolute inset-0 aspect-square h-full w-full overflow-hidden rounded-md">
