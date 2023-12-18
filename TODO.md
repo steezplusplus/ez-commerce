@@ -2,14 +2,18 @@
 
 - Toasts should show the product name, color and size when added to or removed from cart.
 - Refactor database columns Color.value -> Color.slug, Size.value -> Size.slug. Update downstream typings.
-
-# LOW PRIORITY
+- Footer should have more information and links for good SEO.
+- Inconsistent loading UI. Using both spinner and animate-pulse.
 
 - Create better testing data in the seed:
 
   - Product with color and no size
   - Product with size and no color
   - Product with no size or color
+
+# LOW PRIORITY
+
+- Cleanup metadata in root layout
 
 - DB Schema has weird unique constraints. Look into proper uniqueness.
 
@@ -23,11 +27,8 @@
   - Sroll to product based on color selection via URL
   - loading.tsx
 - Handle scenario where a product exists with no Color. Show "no images for this product" in UI.
-- Put all providers into a RootProvider component.
 - Homepage fully incomplete
-- Footer should have more information and links for good SEO.
 - Utilize `default export` as NextJS recommends.
-- Inconsistent loading UI. Using both spinner and animate-pulse.
 - <Price /> loading placeholder height depends on parents font size, CLS issues if is not `text-sm`.
 
 # Finalizations

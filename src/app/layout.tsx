@@ -4,9 +4,7 @@ import { Suspense } from 'react';
 
 import { Footer } from 'components/layout/footer';
 import { Navbar } from 'components/layout/navbar';
-import { ModalProvider } from 'providers/modal-provider';
-import { ThemeProvider } from 'providers/theme-provider';
-import { ToastProvider } from 'providers/toast-provider';
+import { RootProvider } from 'providers/root-provider';
 import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -51,15 +49,13 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   return (
     <html lang="en" className={inter.className}>
       <body>
-        <ThemeProvider>
-          <ModalProvider />
-          <ToastProvider />
+        <RootProvider>
           <Navbar />
           <main className="min-h-[calc(100vh-80px)]">{children}</main>
           <Suspense>
             <Footer />
           </Suspense>
-        </ThemeProvider>
+        </RootProvider>
       </body>
     </html>
   );
