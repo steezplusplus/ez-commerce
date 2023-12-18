@@ -56,11 +56,10 @@ export function Modal(props: ModalProps) {
                     bg-neutral-50
                     px-4
                     pb-8
-                    pt-14
+                    pt-8
                     shadow-2xl
                     dark:bg-neutral-900
-                    sm:px-6
-                    sm:pt-8
+                    sm:px-6                    
                     md:p-6
                     lg:p-8
                   "
