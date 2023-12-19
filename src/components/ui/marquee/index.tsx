@@ -1,54 +1,46 @@
 import { Color } from '@prisma/client';
 import Image from 'next/image';
 
-export function FastMarquee({ frames }: { frames?: Color[] }) {
+export function FastMarquee({ frames }: { frames: Color[] }) {
   return (
     <div className="flex select-none gap-x-4 overflow-hidden">
-      <ul className="flex min-w-full shrink-0 animate-marquee-fast justify-around gap-x-4">
-        <li>Item 1</li>
-        <li>Item 2</li>
-        <li>Item 3</li>
-        <li>Item 4</li>
+      <ul className="animate-marquee-fast flex min-w-full shrink-0 justify-around gap-x-4">
+        {frames?.map((frame) => {
+          return <MarqueFrame key={frame.id} frame={frame} />;
+        })}
       </ul>
 
-      <ul className="flex min-w-full shrink-0 animate-marquee-fast justify-around gap-x-4" aria-hidden="true">
-        <li>display only 1</li>
-        <li>display only 2</li>
-        <li>display only 3</li>
-        <li>display only 4</li>
+      <ul className="animate-marquee-fast flex min-w-full shrink-0 justify-around gap-x-4" aria-hidden="true">
+        {frames?.map((frame) => {
+          return <MarqueFrame key={frame.id} frame={frame} />;
+        })}
       </ul>
     </div>
   );
 }
 
-export function SlowMarquee({ frames }: { frames?: Color[] }) {
+export function SlowMarquee({ frames }: { frames: Color[] }) {
   return (
     <div className="flex select-none gap-x-4 overflow-hidden">
-      <ul className="flex min-w-full shrink-0 animate-marquee-slow justify-around gap-x-4">
-        <li>Item 1</li>
-        <li>Item 2</li>
-        <li>Item 3</li>
-        <li>Item 4</li>
+      <ul className="animate-marquee-slow flex min-w-full shrink-0 justify-around gap-x-4">
+        {frames.map((frame) => {
+          return <MarqueFrame key={frame.id} frame={frame} />;
+        })}
       </ul>
 
-      <ul className="flex min-w-full shrink-0 animate-marquee-slow justify-around gap-x-4" aria-hidden="true">
-        <li>display only 1</li>
-        <li>display only 2</li>
-        <li>display only 3</li>
-        <li>display only 4</li>
+      <ul className="animate-marquee-slow flex min-w-full shrink-0 justify-around gap-x-4" aria-hidden="true">
+        {frames.map((frame) => {
+          return <MarqueFrame key={frame.id} frame={frame} />;
+        })}
       </ul>
     </div>
   );
 }
 
-function MarqueFrame({ frame }: { frame?: Color }) {
+function MarqueFrame({ frame }: { frame: Color }) {
   return (
-    <Image
-      fill
-      src={frame?.image || ''}
-      alt={frame?.altText || ''}
-      className="object-cover object-center"
-      sizes="30vw"
-    />
+    <div className="relative aspect-square rounded-md bg-gray-100 dark:bg-gray-700">
+      <Image fill src={frame.image} alt={frame.altText} className="object-cover object-center" sizes="30vw" />
+    </div>
   );
 }
