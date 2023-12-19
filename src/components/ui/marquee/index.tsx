@@ -1,33 +1,32 @@
 import { Color } from '@prisma/client';
+import Image from 'next/image';
 
 export function Marquee({ frames }: { frames: Color[] }) {
   const manyFrames = [...frames, ...frames, ...frames];
 
   return (
-    <section className="flex">
-      <ul className="animate-marquee">
-        {manyFrames.map((frame) => (
-          <MarqueFrame frame={frame} key={frame.id} />
-        ))}
-      </ul>
+    <article className="flex w-full overflow-hidden whitespace-nowrap">
+      <div className="relative">
+        <ul className="flex animate-marquee">
+          {manyFrames.map((frame) => (
+            <MarqueeImage key={frame.id} frame={frame} />
+          ))}
+        </ul>
 
-      <ul className="animate-marquee2">
-        {manyFrames.map((frame) => (
-          <MarqueFrame frame={frame} key={frame.id} />
-        ))}
-      </ul>
-    </section>
+        <ul className="absolute top-0 flex animate-marquee2">
+          {manyFrames.map((frame) => (
+            <MarqueeImage key={frame.id} frame={frame} />
+          ))}
+        </ul>
+      </div>
+    </article>
   );
 }
 
-function MarqueFrame({ frame }: { frame: Color }) {
+function MarqueeImage({ frame }: { frame: Color }) {
   return (
-    <li className="border">
-      <MarqueeImage src={frame.image} alt={frame.altText} />
+    <li className="relative mx-2 h-24 w-24 overflow-hidden rounded-md sm:h-48 sm:w-48">
+      <Image src={frame.image} alt={frame.altText} fill sizes="33vw" className="object-cover object-center" />
     </li>
   );
-}
-
-function MarqueeImage({ src, alt }: { src: string; alt: string }) {
-  return <p>{alt}</p>;
 }

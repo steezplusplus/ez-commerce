@@ -11,8 +11,8 @@ const config: Config = {
   theme: {
     extend: {
       animation: {
-        marquee: 'marquee 5s linear infinite',
-        marquee2: 'marquee2 5s linear infinite',
+        marquee: 'marquee 60s linear infinite',
+        marquee2: 'marquee2 60s linear infinite',
       },
       keyframes: {
         marquee: {
