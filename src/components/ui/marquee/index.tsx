@@ -4,14 +4,14 @@ import Image from 'next/image';
 export function FastMarquee({ frames }: { frames?: Color[] }) {
   return (
     <div className="flex select-none gap-x-4 overflow-hidden">
-      <ul className="animate-marquee-fast flex min-w-full shrink-0 justify-around gap-x-4">
+      <ul className="flex min-w-full shrink-0 animate-marquee-fast justify-around gap-x-4">
         <li>Item 1</li>
         <li>Item 2</li>
         <li>Item 3</li>
         <li>Item 4</li>
       </ul>
 
-      <ul className="animate-marquee-fast flex min-w-full shrink-0 justify-around gap-x-4" aria-hidden="true">
+      <ul className="flex min-w-full shrink-0 animate-marquee-fast justify-around gap-x-4" aria-hidden="true">
         <li>display only 1</li>
         <li>display only 2</li>
         <li>display only 3</li>
@@ -24,14 +24,14 @@ export function FastMarquee({ frames }: { frames?: Color[] }) {
 export function SlowMarquee({ frames }: { frames?: Color[] }) {
   return (
     <div className="flex select-none gap-x-4 overflow-hidden">
-      <ul className="animate-marquee-slow flex min-w-full shrink-0 justify-around gap-x-4">
+      <ul className="flex min-w-full shrink-0 animate-marquee-slow justify-around gap-x-4">
         <li>Item 1</li>
         <li>Item 2</li>
         <li>Item 3</li>
         <li>Item 4</li>
       </ul>
 
-      <ul className="animate-marquee-slow flex min-w-full shrink-0 justify-around gap-x-4" aria-hidden="true">
+      <ul className="flex min-w-full shrink-0 animate-marquee-slow justify-around gap-x-4" aria-hidden="true">
         <li>display only 1</li>
         <li>display only 2</li>
         <li>display only 3</li>
