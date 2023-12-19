@@ -10,28 +10,28 @@ import { ProductWithColor } from 'lib/api';
 
 export function ProductModal() {
   const productModal = useProductModal();
-  const productData = productModal.product;
+  const product = productModal.product;
 
-  if (!productData) {
+  if (!product) {
     return null;
   }
 
   return (
-    <Modal open={productModal.isOpen} onClose={productModal.onClose} title={productData.name}>
+    <Modal open={productModal.isOpen} onClose={productModal.onClose} title={product.name}>
       <div className="grid w-full grid-cols-1 items-start gap-x-6 gap-y-8 sm:grid-cols-12 lg:gap-x-8">
         <div className="sm:col-span-4 lg:col-span-5">
-          <Gallery colors={productData.colors} />
+          <Gallery colors={product.colors} />
         </div>
         <div className="h-full sm:col-span-8 lg:col-span-7">
-          <ProductModalInfo product={productData} onClose={productModal.onClose} />
+          <ProductModalInfo product={product} />
         </div>
       </div>
-      <ProductModalLink slug={productData.slug} onClose={productModal.onClose} />
+      <ProductModalLink slug={product.slug} onClose={productModal.onClose} />
     </Modal>
   );
 }
 
-function ProductModalInfo({ product, onClose }: { product: ProductWithColor; onClose: () => void }) {
+function ProductModalInfo({ product }: { product: ProductWithColor }) {
   return (
     <div className="flex h-full flex-col gap-y-4">
       <h4>{product.description}</h4>
