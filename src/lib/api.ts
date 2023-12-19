@@ -86,3 +86,7 @@ export async function getProductPage(props: { name: string }): Promise<FullProdu
     },
   });
 }
+
+// TODO
+export async function getFeaturedProducts(props: { take: number }) {}
+export async function getLatestArrivals(props: { take: number }) {}
