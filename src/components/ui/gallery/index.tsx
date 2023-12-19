@@ -42,6 +42,7 @@ function GalleryTab({ colors }: { colors: Color[] }) {
                 <span
                   className={`
                     absolute inset-0 aspect-square h-full w-full overflow-hidden rounded-md
+                    bg-gray-200 dark:bg-gray-600
                     ${selected ? 'ring-2 ring-offset-1' : ''}
                   `}
                 >
@@ -68,7 +69,7 @@ function GalleryPanel({ colors }: { colors: Color[] }) {
       {colors.map((color) => {
         return (
           <Tab.Panel key={color.id} className="relative aspect-square h-full w-full overflow-hidden sm:rounded-lg">
-            <div className="relative aspect-square h-full w-full overflow-hidden sm:rounded-lg">
+            <div className="relative aspect-square h-full w-full overflow-hidden bg-gray-200 dark:bg-gray-600 sm:rounded-lg">
               <Image
                 fill
                 src={color.image}
