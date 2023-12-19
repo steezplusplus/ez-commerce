@@ -1,36 +1,54 @@
 import { Color } from '@prisma/client';
+import { ProductWithColor } from 'lib/api';
 import Image from 'next/image';
 
-// TODO Use ProductWithColor[] as the type.
-// TODO Get new test data with that type
-// TODO Show product color.name, product.name, product.price on hover.
-// TODO On click route to product page with color in query params.
-export function Marquee({ frames }: { frames: Color[] }) {
-  const manyFrames = [...frames, ...frames, ...frames];
-
+export function Marquee({ products }: { products: ProductWithColor[] }) {
   return (
     <article className="flex w-full overflow-hidden whitespace-nowrap">
       <div className="relative">
         <ul className="flex animate-marquee">
-          {manyFrames.map((frame) => (
-            <MarqueeImage key={frame.id} frame={frame} />
-          ))}
+          {products.map((product) => {
+            return (
+              <MarqueeFrame
+                colors={product.colors}
+                name={product.name}
+                price={product.price}
+                key={product.id}
+                slug={product.slug}
+              />
+            );
+          })}
         </ul>
-
         <ul className="absolute top-0 flex animate-marquee2">
-          {manyFrames.map((frame) => (
-            <MarqueeImage key={frame.id} frame={frame} />
-          ))}
+          {products.map((product) => {
+            return (
+              <MarqueeFrame
+                colors={product.colors}
+                name={product.name}
+                price={product.price}
+                key={product.id}
+                slug={product.slug}
+              />
+            );
+          })}
         </ul>
       </div>
     </article>
   );
 }
 
-function MarqueeImage({ frame }: { frame: Color }) {
+// TODO Show product color.name, product.name, product.price on hover.
+// TODO On click route to product page with color in query params.
+function MarqueeFrame({ colors, price, name, slug }: { colors: Color[]; price: number; name: string; slug: string }) {
   return (
-    <li className="relative mx-2 h-24 w-24 overflow-hidden rounded-md sm:h-48 sm:w-48">
-      <Image src={frame.image} alt={frame.altText} fill sizes="33vw" className="object-cover object-center" />
-    </li>
+    <>
+      {colors.map((color) => {
+        return (
+          <li key={color.id} className="relative mx-2 h-24 w-24 overflow-hidden rounded-md sm:h-48 sm:w-48">
+            <Image src={color.image} alt={color.altText} fill sizes="33vw" className="object-cover object-center" />
+          </li>
+        );
+      })}
+    </>
   );
 }

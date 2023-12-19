@@ -36,6 +36,8 @@ export default async function SearchPage({ searchParams }: SearchPageProps) {
     }
   }
 
+  console.log(products);
+
   return (
     <>
       <SearchResultsText numResults={products.length} searchValue={searchValue} />
