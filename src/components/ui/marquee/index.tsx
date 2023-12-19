@@ -62,12 +62,10 @@ function MarqueeFrame({ colors, price, name, slug }: { colors: Color[]; price: n
 
 function MarqueeLabel({ price, name }: { price: number; name: string }) {
   return (
-    <div className="hidden group-hover:flex absolute bottom-0 left-0 w-full px-4 pb-4">
-      <div className="flex items-center rounded-full border bg-white/70 p-1 text-xs font-semibold text-black backdrop-blur-md dark:border-neutral-800 dark:bg-black/70 dark:text-white">
-        <h3 className="mr-4 line-clamp-2 flex-grow pl-2 leading-none tracking-tight">{name}</h3>
-        <span className="flex-none rounded-full bg-blue-600 p-2 text-white">
-          <Price amount={String(price)} />
-        </span>
+    <div className="absolute bottom-0 left-2 hidden w-full px-4 pb-4 group-hover:flex">
+      <div className="flex items-center rounded-full border bg-white/70 p-1 px-2 text-xs font-semibold text-black backdrop-blur-md dark:border-neutral-800 dark:bg-black/70 dark:text-white">
+        <h3 className="mr-4 line-clamp-2 flex-grow leading-none tracking-tight">{name}</h3>
+        <Price amount={String(price)} />
       </div>
     </div>
   );
