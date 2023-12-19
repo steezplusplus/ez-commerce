@@ -41,10 +41,9 @@ export function Marquee({ products }: { products: ProductWithColor[] }) {
 }
 
 function MarqueeFrame({ colors, price, name, slug }: { colors: Color[]; price: number; name: string; slug: string }) {
-  const manyColors = [...colors, ...colors, ...colors];
   return (
     <>
-      {manyColors.map((color) => {
+      {colors.map((color) => {
         return (
           <li key={color.id} className="relative mx-2 h-24 w-24 overflow-hidden rounded-md sm:h-48 sm:w-48">
             <Link href={`/product/${slug}?color=${color.value}`} className="relative h-full w-full">

@@ -87,6 +87,18 @@ export async function getProductPage(props: { name: string }): Promise<FullProdu
   });
 }
 
+export async function getFeaturedProducts({ take }: { take: number }): Promise<ProductWithColor[]> {
+  return await prisma.product.findMany({
+    include: {
+      colors: {
+        where: {
+          isFeatured: true,
+        },
+      },
+    },
+    take: take,
+  });
+}
+
 // TODO
-export async function getFeaturedProducts(props: { take: number }) {}
 export async function getLatestArrivals(props: { take: number }) {}
