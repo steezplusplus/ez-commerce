@@ -50,19 +50,25 @@ function MarqueeFrame({ colors, price, name, slug }: { colors: Color[]; price: n
             <Link href={`/product/${slug}?color=${color.value}`} className="relative h-full w-full">
               <div className="group flex h-full w-full items-center justify-center overflow-hidden rounded-lg border bg-white hover:border-blue-600 dark:bg-black">
                 <Image src={color.image} alt={color.altText} fill sizes="33vw" className="object-cover object-center" />
-                <div className="absolute bottom-0 left-0 flex w-full px-4 pb-4">
-                  <div className="flex items-center rounded-full border bg-white/70 p-1 text-xs font-semibold text-black backdrop-blur-md dark:border-neutral-800 dark:bg-black/70 dark:text-white">
-                    <h3 className="mr-4 line-clamp-2 flex-grow pl-2 leading-none tracking-tight">{name}</h3>
-                    <span className="flex-none rounded-full bg-blue-600 p-2 text-white">
-                      <Price amount={String(price)} />
-                    </span>
-                  </div>
-                </div>
+                <MarqueeLabel price={price} name={name} />
               </div>
             </Link>
           </li>
         );
       })}
     </>
+  );
+}
+
+function MarqueeLabel({ price, name }: { price: number; name: string }) {
+  return (
+    <div className="hidden group-hover:flex absolute bottom-0 left-0 w-full px-4 pb-4">
+      <div className="flex items-center rounded-full border bg-white/70 p-1 text-xs font-semibold text-black backdrop-blur-md dark:border-neutral-800 dark:bg-black/70 dark:text-white">
+        <h3 className="mr-4 line-clamp-2 flex-grow pl-2 leading-none tracking-tight">{name}</h3>
+        <span className="flex-none rounded-full bg-blue-600 p-2 text-white">
+          <Price amount={String(price)} />
+        </span>
+      </div>
+    </div>
   );
 }
