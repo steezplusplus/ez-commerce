@@ -10,15 +10,19 @@ const config: Config = {
   plugins: [],
   theme: {
     extend: {
+      animation: {
+        marquee: 'marquee 5s linear infinite',
+        marquee2: 'marquee2 5s linear infinite',
+      },
       keyframes: {
         marquee: {
           '0%': { transform: 'translateX(0%)' },
-          '100%': { transform: 'translateX(calc(-100% - 1rem))' },
+          '100%': { transform: 'translateX(-100%)' },
         },
-      },
-      animation: {
-        'marquee-fast': 'marquee 60s linear infinite',
-        'marquee-slow': 'marquee 90s linear infinite',
+        marquee2: {
+          '0%': { transform: 'translateX(100%)' },
+          '100%': { transform: 'translateX(0%)' },
+        },
       },
     },
   },
