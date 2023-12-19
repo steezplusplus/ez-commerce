@@ -1,6 +1,10 @@
 import { Color } from '@prisma/client';
 import Image from 'next/image';
 
+// TODO Use ProductWithColor[] as the type.
+// TODO Get new test data with that type
+// TODO Show product color.name, product.name, product.price on hover.
+// TODO On click route to product page with color in query params.
 export function Marquee({ frames }: { frames: Color[] }) {
   const manyFrames = [...frames, ...frames, ...frames];
 
