@@ -40,9 +40,10 @@ export function Marquee({ products }: { products: ProductWithColor[] }) {
 // TODO Show product color.name, product.name, product.price on hover.
 // TODO On click route to product page with color in query params.
 function MarqueeFrame({ colors, price, name, slug }: { colors: Color[]; price: number; name: string; slug: string }) {
+  const manyColors = [...colors, ...colors, ...colors];
   return (
     <>
-      {colors.map((color) => {
+      {manyColors.map((color) => {
         return (
           <li key={color.id} className="relative mx-2 h-24 w-24 overflow-hidden rounded-md sm:h-48 sm:w-48">
             <Image src={color.image} alt={color.altText} fill sizes="33vw" className="object-cover object-center" />
