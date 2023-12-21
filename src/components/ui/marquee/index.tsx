@@ -5,9 +5,16 @@ import { Color } from '@prisma/client';
 import { Price } from 'components/ui/price';
 import { ProductWithColor } from 'lib/api';
 
-export function Marquee({ products }: { products: ProductWithColor[] }) {
+// TODO A11y: Buttons to pause and resume where the user left off
+// TODO A11y: motion safe styles
+// TODO A11y: a11y attributes
+// TODO Feat: Adjustable animation speed
+// TODO Feat: Show color name
+// TODO Style: Label looks bad while Price loading.
+
+export function Marquee({ products, ariaLabelledBy }: { products: ProductWithColor[]; ariaLabelledBy: string }) {
   return (
-    <article className="flex w-full overflow-hidden whitespace-nowrap">
+    <article aria-labelledby={ariaLabelledBy} className="flex w-full overflow-hidden whitespace-nowrap">
       <div className="relative">
         <ul className="flex animate-marquee">
           {products.map((product) => {

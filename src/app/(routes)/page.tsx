@@ -10,8 +10,10 @@ export default async function HomePage() {
   const featuredProducts = await getFeaturedProducts({ take: 9 });
   return (
     <Container className="px-4">
-      <h2 className="mb-2 text-xl font-medium">Featured Products</h2>
-      <Marquee products={featuredProducts} />
+      <h2 id="featured-products-id" className="mb-2 text-xl font-medium">
+        Featured Products
+      </h2>
+      <Marquee ariaLabelledBy="featured-products-id" products={featuredProducts} />
     </Container>
   );
 }
