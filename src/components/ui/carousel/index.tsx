@@ -1,22 +1,22 @@
-import { Color } from '@prisma/client';
+import { ProductWithColor } from 'lib/api';
 
-export function Carousel({ frames }: { frames: Color[] }) {
+export function Carousel({ products, ariaLabelledBy }: { products: ProductWithColor[]; ariaLabelledBy: string }) {
   return (
-    <div className="w-full overflow-x-auto">
+    <article aria-labelledby={ariaLabelledBy} className="w-full overflow-x-auto">
       <ul className="flex h-full gap-4 pl-2">
-        {frames.map((frame) => {
-          return <CarouselFrame key={frame.id} frame={frame} />;
+        {products.map((product) => {
+          return <CarouselFrame key={product.id} product={product} />;
         })}
       </ul>
-    </div>
+    </article>
   );
 }
 
-function CarouselFrame({ frame }: { frame: Color }) {
+function CarouselFrame({ product }: { product: ProductWithColor }) {
   return (
     <li className="relative aspect-square w-1/5 flex-none snap-center md:w-1/4">
       <div className="relative inline-block h-full w-full bg-gray-100 dark:bg-gray-700">
-        <div className="relative h-full w-full object-contain">{frame.name}</div>
+        <div className="relative h-full w-full object-contain">{product.name}</div>
       </div>
     </li>
   );
