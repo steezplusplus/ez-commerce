@@ -1,8 +1,8 @@
+import Image from 'next/image';
 import Link from 'next/link';
 
 import { Color } from '@prisma/client';
 import { ProductWithColor } from 'lib/api';
-import Image from 'next/image';
 
 // TODO A11y: a11y attributes
 // TODO Feat: Adjustable animation speed
