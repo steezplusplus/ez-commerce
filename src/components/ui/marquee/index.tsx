@@ -2,7 +2,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { Color } from '@prisma/client';
-import { Price } from 'components/ui/price';
 import { ProductWithColor } from 'lib/api';
 
 // TODO A11y: Buttons to pause and resume where the user left off
@@ -17,28 +16,12 @@ export function Marquee({ products, ariaLabelledBy }: { products: ProductWithCol
       <div className="relative">
         <ul className="flex motion-safe:animate-marquee">
           {products.map((product) => {
-            return (
-              <MarqueeFrame
-                colors={product.colors}
-                name={product.name}
-                price={product.price}
-                key={product.id}
-                slug={product.slug}
-              />
-            );
+            return <MarqueeFrame colors={product.colors} name={product.name} key={product.id} slug={product.slug} />;
           })}
         </ul>
         <ul className="absolute top-0 flex motion-safe:animate-marquee2">
           {products.map((product) => {
-            return (
-              <MarqueeFrame
-                colors={product.colors}
-                name={product.name}
-                price={product.price}
-                key={product.id}
-                slug={product.slug}
-              />
-            );
+            return <MarqueeFrame colors={product.colors} name={product.name} key={product.id} slug={product.slug} />;
           })}
         </ul>
       </div>
@@ -46,7 +29,7 @@ export function Marquee({ products, ariaLabelledBy }: { products: ProductWithCol
   );
 }
 
-function MarqueeFrame({ colors, price, name, slug }: { colors: Color[]; price: number; name: string; slug: string }) {
+function MarqueeFrame({ colors, name, slug }: { colors: Color[]; name: string; slug: string }) {
   return (
     <>
       {colors.map((color) => {
@@ -55,7 +38,7 @@ function MarqueeFrame({ colors, price, name, slug }: { colors: Color[]; price: n
             <Link href={`/product/${slug}?color=${color.value}`} className="relative h-full w-full">
               <div className="group flex h-full w-full items-center justify-center overflow-hidden rounded-lg border bg-white hover:border-blue-600 dark:bg-black">
                 <Image src={color.image} alt={color.altText} fill sizes="33vw" className="object-cover object-center" />
-                <MarqueeLabel price={price} name={name} />
+                <MarqueeLabel name={name} />
               </div>
             </Link>
           </li>
@@ -65,12 +48,27 @@ function MarqueeFrame({ colors, price, name, slug }: { colors: Color[]; price: n
   );
 }
 
-function MarqueeLabel({ price, name }: { price: number; name: string }) {
+function MarqueeLabel({ name }: { name: string }) {
   return (
-    <div className="absolute bottom-0 left-2 hidden w-full px-4 pb-4 group-hover:flex">
-      <div className="flex items-center rounded-full border bg-white/70 p-1 px-2 text-xs font-semibold text-black backdrop-blur-md dark:border-neutral-800 dark:bg-black/70 dark:text-white">
-        <h3 className="mr-4 line-clamp-2 flex-grow leading-none tracking-tight">{name}</h3>
-        <Price amount={String(price)} />
+    <div className="absolute bottom-0 w-full opacity-0 transition group-hover:opacity-100">
+      <div
+        className="
+          w-full
+          rounded-md
+          border
+          bg-neutral-100
+          px-2
+          py-1
+          text-sm
+          tracking-widest
+          text-neutral-600
+          hover:underline
+          hover:opacity-75
+          dark:bg-neutral-800
+          dark:text-neutral-200
+        "
+      >
+        <p className="line-clamp-2 flex flex-grow items-center justify-center leading-none tracking-tight">{name}</p>
       </div>
     </div>
   );
