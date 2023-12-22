@@ -6,7 +6,6 @@ import { Price } from 'components/ui/price';
 import { ProductWithColor } from 'lib/api';
 
 // TODO A11y: Buttons to pause and resume where the user left off
-// TODO A11y: motion safe styles
 // TODO A11y: a11y attributes
 // TODO Feat: Adjustable animation speed
 // TODO Feat: Show color name
@@ -16,7 +15,7 @@ export function Marquee({ products, ariaLabelledBy }: { products: ProductWithCol
   return (
     <article aria-labelledby={ariaLabelledBy} className="flex w-full overflow-hidden whitespace-nowrap">
       <div className="relative">
-        <ul className="flex animate-marquee">
+        <ul className="flex motion-safe:animate-marquee">
           {products.map((product) => {
             return (
               <MarqueeFrame
@@ -29,7 +28,7 @@ export function Marquee({ products, ariaLabelledBy }: { products: ProductWithCol
             );
           })}
         </ul>
-        <ul className="absolute top-0 flex animate-marquee2">
+        <ul className="absolute top-0 flex motion-safe:animate-marquee2">
           {products.map((product) => {
             return (
               <MarqueeFrame
