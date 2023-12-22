@@ -1,8 +1,8 @@
-import Image from 'next/image';
 import Link from 'next/link';
 
 import { Color } from '@prisma/client';
 import { ProductWithColor } from 'lib/api';
+import Image from 'next/image';
 
 // TODO A11y: Buttons to pause and resume where the user left off
 // TODO A11y: a11y attributes
@@ -34,7 +34,7 @@ function MarqueeFrame({ colors, name, slug }: { colors: Color[]; name: string; s
         return (
           <li key={color.id} className="relative mx-2 h-24 w-24 overflow-hidden rounded-md sm:h-48 sm:w-48">
             <Link href={`/product/${slug}?color=${color.value}`} className="relative h-full w-full">
-              <div className="group flex h-full w-full items-center justify-center overflow-hidden rounded-lg border bg-white hover:border-blue-600 dark:bg-black">
+              <div className="group flex h-full w-full items-center justify-center overflow-hidden rounded-lg border bg-white dark:bg-black">
                 <Image src={color.image} alt={color.altText} fill sizes="33vw" className="object-cover object-center" />
                 <MarqueeLabel colorName={color.name} productName={name} />
               </div>
