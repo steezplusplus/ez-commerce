@@ -4,13 +4,15 @@ import { Color } from '@prisma/client';
 import { ProductWithColor } from 'lib/api';
 import Image from 'next/image';
 
-// TODO A11y: Buttons to pause and resume where the user left off
 // TODO A11y: a11y attributes
 // TODO Feat: Adjustable animation speed
 
 export function Marquee({ products, ariaLabelledBy }: { products: ProductWithColor[]; ariaLabelledBy: string }) {
   return (
-    <article aria-labelledby={ariaLabelledBy} className="flex w-full overflow-hidden whitespace-nowrap">
+    <article
+      aria-labelledby={ariaLabelledBy}
+      className="pause-animations-on-hover flex w-full overflow-hidden whitespace-nowrap"
+    >
       <div className="relative">
         <ul className="flex motion-safe:animate-marquee">
           {products.map((product) => {
