@@ -7,8 +7,6 @@ import { ProductWithColor } from 'lib/api';
 // TODO A11y: Buttons to pause and resume where the user left off
 // TODO A11y: a11y attributes
 // TODO Feat: Adjustable animation speed
-// TODO Feat: Show color name
-// TODO Style: Label looks bad while Price loading.
 
 export function Marquee({ products, ariaLabelledBy }: { products: ProductWithColor[]; ariaLabelledBy: string }) {
   return (
@@ -38,7 +36,7 @@ function MarqueeFrame({ colors, name, slug }: { colors: Color[]; name: string; s
             <Link href={`/product/${slug}?color=${color.value}`} className="relative h-full w-full">
               <div className="group flex h-full w-full items-center justify-center overflow-hidden rounded-lg border bg-white hover:border-blue-600 dark:bg-black">
                 <Image src={color.image} alt={color.altText} fill sizes="33vw" className="object-cover object-center" />
-                <MarqueeLabel name={name} />
+                <MarqueeLabel colorName={color.name} productName={name} />
               </div>
             </Link>
           </li>
@@ -48,7 +46,7 @@ function MarqueeFrame({ colors, name, slug }: { colors: Color[]; name: string; s
   );
 }
 
-function MarqueeLabel({ name }: { name: string }) {
+function MarqueeLabel({ colorName, productName }: { colorName: string; productName: string }) {
   return (
     <div className="absolute bottom-0 w-full opacity-0 transition group-hover:opacity-100">
       <div
@@ -68,7 +66,9 @@ function MarqueeLabel({ name }: { name: string }) {
           dark:text-neutral-200
         "
       >
-        <p className="line-clamp-2 flex flex-grow items-center justify-center leading-none tracking-tight">{name}</p>
+        <p className="line-clamp-2 flex flex-grow items-center justify-center leading-none tracking-tight">
+          {colorName} {productName}
+        </p>
       </div>
     </div>
   );
