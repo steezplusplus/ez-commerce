@@ -14,9 +14,10 @@ export default async function HomePage() {
       <h2 id="featured-products-id" className="mb-2 text-xl font-medium">
         Featured Products
       </h2>
+
       <Marquee ariaLabelledBy="featured-products-id" products={featuredProducts} />
       <h2 id="carousel-placeholer-id" className="my-2 text-xl font-medium">
-        Carousel Placeholder
+        Shop by category
       </h2>
       <Carousel ariaLabelledBy="carousel-placeholer-id" products={featuredProducts} />
     </Container>
