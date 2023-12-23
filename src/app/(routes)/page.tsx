@@ -1,4 +1,5 @@
 // import { Container } from 'components/ui/container';
+import { Carousel } from 'components/ui/carousel';
 import { Container } from 'components/ui/container';
 import { Marquee } from 'components/ui/marquee';
 import { getFeaturedProducts } from 'lib/api';
@@ -14,6 +15,10 @@ export default async function HomePage() {
         Featured Products
       </h2>
       <Marquee ariaLabelledBy="featured-products-id" products={featuredProducts} />
+      <h2 id="carousel-placeholer-id" className="mb-2 text-xl font-medium">
+        Carousel Placeholder
+      </h2>
+      <Carousel ariaLabelledBy="carousel-placeholer-id" products={featuredProducts} />
     </Container>
   );
 }
