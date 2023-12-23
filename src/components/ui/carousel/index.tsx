@@ -3,7 +3,7 @@ import { ProductWithColor } from 'lib/api';
 export function Carousel({ products, ariaLabelledBy }: { products: ProductWithColor[]; ariaLabelledBy: string }) {
   return (
     <article aria-labelledby={ariaLabelledBy} className="w-full overflow-x-auto">
-      <ul className="flex h-full gap-4 pl-2">
+      <ul className="flex h-full gap-4">
         {products.map((product) => {
           return <CarouselFrame key={product.id} product={product} />;
         })}
