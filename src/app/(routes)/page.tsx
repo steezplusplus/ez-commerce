@@ -14,12 +14,22 @@ export default async function HomePage() {
       <h2 id="featured-products-id" className="mb-2 text-xl font-medium">
         Featured Products
       </h2>
-
       <Marquee ariaLabelledBy="featured-products-id" products={featuredProducts} />
-      <h2 id="carousel-placeholer-id" className="my-2 text-xl font-medium">
-        Shop by category
-      </h2>
-      <Carousel ariaLabelledBy="carousel-placeholer-id" products={featuredProducts} />
+
+      <div className="flex flex-col gap-x-8 md:flex-row">
+        <div className="my-2 w-full p-1">
+          <h2 id="carousel-category1-id" className="my-2 text-xl font-medium">
+            Category 1
+          </h2>
+          <Carousel ariaLabelledBy="carousel-category1-id" products={featuredProducts} />
+        </div>
+        <div className="my-2 w-full p-1">
+          <h2 id="carousel-category2-id" className="my-2 text-xl font-medium">
+            Category2
+          </h2>
+          <Carousel ariaLabelledBy="carousel-category2-id" products={featuredProducts} />
+        </div>
+      </div>
     </Container>
   );
 }
