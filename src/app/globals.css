@@ -14,4 +14,8 @@
     @apply bg-neutral-50 text-black selection:bg-teal-300;
     @apply dark:bg-neutral-900 dark:text-white dark:selection:bg-pink-500 dark:selection:text-white;
   }
+
+  .pause-animations-on-hover:hover * {
+    animation-play-state: paused;
+  }
 }

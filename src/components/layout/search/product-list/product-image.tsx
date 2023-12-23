@@ -22,7 +22,7 @@ export function ProductImage({ product }: { product: ProductWithColor }) {
         className="aspect-square rounded-md object-cover"
         sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
       />
-      <div className="absolute bottom-0 w-full opacity-0 transition group-hover/image:opacity-100 ">
+      <div className="absolute bottom-0 w-full opacity-0 transition group-hover/image:opacity-100">
         <ProductModalDisclosure product={product} />
       </div>
     </div>
