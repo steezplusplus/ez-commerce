@@ -4,9 +4,6 @@ import Link from 'next/link';
 import { Color } from '@prisma/client';
 import { ProductWithColor } from 'lib/api';
 
-// TODO A11y: a11y attributes
-// TODO Feat: Adjustable animation speed
-
 export function Marquee({ products, ariaLabelledBy }: { products: ProductWithColor[]; ariaLabelledBy: string }) {
   return (
     <article
