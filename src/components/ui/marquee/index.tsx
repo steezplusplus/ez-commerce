@@ -26,6 +26,7 @@ export function Marquee({ products, ariaLabelledBy }: { products: ProductWithCol
   );
 }
 
+// TODO Wrong `sizes` attribute on <Image />
 function MarqueeFrame({ colors, name, slug }: { colors: Color[]; name: string; slug: string }) {
   return (
     <>
