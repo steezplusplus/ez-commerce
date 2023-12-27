@@ -13,6 +13,8 @@ const config: Config = {
       animation: {
         'marquee-slow': 'marquee 60s linear infinite',
         'marquee-slow2': 'marquee2 60s linear infinite',
+        'marquee-fast': 'marquee 40s linear infinite',
+        'marquee-fast2': 'marquee2 40s linear infinite',
       },
       keyframes: {
         marquee: {

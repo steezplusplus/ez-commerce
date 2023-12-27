@@ -1,6 +1,6 @@
 import { Carousel } from 'components/ui/carousel';
 import { Container } from 'components/ui/container';
-import { SlowMarquee } from 'components/ui/marquee';
+import { FastMarquee, SlowMarquee } from 'components/ui/marquee';
 import { ProductWithColor, getFeaturedProducts } from 'lib/api';
 
 export default async function HomePage() {
@@ -15,11 +15,12 @@ export default async function HomePage() {
 function Marquees({ featuredProducts }: { featuredProducts: ProductWithColor[] }) {
   return (
     <section>
-      <h2 id="featured-products-id" className="mb-2 text-xl font-medium">
-        Build your dream closet
-      </h2>
-      <h3 className="text-sm font-thin">Inspire your style</h3>
-      <SlowMarquee ariaLabelledBy="featured-products-id" products={featuredProducts} />
+      <h2 className="text-xl font-medium">Build your dream closet</h2>
+      <h3 className="mb-1 font-thin">Inspire your style</h3>
+      <div className="space-y-2">
+        <SlowMarquee products={featuredProducts} />
+        <FastMarquee products={featuredProducts} />
+      </div>
     </section>
   );
 }
