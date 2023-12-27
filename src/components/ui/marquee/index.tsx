@@ -11,12 +11,12 @@ export function Marquee({ products, ariaLabelledBy }: { products: ProductWithCol
       className="pause-animations-on-hover flex w-full overflow-hidden whitespace-nowrap"
     >
       <div className="relative">
-        <ul className="flex motion-safe:animate-marquee">
+        <ul className="motion-safe:animate-marquee-slow flex">
           {products.map((product) => {
             return <MarqueeFrame colors={product.colors} name={product.name} key={product.id} slug={product.slug} />;
           })}
         </ul>
-        <ul className="absolute top-0 flex motion-safe:animate-marquee2">
+        <ul className="motion-safe:animate-marquee-slow2 absolute top-0 flex">
           {products.map((product) => {
             return <MarqueeFrame colors={product.colors} name={product.name} key={product.id} slug={product.slug} />;
           })}
