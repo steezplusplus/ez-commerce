@@ -27,7 +27,7 @@ function Marquees({ featuredProducts }: { featuredProducts: ProductWithColor[] }
 
 function Carousels({ featuredProducts }: { featuredProducts: ProductWithColor[] }) {
   return (
-    <div className="flex flex-col gap-x-8 md:flex-row">
+    <section className="flex flex-col gap-x-8 md:flex-row">
       <div className="my-2 w-full p-1">
         <h2 id="carousel-category1-id" className="my-2 text-xl font-medium">
           Category 1
@@ -40,6 +40,6 @@ function Carousels({ featuredProducts }: { featuredProducts: ProductWithColor[] 
         </h2>
         <Carousel ariaLabelledBy="carousel-category2-id" products={featuredProducts} />
       </div>
-    </div>
+    </section>
   );
 }
