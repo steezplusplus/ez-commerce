@@ -1,10 +1,12 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { Color } from '@prisma/client';
+import { ProductWithColor } from 'lib/api';
 
 // TODO Wrong `sizes` attribute on <Image />
-export function MarqueeFrame({ colors, name, slug }: { colors: Color[]; name: string; slug: string }) {
+export function MarqueeFrame({ product }: { product: ProductWithColor }) {
+  const { colors, slug } = product;
+
   return (
     <>
       {colors.map((color) => {
