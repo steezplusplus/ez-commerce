@@ -19,7 +19,7 @@ function Marquees({ featuredProducts }: { featuredProducts: ProductWithColor[] }
       <h2 id="featured-products-id" className="mb-2 text-xl font-medium">
         Build your dream closet
       </h2>
-      <h3>Some more shit</h3>
+      <h3 className="text-sm font-thin">Inspire your style</h3>
       <Marquee ariaLabelledBy="featured-products-id" products={featuredProducts} />
     </section>
   );
