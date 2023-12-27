@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { Color } from '@prisma/client';
 import { ProductWithColor } from 'lib/api';
 
-export function Marquee({ products, ariaLabelledBy }: { products: ProductWithColor[]; ariaLabelledBy: string }) {
+export function SlowMarquee({ products, ariaLabelledBy }: { products: ProductWithColor[]; ariaLabelledBy: string }) {
   return (
     <article
       aria-labelledby={ariaLabelledBy}
