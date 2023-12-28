@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { ProductModalDisclosure } from 'components/layout/search/product-list/product-modal-disclosure'; // TODO Move Modal components
 import { ProductWithColor } from 'lib/api';
 
 // TODO Wrong `sizes` attribute on <Image />
@@ -16,7 +15,7 @@ export function MarqueeFrame({ product }: { product: ProductWithColor }) {
           <li
             key={color.id}
             className="
-              relative
+              group/frame
               mx-2
               h-24
               w-24
@@ -26,24 +25,41 @@ export function MarqueeFrame({ product }: { product: ProductWithColor }) {
               sm:w-48
             "
           >
-            <Link href={href} className="relative h-full w-full">
-              <div
-                className="
-                  group/image relative aspect-square 
-                  rounded-md bg-gray-100
-                  dark:bg-gray-700
-                "
-              >
-                <Image
-                  src={color.image}
-                  alt={color.altText}
-                  fill
-                  sizes="33vw"
-                  className="aspect-square rounded-md object-cover"
-                />
-                <div className="absolute bottom-0 w-full opacity-0 transition group-hover/image:opacity-100">
-                  <ProductModalDisclosure product={product} />
-                </div>
+            <Link
+              href={href}
+              className="
+                relative
+                block
+                aspect-square 
+                rounded-md
+                bg-gray-100
+                dark:bg-gray-700
+              "
+            >
+              <Image
+                src={color.image}
+                alt={color.altText}
+                fill
+                sizes="33vw"
+                className="aspect-square rounded-md object-cover"
+              />
+              <div className="absolute bottom-0 w-full opacity-0 transition group-hover/frame:opacity-100">
+                <p
+                  className="
+                    flex
+                    w-full
+                    items-center
+                    justify-center
+                    bg-neutral-100
+                    text-neutral-600
+                    hover:underline
+                    hover:opacity-75
+                    dark:bg-neutral-800
+                    dark:text-neutral-200 
+                  "
+                >
+                  Go to Product
+                </p>
               </div>
             </Link>
           </li>
