@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { ProductModalDisclosure } from 'components/layout/search/product-list/product-modal-disclosure'; // TODO Move Modal components
 import { ProductWithColor } from 'lib/api';
 
 // TODO Wrong `sizes` attribute on <Image />
@@ -28,21 +29,21 @@ export function MarqueeFrame({ product }: { product: ProductWithColor }) {
             <Link href={href} className="relative h-full w-full">
               <div
                 className="
-                  group
-                  flex
-                  h-full
-                  w-full
-                  items-center
-                  justify-center
-                  overflow-hidden
-                  rounded-lg
-                  border
-                  bg-white
-                  dark:bg-black
+                  group/image relative aspect-square 
+                  rounded-md bg-gray-100
+                  dark:bg-gray-700
                 "
               >
-                <Image src={color.image} alt={color.altText} fill sizes="33vw" className="object-cover object-center" />
-                {/* TODO Modal Disclosure */}
+                <Image
+                  src={color.image}
+                  alt={color.altText}
+                  fill
+                  sizes="33vw"
+                  className="aspect-square rounded-md object-cover"
+                />
+                <div className="absolute bottom-0 w-full opacity-0 transition group-hover/image:opacity-100">
+                  <ProductModalDisclosure product={product} />
+                </div>
               </div>
             </Link>
           </li>
