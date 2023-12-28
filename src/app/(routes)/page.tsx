@@ -15,8 +15,10 @@ export default async function HomePage() {
 function Marquees({ featuredProducts }: { featuredProducts: ProductWithColor[] }) {
   return (
     <section>
-      <h2 className="text-xl font-medium">Build your dream closet</h2>
-      <h3 className="mb-1 font-thin">Inspire your style</h3>
+      <div className="flex flex-col items-center justify-center">
+        <h2 className="mb-1 text-xl font-medium">Build your dream closet</h2>
+        <h3 className="mb-3 font-thin">& inspire your next style</h3>
+      </div>
       <div className="space-y-2">
         <SlowMarquee products={featuredProducts} />
         <FastMarquee products={featuredProducts} />
