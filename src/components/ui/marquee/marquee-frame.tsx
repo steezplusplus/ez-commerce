@@ -50,12 +50,16 @@ export function MarqueeFrame({ product }: { product: ProductWithColor }) {
                     w-full
                     items-center
                     justify-center
+                    rounded-md
+                    border
                     bg-neutral-100
+                    text-sm
+                    tracking-widest
                     text-neutral-600
                     hover:underline
                     hover:opacity-75
                     dark:bg-neutral-800
-                    dark:text-neutral-200 
+                    dark:text-neutral-200
                   "
                 >
                   Go to Product
