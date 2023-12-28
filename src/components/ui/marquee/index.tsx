@@ -12,12 +12,12 @@ export function SlowMarquee({ products }: { products: ProductWithColor[] }) {
       "
     >
       <div className="relative">
-        <ul className="motion-safe:animate-marquee-slow flex">
+        <ul className="flex motion-safe:animate-marquee-slow">
           {products.map((product) => {
             return <MarqueeFrame product={product} key={product.id} />;
           })}
         </ul>
-        <ul className="motion-safe:animate-marquee-slow2 absolute top-0 flex">
+        <ul className="absolute top-0 flex motion-safe:animate-marquee-slow2">
           {products.map((product) => {
             return <MarqueeFrame product={product} key={product.id} />;
           })}
@@ -38,12 +38,12 @@ export function FastMarquee({ products }: { products: ProductWithColor[] }) {
       "
     >
       <div className="relative">
-        <ul className="motion-safe:animate-marquee-fast flex">
+        <ul className="flex motion-safe:animate-marquee-fast">
           {products.map((product) => {
             return <MarqueeFrame product={product} key={product.id} />;
           })}
         </ul>
-        <ul className="motion-safe:animate-marquee-fast2 absolute top-0 flex">
+        <ul className="absolute top-0 flex motion-safe:animate-marquee-fast2">
           {products.map((product) => {
             return <MarqueeFrame product={product} key={product.id} />;
           })}
