@@ -1,7 +1,7 @@
-import { Carousel } from 'components/ui/carousel';
-import { Container } from 'components/ui/container';
-import { FastMarquee, SlowMarquee } from 'components/ui/marquee';
-import { ProductWithColor, getFeaturedProducts } from 'lib/api';
+import { Carousel } from '@/components/ui/carousel';
+import { Container } from '@/components/ui/container';
+import { FastMarquee, SlowMarquee } from '@/components/ui/marquee';
+import { ProductWithColor, getFeaturedProducts } from '@/lib/api';
 
 export default async function HomePage() {
   const featuredProducts = await getFeaturedProducts({ take: 9 });
