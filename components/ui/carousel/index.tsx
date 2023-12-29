@@ -1,8 +1,9 @@
+import Image from 'next/image';
 import Link from 'next/link';
 
 import { Color } from '@prisma/client';
-import Image from 'next/image';
-import { ProductWithColor } from '../../../lib/api';
+
+import { ProductWithColor } from 'lib/api';
 
 export function Carousel({ products, ariaLabelledBy }: { products: ProductWithColor[]; ariaLabelledBy: string }) {
   return (

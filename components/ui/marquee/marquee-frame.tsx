@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { ProductWithColor } from '../../../lib/api';
+import { ProductWithColor } from 'lib/api';
 
 // TODO Wrong `sizes` attribute on <Image />
 export function MarqueeFrame({ product }: { product: ProductWithColor }) {

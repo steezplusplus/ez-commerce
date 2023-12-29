@@ -1,6 +1,6 @@
-import { ProductWithColor } from '../../../../lib/api';
-import { Grid } from '../../../ui/grid';
-import { ProductCard } from './product-card';
+import { ProductCard } from 'components/layout/search/product-list/product-card';
+import { Grid } from 'components/ui/grid';
+import { ProductWithColor } from 'lib/api';
 
 export function ProductList({ products }: { products: ProductWithColor[] }) {
   return (
