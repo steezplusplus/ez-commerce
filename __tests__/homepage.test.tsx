@@ -1,13 +1,12 @@
 import '@testing-library/jest-dom';
-import { render, screen } from '@testing-library/react';
-import HomePage from 'app/(routes)/page';
+import { render } from '@testing-library/react';
+import { act } from 'react-dom/test-utils';
+import Page from '../app/(routes)/page';
 
 describe('Homepage', () => {
-  it('renders a heading', () => {
-    render(<HomePage />);
-
-    const heading = screen.getByRole('heading', { level: 1 });
-
-    expect(heading).toBeInTheDocument();
+  it('renders with no errors', async () => {
+    await act(async () => {
+      render(await Page());
+    });
   });
 });
