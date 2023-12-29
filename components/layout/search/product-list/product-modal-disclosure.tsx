@@ -1,8 +1,8 @@
 'use client';
 
-import { Button } from 'components/ui/button';
-import { useProductModal } from 'hooks/use-product-modal';
-import { ProductWithColor } from 'lib/api';
+import { Button } from '@/components/ui/button';
+import { useProductModal } from '@/hooks/use-product-modal';
+import { ProductWithColor } from '@/lib/api';
 
 export function ProductModalDisclosure({ product }: { product: ProductWithColor }) {
   const productModal = useProductModal();

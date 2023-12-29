@@ -1,7 +1,7 @@
 import Image from 'next/image';
 
-import { ProductModalDisclosure } from 'components/layout/search/product-list/product-modal-disclosure';
-import { ProductWithColor } from 'lib/api';
+import { ProductModalDisclosure } from '@/components/layout/search/product-list/product-modal-disclosure';
+import { ProductWithColor } from '@/lib/api';
 
 export function ProductImage({ product }: { product: ProductWithColor }) {
   const { colors } = product;
