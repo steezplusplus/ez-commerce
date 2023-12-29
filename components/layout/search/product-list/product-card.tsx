@@ -1,9 +1,9 @@
 import Link from 'next/link';
 
-import { ProductWithColor } from '../../../../lib/api';
-import { GridItem } from '../../../ui/grid';
-import { ProductImage } from './product-image';
-import { ProductInfo } from './product-info';
+import { ProductImage } from 'components/layout/search/product-list/product-image';
+import { ProductInfo } from 'components/layout/search/product-list/product-info';
+import { GridItem } from 'components/ui/grid';
+import { ProductWithColor } from 'lib/api';
 
 export function ProductCard({ product }: { product: ProductWithColor }) {
   const href = `/product/${product.slug}`;

@@ -1,4 +1,4 @@
-import { Price } from '../../../ui/price';
+import { Price } from 'components/ui/price';
 
 export function ProductInfo({ name, price }: { name: string; price: number }) {
   return (
