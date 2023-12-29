@@ -1,6 +1,6 @@
-import { SortFilterItem } from '../../../../lib/constants';
-import { FilterItem } from './filter-item';
-import { FilterSelect } from './filter-select';
+import { FilterSelect } from 'components/layout/search/filter//filter-select';
+import { FilterItem } from 'components/layout/search/filter/filter-item';
+import { SortFilterItem } from 'lib/constants';
 
 type FilterProps = {
   list: SortFilterItem[];

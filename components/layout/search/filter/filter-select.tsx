@@ -1,7 +1,8 @@
 'use client';
 
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import { SortFilterItem } from '../../../../lib/constants';
+
+import { SortFilterItem } from 'lib/constants';
 
 type FilterOptionProps = {
   list: SortFilterItem[];
@@ -9,10 +10,12 @@ type FilterOptionProps = {
 
 export function FilterSelect(props: FilterOptionProps) {
   const { list } = props;
+
   const pathname = usePathname();
   const router = useRouter();
   const searchParams = useSearchParams();
-  const q = searchParams.get('q');
+
+  // const q = searchParams.get('q');
 
   const newParams = new URLSearchParams(searchParams.toString());
 
