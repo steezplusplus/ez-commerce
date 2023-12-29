@@ -10,6 +10,8 @@
     "lint:fix": "next lint --fix",
     "prettier": "prettier --check --ignore-unknown .gitignore .",
     "prettier:fix": "prettier --write --ignore-unknown .gitignore .",
+    "test": "jest",
+    "test:watch": "jest --watchAll",
     "postinstall": "prisma generate"
   },
   "dependencies": {
