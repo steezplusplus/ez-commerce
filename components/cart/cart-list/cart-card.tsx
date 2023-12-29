@@ -1,6 +1,7 @@
 import Link from 'next/link';
 
-import { CartProduct } from '../../../hooks/use-cart';
+import type { CartProduct } from 'hooks/use-cart';
+
 import { CartImage, LoadingCartImage } from './cart-image';
 import { CartInfo, LoadingCartInfo } from './cart-info';
 

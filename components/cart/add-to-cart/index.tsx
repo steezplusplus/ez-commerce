@@ -3,8 +3,9 @@
 import { toast } from 'react-hot-toast';
 
 import { Color, Inventory, Size } from '@prisma/client';
-import { CartProduct, useCart } from '../../../hooks/use-cart';
-import { FullProduct } from '../../../lib/api';
+
+import { CartProduct, useCart } from 'hooks/use-cart';
+import { FullProduct } from 'lib/api';
 
 type AddToCartProps = {
   product: FullProduct;

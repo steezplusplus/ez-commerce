@@ -1,7 +1,9 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useCart } from '../../../hooks/use-cart';
+
+import { useCart } from 'hooks/use-cart';
+
 import { CartCard, LoadingCartCard } from './cart-card';
 
 export function CartList() {
@@ -9,7 +11,7 @@ export function CartList() {
 
   const cart = useCart();
 
-  // Avoid hydration error from using localstorage from useCart()
+  // Avoid using browser API's during server side rendering
   useEffect(() => {
     setIsMounted(true);
   }, []);
@@ -27,7 +29,7 @@ export function CartList() {
     return (
       <ul className="flex h-full items-center justify-center rounded-md border border-neutral-200 dark:border-neutral-800 lg:col-span-7">
         <li>
-          <h3 className="text-lg">No items added to cart.</h3>
+          <h3 className="text-lg">Your cart currently has no products.</h3>
         </li>
       </ul>
     );

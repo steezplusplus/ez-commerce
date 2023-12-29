@@ -4,7 +4,7 @@ import { Loader, ShoppingBag } from 'lucide-react';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 
-import { useCart } from '../../../hooks/use-cart';
+import { useCart } from 'hooks/use-cart';
 
 export function CheckoutLink() {
   const cart = useCart();
