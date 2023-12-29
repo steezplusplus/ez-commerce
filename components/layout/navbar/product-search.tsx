@@ -3,7 +3,7 @@
 import { SearchIcon } from 'lucide-react';
 import { useRouter, useSearchParams } from 'next/navigation';
 
-import { createUrl } from '../../../lib/utils';
+import { createUrl } from 'lib/utils';
 
 const searchId = 'search-id';
 
@@ -42,7 +42,7 @@ export function ProductSearch(props: SearchProps) {
         Search products
       </label>
       <input
-        placeholder="Search all products"
+        placeholder="Search products..."
         key={params?.get('q')}
         type="text"
         name="search"
@@ -51,7 +51,7 @@ export function ProductSearch(props: SearchProps) {
         defaultValue={params?.get('q') || ''}
         className="
           w-full
-          rounded-lg
+          rounded-md
           border
           border-neutral-200
           bg-white
@@ -63,7 +63,7 @@ export function ProductSearch(props: SearchProps) {
           dark:bg-transparent
         "
       />
-      <SearchIcon size="16" color="gray" className="absolute left-2 top-3" />
+      <SearchIcon size="16" color="gray" className="absolute left-2 top-2.5" />
     </form>
   );
 }
