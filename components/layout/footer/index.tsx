@@ -1,8 +1,8 @@
-import { getCategories, getStore } from '../../../lib/api';
-import { FooterLogo } from './footer-logo';
-import { FooterMenu } from './footer-menu';
-import { ProjectInfo } from './project-info';
-import { ThemeSelect } from './theme-select';
+import { FooterLogo } from 'components/layout/footer/footer-logo';
+import { FooterMenu } from 'components/layout/footer/footer-menu';
+import { ProjectInfo } from 'components/layout/footer/project-info';
+import { ThemeSelect } from 'components/layout/footer/theme-select';
+import { getCategories, getStore } from 'lib/api';
 
 export async function Footer() {
   const store = await getStore();
@@ -18,7 +18,8 @@ export async function Footer() {
         border-neutral-200
         p-4
         dark:border-neutral-800
-        md:flex-row md:gap-12
+        md:flex-row 
+        md:gap-12
       "
     >
       <FooterLogo storeName={store.name} />

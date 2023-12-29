@@ -1,5 +1,6 @@
-import { Category } from '@prisma/client';
 import Link from 'next/link';
+
+import { Category } from '@prisma/client';
 
 export function FooterMenu({ categories }: { categories: Category[] }) {
   return (
