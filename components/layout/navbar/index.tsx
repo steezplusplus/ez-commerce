@@ -1,9 +1,8 @@
-import { CheckoutLink } from 'components/cart/checkout-link';
-import { NavLogo } from 'components/layout/navbar/nav-logo';
-import { ProductSearch } from 'components/layout/navbar/product-search';
-import { SearchModalDisclosure } from 'components/layout/navbar/search-modal-disclosure';
-
-import { getStore } from 'lib/api';
+import { CheckoutLink } from '@/components/cart/checkout-link';
+import { NavLogo } from '@/components/layout/navbar/nav-logo';
+import { ProductSearch } from '@/components/layout/navbar/product-search';
+import { SearchModalDisclosure } from '@/components/layout/navbar/search-modal-disclosure';
+import { getStore } from '@/lib/api';
 
 export async function Navbar() {
   const store = await getStore();

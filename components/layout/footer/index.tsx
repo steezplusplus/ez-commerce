@@ -1,8 +1,8 @@
-import { FooterLogo } from 'components/layout/footer/footer-logo';
-import { FooterMenu } from 'components/layout/footer/footer-menu';
-import { ProjectInfo } from 'components/layout/footer/project-info';
-import { ThemeSelect } from 'components/layout/footer/theme-select';
-import { getCategories, getStore } from 'lib/api';
+import { FooterLogo } from '@/components/layout/footer/footer-logo';
+import { FooterMenu } from '@/components/layout/footer/footer-menu';
+import { ProjectInfo } from '@/components/layout/footer/project-info';
+import { ThemeSelect } from '@/components/layout/footer/theme-select';
+import { getCategories, getStore } from '@/lib/api';
 
 export async function Footer() {
   const store = await getStore();

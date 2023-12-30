@@ -1,6 +1,6 @@
-import { CategoriesSelect } from 'components/layout/search/categories//categories-select';
-import { CategoriesItem, DefaultCategoryItem } from 'components/layout/search/categories/categories-item';
-import { getCategories } from 'lib/api';
+import { CategoriesSelect } from '@/components/layout/search/categories//categories-select';
+import { CategoriesItem, DefaultCategoryItem } from '@/components/layout/search/categories/categories-item';
+import { getCategories } from '@/lib/api';
 
 type CategoriesProps = {
   title: string;

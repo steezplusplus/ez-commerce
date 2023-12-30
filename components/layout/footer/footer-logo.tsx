@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-import { CircleLogo } from 'components/ui/circle-logo';
+import { CircleLogo } from '@/components/ui/circle-logo';
 
 export function FooterLogo({ storeName }: { storeName: string }) {
   const href = '/';
