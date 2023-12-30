@@ -5,7 +5,7 @@ import { Gallery } from '@/components/product/gallery';
 import { Container } from '@/components/ui/container';
 import { getProductPage } from '@/lib/api';
 
-type ProductPageProps = {
+export type ProductPageProps = {
   params: {
     product: string;
   };
