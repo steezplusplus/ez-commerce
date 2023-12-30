@@ -1,12 +1,15 @@
 import '@testing-library/jest-dom';
-// import { render } from '@testing-library/react';
+import { render } from '@testing-library/react';
 
-// import Page from '@/app/(routes)/search/[category]/page';
+import Page, { CategoryPageProps } from '@/app/(routes)/search/[category]/page';
+
+const categoryPageProps: CategoryPageProps = {
+  params: { category: 'Sale' },
+  searchParams: { sort: '' },
+};
 
 describe('Category Page', () => {
   it('renders with no errors', async () => {
-    // TODO Mock API call?
-    // render(await Page({ params: { category: '' }, searchParams: { sort: '' } }));
-    expect(true);
+    render(await Page(categoryPageProps));
   });
 });

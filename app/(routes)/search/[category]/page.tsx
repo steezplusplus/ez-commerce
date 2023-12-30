@@ -4,7 +4,7 @@ import { ProductList } from '@/components/layout/search/product-list';
 import { getCategory, getCategoryPage } from '@/lib/api';
 import { sorting } from '@/lib/constants';
 
-type CategoryPageProps = {
+export type CategoryPageProps = {
   params: {
     category: string;
   };
