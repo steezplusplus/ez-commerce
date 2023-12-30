@@ -1,9 +1,9 @@
 import Link from 'next/link';
 
-import type { CartProduct } from 'hooks/use-cart';
+import type { CartProduct } from '@/hooks/use-cart';
 
-import { CartImage, LoadingCartImage } from './cart-image';
-import { CartInfo, LoadingCartInfo } from './cart-info';
+import { CartImage, LoadingCartImage } from '@/components/cart/cart-list/cart-image';
+import { CartInfo, LoadingCartInfo } from '@/components/cart/cart-list/cart-info';
 
 export function CartCard({ cartProduct }: { cartProduct: CartProduct }) {
   const href = `/product/${cartProduct.productSlug}?color=${cartProduct.colorValue}&size=${cartProduct.sizeValue}`;

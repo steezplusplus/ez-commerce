@@ -2,9 +2,8 @@
 
 import { useEffect, useState } from 'react';
 
-import { useCart } from 'hooks/use-cart';
-
-import { CartCard, LoadingCartCard } from './cart-card';
+import { CartCard, LoadingCartCard } from '@/components/cart/cart-list/cart-card';
+import { useCart } from '@/hooks/use-cart';
 
 export function CartList() {
   const [isMounted, setIsMounted] = useState<boolean>(false);

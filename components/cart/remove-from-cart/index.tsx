@@ -2,7 +2,7 @@
 
 import { X } from 'lucide-react';
 
-import { useCart } from 'hooks/use-cart';
+import { useCart } from '@/hooks/use-cart';
 
 type RemoveFromCartProps = {
   inventoryId: string;
