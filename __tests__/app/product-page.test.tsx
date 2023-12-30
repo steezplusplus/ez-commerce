@@ -1,12 +1,15 @@
 import '@testing-library/jest-dom';
-// import { render } from '@testing-library/react';
+import { render } from '@testing-library/react';
 
-// import Page from '@/app/(routes)/product/[product]/page';
+import Page, { ProductPageProps } from '@/app/(routes)/product/[product]/page';
+
+const productPageProps: ProductPageProps = {
+  params: { product: 'Mug' },
+  searchParams: { color: '', size: '' },
+};
 
 describe('Product Page', () => {
   it('renders with no errors', async () => {
-    // TODO Mock API call?
-    // render(await Page({ params: { product: '' }, searchParams: { size: '', color: '' } }));
-    expect(true);
+    render(await Page(productPageProps));
   });
 });
