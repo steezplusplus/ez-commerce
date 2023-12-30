@@ -4,7 +4,7 @@ import { render } from '@testing-library/react';
 import Page, { CategoryPageProps } from '@/app/(routes)/search/[category]/page';
 
 const categoryPageProps: CategoryPageProps = {
-  params: { category: 'Sale' },
+  params: { category: 'sale' },
   searchParams: { sort: '' },
 };
 
