@@ -3,7 +3,7 @@ import '@testing-library/jest-dom';
 
 // import Page from '@/app/(routes)/product/[product]/page';
 
-describe('Category Page', () => {
+describe('Product Page', () => {
   it('renders with no errors', async () => {
     // TODO Mock API call?
     // render(await Page({ params: { product: '' }, searchParams: { size: '', color: '' } }));

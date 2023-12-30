@@ -3,7 +3,7 @@ import { render } from '@testing-library/react';
 
 import Page from '@/app/(routes)/page';
 
-describe('Page', () => {
+describe('Home Page', () => {
   it('renders with no errors', async () => {
     render(await Page());
   });
