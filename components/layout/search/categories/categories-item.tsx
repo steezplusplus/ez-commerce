@@ -3,9 +3,8 @@
 import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
 
+import { createUrl } from '@/lib/utils';
 import { Category } from '@prisma/client';
-
-import { createUrl } from 'lib/utils';
 
 type CategoriesItemProps = {
   category: Category;

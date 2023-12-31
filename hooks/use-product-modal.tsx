@@ -1,5 +1,6 @@
-import { ProductWithColor } from 'lib/api';
 import { create } from 'zustand';
+
+import { ProductWithColor } from '@/lib/api';
 
 interface ProductModalStore {
   isOpen: boolean;

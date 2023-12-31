@@ -1,8 +1,8 @@
 'use client';
 
-import { CartCheckoutButton } from 'components/cart/cart-checkout-button';
-import { Price } from 'components/ui/price';
-import { useCart } from 'hooks/use-cart';
+import { CartCheckoutButton } from '@/components/cart/cart-checkout-button';
+import { Price } from '@/components/ui/price';
+import { useCart } from '@/hooks/use-cart';
 
 export function CartSummary() {
   const cart = useCart();

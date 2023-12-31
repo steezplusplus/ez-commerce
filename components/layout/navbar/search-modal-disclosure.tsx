@@ -2,7 +2,7 @@
 
 import { SearchIcon } from 'lucide-react';
 
-import { useSearchModal } from 'hooks/use-search-modal';
+import { useSearchModal } from '@/hooks/use-search-modal';
 
 export function SearchModalDisclosure() {
   const searchModal = useSearchModal();

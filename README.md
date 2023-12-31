@@ -76,6 +76,8 @@
     | `lint:fix`        | Runs ESLint and fixes syntax                |
     | `prettier`        | Runs Prettier                               |
     | `prettier:fix`    | Runs Prettier and fixes formatting          |
+    | `test`            | Runs Jest                                   |
+    | `test:watch`      | Runs Jest and watch files for changes       |
     | `postinstall`     | Generates Primsa client                     |
 
   </section>

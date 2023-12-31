@@ -2,7 +2,7 @@
 
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
-import { SortFilterItem } from 'lib/constants';
+import { SortFilterItem } from '@/lib/constants';
 
 type FilterOptionProps = {
   list: SortFilterItem[];

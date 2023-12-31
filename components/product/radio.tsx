@@ -2,7 +2,7 @@
 
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
 
-import { createUrl } from 'lib/utils';
+import { createUrl } from '@/lib/utils';
 
 type RadioProps = {
   name: string;

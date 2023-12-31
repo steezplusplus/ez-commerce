@@ -3,8 +3,8 @@
 import Link from 'next/link';
 import { usePathname, useSearchParams } from 'next/navigation';
 
-import { SortFilterItem } from 'lib/constants';
-import { createUrl } from 'lib/utils';
+import { SortFilterItem } from '@/lib/constants';
+import { createUrl } from '@/lib/utils';
 
 type FilterItemProps = {
   item: SortFilterItem;

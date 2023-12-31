@@ -2,11 +2,11 @@
 
 import Link from 'next/link';
 
-import { Gallery } from 'components/ui/gallery';
-import { Modal } from 'components/ui/modal';
-import { Price } from 'components/ui/price';
-import { useProductModal } from 'hooks/use-product-modal';
-import { ProductWithColor } from 'lib/api';
+import { Gallery } from '@/components/ui/gallery';
+import { Modal } from '@/components/ui/modal';
+import { Price } from '@/components/ui/price';
+import { useProductModal } from '@/hooks/use-product-modal';
+import { ProductWithColor } from '@/lib/api';
 
 export function ProductModal() {
   const productModal = useProductModal();

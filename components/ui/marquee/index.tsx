@@ -1,5 +1,5 @@
-import { MarqueeFrame } from 'components/ui/marquee/marquee-frame';
-import { ProductWithColor } from 'lib/api';
+import { MarqueeFrame } from '@/components/ui/marquee/marquee-frame';
+import { ProductWithColor } from '@/lib/api';
 
 export function SlowMarquee({ products }: { products: ProductWithColor[] }) {
   return (

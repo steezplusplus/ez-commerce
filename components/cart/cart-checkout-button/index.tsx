@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { toast } from 'react-hot-toast';
 
-import { useCart } from 'hooks/use-cart';
+import { useCart } from '@/hooks/use-cart';
 
 export function CartCheckoutButton() {
   const [isMounted, setIsMounted] = useState<boolean>(false);

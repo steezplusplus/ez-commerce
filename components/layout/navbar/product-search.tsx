@@ -3,7 +3,7 @@
 import { SearchIcon } from 'lucide-react';
 import { useRouter, useSearchParams } from 'next/navigation';
 
-import { createUrl } from 'lib/utils';
+import { createUrl } from '@/lib/utils';
 
 const searchId = 'search-id';
 

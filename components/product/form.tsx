@@ -1,8 +1,8 @@
 import { Color, Inventory, Product, Size } from '@prisma/client';
 
-import { AddToCart } from 'components/cart/add-to-cart';
-import { Radio } from 'components/product/radio';
-import { Price } from 'components/ui/price';
+import { AddToCart } from '@/components/cart/add-to-cart';
+import { Radio } from '@/components/product/radio';
+import { Price } from '@/components/ui/price';
 
 export function ProductForm({
   product,

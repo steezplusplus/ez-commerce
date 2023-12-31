@@ -1,13 +1,13 @@
-import { ProductList } from 'components/layout/search/product-list';
-import { getSearchPage } from 'lib/api';
-import { sorting } from 'lib/constants';
+import { ProductList } from '@/components/layout/search/product-list';
+import { getSearchPage } from '@/lib/api';
+import { sorting } from '@/lib/constants';
 
 export const metadata = {
   title: 'Search',
   description: 'Search for products in the store.',
 };
 
-type SearchPageProps = {
+export type SearchPageProps = {
   searchParams?: {
     [key: string]: string | string[] | undefined;
   };
