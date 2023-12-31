@@ -1,5 +1,6 @@
 import '@testing-library/jest-dom';
 
+// Mock Next.js hooks from `next/navigation`
 jest.mock('next/navigation', () => {
   return {
     __esModule: true,
