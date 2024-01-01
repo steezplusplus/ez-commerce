@@ -13,11 +13,15 @@ const productPageProps: ProductPageProps = {
 describe('Product Page', () => {
   it('Renders expected elements', async () => {
     render(await Page(productPageProps));
-    // TODO Color, size, description.
+    // TODO description.
     const productName = screen.getByRole('heading', { level: 2 });
+    const productColor = screen.getByRole('heading', { level: 3, name: 'Colors' });
+    const productSize = screen.getByRole('heading', { level: 3, name: 'Sizes' });
     const productPrice = screen.getByRole('heading', { level: 4 });
     const addToCartBtn = screen.getByRole('button', { name: 'Add To Cart' });
     expect(productName).toBeInTheDocument();
+    expect(productColor).toBeInTheDocument();
+    expect(productSize).toBeInTheDocument();
     expect(productPrice).toBeInTheDocument();
     expect(addToCartBtn).toBeInTheDocument();
   });
