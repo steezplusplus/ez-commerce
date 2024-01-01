@@ -11,4 +11,10 @@ describe('Search Page', () => {
     expect(productList).toBeInTheDocument();
     expect(productCards.length).toBeGreaterThan(0);
   });
+  it('Renders an empty list of products', async () => {
+    const q = 'Product that doesnt exist';
+    render(await Page({ searchParams: { q: q } }));
+    const noResultsParagraph = screen.getByText(`There are no listings for your search`, { exact: false });
+    expect(noResultsParagraph).toBeInTheDocument();
+  });
 });
