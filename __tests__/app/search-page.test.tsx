@@ -17,4 +17,12 @@ describe('Search Page', () => {
     const noResultsParagraph = screen.getByText(`There are no listings for your search`, { exact: false });
     expect(noResultsParagraph).toBeInTheDocument();
   });
+  it('Renders an existing product', async () => {
+    const q = 'Mug';
+    render(await Page({ searchParams: { q: q } }));
+    const productList = screen.getByRole('list');
+    const productCards = screen.getAllByRole('listitem');
+    expect(productList).toBeInTheDocument();
+    expect(productCards.length).toBe(1);
+  });
 });
