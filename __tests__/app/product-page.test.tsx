@@ -8,12 +8,9 @@ const productPageProps: ProductPageProps = {
   searchParams: { color: '', size: '' },
 };
 
-// TODO Test selecting color and size updates params.
-// TODO Test "add to cart" btn
 describe('Product Page', () => {
   it('Renders expected elements', async () => {
     render(await Page(productPageProps));
-    // TODO description.
     const productName = screen.getByRole('heading', { level: 2 });
     const productColor = screen.getByRole('heading', { level: 3, name: 'Colors' });
     const productSize = screen.getByRole('heading', { level: 3, name: 'Sizes' });
