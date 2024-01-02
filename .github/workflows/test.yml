@@ -1,0 +1,38 @@
+name: Build & Test
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+
+env:
+  GIT_PAT: ${{ secrets.GIT_PAT }}
+  GIT_USERNAME: ${{ secrets.GIT_USERNAME }}
+  CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+  POSTGRES_PRISMA_URL: ${{ secrets.POSTGRES_PRISMA_URL }}
+  POSTGRES_URL_NON_POOLING: ${{ secrets.POSTGRES_URL_NON_POOLING }}
+  META_NAME: ${{ secrets.META_NAME }}
+  META_DESCRIPTION: ${{ secrets.META_DESCRIPTION }}
+
+jobs:
+  tests:
+    name: Build & Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+      - name: Download dependencies
+        run: pnpm install
+      - name: Run build
+        run: pnpm build
+      - name: Run Jest
+        run: pnpm test:coverage
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v3

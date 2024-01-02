@@ -78,6 +78,7 @@
     | `prettier:fix`    | Runs Prettier and fixes formatting          |
     | `test`            | Runs Jest                                   |
     | `test:watch`      | Runs Jest and watch files for changes       |
+    | `test:coverage`   | Runs Jest and generates lcov report         |
     | `postinstall`     | Generates Primsa client                     |
 
   </section>

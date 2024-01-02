@@ -12,6 +12,7 @@
     "prettier:fix": "prettier --write --ignore-unknown .gitignore .",
     "test": "jest",
     "test:watch": "jest --watchAll",
+    "test:coverage": "jest --coverage",
     "postinstall": "prisma generate"
   },
   "dependencies": {
