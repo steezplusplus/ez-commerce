@@ -8,6 +8,8 @@ const productPageProps: ProductPageProps = {
   searchParams: { color: '', size: '' },
 };
 
+// TODO product description
+// TODO user interaction
 describe('Product Page', () => {
   it('Renders expected elements', async () => {
     render(await Page(productPageProps));

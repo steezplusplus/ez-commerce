@@ -3,8 +3,9 @@ import { render, screen } from '@testing-library/react';
 
 import Page, { CategoryPageProps } from '@/app/(routes)/search/[category]/page';
 
+// TODO Sort by
 describe('Category Page', () => {
-  it('Renders products in category', async () => {
+  it('Renders every product in a category', async () => {
     const categoryPageProps: CategoryPageProps = {
       params: { category: 'Tops' },
       searchParams: { sort: '' },
@@ -16,7 +17,7 @@ describe('Category Page', () => {
     expect(productList).toBeInTheDocument();
     expect(productCards.length).toBeGreaterThan(0);
   });
-  it('Renders category with no products', async () => {
+  it('Renders no products in an empty category', async () => {
     const categoryPageProps: CategoryPageProps = {
       params: { category: 'Sale' },
       searchParams: { sort: '' },

@@ -3,7 +3,9 @@ import { render, screen } from '@testing-library/react';
 
 import Page from '@/app/(routes)/checkout/page';
 
-// const productPrice = screen.getByRole('heading', { level: 4 });
+// TODO User interaction
+// TODO Cant select <Price />, maybe because it isnt server side rendered??
+// TODO How to mock items in the cart store?
 describe('Checkout Page', () => {
   it('Renders expected elements', () => {
     render(<Page />);
