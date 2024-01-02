@@ -18,16 +18,31 @@ export default async function HomePage() {
 
       <section className="flex flex-col gap-x-8 md:flex-row">
         <div className="my-2 w-full p-1">
-          <h2 id="carousel-category1-id" className="my-2 text-xl font-medium">
+          <h2 id="carousel-headware-id" className="my-2 text-xl font-medium">
             Shop Headware
           </h2>
-          <Carousel ariaLabelledBy="carousel-category1-id" products={featuredProducts} />
+          <Carousel ariaLabelledBy="carousel-headware-id" products={featuredProducts} />
         </div>
         <div className="my-2 w-full p-1">
-          <h2 id="carousel-category2-id" className="my-2 text-xl font-medium">
+          <h2 id="carousel-tops-id" className="my-2 text-xl font-medium">
             Shop Tops
           </h2>
-          <Carousel ariaLabelledBy="carousel-category2-id" products={featuredProducts} />
+          <Carousel ariaLabelledBy="carousel-tops-id" products={featuredProducts} />
+        </div>
+      </section>
+
+      <section className="flex flex-col gap-x-8 md:flex-row">
+        <div className="my-2 w-full p-1">
+          <h2 id="carousel-socks-id" className="my-2 text-xl font-medium">
+            Shop Socks
+          </h2>
+          <Carousel ariaLabelledBy="carousel-socks-id" products={featuredProducts} />
+        </div>
+        <div className="my-2 w-full p-1">
+          <h2 id="carousel-drinkware-id" className="my-2 text-xl font-medium">
+            Shop Drinkware
+          </h2>
+          <Carousel ariaLabelledBy="carousel-drinkware-id" products={featuredProducts} />
         </div>
       </section>
 
