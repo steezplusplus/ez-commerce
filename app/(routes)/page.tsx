@@ -1,10 +1,12 @@
 import { Carousel } from '@/components/ui/carousel';
 import { Container } from '@/components/ui/container';
 import { FastMarquee, SlowMarquee } from '@/components/ui/marquee';
-import { getFeaturedProducts } from '@/lib/api';
+import { getFeaturedProducts, getLatestArrivals } from '@/lib/api';
 
 export default async function HomePage() {
   const featuredProducts = await getFeaturedProducts({ take: 9 });
+  const latestArrivals = await getLatestArrivals({ take: 4 });
+
   return (
     <Container className="px-4">
       <section>
@@ -12,7 +14,7 @@ export default async function HomePage() {
           <h2 id="carousel-latest-id" className="my-2 text-xl font-medium">
             Shop Latest Arrivals
           </h2>
-          <Carousel ariaLabelledBy="carousel-latest-id" products={featuredProducts} />
+          <Carousel ariaLabelledBy="carousel-latest-id" products={latestArrivals} />
         </div>
       </section>
 
