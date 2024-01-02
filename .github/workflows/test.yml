@@ -9,6 +9,10 @@ env:
   GIT_PAT: ${{ secrets.GIT_PAT }}
   GIT_USERNAME: ${{ secrets.GIT_USERNAME }}
   CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+  POSTGRES_PRISMA_URL: ${{ secrets.POSTGRES_PRISMA_URL }}
+  POSTGRES_URL_NON_POOLING: ${{ secrets.POSTGRES_URL_NON_POOLING }}
+  META_NAME: ${{ secrets.META_NAME }}
+  META_DESCRIPTION: ${{ secrets.META_DESCRIPTION }}
 
 jobs:
   tests:
