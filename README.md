@@ -23,6 +23,10 @@
       />
     </a>
     &nbsp;
+    <a href="https://codecov.io/gh/steezplusplus/digital-commerce" > 
+      <img src="https://codecov.io/gh/steezplusplus/digital-commerce/graph/badge.svg?token=D1GM3XZN6H"/> 
+    </a>
+    &nbsp;
     <a
       href="https://github.com/steezplusplus/digital-commerce/issues"
       target="_blank"
