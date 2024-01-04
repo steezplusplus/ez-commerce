@@ -1,0 +1,12 @@
+import { Price } from '@/components/ui/price';
+
+export function LatestArrivalInfo({ name, price }: { name: string; price: number }) {
+  return (
+    <div>
+      <h2 className="text-lg font-semibold group-hover/card:underline">{name}</h2>
+      <h4 className="text-sm text-gray-500">
+        <Price amount={String(price)} />
+      </h4>
+    </div>
+  );
+}

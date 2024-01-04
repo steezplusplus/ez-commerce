@@ -100,5 +100,14 @@ export async function getFeaturedProducts({ take }: { take: number }): Promise<P
   });
 }
 
-// TODO
-export async function getLatestArrivals(props: { take: number }) {}
+export async function getLatestArrivals(props: { take: number }) {
+  return await prisma.product.findMany({
+    include: {
+      colors: true,
+    },
+    orderBy: {
+      createdAt: 'desc',
+    },
+    take: props.take,
+  });
+}
