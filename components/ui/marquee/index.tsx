@@ -1,4 +1,4 @@
-import { MarqueeFrame } from '@/components/ui/marquee/marquee-frame';
+import { LoadingMarqueeFrame, MarqueeFrame } from '@/components/ui/marquee/marquee-frame';
 import { ProductWithColor } from '@/lib/api';
 
 export function SlowMarquee({ products }: { products: ProductWithColor[] }) {
@@ -6,7 +6,8 @@ export function SlowMarquee({ products }: { products: ProductWithColor[] }) {
     <article
       className="
         pause-animations-on-hover
-        flex w-full
+        flex
+        w-full
         overflow-hidden
         whitespace-nowrap
       "
@@ -32,7 +33,8 @@ export function FastMarquee({ products }: { products: ProductWithColor[] }) {
     <article
       className="
         pause-animations-on-hover
-        flex w-full
+        flex
+        w-full
         overflow-hidden
         whitespace-nowrap
       "
@@ -50,5 +52,36 @@ export function FastMarquee({ products }: { products: ProductWithColor[] }) {
         </ul>
       </div>
     </article>
+  );
+}
+
+export function LoadingMarquee() {
+  return (
+    <div className="flex w-full overflow-hidden whitespace-nowrap">
+      <div className="relative">
+        <ul className="flex">
+          <LoadingMarqueeFrame />
+          <LoadingMarqueeFrame />
+          <LoadingMarqueeFrame />
+          <LoadingMarqueeFrame />
+          <LoadingMarqueeFrame />
+          <LoadingMarqueeFrame />
+          <LoadingMarqueeFrame />
+          <LoadingMarqueeFrame />
+          <LoadingMarqueeFrame />
+        </ul>
+        <ul className="absolute top-0 flex">
+          <LoadingMarqueeFrame />
+          <LoadingMarqueeFrame />
+          <LoadingMarqueeFrame />
+          <LoadingMarqueeFrame />
+          <LoadingMarqueeFrame />
+          <LoadingMarqueeFrame />
+          <LoadingMarqueeFrame />
+          <LoadingMarqueeFrame />
+          <LoadingMarqueeFrame />
+        </ul>
+      </div>
+    </div>
   );
 }
