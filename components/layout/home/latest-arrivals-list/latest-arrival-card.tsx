@@ -2,8 +2,8 @@ import Link from 'next/link';
 
 import { GridItem } from '@/components/ui/grid';
 import { ProductWithColor } from '@/lib/api';
-import { LatestArrivalImage } from './latest-arrival-image';
-import { LatestArrivalInfo } from './latest-arrival-info';
+import { LatestArrivalImage, LoadingLatestArrivalImage } from './latest-arrival-image';
+import { LatestArrivalInfo, LoadingLatestArrivalInfo } from './latest-arrival-info';
 
 export function LatestArrivalCard({ product }: { product: ProductWithColor }) {
   const href = `/product/${product.slug}`;
@@ -14,6 +14,15 @@ export function LatestArrivalCard({ product }: { product: ProductWithColor }) {
         <LatestArrivalImage product={product} />
         <LatestArrivalInfo name={product.name} price={product.price} />
       </Link>
+    </GridItem>
+  );
+}
+
+export function LoadingLatestArrivalCard() {
+  return (
+    <GridItem>
+      <LoadingLatestArrivalImage />
+      <LoadingLatestArrivalInfo />
     </GridItem>
   );
 }

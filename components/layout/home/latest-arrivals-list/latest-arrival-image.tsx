@@ -28,3 +28,7 @@ export function LatestArrivalImage({ product }: { product: ProductWithColor }) {
     </div>
   );
 }
+
+export function LoadingLatestArrivalImage() {
+  return <div className="relative aspect-square animate-pulse rounded-md bg-gray-100 dark:bg-gray-700" />;
+}
