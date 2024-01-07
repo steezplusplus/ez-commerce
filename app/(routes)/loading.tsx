@@ -1,5 +1,6 @@
 import { LoadingLatestArrivalsList } from '@/components/layout/home/latest-arrivals-list';
 import { Container } from '@/components/ui/container';
+import { LoadingMarquee } from '@/components/ui/marquee';
 
 export default function Loading() {
   return (
@@ -15,8 +16,8 @@ export default function Loading() {
           <h3 className="mb-3 font-thin">& inspire your next style</h3>
         </div>
         <div className="space-y-2">
-          <div>marquee1</div>
-          <div>marquee2</div>
+          <LoadingMarquee />
+          <LoadingMarquee />
         </div>
       </section>
     </Container>
