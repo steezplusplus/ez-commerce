@@ -72,3 +72,23 @@ export function MarqueeFrame({ product }: { product: ProductWithColor }) {
     </>
   );
 }
+
+export function LoadingMarqueeFrame() {
+  return (
+    <li
+      className="
+        group/frame
+        mx-2
+        h-24
+        w-24
+        animate-pulse
+        overflow-hidden
+        rounded-md
+        bg-gray-100
+        dark:bg-gray-700
+        sm:h-48
+        sm:w-48
+      "
+    />
+  );
+}

@@ -10,3 +10,14 @@ export function LatestArrivalInfo({ name, price }: { name: string; price: number
     </div>
   );
 }
+
+export function LoadingLatestArrivalInfo() {
+  return (
+    <div className="mt-1 space-y-1">
+      {/* Product name */}
+      <div className="h-6 w-1/2 animate-pulse rounded-md bg-gray-100 dark:bg-gray-700" />
+      {/* Price */}
+      <div className="h-5 w-full animate-pulse rounded-md bg-gray-100 dark:bg-gray-700" />
+    </div>
+  );
+}
