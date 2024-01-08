@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/react';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import { Suspense } from 'react';
@@ -5,6 +6,7 @@ import { Suspense } from 'react';
 import { Footer } from '@/components/layout/footer';
 import { Navbar } from '@/components/layout/navbar';
 import { RootProvider } from '@/providers/root-provider';
+
 import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -56,6 +58,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
             <Footer />
           </Suspense>
         </RootProvider>
+        <Analytics />
       </body>
     </html>
   );
