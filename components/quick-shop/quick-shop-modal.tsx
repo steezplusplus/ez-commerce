@@ -5,10 +5,11 @@ import Link from 'next/link';
 import { Gallery } from '@/components/ui/gallery';
 import { Modal } from '@/components/ui/modal';
 import { Price } from '@/components/ui/price';
-import { useProductModal } from '@/hooks/use-product-modal';
+import { useProductModal } from '@/hooks/use-product-modal'; // TODO
 import { ProductWithColor } from '@/lib/api';
 
-export function ProductModal() {
+// TODO This is a duplicate with ProductModal
+export function QuickShopModal() {
   const productModal = useProductModal();
   const product = productModal.product;
 
@@ -38,6 +39,7 @@ function ProductModalInfo({ product }: { product: ProductWithColor }) {
       <h4>
         <Price amount={String(product.price)} />
       </h4>
+      New
     </div>
   );
 }
