@@ -25,7 +25,7 @@ export function QuickShopDisclosure({ product }: { product: ProductWithColor }) 
       "
       onClick={onPreview}
     >
-      Quick Shop New
+      Quick Shop
     </Button>
   );
 }
