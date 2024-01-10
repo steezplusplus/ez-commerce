@@ -5,20 +5,20 @@ import Link from 'next/link';
 import { Gallery } from '@/components/ui/gallery';
 import { Modal } from '@/components/ui/modal';
 import { Price } from '@/components/ui/price';
-import { useProductModal } from '@/hooks/use-product-modal'; // TODO
+import { useQuickShop } from '@/hooks/use-quick-shop-modal'; // TODO
 import { ProductWithColor } from '@/lib/api';
 
 // TODO This is a duplicate with ProductModal
 export function QuickShopModal() {
-  const productModal = useProductModal();
-  const product = productModal.product;
+  const quickShopModal = useQuickShop();
+  const product = quickShopModal.product;
 
   if (!product) {
     return null;
   }
 
   return (
-    <Modal open={productModal.isOpen} onClose={productModal.onClose} title={product.name}>
+    <Modal open={quickShopModal.isOpen} onClose={quickShopModal.onClose} title={product.name}>
       <div className="grid w-full grid-cols-1 items-start gap-x-6 gap-y-8 sm:grid-cols-12 lg:gap-x-8">
         <div className="sm:col-span-4 lg:col-span-5">
           <Gallery colors={product.colors} />
@@ -27,7 +27,7 @@ export function QuickShopModal() {
           <ProductModalInfo product={product} />
         </div>
       </div>
-      <ProductModalLink slug={product.slug} onClose={productModal.onClose} />
+      <ProductModalLink slug={product.slug} onClose={quickShopModal.onClose} />
     </Modal>
   );
 }
