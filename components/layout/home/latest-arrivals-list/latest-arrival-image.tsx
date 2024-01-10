@@ -1,7 +1,7 @@
 import Image from 'next/image';
 
+import { QuickShopDisclosure } from '@/components/quick-shop/quick-shop-disclosure';
 import { ProductWithColor } from '@/lib/api';
-import { QuickShopDisclosure } from './quick-shop-disclosure';
 
 export function LatestArrivalImage({ product }: { product: ProductWithColor }) {
   const { colors } = product;

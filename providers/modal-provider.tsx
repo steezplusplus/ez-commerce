@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 
 import { SearchModal } from '@/components/layout/navbar/search-modal';
-import { ProductModal } from '@/components/layout/search/product-list/product-modal';
+import { QuickShopModal } from '@/components/quick-shop/quick-shop-modal';
 
 export function ModalProvider() {
   const [isMounted, setIsMounted] = useState(false);
@@ -18,7 +18,7 @@ export function ModalProvider() {
 
   return (
     <>
-      <ProductModal />
+      <QuickShopModal />
       <SearchModal />
     </>
   );

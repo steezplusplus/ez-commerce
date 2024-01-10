@@ -1,15 +1,15 @@
 'use client';
 
 import { Button } from '@/components/ui/button';
-import { useProductModal } from '@/hooks/use-product-modal';
+import { useQuickShop } from '@/hooks/use-quick-shop-modal';
 import { ProductWithColor } from '@/lib/api';
 
-export function ProductModalDisclosure({ product }: { product: ProductWithColor }) {
-  const productModal = useProductModal();
+export function QuickShopDisclosure({ product }: { product: ProductWithColor }) {
+  const quickShopModal = useQuickShop();
 
   const onPreview = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    productModal.onOpen(product);
+    quickShopModal.onOpen(product);
   };
 
   return (

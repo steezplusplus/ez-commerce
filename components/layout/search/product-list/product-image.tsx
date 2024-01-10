@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-import { ProductModalDisclosure } from '@/components/layout/search/product-list/product-modal-disclosure';
+import { QuickShopDisclosure } from '@/components/quick-shop/quick-shop-disclosure';
 import { ProductWithColor } from '@/lib/api';
 
 export function ProductImage({ product }: { product: ProductWithColor }) {
@@ -23,7 +23,7 @@ export function ProductImage({ product }: { product: ProductWithColor }) {
         sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
       />
       <div className="absolute bottom-0 w-full opacity-0 transition group-hover/image:opacity-100">
-        <ProductModalDisclosure product={product} />
+        <QuickShopDisclosure product={product} />
       </div>
     </div>
   );
