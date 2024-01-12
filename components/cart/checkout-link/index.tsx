@@ -36,6 +36,7 @@ export function CheckoutLink() {
         bg-white
         p-2
         transition
+        duration-300
         hover:opacity-75
         dark:border-neutral-800
         dark:bg-transparent
