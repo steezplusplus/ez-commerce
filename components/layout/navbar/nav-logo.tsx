@@ -7,7 +7,7 @@ export function NavLogo({ storeName }: { storeName: string }) {
   return (
     <Link href={href} className="mr-2 flex w-full items-center justify-center md:w-auto">
       <CircleLogo />
-      <h1 className="ml-2 flex-none text-sm font-medium">{storeName}</h1>
+      <h1 className="ml-2 flex-none text-sm font-medium transition duration-300 hover:opacity-75">{storeName}</h1>
     </Link>
   );
 }
