@@ -31,7 +31,7 @@ export function NavLinks(props: NavLinksProps) {
 
   return (
     <>
-      {routes.map((route) => {
+      {routes.slice(0, 3).map((route) => {
         const { label, href, ariaCurrent } = route;
 
         return (
