@@ -29,6 +29,7 @@ export function NavLinks(props: NavLinksProps) {
     ariaCurrent: pathName.startsWith(`/search/${category.slug}`) ? 'page' : undefined,
   }));
 
+  // TODO Hover style
   return (
     <>
       {routes.slice(0, 3).map((route) => {
@@ -36,7 +37,11 @@ export function NavLinks(props: NavLinksProps) {
 
         return (
           <li key={href}>
-            <Link href={href} className="group text-xs font-medium transition duration-300" aria-current={ariaCurrent}>
+            <Link
+              href={href}
+              className="group text-xs font-medium transition duration-300 hover:opacity-75"
+              aria-current={ariaCurrent}
+            >
               {label}
               <span className="block h-0.5 max-w-0 bg-black transition-all duration-700 group-aria-[current=page]:max-w-full dark:bg-white" />
             </Link>
