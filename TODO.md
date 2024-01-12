@@ -1,12 +1,16 @@
 # HIGH PRIORITY
 
+- Add links to categories in navbar
+- New images in header
+- "Add to Cart" in "Quick Shop Modal"
+- Circular colors for images
+- Cart Modal
+- Related products on Product page
 - Toasts should show the product name, color and size when added to or removed from cart.
 - Refactor database columns Color.value -> Color.slug, Size.value -> Size.slug. Update downstream typings.
 - Footer should have more information and links for good SEO.
-- Inconsistent loading UI. Using both spinner and animate-pulse.
 
 - Create better testing data in the seed:
-
   - Product with color and no size
   - Product with size and no color
   - Product with no size or color
@@ -24,20 +28,14 @@
   - Does not show on mobile
 
 - Product page fully incomplete
-  - Sroll to product based on color selection via URL
-  - loading.tsx
-- Handle scenario where a product exists with no Color. Show "no images for this product" in UI.
-- Homepage fully incomplete
-- Utilize `default export` as NextJS recommends.
-- <Price /> loading placeholder height depends on parents font size, CLS issues if is not `text-sm`.
+  - Sroll to product based on color selection via URL OR show gallery
+  - loading.tsx?
 
 # Finalizations
 
 - Manual A11y testing.
 - Dependabot
-- Unit test all user interactions with react testing library and jest.
-- Setup Coveralls to track code coverage.
-- Create GitHub Action to run unit tests, block merging to main.
+- Code coverage
 
 - Remake ThemeSelect with HeadlessUI ListBox
 - Remake Product Form Radio with HeadlessUI RadioGroup
