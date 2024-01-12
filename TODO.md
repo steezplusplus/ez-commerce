@@ -10,7 +10,6 @@
 # Frontend
 
 - Product page scroll to product OR control @/components/ui/gallery
-- Add links to categories in navbar
 - FastMarquee and SlowMarquee to not show duplicate images
 - Create Circular colors for images
 - Create CartModal. Show items in cart
