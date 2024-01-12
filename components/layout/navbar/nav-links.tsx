@@ -29,7 +29,6 @@ export function NavLinks(props: NavLinksProps) {
     ariaCurrent: pathName.startsWith(`/search/${category.slug}`) ? 'page' : undefined,
   }));
 
-  // TODO Hover style
   return (
     <>
       {routes.slice(0, 3).map((route) => {
