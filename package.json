@@ -16,7 +16,7 @@
     "postinstall": "prisma generate"
   },
   "dependencies": {
-    "@headlessui/react": "^1.7.17",
+    "@headlessui/react": "^2.2.0",
     "@prisma/client": "5.4.1",
     "@vercel/analytics": "^1.1.1",
     "lucide-react": "^0.287.0",
