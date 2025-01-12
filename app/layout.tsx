@@ -49,10 +49,12 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={inter.className}>
+    <html lang="en" className={inter.className} suppressHydrationWarning>
       <body>
         <RootProvider>
-          <Navbar />
+          <Suspense fallback={<div className="h-16">Loading...</div>}>
+            <Navbar />
+          </Suspense>
           <main className="min-h-[calc(100vh-80px)]">{children}</main>
           <Suspense>
             <Footer />
