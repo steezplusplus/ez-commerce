@@ -6,15 +6,16 @@ import { Container } from '@/components/ui/container';
 import { getProductPage } from '@/lib/api';
 
 export type ProductPageProps = {
-  params: {
+  params: Promise<{
     product: string;
-  };
-  searchParams?: {
+  }>;
+  searchParams?: Promise<{
     [key: string]: string | string[] | undefined;
-  };
+  }>;
 };
 
-export async function generateMetadata({ params }: { params: { product: string } }): Promise<Metadata> {
+export async function generateMetadata(props: { params: Promise<{ product: string }> }): Promise<Metadata> {
+  const params = await props.params;
   const product = await getProductPage({ name: params.product });
 
   return {
@@ -32,8 +33,8 @@ export async function generateMetadata({ params }: { params: { product: string }
 }
 
 export default async function ProductPage(props: ProductPageProps) {
-  const { color: selectedColor, size: selectedSize } = props.searchParams as { [key: string]: string };
-  const product = await getProductPage({ name: props.params.product });
+  const { color: selectedColor, size: selectedSize } = (await props.searchParams) as { [key: string]: string };
+  const product = await getProductPage({ name: (await props.params).product });
 
   return (
     <Container className="px-4 pb-4">

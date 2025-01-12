@@ -5,15 +5,16 @@ import { getCategory, getCategoryPage } from '@/lib/api';
 import { sorting } from '@/lib/constants';
 
 export type CategoryPageProps = {
-  params: {
+  params: Promise<{
     category: string;
-  };
-  searchParams?: {
+  }>;
+  searchParams?: Promise<{
     [key: string]: string | string[] | undefined;
-  };
+  }>;
 };
 
-export async function generateMetadata({ params }: { params: { category: string } }): Promise<Metadata> {
+export async function generateMetadata(props: { params: Promise<{ category: string }> }): Promise<Metadata> {
+  const params = await props.params;
   const category = await getCategory({ name: params.category });
   return {
     title: category.name,
