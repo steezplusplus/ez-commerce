@@ -24,11 +24,12 @@ export async function generateMetadata(props: { params: Promise<{ category: stri
 export default async function CategoryPage(props: CategoryPageProps) {
   const { params, searchParams } = props;
 
-  const { sort } = searchParams as { [key: string]: string };
+  const { category: categoryParam } = await params;
+  const { sort } = (await searchParams) as { [key: string]: string };
   const selectedSort = sorting.find((item) => item.slug === sort);
 
   const category = await getCategoryPage({
-    name: params.category,
+    name: categoryParam,
     sortKey: selectedSort?.sortKey,
     order: selectedSort?.order,
   });
